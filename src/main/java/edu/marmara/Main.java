@@ -42,7 +42,10 @@ public class Main {
         studentService.assignCourses(school);
 
         for (Student student : school.getStudents()) {
+            System.out.println(student);
             System.out.println(student.getTranscript());
+            System.out.println(studentService.getAvailableCourses(school, student));
+            System.out.println("\n\n");
         }
     }
 }

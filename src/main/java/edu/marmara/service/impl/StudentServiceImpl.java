@@ -7,6 +7,7 @@ import edu.marmara.model.Transcript;
 import edu.marmara.service.StudentService;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class StudentServiceImpl implements StudentService {
@@ -31,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
                     continue;
                 }
 
-                if (random.nextInt(2) == 1) {
+                if (random.nextInt(10) > 3) {
                     student.getTranscript().getPassedCourses().add(course);
                     student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                 } else {
@@ -40,5 +41,17 @@ public class StudentServiceImpl implements StudentService {
                 }
             }
         }
+    }
+
+    @Override
+    public List<Course> getAvailableCourses(School school, Student student) {
+        List<Course> courses = new ArrayList<>();
+        for (Course course : school.getCourses()) {
+            if (student.getSemester() <= course.getGivenSemester() && !student.getTranscript().getPassedCourses().contains(course)) {
+                courses.add(course);
+            }
+        }
+
+        return courses;
     }
 }
