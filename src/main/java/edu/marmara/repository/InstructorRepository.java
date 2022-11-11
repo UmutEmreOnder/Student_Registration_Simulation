@@ -4,7 +4,7 @@ import edu.marmara.model.Instructor;
 import edu.marmara.model.School;
 
 public interface InstructorRepository {
-    void save(School school, Instructor instructor);
+    void save(Instructor instructor);
 
-    Instructor findByEmail(School school, String email);
+    Instructor findByEmail(String email);
 }

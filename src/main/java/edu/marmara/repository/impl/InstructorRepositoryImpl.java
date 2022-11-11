@@ -11,7 +11,9 @@ public class InstructorRepositoryImpl implements InstructorRepository {
     // todo: Update the responding json file
 
     @Override
-    public void save(School school, Instructor instructor) {
+    public void save(Instructor instructor) {
+        School school = School.getInstance();
+
         if (school.getInstructors() == null) {
             school.setInstructors(new ArrayList<>());
         }
@@ -20,7 +22,9 @@ public class InstructorRepositoryImpl implements InstructorRepository {
     }
 
     @Override
-    public Instructor findByEmail(School school, String email) {
+    public Instructor findByEmail(String email) {
+        School school = School.getInstance();
+
         if (school.getInstructors() == null) {
             return null;
         }

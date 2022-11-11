@@ -11,7 +11,9 @@ public class StudentRepositoryImpl implements StudentRepository {
     // todo: Update the responding json file
 
     @Override
-    public void save(School school, Student student) {
+    public void save(Student student) {
+        School school = School.getInstance();
+
         if (school.getStudents() == null) {
             school.setStudents(new ArrayList<>());
         }
@@ -20,7 +22,9 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public Student findByStudentId(School school, Long studentId) {
+    public Student findByStudentId(Long studentId) {
+        School school = School.getInstance();
+
         if (school.getStudents() == null) {
             return null;
         }
