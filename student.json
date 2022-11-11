@@ -1,0 +1,13 @@
+{
+  "students": [
+    {
+      "uuid": "982798e5-4206-46dc-a808-b66a1905b971",
+      "name": "RandomName",
+      "surname": "RandomSurname",
+      "email": "RandomEmail",
+      "birthDate": "2001-04-25",
+      "studentId": 150119018,
+      "yearEnrolled": 2019
+    }
+  ]
+}

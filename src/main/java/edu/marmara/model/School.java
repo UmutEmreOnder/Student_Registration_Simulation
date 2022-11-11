@@ -1,12 +1,12 @@
 package edu.marmara.model;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.util.List;
 
 @Data
-@ToString(callSuper=true)
-public class Advisor extends Instructor {
+public class School {
     private List<Student> students;
+    private List<Instructor> instructors;
+    private List<Course> courses;
 }
