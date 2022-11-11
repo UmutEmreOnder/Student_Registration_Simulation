@@ -1,0 +1,39 @@
+{
+  "instructors": [
+    {
+      "uuid": "17f806e0-06f0-4bf8-904d-0ca5821a04b7",
+      "name": "Sefer",
+      "surname": "Yalcın",
+      "email": "seferyalcın@gmail.com",
+      "birthDate": "1967-04-24"
+    },
+    {
+      "uuid": "1bcd1537-963c-4bbb-9405-4a7b4bc292e2",
+      "name": "Yusuf",
+      "surname": "Turkes",
+      "email": "turkesyusuf@gmail.com",
+      "birthDate": "1975-09-21"
+    },
+    {
+      "uuid": "2a16ebae-1337-4253-a7d2-9042e482e43b",
+      "name": "Talha",
+      "surname": "Kalpak",
+      "email": "talha.kalpak@gmail.com",
+      "birthDate": "1980-03-30"
+    },
+    {
+      "uuid": "b214921a-3909-4c2c-a2be-3e26c6319b47",
+      "name": "Batuhan",
+      "surname": "Komurcu",
+      "email": "batuhankomurcu@gmail.com",
+      "birthDate": "1982-01-01"
+    },
+    {
+      "uuid": "bf50489a-c80d-4436-87d7-98f05b3e0f73",
+      "name": "Elif",
+      "surname": "Gungoren",
+      "email": "eylulgungoren@gmail.com",
+      "birthDate": "1958-05-28"
+    }
+  ]
+}
