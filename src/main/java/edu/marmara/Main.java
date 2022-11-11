@@ -32,7 +32,7 @@ public class Main {
         String courseInfo = Files.readString(Path.of("course.json"));
         List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
 
-        School school = new School();
+        School school = School.getInstance();
 
         school.setStudents(students);
         school.setInstructors(instructors);

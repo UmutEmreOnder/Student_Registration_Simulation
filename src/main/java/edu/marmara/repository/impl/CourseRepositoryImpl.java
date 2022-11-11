@@ -11,7 +11,9 @@ public class CourseRepositoryImpl implements CourseRepository {
     // todo: Update the responding json file
 
     @Override
-    public void save(School school, Course course) {
+    public void save(Course course) {
+        School school = School.getInstance();
+
         if (school.getCourses() == null) {
             school.setCourses(new ArrayList<>());
         }
@@ -20,7 +22,9 @@ public class CourseRepositoryImpl implements CourseRepository {
     }
 
     @Override
-    public Course findByCourseCode(School school, String courseCode) {
+    public Course findByCourseCode(String courseCode) {
+        School school = School.getInstance();
+
         if (school.getCourses() == null) {
             return null;
         }
