@@ -11,4 +11,5 @@ public class Student extends Person {
     private Schedule weeklySchedule;
     private Transcript transcript;
     private Advisor advisor;
+    private Integer semester;
 }

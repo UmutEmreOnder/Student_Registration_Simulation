@@ -7,7 +7,8 @@
       "email": "ardakaya@gmail.com",
       "birthDate": "2001-04-25",
       "studentId": 150120312,
-      "yearEnrolled": 2020
+      "yearEnrolled": 2020,
+      "semester": 6
     },
     {
       "uuid": "685710b9-35a2-4673-8518-0c82ed24802c",
@@ -16,7 +17,8 @@
       "email": "egecalıskan@gmail.com",
       "birthDate": "2000-11-24",
       "studentId": 150119043,
-      "yearEnrolled": 2019
+      "yearEnrolled": 2019,
+      "semester": 8
     },
     {
       "uuid": "fdf4ce8c-79f1-4617-a86b-a82052558176",
@@ -25,7 +27,8 @@
       "email": "ahmetkaya@gmail.com",
       "birthDate": "1999-08-07",
       "studentId": 150119059,
-      "yearEnrolled": 2019
+      "yearEnrolled": 2019,
+      "semester": 7
     },
     {
       "uuid": "498171ea-131e-4930-a4c4-62d09ae4bd18",
@@ -34,7 +37,8 @@
       "email": "eylul.kartel@gmail.com",
       "birthDate": "2001-08-07",
       "studentId": 150120022,
-      "yearEnrolled": 2020
+      "yearEnrolled": 2020,
+      "semester": 3
     },
 
     {
@@ -44,7 +48,8 @@
       "email": "leylazeybek@gmail.com",
       "birthDate": "2002-03-11",
       "studentId": 150121023,
-      "yearEnrolled": 2021
+      "yearEnrolled": 2021,
+      "semester": 1
     }
   ]
 }

@@ -12,5 +12,5 @@ public class Course {
     private List<Student> enrolledStudents;
     private Integer courseCredit;
     private List<Course> prerequisites;
-    private List<Instructor> givenInstructors;
+    private Instructor instructor;
 }
