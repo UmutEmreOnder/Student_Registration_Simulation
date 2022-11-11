@@ -6,7 +6,7 @@ import lombok.ToString;
 import java.util.List;
 
 @Data
-@ToString(callSuper=true)
+@ToString(callSuper = true)
 public class Advisor extends Instructor {
     private List<Student> students;
 }

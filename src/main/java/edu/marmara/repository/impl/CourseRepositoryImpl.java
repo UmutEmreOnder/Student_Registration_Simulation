@@ -2,7 +2,6 @@ package edu.marmara.repository.impl;
 
 import edu.marmara.model.Course;
 import edu.marmara.model.School;
-import edu.marmara.model.Student;
 import edu.marmara.repository.CourseRepository;
 
 import java.util.ArrayList;

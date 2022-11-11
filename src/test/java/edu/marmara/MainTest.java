@@ -5,5 +5,6 @@ import org.junit.Test;
 public class MainTest {
 
     @Test
-    public void contextLoad() {}
+    public void contextLoad() {
+    }
 }
