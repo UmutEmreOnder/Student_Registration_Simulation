@@ -1,6 +1,5 @@
 package edu.marmara.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

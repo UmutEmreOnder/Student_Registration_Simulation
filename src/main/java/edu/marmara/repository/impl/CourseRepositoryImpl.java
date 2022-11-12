@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class CourseRepositoryImpl implements CourseRepository {
-    // todo: Update the responding json file
+    // todo: Update the corresponding json file
 
     @Override
     public void save(Course course) {

@@ -13,4 +13,5 @@ public class Course {
     private Integer courseCredit;
     private List<Course> prerequisites;
     private Instructor instructor;
+    private List<WeeklyDate> dates;
 }

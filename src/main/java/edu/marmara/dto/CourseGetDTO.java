@@ -12,5 +12,6 @@ public class CourseGetDTO {
     private Integer givenSemester;
     private Integer courseCredit;
     private List<String> prerequisites;
-    private Instructor instructor;
+
+    // todo: Give WeeklyDate somehow
 }

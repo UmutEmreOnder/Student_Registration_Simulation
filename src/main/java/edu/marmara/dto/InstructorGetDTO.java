@@ -14,5 +14,5 @@ public class InstructorGetDTO {
     private String email;
     private Date birthDate;
     private List<String> presentedCourses;
-    private Schedule weeklySchedule;
+    private Boolean isAdvisor;
 }

@@ -9,7 +9,9 @@ import java.util.Random;
 
 public class CourseServiceImpl implements CourseService {
     @Override
-    public void assignInstructor(School school) {
+    public void assignInstructor() {
+        School school = School.getInstance();
+
         List<Course> courses = school.getCourses();
         Random random = new Random();
 

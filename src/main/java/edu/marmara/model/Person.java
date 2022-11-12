@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Data
-public class Person {
+public abstract class Person {
     private UUID uuid;
     private String name;
     private String surname;

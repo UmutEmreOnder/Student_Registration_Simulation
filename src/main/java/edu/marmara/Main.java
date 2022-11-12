@@ -16,12 +16,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         JsonService jsonService = new JsonServiceImpl();
         CourseService courseService = new CourseServiceImpl();
         StudentService studentService = new StudentServiceImpl();
+        Scanner scanner = new Scanner(System.in);
 
         String studentInfo = Files.readString(Path.of("student.json"));
         List<Student> students = jsonService.readStudentsFromJson(studentInfo);
@@ -38,14 +40,21 @@ public class Main {
         school.setInstructors(instructors);
         school.setCourses(courses);
 
-        courseService.assignInstructor(school);
-        studentService.assignCourses(school);
+        courseService.assignInstructor();
+        studentService.assignCourses();
+
 
         for (Student student : school.getStudents()) {
-            System.out.println(student);
-            System.out.println(student.getTranscript());
-            System.out.println(studentService.getAvailableCourses(school, student));
-            System.out.println("\n\n");
+            System.out.println(student.getName() + " " + student.getSurname());
+            System.out.println("Select a course to add it on your weekly schedule");
+            for (Course course : studentService.getAvailableCourses(student)) {
+                System.out.println(course.getCourseCode() + " " + course.getCourseTitle());
+            }
+            System.out.print("\n\nEnter the Course Code: ");
+            studentService.addCourseToSchedule(student, scanner.next());
+
+            System.out.println("Your new weekly schedule \n\n");
+            System.out.println(student.getWeeklySchedule());
         }
     }
 }
