@@ -28,14 +28,11 @@ public class InstructorRepositoryImpl implements InstructorRepository {
         if (school.getInstructors() == null) {
             return null;
         }
-
-
         for (Instructor instructor : school.getInstructors()) {
             if (Objects.equals(instructor.getEmail(), email)) {
                 return instructor;
             }
         }
-
         return null;
     }
 }

@@ -1,0 +1,13 @@
+{
+  "uuid": "6163dbb4-9946-4050-a1bf-97b95bcb89bb",
+  "name": "Arda",
+  "surname": "Goksoy",
+  "email": "ardagoksoy@gmail.com",
+  "birthDate": "2002-03-11",
+  "studentId": 150119032,
+  "yearEnrolled": 2019,
+  "semester": 5,
+  "passedCourses": ["MATH1001","MATH1002","CSE1100","CSE1142",
+    "CSE2025","MATH2055","CSE2046","STAT2053"],
+  "failedCourses": []
+}

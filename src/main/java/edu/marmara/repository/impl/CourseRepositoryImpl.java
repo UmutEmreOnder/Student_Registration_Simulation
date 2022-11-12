@@ -29,7 +29,6 @@ public class CourseRepositoryImpl implements CourseRepository {
             return null;
         }
 
-
         for (Course course : school.getCourses()) {
             if (Objects.equals(course.getCourseCode(), courseCode)) {
                 return course;

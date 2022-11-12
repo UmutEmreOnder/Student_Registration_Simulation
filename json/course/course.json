@@ -1,0 +1,118 @@
+{
+  "courses": [
+    {
+      "courseCode": "CSE1100",
+      "courseTitle": "Computer Programming 1",
+      "givenSemester": 1,
+      "courseCredit": 6,
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CSE1142",
+      "courseTitle": "Computer Programming 2",
+      "givenSemester": 2,
+      "courseCredit": 7,
+      "prerequisites": ["CSE1100"]
+    },
+    {
+      "courseCode": "MATH1001",
+      "courseTitle": "Calculus 1",
+      "givenSemester": 1,
+      "courseCredit": 6,
+      "prerequisites": []
+    },
+    {
+      "courseCode": "MATH1002",
+      "courseTitle": "Calculus 2",
+      "givenSemester": 2,
+      "courseCredit": 6,
+      "prerequisites": ["MATH1001"]
+    },
+    {
+      "courseCode": "CSE2025",
+      "courseTitle": "Data Structures",
+      "givenSemester": 3,
+      "courseCredit": 8,
+      "prerequisites": ["CSE1142"]
+    },
+    {
+      "courseCode": "MATH2055",
+      "courseTitle": "Differential Equations",
+      "givenSemester": 3,
+      "courseCredit": 4,
+      "prerequisites": ["MATH1002"]
+    },
+    {
+      "courseCode": "CSE2046",
+      "courseTitle": "Analysis of Algorithms",
+      "givenSemester": 4,
+      "courseCredit": 6,
+      "prerequisites": []
+    },
+    {
+      "courseCode": "STAT2053",
+      "courseTitle": "Introduction to Signals and Systems",
+      "givenSemester": 4,
+      "courseCredit": 5,
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CSE3063",
+      "courseTitle": "Object-Oriented Software Design",
+      "givenSemester": 5,
+      "courseCredit": 5,
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CSE3055",
+      "courseTitle": "Database Systems",
+      "givenSemester": 5,
+      "courseCredit": 7,
+      "prerequisites": ["CSE2046"]
+    },
+    {
+      "courseCode": "CSE3038",
+      "courseTitle": "Computer Organization",
+      "givenSemester": 6,
+      "courseCredit": 7,
+      "prerequisites": ["CSE3055"]
+    },
+    {
+      "courseCode": "CSE3044",
+      "courseTitle": "Software Engineering",
+      "givenSemester": 6,
+      "courseCredit": 7,
+      "prerequisites": ["CSE3063"]
+    },
+    {
+      "courseCode": "CSE4197",
+      "courseTitle": "Engineering Project 1",
+      "givenSemester": 7,
+      "courseCredit": 4,
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CSE4074",
+      "courseTitle": "Computer Networks",
+      "givenSemester": 7,
+      "courseCredit": 4,
+      "prerequisites": ["CSE3038"]
+    },
+    {
+      "courseCode": "CSE4198",
+      "courseTitle": "Engineering Project 2",
+      "givenSemester": 8,
+      "courseCredit": 5,
+      "prerequisites": ["CSE4197"]
+    },
+    {
+      "courseCode": "CSE4082",
+      "courseTitle": "Artificial Intelligence",
+      "givenSemester": 8,
+      "courseCredit": 5,
+      "prerequisites": []
+    }
+
+
+  ]
+}

@@ -30,7 +30,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
 
-        String studentInfo = Files.readString(Path.of("student.json"));
+        String studentInfo = Files.readString(Path.of("json/student/*.json"));
         List<Student> students = jsonService.readStudentsFromJson(studentInfo);
 
         String instructorInfo = Files.readString(Path.of("instructor.json"));

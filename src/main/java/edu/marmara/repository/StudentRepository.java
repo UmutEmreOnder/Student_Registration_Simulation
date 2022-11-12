@@ -4,7 +4,6 @@ import edu.marmara.model.School;
 import edu.marmara.model.Student;
 
 public interface StudentRepository {
-    void save(Student student);
-
-    Student findByStudentId(Long studentId);
+    void save(School school, Student student);
+    Student findByStudentId(long studentID, School school);
 }

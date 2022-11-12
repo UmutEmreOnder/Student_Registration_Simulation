@@ -1,0 +1,13 @@
+{
+  "uuid": "f01b19aa-4e0e-4c15-bfbf-4c49750b9120",
+  "name": "Kemal",
+  "surname": "Yasar",
+  "email": "kemalyasar@gmail.com",
+  "birthDate": "1999-02-20",
+  "studentId": 150118069,
+  "yearEnrolled": 2018,
+  "semester": 7,
+  "passedCourses": ["MATH1001","MATH1002","CSE1100","CSE1142",
+    "CSE2025","MATH2055","CSE2046","STAT2053","CSE3063","CSE3044"],
+  "failedCourses": ["CSE3055"]
+}
