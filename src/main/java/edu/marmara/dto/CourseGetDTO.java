@@ -4,8 +4,6 @@ import lombok.Data;
 
 import java.util.List;
 
-// todo: Use them to retrieve prerequisites as a String (Course Code of the Course) then while parsing the json, find the corresponding course and add it.
-// todo: If the corresponding course is not in the school's list, first add that course (use Recurrence maybe ?)
 @Data
 public class CourseGetDTO {
     private String courseCode;
@@ -13,6 +11,7 @@ public class CourseGetDTO {
     private Integer givenSemester;
     private Integer courseCredit;
     private List<String> prerequisites;
+    private List<String> weeklyDate;
 
     // todo: Give WeeklyDate somehow
 }

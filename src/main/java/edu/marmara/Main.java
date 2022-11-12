@@ -10,6 +10,7 @@ import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
+import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.InstructorRepository;
 import edu.marmara.repository.StudentRepository;
 import edu.marmara.repository.impl.InstructorRepositoryImpl;
@@ -71,7 +72,11 @@ public class Main {
                     System.out.println(studentMapper.mapTo(student));
 
                     for (Course course : studentService.getAvailableCourses(student)) {
-                        System.out.println(course.getCourseCode() + " " + course.getCourseTitle());
+                        System.out.print(course.getCourseCode() + " " + course.getCourseTitle() + " ");
+                        for (WeeklyDate date : course.getDates()) {
+                            System.out.print(date.getDayName() + " " + date.getHours() + " ");
+                        }
+                        System.out.println();
                     }
 
                     System.out.print("\nEnter the course code to add it to your schedule: ");

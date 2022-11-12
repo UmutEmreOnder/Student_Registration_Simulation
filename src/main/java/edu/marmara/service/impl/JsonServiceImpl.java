@@ -51,6 +51,7 @@ public class JsonServiceImpl implements JsonService {
         CourseListDTO courseListDTO = mapper.readValue(jsonFormattedCourseList, CourseListDTO.class);
 
         List<CourseGetDTO> courseGetDTOS = courseListDTO.getCourses();
+
         List<Course> coursesWithoutPrerequisites = courseGetDTOS.stream().map(courseMapper::mapTo).toList();
 
         School school = School.getInstance();

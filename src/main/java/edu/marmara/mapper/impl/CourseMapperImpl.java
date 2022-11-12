@@ -4,6 +4,10 @@ import edu.marmara.dto.CourseDTO;
 import edu.marmara.dto.CourseGetDTO;
 import edu.marmara.mapper.CourseMapper;
 import edu.marmara.model.Course;
+import edu.marmara.model.DayName;
+import edu.marmara.model.WeeklyDate;
+
+import java.util.ArrayList;
 
 public class CourseMapperImpl implements CourseMapper {
     @Override
@@ -28,7 +32,18 @@ public class CourseMapperImpl implements CourseMapper {
         course.setGivenSemester(courseGetDTO.getGivenSemester());
         course.setCourseCredit(courseGetDTO.getCourseCredit());
 
-        // todo: Map prerequisites somehow
+        course.setDates(new ArrayList<>());
+
+        for (String date : courseGetDTO.getWeeklyDate()) {
+            String[] dayAndHour = date.split(" ");
+
+            DayName dayName = DayName.valueOf(dayAndHour[0]);
+            WeeklyDate weeklyDate = new WeeklyDate();
+            weeklyDate.setDayName(dayName);
+            weeklyDate.setHours(Integer.valueOf(dayAndHour[1]));
+
+            course.getDates().add(weeklyDate);
+        }
 
         return course;
     }

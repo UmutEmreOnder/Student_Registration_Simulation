@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-// todo: Use them to retrieve presentedCourses as a String (Course Code of the Course) then while parsing the json, find the corresponding course and add it
 @Data
 public class InstructorGetDTO {
     private UUID uuid;

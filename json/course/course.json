@@ -5,7 +5,12 @@
       "courseTitle": "Computer Programming 1",
       "givenSemester": 1,
       "courseCredit": 6,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "SUN 11",
+        "SUN 12",
+        "WED 9"
+      ]
     },
     {
       "courseCode": "CSE1142",
@@ -14,6 +19,11 @@
       "courseCredit": 7,
       "prerequisites": [
         "CSE1100"
+      ],
+      "weeklyDate": [
+        "TUE 11",
+        "TUE 12",
+        "WED 13"
       ]
     },
     {
@@ -21,7 +31,11 @@
       "courseTitle": "Calculus 1",
       "givenSemester": 1,
       "courseCredit": 6,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "THU 8",
+        "THU 9"
+      ]
     },
     {
       "courseCode": "MATH1002",
@@ -30,6 +44,10 @@
       "courseCredit": 6,
       "prerequisites": [
         "MATH1001"
+      ],
+      "weeklyDate": [
+        "MON 11",
+        "MON 12"
       ]
     },
     {
@@ -39,6 +57,10 @@
       "courseCredit": 8,
       "prerequisites": [
         "CSE1142"
+      ],
+      "weeklyDate": [
+        "WED 16",
+        "WED 17"
       ]
     },
     {
@@ -48,6 +70,9 @@
       "courseCredit": 4,
       "prerequisites": [
         "MATH1002"
+      ],
+      "weeklyDate": [
+        "MON 14"
       ]
     },
     {
@@ -55,21 +80,35 @@
       "courseTitle": "Analysis of Algorithms",
       "givenSemester": 4,
       "courseCredit": 6,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "TUE 14",
+        "TUE 15"
+      ]
     },
     {
       "courseCode": "STAT2053",
       "courseTitle": "Introduction to Signals and Systems",
       "givenSemester": 4,
       "courseCredit": 5,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "TUE 13",
+        "TUE 14",
+        "WED 15",
+        "WED 16"
+      ]
     },
     {
       "courseCode": "CSE3063",
       "courseTitle": "Object-Oriented Software Design",
       "givenSemester": 5,
       "courseCredit": 5,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "SUN 9",
+        "SUN 10"
+      ]
     },
     {
       "courseCode": "CSE3055",
@@ -78,6 +117,10 @@
       "courseCredit": 7,
       "prerequisites": [
         "CSE2046"
+      ],
+      "weeklyDate": [
+        "MON 9",
+        "MON 10"
       ]
     },
     {
@@ -87,6 +130,10 @@
       "courseCredit": 7,
       "prerequisites": [
         "CSE3055"
+      ],
+      "weeklyDate": [
+        "SUN 14",
+        "SUN 15"
       ]
     },
     {
@@ -96,6 +143,9 @@
       "courseCredit": 7,
       "prerequisites": [
         "CSE3063"
+      ],
+      "weeklyDate": [
+        "SUN 10"
       ]
     },
     {
@@ -103,7 +153,11 @@
       "courseTitle": "Engineering Project 1",
       "givenSemester": 7,
       "courseCredit": 4,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "SUN 11",
+        "SUN 12"
+      ]
     },
     {
       "courseCode": "CSE4074",
@@ -112,6 +166,11 @@
       "courseCredit": 4,
       "prerequisites": [
         "CSE3038"
+      ],
+      "weeklyDate": [
+        "MON 11",
+        "TUE 9",
+        "TUE 10"
       ]
     },
     {
@@ -121,6 +180,10 @@
       "courseCredit": 5,
       "prerequisites": [
         "CSE4197"
+      ],
+      "weeklyDate": [
+        "SUN 16",
+        "SUN 17"
       ]
     },
     {
@@ -128,7 +191,11 @@
       "courseTitle": "Artificial Intelligence",
       "givenSemester": 8,
       "courseCredit": 5,
-      "prerequisites": []
+      "prerequisites": [],
+      "weeklyDate": [
+        "THU 17",
+        "THU 18"
+      ]
     }
   ]
 }

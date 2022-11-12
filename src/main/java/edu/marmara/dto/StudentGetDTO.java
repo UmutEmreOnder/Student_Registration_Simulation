@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-// todo: Use them to retrieve passed, failed courses and advisor as a String (Course Code of the Course, email of the advisor) then while parsing the json, find the corresponding course and add it.
 @Data
 public class StudentGetDTO {
     private UUID uuid;

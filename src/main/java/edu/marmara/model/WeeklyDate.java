@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class WeeklyDate {
     private DayName dayName;
-    private List<Integer> hours;
+    private Integer hours;
 }
