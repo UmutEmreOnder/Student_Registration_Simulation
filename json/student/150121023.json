@@ -6,5 +6,8 @@
   "birthDate": "2002-03-11",
   "studentId": 150121023,
   "yearEnrolled": 2021,
-  "semester": 1
+  "semester": 1,
+  "passedCourses": ["MATH1001","MATH1002","CSE1100","CSE1142",
+    "CSE2025","MATH2055","CSE2046","STAT2053","CSE3063"],
+  "failedCourses": ["CSE3055"]
 }

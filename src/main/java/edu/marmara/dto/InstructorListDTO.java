@@ -7,5 +7,5 @@ import java.util.List;
 
 @Data
 public class InstructorListDTO {
-    private List<Instructor> instructors;
+    private List<InstructorGetDTO> instructors;
 }

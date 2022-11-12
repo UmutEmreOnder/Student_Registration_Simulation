@@ -6,8 +6,8 @@
       "surname": "Yalcin",
       "email": "seferyalcın@gmail.com",
       "birthDate": "1967-04-24",
-      "presentedCourses": ["CSE1100", "MATH1001"],
-      "isAdvisor": false
+      "presentedCourses": ["CSE1100"],
+      "isAdvisor": true
     },
     {
       "uuid": "1bcd1537-963c-4bbb-9405-4a7b4bc292e2",
@@ -15,7 +15,7 @@
       "surname": "Turkes",
       "email": "turkesyusuf@gmail.com",
       "birthDate": "1975-09-21",
-      "presentedCourses": ["CSE1142", "MATH1002"],
+      "presentedCourses": ["MATH1002"],
       "isAdvisor": true
     },
     {
@@ -24,7 +24,7 @@
       "surname": "Kalpak",
       "email": "talha.kalpak@gmail.com",
       "birthDate": "1980-03-30",
-      "presentedCourses": ["CSE1100", "CSE1142"],
+      "presentedCourses": ["CSE1142"],
       "isAdvisor": true
     },
     {
@@ -33,8 +33,8 @@
       "surname": "Komurcu",
       "email": "batuhankomurcu@gmail.com",
       "birthDate": "1982-01-01",
-      "presentedCourses": ["MATH1001", "MATH1002"],
-      "isAdvisor": true
+      "presentedCourses": ["MATH1001"],
+      "isAdvisor": false
     },
     {
       "uuid": "bf50489a-c80d-4436-87d7-98f05b3e0f73",
@@ -51,8 +51,8 @@
       "surname": "Yagci",
       "email": "emiryagcı@gmail.com",
       "birthDate": "1977-09-18",
-      "presentedCourses": ["CSE2055", "MATH2025"],
-      "isAdvisor": true
+      "presentedCourses": ["CSE4074"],
+      "isAdvisor": false
     },
     {
       "uuid": "c276df71-1ba8-453b-96d6-f7645a1d515d",
@@ -60,7 +60,7 @@
       "surname": "Saygin",
       "email": "mervesaygin@gmail.com",
       "birthDate": "1990-01-25",
-      "presentedCourses": ["CSE1100","CSE2046", "CSE3055"],
+      "presentedCourses": ["CSE2046", "CSE3055"],
       "isAdvisor": false
     },
     {
@@ -69,8 +69,8 @@
       "surname": "Akiner",
       "email": "huseyinakiner@gmail.com",
       "birthDate": "1992-12-19",
-      "presentedCourses": ["CSE2046", "STAT2053"],
-      "isAdvisor": true
+      "presentedCourses": ["STAT2053"],
+      "isAdvisor": false
     },
     {
       "uuid": "1e08dd9b-dba4-4dfb-87f9-e6a994044bb0",
@@ -78,7 +78,7 @@
       "surname": "Korkmaz",
       "email": "mehmetkorkmaz@gmail.com",
       "birthDate": "1970-04-19",
-      "presentedCourses": ["CSE3055", "CSE3038"],
+      "presentedCourses": ["CSE3038"],
       "isAdvisor": false
     },
     {
@@ -87,8 +87,8 @@
       "surname": "Topcuoglu",
       "email": "aydıntopcuoglu@gmail.com",
       "birthDate": "1981-09-10",
-      "presentedCourses": ["CSE3038"],
-      "isAdvisor": true
+      "presentedCourses": ["CSE4197"],
+      "isAdvisor": false
     },
     {
       "uuid": "ce938f44-32a2-4527-834b-6109834f8ad3",
@@ -96,7 +96,7 @@
       "surname": "Yasar",
       "email": "canyasar@gmail.com",
       "birthDate": "1957-04-15",
-      "presentedCourses": ["CSE3044","CSE4197","CSE4074"],
+      "presentedCourses": ["CSE3044"],
       "isAdvisor": false
     },
     {
@@ -105,7 +105,7 @@
       "surname": "Konmaz",
       "email": "hakkikonmaz@gmail.com",
       "birthDate": "1978-06-18",
-      "presentedCourses": ["CSE4074","CSE4198"],
+      "presentedCourses": ["CSE4198"],
       "isAdvisor": false
     },
     {
@@ -114,7 +114,7 @@
       "surname": "Alikoyun",
       "email": "kaanalikoyun@gmail.com",
       "birthDate": "1991-03-22",
-      "presentedCourses": ["CSE4198","CSE4082"],
+      "presentedCourses": ["CSE4082"],
       "isAdvisor": false
     }
 

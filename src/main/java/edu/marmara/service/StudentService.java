@@ -7,8 +7,6 @@ import edu.marmara.model.Student;
 import java.util.List;
 
 public interface StudentService {
-    void assignCourses();
-
     List<Course> getAvailableCourses(Student student);
 
     void addCourseToSchedule(Student student, String courseCode);

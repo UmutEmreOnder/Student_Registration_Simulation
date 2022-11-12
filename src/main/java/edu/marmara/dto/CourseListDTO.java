@@ -7,5 +7,5 @@ import java.util.List;
 
 @Data
 public class CourseListDTO {
-    private List<Course> courses;
+    private List<CourseGetDTO> courses;
 }

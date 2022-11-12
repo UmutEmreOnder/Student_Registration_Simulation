@@ -22,6 +22,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
+        School school = School.getInstance();
         JsonService jsonService = new JsonServiceImpl();
         CourseService courseService = new CourseServiceImpl();
         StudentService studentService = new StudentServiceImpl();
@@ -29,31 +30,28 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-
-        String studentInfo = Files.readString(Path.of("json/student/*.json"));
-        List<Student> students = jsonService.readStudentsFromJson(studentInfo);
-
-        String instructorInfo = Files.readString(Path.of("instructor.json"));
-        List<Instructor> instructors = jsonService.readInstructorsFromJson(instructorInfo);
-
-        String courseInfo = Files.readString(Path.of("course.json"));
+        String courseInfo = Files.readString(Path.of("json/course/course.json"));
         List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
 
-        School school = School.getInstance();
-
-        school.setStudents(students);
-        school.setInstructors(instructors);
         school.setCourses(courses);
 
-        courseService.assignInstructor();
-        studentService.assignCourses();
+        String instructorInfo = Files.readString(Path.of("json/instructor/instructor.json"));
+        List<Instructor> instructors = jsonService.readInstructorsFromJson(instructorInfo);
+
+        school.setInstructors(instructors);
+
+
+        // todo: Loop this 3 lines so that it will get all json from json/student/*.json path
+        String studentInfo = Files.readString(Path.of("json/student/150118047.json"));
+        Student studentTest = jsonService.readStudentFromJson(studentInfo);
+        school.getStudents().add(studentTest);
 
 
         for (Student student : school.getStudents()) {
             System.out.println(student.getName() + " " + student.getSurname());
             System.out.println("Select a course to add it on your weekly schedule");
             for (Course course : studentService.getAvailableCourses(student)) {
-                System.out.println(course.getCourseCode() + " " + course.getCourseTitle());
+                System.out.println(course.getCourseCode() + " " + course.getCourseTitle() + " " + course.getInstructor().getName() + " " + course.getInstructor().getSurname());
             }
             System.out.print("\n\nEnter the Course Code: ");
             studentService.addCourseToSchedule(student, scanner.next());
@@ -62,6 +60,6 @@ public class Main {
             for (Course course : student.getWeeklySchedule().getCourses()) {
                 System.out.println(courseMapper.mapTo(course));
             }
- }
-}
+        }
+    }
 }

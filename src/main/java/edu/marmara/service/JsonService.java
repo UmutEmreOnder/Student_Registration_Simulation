@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.List;
 
 public interface JsonService {
-    List<Student> readStudentsFromJson(String jsonFormattedStudent) throws ParseException, JsonProcessingException;
+    Student readStudentFromJson(String jsonFormattedStudent) throws ParseException, JsonProcessingException;
 
     List<Instructor> readInstructorsFromJson(String jsonFormattedInstructor) throws ParseException, JsonProcessingException;
 
