@@ -17,7 +17,6 @@ import edu.marmara.model.Instructor;
 import edu.marmara.model.Student;
 import edu.marmara.service.JsonService;
 
-import java.text.ParseException;
 import java.util.List;
 
 public class JsonServiceImpl implements JsonService {
@@ -44,7 +43,7 @@ public class JsonServiceImpl implements JsonService {
     }
 
     @Override
-    public List<Course> readCoursesFromJson(String jsonFormattedCourseList) throws ParseException, JsonProcessingException {
+    public List<Course> readCoursesFromJson(String jsonFormattedCourseList) throws JsonProcessingException {
         ObjectMapper mapper = getObjectMapper();
 
         CourseListDTO courseListDTO = mapper.readValue(jsonFormattedCourseList, CourseListDTO.class);

@@ -1,5 +1,6 @@
 package edu.marmara.mapper.impl;
 
+import edu.marmara.dto.StudentDTO;
 import edu.marmara.dto.StudentGetDTO;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.model.Course;
@@ -12,7 +13,6 @@ import edu.marmara.repository.impl.CourseRepositoryImpl;
 import java.util.ArrayList;
 
 public class StudentMapperImpl implements StudentMapper {
-    CourseRepository courseRepository = new CourseRepositoryImpl();
     School school = School.getInstance();
 
     @Override
@@ -46,5 +46,21 @@ public class StudentMapperImpl implements StudentMapper {
         }
 
         return student;
+    }
+
+    @Override
+    public StudentDTO mapTo(Student student) {
+        StudentDTO studentDTO = new StudentDTO();
+
+        studentDTO.setUuid(student.getUuid());
+        studentDTO.setName(student.getName());
+        studentDTO.setSurname(student.getSurname());
+        studentDTO.setEmail(student.getEmail());
+        studentDTO.setBirthDate(student.getBirthDate());
+        studentDTO.setStudentId(student.getStudentId());
+        studentDTO.setYearEnrolled(student.getYearEnrolled());
+        studentDTO.setSemester(student.getSemester());
+
+        return studentDTO;
     }
 }

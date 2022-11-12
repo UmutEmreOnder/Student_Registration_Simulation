@@ -1,11 +1,19 @@
 package edu.marmara;
 
 import edu.marmara.mapper.CourseMapper;
+import edu.marmara.mapper.InstructorMapper;
+import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.CourseMapperImpl;
+import edu.marmara.mapper.impl.InstructorMapperImpl;
+import edu.marmara.mapper.impl.StudentMapperImpl;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
+import edu.marmara.repository.InstructorRepository;
+import edu.marmara.repository.StudentRepository;
+import edu.marmara.repository.impl.InstructorRepositoryImpl;
+import edu.marmara.repository.impl.StudentRepositoryImpl;
 import edu.marmara.service.CourseService;
 import edu.marmara.service.JsonService;
 import edu.marmara.service.StudentService;
@@ -21,15 +29,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    public static School school = School.getInstance();
+    public static JsonService jsonService = new JsonServiceImpl();
+    public static CourseService courseService = new CourseServiceImpl();
+    public static StudentService studentService = new StudentServiceImpl();
+    public static CourseMapper courseMapper = new CourseMapperImpl();
+    public static StudentRepository studentRepository = new StudentRepositoryImpl();
+    public static InstructorRepository instructorRepository = new InstructorRepositoryImpl();
+    public static StudentMapper studentMapper = new StudentMapperImpl();
+    public static Scanner scanner = new Scanner(System.in);
+    public static InstructorMapper instructorMapper = new InstructorMapperImpl();
+
     public static void main(String[] args) throws IOException, ParseException {
-        School school = School.getInstance();
-        JsonService jsonService = new JsonServiceImpl();
-        CourseService courseService = new CourseServiceImpl();
-        StudentService studentService = new StudentServiceImpl();
-        CourseMapper courseMapper = new CourseMapperImpl();
-
-        Scanner scanner = new Scanner(System.in);
-
         String courseInfo = Files.readString(Path.of("json/course/course.json"));
         List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
 
@@ -46,19 +57,34 @@ public class Main {
         Student studentTest = jsonService.readStudentFromJson(studentInfo);
         school.getStudents().add(studentTest);
 
+        while (true) {
+            System.out.println("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
 
-        for (Student student : school.getStudents()) {
-            System.out.println(student.getName() + " " + student.getSurname());
-            System.out.println("Select a course to add it on your weekly schedule");
-            for (Course course : studentService.getAvailableCourses(student)) {
-                System.out.println(course.getCourseCode() + " " + course.getCourseTitle() + " " + course.getInstructor().getName() + " " + course.getInstructor().getSurname());
-            }
-            System.out.print("\n\nEnter the Course Code: ");
-            studentService.addCourseToSchedule(student, scanner.next());
+            Integer input = scanner.nextInt();
 
-            System.out.println("Your new weekly schedule \n");
-            for (Course course : student.getWeeklySchedule().getCourses()) {
-                System.out.println(courseMapper.mapTo(course));
+            if (input == 1) {
+                System.out.print("Enter your Student ID: ");
+                Student student = studentRepository.findByStudentId(scanner.nextLong());
+
+                if (student != null) {
+                    System.out.println(studentMapper.mapTo(student));
+                } else {
+                    System.out.println("Cannot find the student with given ID");
+                }
+            } else if (input == 2) {
+                System.out.print("Enter your Email Address: ");
+                Instructor instructor = instructorRepository.findByEmail(scanner.next());
+
+                if (instructor != null) {
+                    System.out.println(instructorMapper.mapTo(instructor));
+                } else {
+                    System.out.println("Cannot find the instructor with given email");
+                }
+
+            } else if (input == 9) {
+                break;
+            } else {
+                System.out.println("Wrong input!");
             }
         }
     }
