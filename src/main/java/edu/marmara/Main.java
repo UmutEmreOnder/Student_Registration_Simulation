@@ -1,5 +1,7 @@
 package edu.marmara;
 
+import edu.marmara.mapper.CourseMapper;
+import edu.marmara.mapper.impl.CourseMapperImpl;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.School;
@@ -23,7 +25,10 @@ public class Main {
         JsonService jsonService = new JsonServiceImpl();
         CourseService courseService = new CourseServiceImpl();
         StudentService studentService = new StudentServiceImpl();
+        CourseMapper courseMapper = new CourseMapperImpl();
+
         Scanner scanner = new Scanner(System.in);
+
 
         String studentInfo = Files.readString(Path.of("student.json"));
         List<Student> students = jsonService.readStudentsFromJson(studentInfo);
@@ -53,8 +58,10 @@ public class Main {
             System.out.print("\n\nEnter the Course Code: ");
             studentService.addCourseToSchedule(student, scanner.next());
 
-            System.out.println("Your new weekly schedule \n\n");
-            System.out.println(student.getWeeklySchedule());
-        }
-    }
+            System.out.println("Your new weekly schedule \n");
+            for (Course course : student.getWeeklySchedule().getCourses()) {
+                System.out.println(courseMapper.mapTo(course));
+            }
+ }
+}
 }
