@@ -77,7 +77,7 @@ public class Main {
                     System.out.print("\nEnter the course code to add it to your schedule: ");
                     String courseCode = scanner.next();
                     studentService.addCourseToSchedule(student, courseCode);
-                    System.out.println("\nYour schedule");
+                    System.out.println("\nYour schedule\n");
 
                     for (Course course : student.getWeeklySchedule().getCourses()) {
                         System.out.println(course.getCourseCode() + " " + course.getCourseTitle());
