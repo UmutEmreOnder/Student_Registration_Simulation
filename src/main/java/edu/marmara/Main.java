@@ -58,7 +58,6 @@ public class Main {
         school.getStudents().add(studentTest);
 
 
-
         while (true) {
             System.out.println("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
 
@@ -70,6 +69,19 @@ public class Main {
 
                 if (student != null) {
                     System.out.println(studentMapper.mapTo(student));
+
+                    for (Course course : studentService.getAvailableCourses(student)) {
+                        System.out.println(course.getCourseCode() + " " + course.getCourseTitle());
+                    }
+
+                    System.out.print("\nEnter the course code to add it to your schedule: ");
+                    String courseCode = scanner.next();
+                    studentService.addCourseToSchedule(student, courseCode);
+                    System.out.println("\nYour schedule");
+
+                    for (Course course : student.getWeeklySchedule().getCourses()) {
+                        System.out.println(course.getCourseCode() + " " + course.getCourseTitle());
+                    }
                 } else {
                     System.out.println("Cannot find the student with given ID");
                 }

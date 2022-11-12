@@ -15,8 +15,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void addPrerequisites(List<CourseGetDTO> courseGetDTOS) {
         for (CourseGetDTO courseGetDTO : courseGetDTOS) {
+
             if (!courseGetDTO.getPrerequisites().isEmpty()) {
+
                 Course mainCourse = courseRepository.findByCourseCode(courseGetDTO.getCourseCode());
+
                 for (String courseCode : courseGetDTO.getPrerequisites()) {
                     Course prerequisiteCourse = courseRepository.findByCourseCode(courseCode);
 

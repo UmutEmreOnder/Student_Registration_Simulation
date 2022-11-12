@@ -4,14 +4,12 @@ import edu.marmara.model.Course;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
-import edu.marmara.model.Transcript;
 import edu.marmara.repository.CourseRepository;
 import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class StudentServiceImpl implements StudentService {
     private School school = School.getInstance();

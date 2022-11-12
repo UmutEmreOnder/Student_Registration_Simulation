@@ -17,7 +17,7 @@ public class CourseMapperImpl implements CourseMapper {
         courseDTO.setInstructorName(course.getInstructor().getName() + " " + course.getInstructor().getSurname());
 
         return courseDTO;
-}
+    }
 
     @Override
     public Course mapTo(CourseGetDTO courseGetDTO) {

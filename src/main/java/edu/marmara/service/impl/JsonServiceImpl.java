@@ -6,7 +6,6 @@ import edu.marmara.dto.CourseGetDTO;
 import edu.marmara.dto.CourseListDTO;
 import edu.marmara.dto.InstructorListDTO;
 import edu.marmara.dto.StudentGetDTO;
-import edu.marmara.dto.StudentListDTO;
 import edu.marmara.mapper.CourseMapper;
 import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
@@ -31,7 +30,6 @@ public class JsonServiceImpl implements JsonService {
     @Override
     public Student readStudentFromJson(String jsonFormattedStudentList) throws JsonProcessingException {
         ObjectMapper mapper = getObjectMapper();
-
         StudentGetDTO studentGetDTO = mapper.readValue(jsonFormattedStudentList, StudentGetDTO.class);
 
         return studentMapper.mapTo(studentGetDTO);

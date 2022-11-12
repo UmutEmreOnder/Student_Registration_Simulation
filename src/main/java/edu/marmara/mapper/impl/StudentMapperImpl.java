@@ -7,8 +7,6 @@ import edu.marmara.model.Course;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.Transcript;
-import edu.marmara.repository.CourseRepository;
-import edu.marmara.repository.impl.CourseRepositoryImpl;
 
 import java.util.ArrayList;
 

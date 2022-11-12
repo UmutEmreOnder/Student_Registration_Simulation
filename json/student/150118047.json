@@ -7,7 +7,19 @@
   "studentId": 150118047,
   "yearEnrolled": 2018,
   "semester": 8,
-  "passedCourses": ["MATH1001","MATH1002","CSE1100","CSE1142",
-    "CSE2025","MATH2055","STAT2053","CSE3063","CSE3044","CSE4197"],
-  "failedCourses": ["CSE2046"]
+  "passedCourses": [
+    "MATH1001",
+    "MATH1002",
+    "CSE1100",
+    "CSE1142",
+    "CSE2025",
+    "MATH2055",
+    "STAT2053",
+    "CSE3063",
+    "CSE3044",
+    "CSE4197"
+  ],
+  "failedCourses": [
+    "CSE2046"
+  ]
 }

@@ -1,6 +1,5 @@
 package edu.marmara.dto;
 
-import edu.marmara.model.Schedule;
 import lombok.Data;
 
 import java.util.Date;

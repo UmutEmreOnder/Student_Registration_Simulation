@@ -15,7 +15,8 @@ public class School {
     private List<Instructor> instructors;
     private List<Course> courses;
 
-    private School() {}
+    private School() {
+    }
 
     public static School getInstance() {
         if (schoolInstance == null) {

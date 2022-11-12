@@ -7,7 +7,15 @@
   "studentId": 150119032,
   "yearEnrolled": 2019,
   "semester": 5,
-  "passedCourses": ["MATH1001","MATH1002","CSE1100","CSE1142",
-    "CSE2025","MATH2055","CSE2046","STAT2053"],
+  "passedCourses": [
+    "MATH1001",
+    "MATH1002",
+    "CSE1100",
+    "CSE1142",
+    "CSE2025",
+    "MATH2055",
+    "CSE2046",
+    "STAT2053"
+  ],
   "failedCourses": []
 }
