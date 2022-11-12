@@ -57,6 +57,8 @@ public class Main {
         Student studentTest = jsonService.readStudentFromJson(studentInfo);
         school.getStudents().add(studentTest);
 
+
+
         while (true) {
             System.out.println("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
 

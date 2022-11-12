@@ -2,6 +2,7 @@ package edu.marmara.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.marmara.dto.CourseGetDTO;
 import edu.marmara.dto.CourseListDTO;
 import edu.marmara.dto.InstructorListDTO;
 import edu.marmara.dto.StudentGetDTO;
@@ -14,7 +15,9 @@ import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
+import edu.marmara.model.School;
 import edu.marmara.model.Student;
+import edu.marmara.service.CourseService;
 import edu.marmara.service.JsonService;
 
 import java.util.List;
@@ -23,6 +26,7 @@ public class JsonServiceImpl implements JsonService {
     StudentMapper studentMapper = new StudentMapperImpl();
     CourseMapper courseMapper = new CourseMapperImpl();
     InstructorMapper instructorMapper = new InstructorMapperImpl();
+    CourseService courseService = new CourseServiceImpl();
 
     @Override
     public Student readStudentFromJson(String jsonFormattedStudentList) throws JsonProcessingException {
@@ -48,7 +52,15 @@ public class JsonServiceImpl implements JsonService {
 
         CourseListDTO courseListDTO = mapper.readValue(jsonFormattedCourseList, CourseListDTO.class);
 
-        return courseListDTO.getCourses().stream().map(courseMapper::mapTo).toList();
+        List<CourseGetDTO> courseGetDTOS = courseListDTO.getCourses();
+        List<Course> coursesWithoutPrerequisites = courseGetDTOS.stream().map(courseMapper::mapTo).toList();
+
+        School school = School.getInstance();
+
+        school.setCourses(coursesWithoutPrerequisites);
+        courseService.addPrerequisites(courseGetDTOS);
+
+        return school.getCourses();
     }
 
 
