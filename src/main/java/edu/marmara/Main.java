@@ -17,9 +17,11 @@ import edu.marmara.repository.impl.InstructorRepositoryImpl;
 import edu.marmara.repository.impl.StudentRepositoryImpl;
 import edu.marmara.service.CourseService;
 import edu.marmara.service.JsonService;
+import edu.marmara.service.SchoolService;
 import edu.marmara.service.StudentService;
 import edu.marmara.service.impl.CourseServiceImpl;
 import edu.marmara.service.impl.JsonServiceImpl;
+import edu.marmara.service.impl.SchoolServiceImpl;
 import edu.marmara.service.impl.StudentServiceImpl;
 
 import java.io.IOException;
@@ -40,24 +42,10 @@ public class Main {
     public static StudentMapper studentMapper = new StudentMapperImpl();
     public static Scanner scanner = new Scanner(System.in);
     public static InstructorMapper instructorMapper = new InstructorMapperImpl();
+    public static SchoolService schoolService = new SchoolServiceImpl();
 
     public static void main(String[] args) throws IOException, ParseException {
-        String courseInfo = Files.readString(Path.of("json/course/course.json"));
-        List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
-
-        school.setCourses(courses);
-
-        String instructorInfo = Files.readString(Path.of("json/instructor/instructor.json"));
-        List<Instructor> instructors = jsonService.readInstructorsFromJson(instructorInfo);
-
-        school.setInstructors(instructors);
-
-
-        // todo: Loop this 3 lines so that it will get all json from json/student/*.json path
-        String studentInfo = Files.readString(Path.of("json/student/150118047.json"));
-        Student studentTest = jsonService.readStudentFromJson(studentInfo);
-        school.getStudents().add(studentTest);
-
+        schoolService.uploadJsons();
 
         while (true) {
             System.out.println("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
