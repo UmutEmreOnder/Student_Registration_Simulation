@@ -1,5 +1,4 @@
-{
-  "courses": [
+[
     {
       "courseCode": "CSE1100",
       "courseTitle": "Computer Programming 1",
@@ -197,5 +196,4 @@
         "THU 18"
       ]
     }
-  ]
-}
+]

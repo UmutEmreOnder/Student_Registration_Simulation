@@ -60,7 +60,6 @@ public class View {
         Student student = studentRepository.findByStudentId(scanner.nextLong());
         if (student != null) {
             while (true) {
-                studentMapper.mapTo(student);
                 System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
                 System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
@@ -103,7 +102,7 @@ public class View {
         // todo: This menu should contain student's of the advisor and whenever advisor enters the studentID of the student, should see the weeklySchedule of the student
         // todo: If the instructor is not an advisor, then print a menu to show your courses, show your weekly schedule, etc., Level 1
         if (instructor != null) {
-            System.out.println(instructorMapper.mapTo(instructor));
+            // todo: Don't have InstructorDTO anymore
         } else {
             System.out.println("Cannot find the instructor with given email");
         }
