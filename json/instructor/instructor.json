@@ -1,5 +1,4 @@
-{
-  "instructors": [
+[
     {
       "uuid": "17f806e0-06f0-4bf8-904d-0ca5821a04b7",
       "name": "Sefer",
@@ -145,5 +144,4 @@
       ],
       "isAdvisor": false
     }
-  ]
-}
+]

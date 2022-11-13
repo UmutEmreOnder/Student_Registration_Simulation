@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.marmara.dto.CourseGetDTO;
 import edu.marmara.dto.CourseListDTO;
-import edu.marmara.dto.InstructorListDTO;
+import edu.marmara.dto.InstructorGetDTO;
 import edu.marmara.dto.StudentGetDTO;
 import edu.marmara.mapper.CourseMapper;
 import edu.marmara.mapper.InstructorMapper;
@@ -19,6 +19,7 @@ import edu.marmara.model.Student;
 import edu.marmara.service.CourseService;
 import edu.marmara.service.JsonService;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class JsonServiceImpl implements JsonService {
@@ -39,25 +40,23 @@ public class JsonServiceImpl implements JsonService {
     public List<Instructor> readInstructorsFromJson(String jsonFormattedInstructorList) throws JsonProcessingException {
         ObjectMapper mapper = getObjectMapper();
 
-        InstructorListDTO instructorListDTO = mapper.readValue(jsonFormattedInstructorList, InstructorListDTO.class);
+        InstructorGetDTO[] instructorGetDTOList = mapper.readValue(jsonFormattedInstructorList, InstructorGetDTO[].class);
 
-        return instructorListDTO.getInstructors().stream().map(instructorMapper::mapTo).toList();
+        return Arrays.stream(instructorGetDTOList).map(instructorMapper::mapTo).toList();
     }
 
     @Override
     public List<Course> readCoursesFromJson(String jsonFormattedCourseList) throws JsonProcessingException {
         ObjectMapper mapper = getObjectMapper();
 
-        CourseListDTO courseListDTO = mapper.readValue(jsonFormattedCourseList, CourseListDTO.class);
+        CourseGetDTO[] courseGetDTOS = mapper.readValue(jsonFormattedCourseList, CourseGetDTO[].class);
 
-        List<CourseGetDTO> courseGetDTOS = courseListDTO.getCourses();
-
-        List<Course> coursesWithoutPrerequisites = courseGetDTOS.stream().map(courseMapper::mapTo).toList();
+        List<Course> coursesWithoutPrerequisites = Arrays.stream(courseGetDTOS).map(courseMapper::mapTo).toList();
 
         School school = School.getInstance();
 
         school.setCourses(coursesWithoutPrerequisites);
-        courseService.addPrerequisites(courseGetDTOS);
+        courseService.addPrerequisites(List.of(courseGetDTOS));
 
         return school.getCourses();
     }

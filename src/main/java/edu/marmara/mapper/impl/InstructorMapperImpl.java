@@ -1,6 +1,5 @@
 package edu.marmara.mapper.impl;
 
-import edu.marmara.dto.InstructorDTO;
 import edu.marmara.dto.InstructorGetDTO;
 import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.model.Advisor;
@@ -71,18 +70,5 @@ public class InstructorMapperImpl implements InstructorMapper {
         }
 
         return advisor;
-    }
-
-    @Override
-    public InstructorDTO mapTo(Instructor instructor) {
-        InstructorDTO instructorDTO = new InstructorDTO();
-
-        instructorDTO.setUuid(instructor.getUuid());
-        instructorDTO.setName(instructor.getName());
-        instructorDTO.setSurname(instructor.getSurname());
-        instructorDTO.setEmail(instructor.getEmail());
-        instructorDTO.setBirthDate(instructor.getBirthDate());
-
-        return instructorDTO;
     }
 }
