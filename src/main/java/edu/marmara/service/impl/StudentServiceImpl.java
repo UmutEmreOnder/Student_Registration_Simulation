@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addCourseToSchedule(Student student, String courseCode) {
+    public void addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
         if (student.getWeeklySchedule() == null) {
@@ -36,7 +36,7 @@ public class StudentServiceImpl implements StudentService {
             student.getWeeklySchedule().setCourses(new ArrayList<>());
         }
 
-        if (course != null) {
+        if (course != null && availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
         }
     }

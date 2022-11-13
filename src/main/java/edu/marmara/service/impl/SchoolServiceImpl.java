@@ -6,7 +6,9 @@ import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.service.JsonService;
 import edu.marmara.service.SchoolService;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,10 +31,20 @@ public class SchoolServiceImpl implements SchoolService {
 
         school.setInstructors(instructors);
 
+        File folder = new File("json/student/");
+        File[] listOfFiles = folder.listFiles();
 
-        // todo: Loop this 3 lines so that it will get all json from json/student/*.json path
-        String studentInfo = Files.readString(Path.of("json/student/150118047.json"));
-        Student studentTest = jsonService.readStudentFromJson(studentInfo);
-        school.getStudents().add(studentTest);
+        if (listOfFiles == null) {
+            return;
+        }
+
+        for (File file : listOfFiles) {
+            if (file.isFile() && file.getName().endsWith(".json")) {
+                String content = Files.readString(Path.of(file.getPath()));
+                Student student = jsonService.readStudentFromJson(content);
+
+                school.getStudents().add(student);
+            }
+        }
     }
 }

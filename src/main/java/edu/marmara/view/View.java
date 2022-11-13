@@ -19,6 +19,7 @@ import edu.marmara.service.impl.StudentServiceImpl;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -153,9 +154,11 @@ public class View {
     }
 
     // todo: Printing a list of courses shouldn't take a Student object, because Instructor has a list of Course also. Just give the List<Course> object
+    // todo: Print the schedule only when user exits, when input is 9
     private static void printAvailableCourses(Student student) {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
-        for (Course course : studentService.getAvailableCourses(student)) {
+        List<Course> availableCourses = studentService.getAvailableCourses(student);
+        for (Course course : availableCourses) {
             System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
             for (WeeklyDate date : course.getDates()) {
                 // todo: Print the dayName Pascal case (MON -> Mon), Level 3
@@ -166,7 +169,7 @@ public class View {
         System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit: ");
         String courseCode = scanner.next();
         if (Objects.equals(courseCode, "9")) return;
-        studentService.addCourseToSchedule(student, courseCode);
+        studentService.addCourseToSchedule(student, courseCode, availableCourses);
         System.out.print("\n\n\n\n\nYour schedule\n");
 
         for (Course course : student.getWeeklySchedule().getCourses()) {
