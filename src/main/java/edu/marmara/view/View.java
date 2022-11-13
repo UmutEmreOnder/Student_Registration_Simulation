@@ -1,26 +1,19 @@
 package edu.marmara.view;
 
-import edu.marmara.mapper.CourseMapper;
 import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
-import edu.marmara.mapper.impl.CourseMapperImpl;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
-import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.InstructorRepository;
 import edu.marmara.repository.StudentRepository;
 import edu.marmara.repository.impl.InstructorRepositoryImpl;
 import edu.marmara.repository.impl.StudentRepositoryImpl;
-import edu.marmara.service.CourseService;
-import edu.marmara.service.JsonService;
 import edu.marmara.service.SchoolService;
 import edu.marmara.service.StudentService;
-import edu.marmara.service.impl.CourseServiceImpl;
-import edu.marmara.service.impl.JsonServiceImpl;
 import edu.marmara.service.impl.SchoolServiceImpl;
 import edu.marmara.service.impl.StudentServiceImpl;
 
@@ -38,7 +31,8 @@ public class View {
     public static SchoolService schoolService = new SchoolServiceImpl();
     public static Scanner scanner = new Scanner(System.in);
 
-    private View() {}
+    private View() {
+    }
 
     public static void start() throws IOException, ParseException {
         schoolService.uploadJsons();
@@ -64,7 +58,7 @@ public class View {
         System.out.print("Enter your Student ID: ");
         Student student = studentRepository.findByStudentId(scanner.nextLong());
         if (student != null) {
-            while(true) {
+            while (true) {
                 studentMapper.mapTo(student);
                 System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
                 System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
@@ -78,15 +72,16 @@ public class View {
                         printAvailableCourses(student);
                         break;
                     }
-                    case 3:{
+                    case 3: {
                         printSchedule(student);
                         break;
                     }
-                    case 4:{
+                    case 4: {
                         printTranscript(student);
                         break;
                     }
-                    case 9: break;
+                    case 9:
+                        break;
                     default:
                         System.out.println("Wrong input!");
                 }
@@ -115,26 +110,24 @@ public class View {
 
     // todo: Add not taken courses maybe
     private static void printTranscript(Student student) {
-        if (student.getTranscript() != null){
+        if (student.getTranscript() != null) {
             System.out.println("\n\n\n\n\n");
             int passedCredit = student.getTranscript().getPassedCredit();
             int failedCredit = student.getTranscript().getFailedCredit();
 
-            float gpa = ((float)passedCredit * 4 / (float)(failedCredit + passedCredit * 4)) * 4;
+            float gpa = ((float) passedCredit * 4 / (float) (failedCredit + passedCredit * 4)) * 4;
             System.out.printf("\nGPA = %.2f\n", gpa);
             System.out.println("Passed Credit = " + passedCredit);
             System.out.println("Failed Credit = " + failedCredit);
             System.out.println("\nPassed Courses");
-            for (Course course : student.getTranscript().getPassedCourses())
-            {
+            for (Course course : student.getTranscript().getPassedCourses()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
             System.out.println("\nFailed Courses");
-            for (Course course : student.getTranscript().getFailedCourses())
-            {
+            for (Course course : student.getTranscript().getFailedCourses()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
-        }else{
+        } else {
             System.out.println("Transcript is empty.");
         }
         System.out.println("\nPress enter to go back");
@@ -148,7 +141,7 @@ public class View {
         System.out.print("\n\n\n\n\nSchedule");
         if (student.getWeeklySchedule() == null) {
             System.out.print(" is empty.");
-        }else{
+        } else {
             System.out.println();
             for (Course course : student.getWeeklySchedule().getCourses()) {
                 System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
@@ -160,8 +153,7 @@ public class View {
     }
 
     // todo: Printing a list of courses shouldn't take a Student object, because Instructor has a list of Course also. Just give the List<Course> object
-    private static void printAvailableCourses(Student student)
-    {
+    private static void printAvailableCourses(Student student) {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
         for (Course course : studentService.getAvailableCourses(student)) {
             System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
@@ -184,9 +176,9 @@ public class View {
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
-    private static void printStudentInfo(Student student)
-    {
-        System.out.print("\n\n\n\n\n"+ student.getName() + " " + student.getSurname() + "\n");
+
+    private static void printStudentInfo(Student student) {
+        System.out.print("\n\n\n\n\n" + student.getName() + " " + student.getSurname() + "\n");
         System.out.println("UUID = " + student.getUuid());
         System.out.println("E-mail = " + student.getEmail());
         System.out.println("Birth Date = " + student.getBirthDate());
