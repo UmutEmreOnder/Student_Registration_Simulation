@@ -30,74 +30,26 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class View {
-    public static School school = School.getInstance();
-    public static JsonService jsonService = new JsonServiceImpl();
-    public static CourseService courseService = new CourseServiceImpl();
     public static StudentService studentService = new StudentServiceImpl();
-    public static CourseMapper courseMapper = new CourseMapperImpl();
     public static StudentRepository studentRepository = new StudentRepositoryImpl();
     public static InstructorRepository instructorRepository = new InstructorRepositoryImpl();
     public static StudentMapper studentMapper = new StudentMapperImpl();
-    public static Scanner scanner = new Scanner(System.in);
     public static InstructorMapper instructorMapper = new InstructorMapperImpl();
     public static SchoolService schoolService = new SchoolServiceImpl();
+    public static Scanner scanner = new Scanner(System.in);
 
-    private View(){
+    private View() {}
 
-    }
     public static void start() throws IOException, ParseException {
         schoolService.uploadJsons();
+
         while (true) {
             System.out.println("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
             Integer input = scanner.nextInt();
             if (input == 1) {
-                System.out.print("Enter your Student ID: ");
-                Student student = studentRepository.findByStudentId(scanner.nextLong());
-                if (student != null) {
-                    while(true) {
-                        studentMapper.mapTo(student);
-                        System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
-                        System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
-                        input = scanner.nextInt();
-                        switch (input) {
-                            case 1: {
-                                printStudentInfo(student);
-                                break;
-                            }
-                            case 2: {
-                                printAvailableCourses(student);
-                                break;
-                            }
-                            case 3:{
-                                printSchedule(student);
-                                break;
-                            }
-                            case 4:{
-                                printTranscript(student);
-                                break;
-                            }
-                            case 9: break;
-                            default:
-                                System.out.println("Wrong input!");
-                        }
-                        if (input == 9) break;
-                    }
-                } else {
-                    System.out.println("Cannot find the student with given ID");
-                }
+                printStudentMenu();
             } else if (input == 2) {
-                System.out.print("Enter your Email Address: ");
-                Instructor instructor = instructorRepository.findByEmail(scanner.next());
-
-                // todo: If the instructor is an advisor (if (instructor instanceof Advisor)), write a menu for Advisor
-                // todo: This menu should contain student's of the advisor and whenever advisor enters the studentID of the student, should see the weeklySchedule of the student
-                // todo: If the instructor is not an advisor, then print a menu to show your courses, show your weekly schedule, etc., Level 1
-                if (instructor != null) {
-                    System.out.println(instructorMapper.mapTo(instructor));
-                } else {
-                    System.out.println("Cannot find the instructor with given email");
-                }
-
+                printInstructorMenu();
             } else if (input == 9) {
                 break;
             } else {
@@ -106,19 +58,68 @@ public class View {
         }
     }
 
+    private static void printStudentMenu() {
+        int input;
+
+        System.out.print("Enter your Student ID: ");
+        Student student = studentRepository.findByStudentId(scanner.nextLong());
+        if (student != null) {
+            while(true) {
+                studentMapper.mapTo(student);
+                System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
+                System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
+                input = scanner.nextInt();
+                switch (input) {
+                    case 1: {
+                        printStudentInfo(student);
+                        break;
+                    }
+                    case 2: {
+                        printAvailableCourses(student);
+                        break;
+                    }
+                    case 3:{
+                        printSchedule(student);
+                        break;
+                    }
+                    case 4:{
+                        printTranscript(student);
+                        break;
+                    }
+                    case 9: break;
+                    default:
+                        System.out.println("Wrong input!");
+                }
+                if (input == 9) break;
+            }
+        } else {
+            System.out.println("Cannot find the student with given ID");
+        }
+    }
+
+    private static void printInstructorMenu() {
+        // todo: Print different menu if the instructor is an advisor
+
+        System.out.print("Enter your Email Address: ");
+        Instructor instructor = instructorRepository.findByEmail(scanner.next());
+
+        // todo: If the instructor is an advisor (if (instructor instanceof Advisor)), write a menu for Advisor (Check AdvisorService)
+        // todo: This menu should contain student's of the advisor and whenever advisor enters the studentID of the student, should see the weeklySchedule of the student
+        // todo: If the instructor is not an advisor, then print a menu to show your courses, show your weekly schedule, etc., Level 1
+        if (instructor != null) {
+            System.out.println(instructorMapper.mapTo(instructor));
+        } else {
+            System.out.println("Cannot find the instructor with given email");
+        }
+    }
+
+    // todo: Add not taken courses maybe
     private static void printTranscript(Student student) {
         if (student.getTranscript() != null){
             System.out.println("\n\n\n\n\n");
-            int passedCredit = 0;
-            int failedCredit = 0;
-            for (Course course : student.getTranscript().getPassedCourses())
-            {
-                passedCredit += course.getCourseCredit();
-            }
-            for (Course course : student.getTranscript().getFailedCourses())
-            {
-                failedCredit += course.getCourseCredit();
-            }
+            int passedCredit = student.getTranscript().getPassedCredit();
+            int failedCredit = student.getTranscript().getFailedCredit();
+
             float gpa = ((float)passedCredit * 4 / (float)(failedCredit + passedCredit * 4)) * 4;
             System.out.printf("\nGPA = %.2f\n", gpa);
             System.out.println("Passed Credit = " + passedCredit);

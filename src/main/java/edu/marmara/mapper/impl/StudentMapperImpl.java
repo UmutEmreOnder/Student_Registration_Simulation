@@ -40,8 +40,10 @@ public class StudentMapperImpl implements StudentMapper {
         for (Course course : school.getCourses()) {
             if (studentGetDTO.getPassedCourses().contains(course.getCourseCode())) {
                 student.getTranscript().getPassedCourses().add(course);
+                student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
             } else if (studentGetDTO.getFailedCourses().contains(course.getCourseCode())) {
                 student.getTranscript().getFailedCourses().add(course);
+                student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
             } else {
                 student.getTranscript().getNotTakenCourses().add(course);
             }
