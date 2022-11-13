@@ -89,6 +89,9 @@ public class View {
                 System.out.print("Enter your Email Address: ");
                 Instructor instructor = instructorRepository.findByEmail(scanner.next());
 
+                // todo: If the instructor is an advisor (if (instructor instanceof Advisor)), write a menu for Advisor
+                // todo: This menu should contain student's of the advisor and whenever advisor enters the studentID of the student, should see the weeklySchedule of the student
+                // todo: If the instructor is not an advisor, then print a menu to show your courses, show your weekly schedule, etc., Level 1
                 if (instructor != null) {
                     System.out.println(instructorMapper.mapTo(instructor));
                 } else {
@@ -138,6 +141,8 @@ public class View {
         scanner.nextLine();
     }
 
+    // todo: Printing a schedule shouldn't take a Student object, because Instructor has a Schedule also. Just give the Schedule object
+    // todo: Print the schedule like a weekly schedule (days and hours etc.) -> MON 13 means, Monday 13:00-14:00, Level 2
     private static void printSchedule(Student student) {
         System.out.print("\n\n\n\n\nSchedule");
         if (student.getWeeklySchedule() == null) {
@@ -153,12 +158,14 @@ public class View {
         scanner.nextLine();
     }
 
+    // todo: Printing a list of courses shouldn't take a Student object, because Instructor has a list of Course also. Just give the List<Course> object
     private static void printAvailableCourses(Student student)
     {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
         for (Course course : studentService.getAvailableCourses(student)) {
             System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
             for (WeeklyDate date : course.getDates()) {
+                // todo: Print the dayName Pascal case (MON -> Mon), Level 3
                 System.out.print(date.getDayName() + " " + date.getHours() + " ");
             }
             System.out.println();

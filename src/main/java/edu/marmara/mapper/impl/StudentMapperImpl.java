@@ -3,15 +3,19 @@ package edu.marmara.mapper.impl;
 import edu.marmara.dto.StudentDTO;
 import edu.marmara.dto.StudentGetDTO;
 import edu.marmara.mapper.StudentMapper;
+import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.Transcript;
+import edu.marmara.repository.InstructorRepository;
+import edu.marmara.repository.impl.InstructorRepositoryImpl;
 
 import java.util.ArrayList;
 
 public class StudentMapperImpl implements StudentMapper {
     School school = School.getInstance();
+    InstructorRepository instructorRepository = new InstructorRepositoryImpl();
 
     @Override
     public Student mapTo(StudentGetDTO studentGetDTO) {
@@ -41,6 +45,12 @@ public class StudentMapperImpl implements StudentMapper {
             } else {
                 student.getTranscript().getNotTakenCourses().add(course);
             }
+        }
+
+        Advisor advisor = instructorRepository.findAdvisorByEmail(studentGetDTO.getAdvisor());
+        if (advisor != null) {
+            student.setAdvisor(advisor);
+            advisor.getStudents().add(student);
         }
 
         return student;

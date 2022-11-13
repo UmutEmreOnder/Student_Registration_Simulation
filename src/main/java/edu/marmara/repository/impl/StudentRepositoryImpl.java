@@ -10,7 +10,7 @@ import java.util.Objects;
 public class StudentRepositoryImpl implements StudentRepository {
 
     // todo: Update the corresponding json file
-
+    // todo: Save the schedule, parse the saved schedule on re-run
     @Override
     public void save(Student student) {
         School school = School.getInstance();
