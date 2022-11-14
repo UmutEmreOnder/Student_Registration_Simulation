@@ -1,7 +1,5 @@
 package edu.marmara.model;
 
-import lombok.Data;
-
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,8 +11,8 @@ public abstract class Person {
     private String email;
     private Date birthDate;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Person{" +
                 "uuid=" + uuid +
                 ", name='" + name + '\'' +

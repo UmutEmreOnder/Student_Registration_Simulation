@@ -1,13 +1,9 @@
 package edu.marmara.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+
 public class School {
     private static School schoolInstance = null;
 
@@ -27,14 +23,6 @@ public class School {
         }
 
         return schoolInstance;
-    }
-
-    public static edu.marmara.model.School getSchoolInstance() {
-        return schoolInstance;
-    }
-
-    public static void setSchoolInstance(edu.marmara.model.School schoolInstance) {
-        School.schoolInstance = schoolInstance;
     }
 
     public List<Student> getStudents() {

@@ -1,18 +1,14 @@
 package edu.marmara.model;
 
-import lombok.Data;
-import lombok.ToString;
-
 import java.util.List;
 
 
-@ToString(callSuper = true)
 public class Instructor extends Person {
     private List<Course> presentedCourses;
     private Schedule weeklySchedule;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Instructor{" +
                 "presentedCourses=" + presentedCourses +
                 ", weeklySchedule=" + weeklySchedule +

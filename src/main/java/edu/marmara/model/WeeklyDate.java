@@ -1,14 +1,11 @@
 package edu.marmara.model;
 
-import lombok.Data;
-
-
 public class WeeklyDate {
     private DayName dayName;
     private Integer hours;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "WeeklyDate{" +
                 "dayName=" + dayName +
                 ", hours=" + hours +

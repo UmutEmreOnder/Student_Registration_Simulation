@@ -1,7 +1,5 @@
 package edu.marmara.model;
 
-import lombok.Data;
-
 import java.util.List;
 
 
@@ -13,8 +11,8 @@ public class Transcript {
     private List<Course> failedCourses;
     private List<Course> notTakenCourses;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Transcript{" +
                 "gpa=" + gpa +
                 ", passedCredit=" + passedCredit +

@@ -16,7 +16,7 @@ public class InstructorMapperImpl implements InstructorMapper {
 
     @Override
     public Instructor mapTo(InstructorGetDTO instructorGetDTO) {
-        if (instructorGetDTO.getIsAdvisor() == Boolean.TRUE) {
+        if (instructorGetDTO.getAdvisor() == Boolean.TRUE) {
             return mapToAdvisor(instructorGetDTO);
         }
 

@@ -1,16 +1,12 @@
 package edu.marmara.model;
 
-import lombok.Data;
-import lombok.ToString;
-
 import java.util.List;
 
-@ToString(callSuper = true)
 public class Advisor extends Instructor {
     private List<Student> students;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Advisor{" +
                 "students=" + students +
                 '}';

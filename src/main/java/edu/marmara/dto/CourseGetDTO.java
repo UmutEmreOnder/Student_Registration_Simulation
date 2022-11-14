@@ -1,7 +1,5 @@
 package edu.marmara.dto;
 
-import lombok.Data;
-
 import java.util.List;
 
 public class CourseGetDTO {
@@ -12,8 +10,8 @@ public class CourseGetDTO {
     private List<String> prerequisites;
     private List<String> weeklyDate;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "CourseGetDTO{" +
                 "courseCode='" + courseCode + '\'' +
                 ", courseTitle='" + courseTitle + '\'' +

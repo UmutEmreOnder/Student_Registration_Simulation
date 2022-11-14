@@ -1,7 +1,5 @@
 package edu.marmara.dto;
 
-import lombok.Data;
-
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -17,8 +15,8 @@ public class InstructorGetDTO {
     private Boolean isAdvisor;
 
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "InstructorGetDTO{" +
                 "uuid=" + uuid +
                 ", name='" + name + '\'' +

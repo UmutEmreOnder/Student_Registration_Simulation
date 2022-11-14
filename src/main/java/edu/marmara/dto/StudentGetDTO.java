@@ -1,8 +1,6 @@
 package edu.marmara.dto;
 
 
-import lombok.Data;
-
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -20,8 +18,8 @@ public class StudentGetDTO {
     private String advisor;
     private Integer semester;
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "StudentGetDTO{" +
                 "uuid=" + uuid +
                 ", name='" + name + '\'' +

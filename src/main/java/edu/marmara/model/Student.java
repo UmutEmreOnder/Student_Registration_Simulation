@@ -1,10 +1,5 @@
 package edu.marmara.model;
 
-import lombok.Data;
-import lombok.ToString;
-
-
-@ToString(callSuper = true)
 public class Student extends Person {
     private Long studentId;
     private Integer yearEnrolled;
@@ -14,8 +9,8 @@ public class Student extends Person {
     private Integer semester;
 
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Student{" +
                 "studentId=" + studentId +
                 ", yearEnrolled=" + yearEnrolled +
