@@ -4,7 +4,6 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
 public class CourseGetDTO {
     private String courseCode;
     private String courseTitle;
@@ -13,5 +12,76 @@ public class CourseGetDTO {
     private List<String> prerequisites;
     private List<String> weeklyDate;
 
-    // todo: Give WeeklyDate somehow
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "CourseGetDTO{" +
+                "courseCode='" + courseCode + '\'' +
+                ", courseTitle='" + courseTitle + '\'' +
+                ", givenSemester=" + givenSemester +
+                ", courseCredit=" + courseCredit +
+                ", prerequisites=" + prerequisites +
+                ", weeklyDate=" + weeklyDate +
+                '}';
+    }
+
+    public CourseGetDTO() {
+    }
+
+    public CourseGetDTO(String courseCode, String courseTitle, Integer givenSemester, Integer courseCredit, List<String> prerequisites, List<String> weeklyDate) {
+        this.courseCode = courseCode;
+        this.courseTitle = courseTitle;
+        this.givenSemester = givenSemester;
+        this.courseCredit = courseCredit;
+        this.prerequisites = prerequisites;
+        this.weeklyDate = weeklyDate;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
+    }
+
+    public Integer getGivenSemester() {
+        return givenSemester;
+    }
+
+    public void setGivenSemester(Integer givenSemester) {
+        this.givenSemester = givenSemester;
+    }
+
+    public Integer getCourseCredit() {
+        return courseCredit;
+    }
+
+    public void setCourseCredit(Integer courseCredit) {
+        this.courseCredit = courseCredit;
+    }
+
+    public List<String> getPrerequisites() {
+        return prerequisites;
+    }
+
+    public void setPrerequisites(List<String> prerequisites) {
+        this.prerequisites = prerequisites;
+    }
+
+    public List<String> getWeeklyDate() {
+        return weeklyDate;
+    }
+
+    public void setWeeklyDate(List<String> weeklyDate) {
+        this.weeklyDate = weeklyDate;
+    }
+// todo: Give WeeklyDate somehow
 }
