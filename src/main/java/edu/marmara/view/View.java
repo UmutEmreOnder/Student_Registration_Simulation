@@ -4,24 +4,23 @@ import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
-import edu.marmara.model.Course;
-import edu.marmara.model.Instructor;
-import edu.marmara.model.Student;
-import edu.marmara.model.WeeklyDate;
+import edu.marmara.model.*;
 import edu.marmara.repository.InstructorRepository;
 import edu.marmara.repository.StudentRepository;
 import edu.marmara.repository.impl.InstructorRepositoryImpl;
 import edu.marmara.repository.impl.StudentRepositoryImpl;
+import edu.marmara.service.AdvisorService;
 import edu.marmara.service.SchoolService;
 import edu.marmara.service.StudentService;
 import edu.marmara.service.impl.SchoolServiceImpl;
 import edu.marmara.service.impl.StudentServiceImpl;
+import edu.marmara.service.impl.AdvisorServiceImpl;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
+
+import static edu.marmara.model.DayName.*;
 
 public class View {
     public static StudentService studentService = new StudentServiceImpl();
@@ -30,6 +29,7 @@ public class View {
     public static StudentMapper studentMapper = new StudentMapperImpl();
     public static InstructorMapper instructorMapper = new InstructorMapperImpl();
     public static SchoolService schoolService = new SchoolServiceImpl();
+    public static AdvisorService advisorService = new AdvisorServiceImpl();
     public static Scanner scanner = new Scanner(System.in);
 
     private View() {
@@ -64,24 +64,11 @@ public class View {
                 System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
                 switch (input) {
-                    case 1: {
-                        printStudentInfo(student);
-                        break;
-                    }
-                    case 2: {
-                        printAvailableCourses(student);
-                        break;
-                    }
-                    case 3: {
-                        printSchedule(student);
-                        break;
-                    }
-                    case 4: {
-                        printTranscript(student);
-                        break;
-                    }
-                    case 9:
-                        break;
+                    case 1: {printStudentInfo(student);break;}
+                    case 2: {printAvailableCoursesStudent(student);break;}
+                    case 3: {printSchedule(student.getWeeklySchedule());break;}
+                    case 4: {printTranscript(student);break;}
+                    case 9: break;
                     default:
                         System.out.println("Wrong input!");
                 }
@@ -93,17 +80,67 @@ public class View {
     }
 
     private static void printInstructorMenu() {
-        // todo: Print different menu if the instructor is an advisor
-
+        int input;
+        long studentID;
         System.out.print("Enter your Email Address: ");
         Instructor instructor = instructorRepository.findByEmail(scanner.next());
-
-        // todo: If the instructor is an advisor (if (instructor instanceof Advisor)), write a menu for Advisor (Check AdvisorService)
-        // todo: This menu should contain student's of the advisor and whenever advisor enters the studentID of the student, should see the weeklySchedule of the student
-        // todo: If the instructor is not an advisor, then print a menu to show your courses, show your weekly schedule, etc., Level 1
         if (instructor != null) {
-            // todo: Don't have InstructorDTO anymore
-        } else {
+            while (true) {
+                System.out.println("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!");
+                if (instructor instanceof Advisor)
+                {
+                    System.out.print("What would you like to do?\n1-View Student Info\n2-View Student Schedule" +
+                            "\n3-View List Of Students\n4-View Instructor Info\n5-View Schedule\n9-Exit\n");
+                    input = scanner.nextInt();
+                    switch (input){
+                        case 1:{
+                            System.out.print("Enter student ID:");
+                            studentID = scanner.nextLong();
+                            Student student = advisorService.getStudent(studentID,(Advisor) instructor);
+                            if (student != null) printStudentInfo(student);
+                            else System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                            break;
+                        }
+                        case 2:{
+                            System.out.print("Enter student ID:");
+                            studentID = scanner.nextLong();
+                            Student student = advisorService.getStudent(studentID,(Advisor) instructor);
+                            if (student != null) printSchedule(student.getWeeklySchedule());
+                            else System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                            break;
+                        }
+                        case 3:{
+                            for (Student student: ((Advisor) instructor).getStudents()) {
+                                System.out.println(student.getStudentId() + " | " + student.getName() + " " + student.getSurname());
+                            }
+                            System.out.println("\nPress enter to go back");
+                            Scanner scanner = new Scanner(System.in);
+                            scanner.nextLine();
+                            break;
+                        }
+                        case 4:{printInstructorInfo(instructor); break;}
+                        case 5:{printSchedule(instructor.getWeeklySchedule()); break;}
+                        case 9: break;
+                        default:
+                            System.out.println("Wrong input!");
+                    }
+                    if (input == 9) break;
+                }else {
+                    System.out.print("What would you like to do?\n1-View Instructor Info\n2-View Schedule" +
+                            "\n9-Exit\n");
+                    input = scanner.nextInt();
+                    switch (input){
+                        case 1:{printInstructorInfo(instructor); break;}
+                        case 2:{printSchedule(instructor.getWeeklySchedule()); break;}
+                        case 9: break;
+                        default:
+                            System.out.println("Wrong input!");
+                    }
+                    if (input == 9) break;
+                }
+            }
+        }
+        else {
             System.out.println("Cannot find the instructor with given email");
         }
     }
@@ -135,44 +172,108 @@ public class View {
         scanner.nextLine();
     }
 
-    // todo: Printing a schedule shouldn't take a Student object, because Instructor has a Schedule also. Just give the Schedule object
-    // todo: Print the schedule like a weekly schedule (days and hours etc.) -> MON 13 means, Monday 13:00-14:00, Level 2
-    private static void printSchedule(Student student) {
+    private static void printSchedule(Schedule schedule) {
         System.out.print("\n\n\n\n\nSchedule");
-        if (student.getWeeklySchedule() == null) {
+        if (schedule == null) {
             System.out.print(" is empty.");
         } else {
             System.out.println();
-            for (Course course : student.getWeeklySchedule().getCourses()) {
-                System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+            List<Course> mondayCourses = new ArrayList<Course>(), tuesdayCourses = new ArrayList<Course>(), wednesdayCourses = new ArrayList<Course>(), thursdayCourses = new ArrayList<Course>(), fridayCourses = new ArrayList<Course>(), saturdayCourses = new ArrayList<Course>(), sundayCourses = new ArrayList<Course>();
+
+            for (Course course : schedule.getCourses()) {
+                for (WeeklyDate weeklyDate : course.getDates()) {
+                    switch (weeklyDate.getDayName()) {
+                        case MON -> {mondayCourses.add(course);}
+                        case TUE -> {tuesdayCourses.add(course);}
+                        case WED -> {wednesdayCourses.add(course);}
+                        case THU -> {thursdayCourses.add(course);}
+                        case FRI -> {fridayCourses.add(course);}
+                        case SAT -> {saturdayCourses.add(course);}
+                        case SUN -> {sundayCourses.add(course);}
+                    }
+                }
             }
+            printScheduleDays(mondayCourses,MON);
+            printScheduleDays(tuesdayCourses,TUE);
+            printScheduleDays(wednesdayCourses,WED);
+            printScheduleDays(thursdayCourses,THU);
+            printScheduleDays(fridayCourses,FRI);
+            printScheduleDays(saturdayCourses,SAT);
+            printScheduleDays(sundayCourses,SUN);
         }
         System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
 
-    // todo: Printing a list of courses shouldn't take a Student object, because Instructor has a list of Course also. Just give the List<Course> object
-    // todo: Print the schedule only when user exits, when input is 9
-    private static void printAvailableCourses(Student student) {
+    private static void printScheduleDays(List<Course> courses, DayName dayName)
+    {
+        switch (dayName) {
+            case MON -> {System.out.print("\nMonday");}
+            case TUE -> {System.out.print("\nTuesday");}
+            case WED -> {System.out.print("\nWednesday");}
+            case THU -> {System.out.print("\nThursday");}
+            case FRI -> {System.out.print("\nFriday");}
+            case SAT -> {System.out.print("\nSaturday");}
+            case SUN -> {System.out.print("\nSunday");}
+        }
+        boolean isEmpty = true;
+        for (int i = 9; i <= 18; i++) {
+            L1:
+            for (Course course : courses){
+                for (int j = 0; j < course.getDates().size(); j++){
+                    if (course.getDates().get(j).getDayName() == dayName && course.getDates().get(j).getHours() == i){
+                        if (isEmpty) System.out.println();
+                        String formatted = String.format("%02d", i);
+                        String formatted2 = String.format("%02d", i+1);
+                        System.out.println(formatted + ".00 -|  " + course.getCourseCode() + " " + course.getCourseTitle() + " |");
+                        System.out.println(formatted2 + ".00  |          " + course.getInstructor().getName() + " " + course.getInstructor().getSurname() + "          |");
+                        if (i != 18) System.out.println("------------------------------------");
+                        isEmpty = false;
+                        break L1;
+                    }
+                }
+            }
+        }
+        if (isEmpty) System.out.print(" is empty.\n");
+    }
+
+    private static void printAvailableCoursesStudent(Student student) {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
         List<Course> availableCourses = studentService.getAvailableCourses(student);
         for (Course course : availableCourses) {
             System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
-            for (WeeklyDate date : course.getDates()) {
-                // todo: Print the dayName Pascal case (MON -> Mon), Level 3
-                System.out.print(date.getDayName() + " " + date.getHours() + " ");
+            for (int i = 0; i < course.getDates().size(); i++)
+            {
+                String dayName = "";
+                switch (course.getDates().get(i).getDayName()){
+                    case MON -> dayName = "Monday";
+                    case TUE -> dayName = "Tuesday";
+                    case WED -> dayName = "Wednesday";
+                    case THU -> dayName = "Thursday";
+                    case FRI -> dayName = "Friday";
+                    case SAT -> dayName = "Saturday";
+                    case SUN -> dayName = "Sunday";
+                }
+                String formatted = String.format("%02d", course.getDates().get(i).getHours());
+                String formatted2 = String.format("%02d", course.getDates().get(i).getHours() + 1);
+                System.out.print(dayName + " " + formatted + ".00-" + formatted2 + ".00" + (i == course.getDates().size() - 1 ? "" : " & "));
             }
             System.out.println();
         }
-        System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit: ");
+        System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
         String courseCode = scanner.next();
-        if (Objects.equals(courseCode, "9")) return;
-        studentService.addCourseToSchedule(student, courseCode, availableCourses);
-        System.out.print("\n\n\n\n\nYour schedule\n");
-
-        for (Course course : student.getWeeklySchedule().getCourses()) {
-            System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+        if (Objects.equals(courseCode, "9")) {
+            System.out.print("\n\n\n\n\nYour schedule");
+            if (student.getWeeklySchedule() !=null){
+                for (Course course : student.getWeeklySchedule().getCourses()) {
+                    System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+                }
+            }
+            System.out.print(" is empty.");
+        }else{
+            studentService.addCourseToSchedule(student, courseCode, availableCourses);
+            System.out.println(courseCode + " successfully added to your schedule!");
         }
         System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
@@ -188,6 +289,19 @@ public class View {
         System.out.println("Semester = " + student.getSemester());
         System.out.println("Advisor = " + (student.getAdvisor() == null ? "N/A" : (student.getAdvisor().getName() + " " + student.getAdvisor().getSurname())) + "\n");
         System.out.println("Press enter to go back");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+    }
+    private static void printInstructorInfo(Instructor instructor) {
+        System.out.print("\n\n\n\n\n" + instructor.getName() + " " + instructor.getSurname() + "\n");
+        System.out.println("UUID = " + instructor.getUuid());
+        System.out.println("E-mail = " + instructor.getEmail());
+        System.out.println("Birth Date = " + instructor.getBirthDate());
+        System.out.println("\nPresented Courses");
+        for (Course course : instructor.getPresentedCourses()) {
+            System.out.println(course.getCourseCode() + " | " + course.getCourseTitle());
+        }
+        System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
