@@ -15,19 +15,6 @@ public class InstructorGetDTO {
     private Boolean isAdvisor;
 
 
-    @Override
-    public String toString() {
-        return "InstructorGetDTO{" +
-                "uuid=" + uuid +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", birthDate=" + birthDate +
-                ", presentedCourses=" + presentedCourses +
-                ", isAdvisor=" + isAdvisor +
-                '}';
-    }
-
     public InstructorGetDTO() {
     }
 
@@ -39,6 +26,19 @@ public class InstructorGetDTO {
         this.birthDate = birthDate;
         this.presentedCourses = presentedCourses;
         this.isAdvisor = isAdvisor;
+    }
+
+    @Override
+    public String toString() {
+        return "InstructorGetDTO{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", presentedCourses=" + presentedCourses +
+                ", isAdvisor=" + isAdvisor +
+                '}';
     }
 
     public UUID getUuid() {

@@ -6,18 +6,18 @@ import java.util.List;
 public class Schedule {
     private List<Course> courses;
 
-    @Override
-    public String toString() {
-        return "Schedule{" +
-                "courses=" + courses +
-                '}';
-    }
-
     public Schedule() {
     }
 
     public Schedule(List<Course> courses) {
         this.courses = courses;
+    }
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "courses=" + courses +
+                '}';
     }
 
     public List<Course> getCourses() {

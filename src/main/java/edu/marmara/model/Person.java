@@ -11,17 +11,6 @@ public abstract class Person {
     private String email;
     private Date birthDate;
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "uuid=" + uuid +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", birthDate=" + birthDate +
-                '}';
-    }
-
     public Person() {
     }
 
@@ -31,6 +20,17 @@ public abstract class Person {
         this.surname = surname;
         this.email = email;
         this.birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
     }
 
     public UUID getUuid() {

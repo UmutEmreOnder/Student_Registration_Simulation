@@ -14,20 +14,6 @@ public class Course {
     private List<WeeklyDate> dates;
 
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseCode='" + courseCode + '\'' +
-                ", courseTitle='" + courseTitle + '\'' +
-                ", givenSemester=" + givenSemester +
-                ", enrolledStudents=" + enrolledStudents +
-                ", courseCredit=" + courseCredit +
-                ", prerequisites=" + prerequisites +
-                ", instructor=" + instructor +
-                ", dates=" + dates +
-                '}';
-    }
-
     public Course() {
     }
 
@@ -40,6 +26,20 @@ public class Course {
         this.prerequisites = prerequisites;
         this.instructor = instructor;
         this.dates = dates;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseCode='" + courseCode + '\'' +
+                ", courseTitle='" + courseTitle + '\'' +
+                ", givenSemester=" + givenSemester +
+                ", enrolledStudents=" + enrolledStudents +
+                ", courseCredit=" + courseCredit +
+                ", prerequisites=" + prerequisites +
+                ", instructor=" + instructor +
+                ", dates=" + dates +
+                '}';
     }
 
     public String getCourseCode() {

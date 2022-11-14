@@ -78,11 +78,24 @@ public class View {
                 System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
                 switch (input) {
-                    case 1: {printStudentInfo(student);break;}
-                    case 2: {printAvailableCoursesStudent(student);break;}
-                    case 3: {printSchedule(student.getWeeklySchedule());break;}
-                    case 4: {printTranscript(student);break;}
-                    case 9: break;
+                    case 1: {
+                        printStudentInfo(student);
+                        break;
+                    }
+                    case 2: {
+                        printAvailableCoursesStudent(student);
+                        break;
+                    }
+                    case 3: {
+                        printSchedule(student.getWeeklySchedule());
+                        break;
+                    }
+                    case 4: {
+                        printTranscript(student);
+                        break;
+                    }
+                    case 9:
+                        break;
                     default:
                         System.out.println("Wrong input!");
                 }
@@ -93,7 +106,7 @@ public class View {
         }
     }
 
-    private static void printInstructorMenu() {
+    private static void printInstructorMenu() throws IOException {
         int input;
         long studentID;
         System.out.print("Enter your Email Address: ");
@@ -101,35 +114,35 @@ public class View {
         if (instructor != null) {
             while (true) {
                 System.out.println("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!");
-                if (instructor instanceof Advisor)
-                {
+                if (instructor instanceof Advisor) {
                     System.out.print("What would you like to do?\n1-View Student Info\n2-View Student Schedule" +
                             "\n3-View List Of Students\n4-View Instructor Info\n5-View Schedule\n9-Exit\n");
                     input = scanner.nextInt();
-                    switch (input){
-                        case 1:{
+                    switch (input) {
+                        case 1: {
                             System.out.print("Enter student ID:");
                             studentID = scanner.nextLong();
-                            Student student = advisorService.getStudent(studentID,(Advisor) instructor);
+                            Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) printStudentInfo(student);
-                            else System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                            else
+                                System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }
-                        case 2:{
+                        case 2: {
                             System.out.print("Enter student ID:");
                             studentID = scanner.nextLong();
-                            Student student = advisorService.getStudent(studentID,(Advisor) instructor);
+                            Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) printSchedule(student.getWeeklySchedule());
                             System.out.println("\n1- Approve\n2- Deny");
 
                             if (scanner.nextInt() == 1) {
                                 advisorService.approveSchedule(student);
-                            }
-                            else System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                            } else
+                                System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }
-                        case 3:{
-                            for (Student student: ((Advisor) instructor).getStudents()) {
+                        case 3: {
+                            for (Student student : ((Advisor) instructor).getStudents()) {
                                 System.out.println(student.getStudentId() + " | " + student.getName() + " " + student.getSurname());
                             }
                             System.out.println("\nPress enter to go back");
@@ -137,29 +150,42 @@ public class View {
                             scanner.nextLine();
                             break;
                         }
-                        case 4:{printInstructorInfo(instructor); break;}
-                        case 5:{printSchedule(instructor.getWeeklySchedule()); break;}
-                        case 9: break;
+                        case 4: {
+                            printInstructorInfo(instructor);
+                            break;
+                        }
+                        case 5: {
+                            printSchedule(instructor.getWeeklySchedule());
+                            break;
+                        }
+                        case 9:
+                            break;
                         default:
                             System.out.println("Wrong input!");
                     }
                     if (input == 9) break;
-                }else {
+                } else {
                     System.out.print("What would you like to do?\n1-View Instructor Info\n2-View Schedule" +
                             "\n9-Exit\n");
                     input = scanner.nextInt();
-                    switch (input){
-                        case 1:{printInstructorInfo(instructor); break;}
-                        case 2:{printSchedule(instructor.getWeeklySchedule()); break;}
-                        case 9: break;
+                    switch (input) {
+                        case 1: {
+                            printInstructorInfo(instructor);
+                            break;
+                        }
+                        case 2: {
+                            printSchedule(instructor.getWeeklySchedule());
+                            break;
+                        }
+                        case 9:
+                            break;
                         default:
                             System.out.println("Wrong input!");
                     }
                     if (input == 9) break;
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("Cannot find the instructor with given email");
         }
     }
@@ -202,49 +228,76 @@ public class View {
             for (Course course : schedule.getCourses()) {
                 for (WeeklyDate weeklyDate : course.getDates()) {
                     switch (weeklyDate.getDayName()) {
-                        case MON -> {mondayCourses.add(course);}
-                        case TUE -> {tuesdayCourses.add(course);}
-                        case WED -> {wednesdayCourses.add(course);}
-                        case THU -> {thursdayCourses.add(course);}
-                        case FRI -> {fridayCourses.add(course);}
-                        case SAT -> {saturdayCourses.add(course);}
-                        case SUN -> {sundayCourses.add(course);}
+                        case MON -> {
+                            mondayCourses.add(course);
+                        }
+                        case TUE -> {
+                            tuesdayCourses.add(course);
+                        }
+                        case WED -> {
+                            wednesdayCourses.add(course);
+                        }
+                        case THU -> {
+                            thursdayCourses.add(course);
+                        }
+                        case FRI -> {
+                            fridayCourses.add(course);
+                        }
+                        case SAT -> {
+                            saturdayCourses.add(course);
+                        }
+                        case SUN -> {
+                            sundayCourses.add(course);
+                        }
                     }
                 }
             }
-            printScheduleDays(mondayCourses,MON);
-            printScheduleDays(tuesdayCourses,TUE);
-            printScheduleDays(wednesdayCourses,WED);
-            printScheduleDays(thursdayCourses,THU);
-            printScheduleDays(fridayCourses,FRI);
-            printScheduleDays(saturdayCourses,SAT);
-            printScheduleDays(sundayCourses,SUN);
+            printScheduleDays(mondayCourses, MON);
+            printScheduleDays(tuesdayCourses, TUE);
+            printScheduleDays(wednesdayCourses, WED);
+            printScheduleDays(thursdayCourses, THU);
+            printScheduleDays(fridayCourses, FRI);
+            printScheduleDays(saturdayCourses, SAT);
+            printScheduleDays(sundayCourses, SUN);
         }
         System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
 
-    private static void printScheduleDays(List<Course> courses, DayName dayName)
-    {
+    private static void printScheduleDays(List<Course> courses, DayName dayName) {
         switch (dayName) {
-            case MON -> {System.out.print("\nMonday");}
-            case TUE -> {System.out.print("\nTuesday");}
-            case WED -> {System.out.print("\nWednesday");}
-            case THU -> {System.out.print("\nThursday");}
-            case FRI -> {System.out.print("\nFriday");}
-            case SAT -> {System.out.print("\nSaturday");}
-            case SUN -> {System.out.print("\nSunday");}
+            case MON -> {
+                System.out.print("\nMonday");
+            }
+            case TUE -> {
+                System.out.print("\nTuesday");
+            }
+            case WED -> {
+                System.out.print("\nWednesday");
+            }
+            case THU -> {
+                System.out.print("\nThursday");
+            }
+            case FRI -> {
+                System.out.print("\nFriday");
+            }
+            case SAT -> {
+                System.out.print("\nSaturday");
+            }
+            case SUN -> {
+                System.out.print("\nSunday");
+            }
         }
         boolean isEmpty = true;
         for (int i = 9; i <= 18; i++) {
             L1:
-            for (Course course : courses){
-                for (int j = 0; j < course.getDates().size(); j++){
-                    if (course.getDates().get(j).getDayName() == dayName && course.getDates().get(j).getHours() == i){
+            for (Course course : courses) {
+                for (int j = 0; j < course.getDates().size(); j++) {
+                    if (course.getDates().get(j).getDayName() == dayName && course.getDates().get(j).getHours() == i) {
                         if (isEmpty) System.out.println();
                         String formatted = String.format("%02d", i);
-                        String formatted2 = String.format("%02d", i+1);
+                        String formatted2 = String.format("%02d", i + 1);
                         System.out.println(formatted + ".00 -|  " + course.getCourseCode() + " " + course.getCourseTitle() + " |");
                         System.out.println(formatted2 + ".00  |          " + course.getInstructor().getName() + " " + course.getInstructor().getSurname() + "          |");
                         if (i != 18) System.out.println("------------------------------------");
@@ -262,10 +315,9 @@ public class View {
         List<Course> availableCourses = studentService.getAvailableCourses(student);
         for (Course course : availableCourses) {
             System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
-            for (int i = 0; i < course.getDates().size(); i++)
-            {
+            for (int i = 0; i < course.getDates().size(); i++) {
                 String dayName = "";
-                switch (course.getDates().get(i).getDayName()){
+                switch (course.getDates().get(i).getDayName()) {
                     case MON -> dayName = "Monday";
                     case TUE -> dayName = "Tuesday";
                     case WED -> dayName = "Wednesday";
@@ -280,22 +332,21 @@ public class View {
             }
             System.out.println();
         }
-        while(true)
-        {
+        while (true) {
             System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
             String courseCode = scanner.next();
             if (Objects.equals(courseCode, "9")) {
                 System.out.print("\n\n\n\n\nYour schedule");
-                if (student.getWeeklySchedule() !=null){
+                if (student.getWeeklySchedule() != null) {
                     System.out.println();
                     for (Course course : student.getWeeklySchedule().getCourses()) {
                         System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
                     }
-                }else{
+                } else {
                     System.out.print(" is empty.");
                 }
                 break;
-            }else{
+            } else {
                 studentService.addCourseToSchedule(student, courseCode, availableCourses);
                 System.out.println(courseCode + " successfully added to your schedule!");
             }
@@ -317,6 +368,7 @@ public class View {
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
+
     private static void printInstructorInfo(Instructor instructor) {
         System.out.print("\n\n\n\n\n" + instructor.getName() + " " + instructor.getSurname() + "\n");
         System.out.println("UUID = " + instructor.getUuid());

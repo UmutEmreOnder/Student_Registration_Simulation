@@ -4,20 +4,20 @@ public class WeeklyDate {
     private DayName dayName;
     private Integer hours;
 
-    @Override
-    public String toString() {
-        return "WeeklyDate{" +
-                "dayName=" + dayName +
-                ", hours=" + hours +
-                '}';
-    }
-
     public WeeklyDate() {
     }
 
     public WeeklyDate(DayName dayName, Integer hours) {
         this.dayName = dayName;
         this.hours = hours;
+    }
+
+    @Override
+    public String toString() {
+        return "WeeklyDate{" +
+                "dayName=" + dayName +
+                ", hours=" + hours +
+                '}';
     }
 
     public DayName getDayName() {

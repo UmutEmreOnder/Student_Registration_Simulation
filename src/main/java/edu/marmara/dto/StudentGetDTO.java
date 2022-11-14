@@ -18,23 +18,6 @@ public class StudentGetDTO {
     private String advisor;
     private Integer semester;
 
-    @Override
-    public String toString() {
-        return "StudentGetDTO{" +
-                "uuid=" + uuid +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", birthDate=" + birthDate +
-                ", studentId=" + studentId +
-                ", yearEnrolled=" + yearEnrolled +
-                ", passedCourses=" + passedCourses +
-                ", failedCourses=" + failedCourses +
-                ", advisor='" + advisor + '\'' +
-                ", semester=" + semester +
-                '}';
-    }
-
     public StudentGetDTO() {
     }
 
@@ -50,6 +33,23 @@ public class StudentGetDTO {
         this.failedCourses = failedCourses;
         this.advisor = advisor;
         this.semester = semester;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentGetDTO{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", studentId=" + studentId +
+                ", yearEnrolled=" + yearEnrolled +
+                ", passedCourses=" + passedCourses +
+                ", failedCourses=" + failedCourses +
+                ", advisor='" + advisor + '\'' +
+                ", semester=" + semester +
+                '}';
     }
 
     public UUID getUuid() {

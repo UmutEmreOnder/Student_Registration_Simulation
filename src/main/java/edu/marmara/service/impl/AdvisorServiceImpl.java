@@ -1,10 +1,5 @@
 package edu.marmara.service.impl;
 
-import edu.marmara.model.Advisor;
-import edu.marmara.model.Student;
-import edu.marmara.repository.StudentRepository;
-import edu.marmara.repository.impl.StudentRepositoryImpl;
-import edu.marmara.service.AdvisorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import edu.marmara.dto.ScheduleGetDTO;
@@ -20,7 +15,9 @@ import edu.marmara.service.AdvisorService;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 public class AdvisorServiceImpl implements AdvisorService {
+    private final ScheduleMapper scheduleMapper = new ScheduleMapperImpl();
     StudentRepository studentRepository = new StudentRepositoryImpl();
 
     @Override
@@ -37,7 +34,7 @@ public class AdvisorServiceImpl implements AdvisorService {
 
         return null;
     }
-}
+
     @Override
     public void approveSchedule(Student student) throws IOException {
         String path = "json/schedule/" + student.getStudentId() + ".json";
@@ -52,4 +49,6 @@ public class AdvisorServiceImpl implements AdvisorService {
             Files.write(Path.of(path), json.getBytes());
         }
     }
+}
+
 

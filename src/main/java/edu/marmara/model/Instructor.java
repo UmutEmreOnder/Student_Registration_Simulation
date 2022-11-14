@@ -7,20 +7,20 @@ public class Instructor extends Person {
     private List<Course> presentedCourses;
     private Schedule weeklySchedule;
 
-    @Override
-    public String toString() {
-        return "Instructor{" +
-                "presentedCourses=" + presentedCourses +
-                ", weeklySchedule=" + weeklySchedule +
-                '}';
-    }
-
     public Instructor() {
     }
 
     public Instructor(List<Course> presentedCourses, Schedule weeklySchedule) {
         this.presentedCourses = presentedCourses;
         this.weeklySchedule = weeklySchedule;
+    }
+
+    @Override
+    public String toString() {
+        return "Instructor{" +
+                "presentedCourses=" + presentedCourses +
+                ", weeklySchedule=" + weeklySchedule +
+                '}';
     }
 
     public List<Course> getPresentedCourses() {

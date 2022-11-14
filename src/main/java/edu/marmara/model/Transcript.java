@@ -11,18 +11,6 @@ public class Transcript {
     private List<Course> failedCourses;
     private List<Course> notTakenCourses;
 
-    @Override
-    public String toString() {
-        return "Transcript{" +
-                "gpa=" + gpa +
-                ", passedCredit=" + passedCredit +
-                ", failedCredit=" + failedCredit +
-                ", passedCourses=" + passedCourses +
-                ", failedCourses=" + failedCourses +
-                ", notTakenCourses=" + notTakenCourses +
-                '}';
-    }
-
     public Transcript() {
     }
 
@@ -33,6 +21,18 @@ public class Transcript {
         this.passedCourses = passedCourses;
         this.failedCourses = failedCourses;
         this.notTakenCourses = notTakenCourses;
+    }
+
+    @Override
+    public String toString() {
+        return "Transcript{" +
+                "gpa=" + gpa +
+                ", passedCredit=" + passedCredit +
+                ", failedCredit=" + failedCredit +
+                ", passedCourses=" + passedCourses +
+                ", failedCourses=" + failedCourses +
+                ", notTakenCourses=" + notTakenCourses +
+                '}';
     }
 
     public Double getGpa() {

@@ -2,6 +2,7 @@ package edu.marmara.service.impl;
 
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
+import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.service.JsonService;

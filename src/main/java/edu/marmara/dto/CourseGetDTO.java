@@ -10,18 +10,6 @@ public class CourseGetDTO {
     private List<String> prerequisites;
     private List<String> weeklyDate;
 
-    @Override
-    public String toString() {
-        return "CourseGetDTO{" +
-                "courseCode='" + courseCode + '\'' +
-                ", courseTitle='" + courseTitle + '\'' +
-                ", givenSemester=" + givenSemester +
-                ", courseCredit=" + courseCredit +
-                ", prerequisites=" + prerequisites +
-                ", weeklyDate=" + weeklyDate +
-                '}';
-    }
-
     public CourseGetDTO() {
     }
 
@@ -32,6 +20,18 @@ public class CourseGetDTO {
         this.courseCredit = courseCredit;
         this.prerequisites = prerequisites;
         this.weeklyDate = weeklyDate;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseGetDTO{" +
+                "courseCode='" + courseCode + '\'' +
+                ", courseTitle='" + courseTitle + '\'' +
+                ", givenSemester=" + givenSemester +
+                ", courseCredit=" + courseCredit +
+                ", prerequisites=" + prerequisites +
+                ", weeklyDate=" + weeklyDate +
+                '}';
     }
 
     public String getCourseCode() {

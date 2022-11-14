@@ -9,18 +9,6 @@ public class Student extends Person {
     private Integer semester;
 
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", yearEnrolled=" + yearEnrolled +
-                ", weeklySchedule=" + weeklySchedule +
-                ", transcript=" + transcript +
-                ", advisor=" + advisor +
-                ", semester=" + semester +
-                '}';
-    }
-
     public Student() {
     }
 
@@ -31,6 +19,18 @@ public class Student extends Person {
         this.transcript = transcript;
         this.advisor = advisor;
         this.semester = semester;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", yearEnrolled=" + yearEnrolled +
+                ", weeklySchedule=" + weeklySchedule +
+                ", transcript=" + transcript +
+                ", advisor=" + advisor +
+                ", semester=" + semester +
+                '}';
     }
 
     public Long getStudentId() {

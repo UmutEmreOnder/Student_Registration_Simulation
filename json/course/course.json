@@ -1,199 +1,199 @@
 [
-    {
-      "courseCode": "CSE1100",
-      "courseTitle": "Computer Programming 1",
-      "givenSemester": 1,
-      "courseCredit": 6,
-      "prerequisites": [],
-      "weeklyDate": [
-        "SUN 11",
-        "SUN 12",
-        "WED 9"
-      ]
-    },
-    {
-      "courseCode": "CSE1142",
-      "courseTitle": "Computer Programming 2",
-      "givenSemester": 2,
-      "courseCredit": 7,
-      "prerequisites": [
-        "CSE1100"
-      ],
-      "weeklyDate": [
-        "TUE 11",
-        "TUE 12",
-        "WED 13"
-      ]
-    },
-    {
-      "courseCode": "MATH1001",
-      "courseTitle": "Calculus 1",
-      "givenSemester": 1,
-      "courseCredit": 6,
-      "prerequisites": [],
-      "weeklyDate": [
-        "THU 8",
-        "THU 9"
-      ]
-    },
-    {
-      "courseCode": "MATH1002",
-      "courseTitle": "Calculus 2",
-      "givenSemester": 2,
-      "courseCredit": 6,
-      "prerequisites": [
-        "MATH1001"
-      ],
-      "weeklyDate": [
-        "MON 11",
-        "MON 12"
-      ]
-    },
-    {
-      "courseCode": "CSE2025",
-      "courseTitle": "Data Structures",
-      "givenSemester": 3,
-      "courseCredit": 8,
-      "prerequisites": [
-        "CSE1142"
-      ],
-      "weeklyDate": [
-        "WED 16",
-        "WED 17"
-      ]
-    },
-    {
-      "courseCode": "MATH2055",
-      "courseTitle": "Differential Equations",
-      "givenSemester": 3,
-      "courseCredit": 4,
-      "prerequisites": [
-        "MATH1002"
-      ],
-      "weeklyDate": [
-        "MON 14"
-      ]
-    },
-    {
-      "courseCode": "CSE2046",
-      "courseTitle": "Analysis of Algorithms",
-      "givenSemester": 4,
-      "courseCredit": 6,
-      "prerequisites": [],
-      "weeklyDate": [
-        "TUE 14",
-        "TUE 15"
-      ]
-    },
-    {
-      "courseCode": "STAT2053",
-      "courseTitle": "Introduction to Signals and Systems",
-      "givenSemester": 4,
-      "courseCredit": 5,
-      "prerequisites": [],
-      "weeklyDate": [
-        "TUE 13",
-        "TUE 14",
-        "WED 15",
-        "WED 16"
-      ]
-    },
-    {
-      "courseCode": "CSE3063",
-      "courseTitle": "Object-Oriented Software Design",
-      "givenSemester": 5,
-      "courseCredit": 5,
-      "prerequisites": [],
-      "weeklyDate": [
-        "SUN 9",
-        "SUN 10"
-      ]
-    },
-    {
-      "courseCode": "CSE3055",
-      "courseTitle": "Database Systems",
-      "givenSemester": 5,
-      "courseCredit": 7,
-      "prerequisites": [
-        "CSE2046"
-      ],
-      "weeklyDate": [
-        "MON 9",
-        "MON 10"
-      ]
-    },
-    {
-      "courseCode": "CSE3038",
-      "courseTitle": "Computer Organization",
-      "givenSemester": 6,
-      "courseCredit": 7,
-      "prerequisites": [
-        "CSE3055"
-      ],
-      "weeklyDate": [
-        "SUN 14",
-        "SUN 15"
-      ]
-    },
-    {
-      "courseCode": "CSE3044",
-      "courseTitle": "Software Engineering",
-      "givenSemester": 6,
-      "courseCredit": 7,
-      "prerequisites": [
-        "CSE3063"
-      ],
-      "weeklyDate": [
-        "SUN 10"
-      ]
-    },
-    {
-      "courseCode": "CSE4197",
-      "courseTitle": "Engineering Project 1",
-      "givenSemester": 7,
-      "courseCredit": 4,
-      "prerequisites": [],
-      "weeklyDate": [
-        "SUN 11",
-        "SUN 12"
-      ]
-    },
-    {
-      "courseCode": "CSE4074",
-      "courseTitle": "Computer Networks",
-      "givenSemester": 7,
-      "courseCredit": 4,
-      "prerequisites": [
-        "CSE3038"
-      ],
-      "weeklyDate": [
-        "MON 11",
-        "TUE 9",
-        "TUE 10"
-      ]
-    },
-    {
-      "courseCode": "CSE4198",
-      "courseTitle": "Engineering Project 2",
-      "givenSemester": 8,
-      "courseCredit": 5,
-      "prerequisites": [
-        "CSE4197"
-      ],
-      "weeklyDate": [
-        "SUN 16",
-        "SUN 17"
-      ]
-    },
-    {
-      "courseCode": "CSE4082",
-      "courseTitle": "Artificial Intelligence",
-      "givenSemester": 8,
-      "courseCredit": 5,
-      "prerequisites": [],
-      "weeklyDate": [
-        "THU 17",
-        "THU 18"
-      ]
-    }
+  {
+    "courseCode": "CSE1100",
+    "courseTitle": "Computer Programming 1",
+    "givenSemester": 1,
+    "courseCredit": 6,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 11",
+      "SUN 12",
+      "WED 9"
+    ]
+  },
+  {
+    "courseCode": "CSE1142",
+    "courseTitle": "Computer Programming 2",
+    "givenSemester": 2,
+    "courseCredit": 7,
+    "prerequisites": [
+      "CSE1100"
+    ],
+    "weeklyDate": [
+      "TUE 11",
+      "TUE 12",
+      "WED 13"
+    ]
+  },
+  {
+    "courseCode": "MATH1001",
+    "courseTitle": "Calculus 1",
+    "givenSemester": 1,
+    "courseCredit": 6,
+    "prerequisites": [],
+    "weeklyDate": [
+      "THU 8",
+      "THU 9"
+    ]
+  },
+  {
+    "courseCode": "MATH1002",
+    "courseTitle": "Calculus 2",
+    "givenSemester": 2,
+    "courseCredit": 6,
+    "prerequisites": [
+      "MATH1001"
+    ],
+    "weeklyDate": [
+      "MON 11",
+      "MON 12"
+    ]
+  },
+  {
+    "courseCode": "CSE2025",
+    "courseTitle": "Data Structures",
+    "givenSemester": 3,
+    "courseCredit": 8,
+    "prerequisites": [
+      "CSE1142"
+    ],
+    "weeklyDate": [
+      "WED 16",
+      "WED 17"
+    ]
+  },
+  {
+    "courseCode": "MATH2055",
+    "courseTitle": "Differential Equations",
+    "givenSemester": 3,
+    "courseCredit": 4,
+    "prerequisites": [
+      "MATH1002"
+    ],
+    "weeklyDate": [
+      "MON 14"
+    ]
+  },
+  {
+    "courseCode": "CSE2046",
+    "courseTitle": "Analysis of Algorithms",
+    "givenSemester": 4,
+    "courseCredit": 6,
+    "prerequisites": [],
+    "weeklyDate": [
+      "TUE 14",
+      "TUE 15"
+    ]
+  },
+  {
+    "courseCode": "STAT2053",
+    "courseTitle": "Introduction to Signals and Systems",
+    "givenSemester": 4,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "TUE 13",
+      "TUE 14",
+      "WED 15",
+      "WED 16"
+    ]
+  },
+  {
+    "courseCode": "CSE3063",
+    "courseTitle": "Object-Oriented Software Design",
+    "givenSemester": 5,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 9",
+      "SUN 10"
+    ]
+  },
+  {
+    "courseCode": "CSE3055",
+    "courseTitle": "Database Systems",
+    "givenSemester": 5,
+    "courseCredit": 7,
+    "prerequisites": [
+      "CSE2046"
+    ],
+    "weeklyDate": [
+      "MON 9",
+      "MON 10"
+    ]
+  },
+  {
+    "courseCode": "CSE3038",
+    "courseTitle": "Computer Organization",
+    "givenSemester": 6,
+    "courseCredit": 7,
+    "prerequisites": [
+      "CSE3055"
+    ],
+    "weeklyDate": [
+      "SUN 14",
+      "SUN 15"
+    ]
+  },
+  {
+    "courseCode": "CSE3044",
+    "courseTitle": "Software Engineering",
+    "givenSemester": 6,
+    "courseCredit": 7,
+    "prerequisites": [
+      "CSE3063"
+    ],
+    "weeklyDate": [
+      "SUN 10"
+    ]
+  },
+  {
+    "courseCode": "CSE4197",
+    "courseTitle": "Engineering Project 1",
+    "givenSemester": 7,
+    "courseCredit": 4,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 11",
+      "SUN 12"
+    ]
+  },
+  {
+    "courseCode": "CSE4074",
+    "courseTitle": "Computer Networks",
+    "givenSemester": 7,
+    "courseCredit": 4,
+    "prerequisites": [
+      "CSE3038"
+    ],
+    "weeklyDate": [
+      "MON 11",
+      "TUE 9",
+      "TUE 10"
+    ]
+  },
+  {
+    "courseCode": "CSE4198",
+    "courseTitle": "Engineering Project 2",
+    "givenSemester": 8,
+    "courseCredit": 5,
+    "prerequisites": [
+      "CSE4197"
+    ],
+    "weeklyDate": [
+      "SUN 16",
+      "SUN 17"
+    ]
+  },
+  {
+    "courseCode": "CSE4082",
+    "courseTitle": "Artificial Intelligence",
+    "givenSemester": 8,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "THU 17",
+      "THU 18"
+    ]
+  }
 ]
