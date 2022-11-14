@@ -42,6 +42,13 @@ public class SchoolServiceImpl implements SchoolService {
                 String content = Files.readString(Path.of(file.getPath()));
                 Student student = jsonService.readStudentFromJson(content);
 
+                File scheduleFile = new File("json/schedule/" + student.getStudentId() + ".json");
+
+                if (scheduleFile.exists()) {
+                    Schedule schedule = jsonService.readScheduleFromJson(Files.readString(Path.of(scheduleFile.getPath())));
+                    student.setWeeklySchedule(schedule);
+                }
+
                 school.getStudents().add(student);
             }
         }

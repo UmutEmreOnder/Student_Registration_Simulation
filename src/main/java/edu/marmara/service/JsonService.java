@@ -15,3 +15,4 @@ public interface JsonService {
 
     List<Course> readCoursesFromJson(String jsonFormattedCourse) throws ParseException, JsonProcessingException;
 }
+    Schedule readScheduleFromJson(String jsonFormattedSchedule) throws JsonProcessingException;

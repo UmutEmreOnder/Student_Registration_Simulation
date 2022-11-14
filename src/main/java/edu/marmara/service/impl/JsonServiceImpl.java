@@ -68,3 +68,11 @@ public class JsonServiceImpl implements JsonService {
         return objectMapper;
     }
 }
+    @Override
+    public Schedule readScheduleFromJson(String jsonFormattedSchedule) throws JsonProcessingException {
+        ObjectMapper objectMapper = getObjectMapper();
+
+        ScheduleGetDTO scheduleGetDTO = objectMapper.readValue(jsonFormattedSchedule, ScheduleGetDTO.class);
+
+        return scheduleMapper.mapTo(scheduleGetDTO);
+    }

@@ -120,6 +120,11 @@ public class View {
                             studentID = scanner.nextLong();
                             Student student = advisorService.getStudent(studentID,(Advisor) instructor);
                             if (student != null) printSchedule(student.getWeeklySchedule());
+                            System.out.println("\n1- Approve\n2- Deny");
+
+                            if (scanner.nextInt() == 1) {
+                                advisorService.approveSchedule(student);
+                            }
                             else System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }

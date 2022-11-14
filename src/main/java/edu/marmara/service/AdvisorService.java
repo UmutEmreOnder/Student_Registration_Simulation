@@ -6,3 +6,4 @@ import edu.marmara.model.Student;
 public interface AdvisorService {
     Student getStudent(Long studentID, Advisor advisor);
 }
+    void approveSchedule(Student student) throws IOException;
