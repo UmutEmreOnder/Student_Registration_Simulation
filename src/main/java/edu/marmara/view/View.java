@@ -261,19 +261,25 @@ public class View {
             }
             System.out.println();
         }
-        System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
-        String courseCode = scanner.next();
-        if (Objects.equals(courseCode, "9")) {
-            System.out.print("\n\n\n\n\nYour schedule");
-            if (student.getWeeklySchedule() !=null){
-                for (Course course : student.getWeeklySchedule().getCourses()) {
-                    System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+        while(true)
+        {
+            System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
+            String courseCode = scanner.next();
+            if (Objects.equals(courseCode, "9")) {
+                System.out.print("\n\n\n\n\nYour schedule");
+                if (student.getWeeklySchedule() !=null){
+                    System.out.println();
+                    for (Course course : student.getWeeklySchedule().getCourses()) {
+                        System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+                    }
+                }else{
+                    System.out.print(" is empty.");
                 }
+                break;
+            }else{
+                studentService.addCourseToSchedule(student, courseCode, availableCourses);
+                System.out.println(courseCode + " successfully added to your schedule!");
             }
-            System.out.print(" is empty.");
-        }else{
-            studentService.addCourseToSchedule(student, courseCode, availableCourses);
-            System.out.println(courseCode + " successfully added to your schedule!");
         }
         System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
