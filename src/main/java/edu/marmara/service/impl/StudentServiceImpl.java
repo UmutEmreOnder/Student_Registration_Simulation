@@ -9,6 +9,7 @@ import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
@@ -18,9 +19,27 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Course> getAvailableCourses(Student student) {
         List<Course> courses = new ArrayList<>();
+
+        outerloop:
         for (Course course : school.getCourses()) {
-            if (student.getSemester() <= course.getGivenSemester() && !student.getTranscript().getPassedCourses().contains(course)) {
-                courses.add(course);
+            if (!student.getTranscript().getPassedCourses().contains(course)) {
+                // Check prerequisites
+                if (course.getPrerequisites() != null) {
+                    for (Course prerequisiteCourse : course.getPrerequisites()) {
+                        if (! student.getTranscript().getPassedCourses().contains(prerequisiteCourse)) {
+                            continue outerloop;
+                        }
+                    }
+                }
+
+
+                if (student.getWeeklySchedule() != null) {
+                    if (!student.getWeeklySchedule().getCourses().contains(course)) {
+                        courses.add(course);
+                    }
+                } else {
+                    courses.add(course);
+                }
             }
         }
 
@@ -28,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
+    public Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
         if (student.getWeeklySchedule() == null) {
@@ -38,6 +57,9 @@ public class StudentServiceImpl implements StudentService {
 
         if (course != null && availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
+            return Boolean.TRUE;
         }
+
+        return Boolean.FALSE;
     }
 }

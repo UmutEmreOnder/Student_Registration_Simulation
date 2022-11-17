@@ -8,8 +8,6 @@
   "yearEnrolled": 2018,
   "semester": 8,
   "passedCourses": [
-    "MATH1001",
-    "MATH1002",
     "CSE1100",
     "CSE1142",
     "CSE2025",
@@ -20,7 +18,8 @@
     "CSE4197"
   ],
   "failedCourses": [
-    "CSE2046"
+    "CSE2046",
+    "MATH1001"
   ],
   "advisor": "turkesyusuf@gmail.com"
 }
