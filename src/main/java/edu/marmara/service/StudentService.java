@@ -8,5 +8,5 @@ import java.util.List;
 public interface StudentService {
     List<Course> getAvailableCourses(Student student);
 
-    void addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses);
+    Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses);
 }

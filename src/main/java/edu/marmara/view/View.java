@@ -347,8 +347,13 @@ public class View {
                 }
                 break;
             } else {
-                studentService.addCourseToSchedule(student, courseCode, availableCourses);
-                System.out.println(courseCode + " successfully added to your schedule!");
+                if (studentService.addCourseToSchedule(student, courseCode, availableCourses)) {
+                    System.out.println(courseCode + " successfully added to your schedule!");
+                } else {
+                    System.out.println("You cannot add " + courseCode + " to your schedule!");
+                }
+
+
             }
         }
         System.out.println("\nPress enter to go back");
