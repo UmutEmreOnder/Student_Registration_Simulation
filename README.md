@@ -1,6 +1,6 @@
 # Group Members
 
-```
+
 | Name      	| Surname 	| Student ID 	|
 |-----------	|---------	|------------	|
 | Umut Emre 	| Önder   	| 150119018  	|
@@ -10,4 +10,4 @@
 | Eren      	| Kıyan   	| 150119779  	|
 | Berkay    	| Ağar    	| 150119804     |
 | Faruk     	|         	|            	|
-```
+
