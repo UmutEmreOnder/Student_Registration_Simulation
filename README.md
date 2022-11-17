@@ -9,5 +9,5 @@
 | Fırat     	| Bakıcı  	| 150120029  	|
 | Eren      	| Kıyan   	| 150119779  	|
 | Berkay    	| Ağar    	| 150119804     |
-| Faruk     	|         	|            	|
+| Faruk     	|  Akdemir       	|  150119012          	|
 
