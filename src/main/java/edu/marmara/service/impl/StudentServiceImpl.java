@@ -11,6 +11,7 @@ import edu.marmara.service.StudentService;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 public class StudentServiceImpl implements StudentService {
     private School school = School.getInstance();
@@ -31,7 +32,6 @@ public class StudentServiceImpl implements StudentService {
                         }
                     }
                 }
-
 
                 if (student.getWeeklySchedule() != null) {
                     if (!student.getWeeklySchedule().getCourses().contains(course)) {
@@ -61,5 +61,36 @@ public class StudentServiceImpl implements StudentService {
         }
 
         return Boolean.FALSE;
+    }
+
+    @Override
+    public void assignRandomCourses() {
+        List<Student> listOfStudents = school.getStudents();
+        List<Course> listOfCourses = school.getCourses();
+
+        Double passProbability = school.getConfig().getPassProbability();
+        Random rng = new Random();
+
+        for (Student student : listOfStudents) {
+            for(Course course : listOfCourses){
+                if(course.getGivenSemester() > student.getSemester()) {
+                    student.getTranscript().getNotTakenCourses().add(course);
+                    continue;
+                }
+                if (getAvailableCourses(student).contains(course)){
+                    Double rand = rng.nextDouble();
+                    if (rand <= passProbability){
+                        student.getTranscript().getPassedCourses().add(course);
+                        //todo: Assign letter note to added courses
+                    }
+                    else{
+                        student.getTranscript().getFailedCourses().add(course);
+                    }
+                }
+                else{
+                    student.getTranscript().getNotTakenCourses().add(course);
+                }
+            }
+        }
     }
 }

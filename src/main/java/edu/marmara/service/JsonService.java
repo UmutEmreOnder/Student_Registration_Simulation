@@ -1,6 +1,7 @@
 package edu.marmara.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import edu.marmara.config.Config;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.Schedule;
@@ -17,4 +18,6 @@ public interface JsonService {
     List<Course> readCoursesFromJson(String jsonFormattedCourse) throws ParseException, JsonProcessingException;
 
     Schedule readScheduleFromJson(String jsonFormattedSchedule) throws JsonProcessingException;
+
+    Config readConfigFromJson(String jsonFormattedConfig) throws JsonProcessingException;
 }

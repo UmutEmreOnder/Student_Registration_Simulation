@@ -9,4 +9,6 @@ public interface StudentService {
     List<Course> getAvailableCourses(Student student);
 
     Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses);
+
+    void assignRandomCourses();
 }

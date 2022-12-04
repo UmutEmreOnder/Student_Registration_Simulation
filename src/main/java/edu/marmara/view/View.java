@@ -190,7 +190,6 @@ public class View {
         }
     }
 
-    // todo: Add not taken courses maybe
     private static void printTranscript(Student student) {
         if (student.getTranscript() != null) {
             System.out.println("\n\n\n\n\n");
@@ -207,6 +206,10 @@ public class View {
             }
             System.out.println("\nFailed Courses");
             for (Course course : student.getTranscript().getFailedCourses()) {
+                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+            }
+            System.out.println("\nNot Taken Courses");
+            for (Course course : student.getTranscript().getNotTakenCourses()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
         } else {

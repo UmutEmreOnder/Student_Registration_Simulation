@@ -1,5 +1,6 @@
 package edu.marmara.service.impl;
 
+import edu.marmara.config.Config;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.Schedule;
@@ -7,6 +8,7 @@ import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.service.JsonService;
 import edu.marmara.service.SchoolService;
+import edu.marmara.service.StudentService;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +21,15 @@ public class SchoolServiceImpl implements SchoolService {
     private static JsonService jsonService = new JsonServiceImpl();
     private static School school = School.getInstance();
 
+    private static StudentService studentService = new StudentServiceImpl();
+
     @Override
     public void uploadJsons() throws IOException, ParseException {
+        String configInfo = Files.readString(Path.of("json/config/config.json"));
+        Config config = jsonService.readConfigFromJson(configInfo);
+
+        school.setConfig(config);
+
         String courseInfo = Files.readString(Path.of("json/course/course.json"));
         List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
 
@@ -53,5 +62,7 @@ public class SchoolServiceImpl implements SchoolService {
                 school.getStudents().add(student);
             }
         }
+
+        studentService.assignRandomCourses();
     }
 }

@@ -13,15 +13,13 @@ public class StudentGetDTO {
     private Date birthDate;
     private Long studentId;
     private Integer yearEnrolled;
-    private List<String> passedCourses;
-    private List<String> failedCourses;
     private String advisor;
     private Integer semester;
 
     public StudentGetDTO() {
     }
 
-    public StudentGetDTO(UUID uuid, String name, String surname, String email, Date birthDate, Long studentId, Integer yearEnrolled, List<String> passedCourses, List<String> failedCourses, String advisor, Integer semester) {
+    public StudentGetDTO(UUID uuid, String name, String surname, String email, Date birthDate, Long studentId, Integer yearEnrolled, String advisor, Integer semester) {
         this.uuid = uuid;
         this.name = name;
         this.surname = surname;
@@ -29,8 +27,6 @@ public class StudentGetDTO {
         this.birthDate = birthDate;
         this.studentId = studentId;
         this.yearEnrolled = yearEnrolled;
-        this.passedCourses = passedCourses;
-        this.failedCourses = failedCourses;
         this.advisor = advisor;
         this.semester = semester;
     }
@@ -45,8 +41,6 @@ public class StudentGetDTO {
                 ", birthDate=" + birthDate +
                 ", studentId=" + studentId +
                 ", yearEnrolled=" + yearEnrolled +
-                ", passedCourses=" + passedCourses +
-                ", failedCourses=" + failedCourses +
                 ", advisor='" + advisor + '\'' +
                 ", semester=" + semester +
                 '}';
@@ -107,22 +101,6 @@ public class StudentGetDTO {
 
     public void setYearEnrolled(Integer yearEnrolled) {
         this.yearEnrolled = yearEnrolled;
-    }
-
-    public List<String> getPassedCourses() {
-        return passedCourses;
-    }
-
-    public void setPassedCourses(List<String> passedCourses) {
-        this.passedCourses = passedCourses;
-    }
-
-    public List<String> getFailedCourses() {
-        return failedCourses;
-    }
-
-    public void setFailedCourses(List<String> failedCourses) {
-        this.failedCourses = failedCourses;
     }
 
     public String getAdvisor() {

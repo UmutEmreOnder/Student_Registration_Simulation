@@ -1,5 +1,7 @@
 package edu.marmara.model;
 
+import edu.marmara.config.Config;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class School {
     private List<Instructor> instructors;
     private List<Course> courses;
 
+    private Config config;
+
     private School() {
     }
 
@@ -20,6 +24,7 @@ public class School {
             schoolInstance.setInstructors(new ArrayList<>());
             schoolInstance.setStudents(new ArrayList<>());
             schoolInstance.setCourses(new ArrayList<>());
+            schoolInstance.setConfig(new Config());
         }
 
         return schoolInstance;
@@ -47,5 +52,13 @@ public class School {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 }

@@ -2,6 +2,7 @@ package edu.marmara.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.marmara.config.Config;
 import edu.marmara.dto.CourseGetDTO;
 import edu.marmara.dto.InstructorGetDTO;
 import edu.marmara.dto.ScheduleGetDTO;
@@ -80,5 +81,14 @@ public class JsonServiceImpl implements JsonService {
         ScheduleGetDTO scheduleGetDTO = objectMapper.readValue(jsonFormattedSchedule, ScheduleGetDTO.class);
 
         return scheduleMapper.mapTo(scheduleGetDTO);
+    }
+
+    @Override
+    public Config readConfigFromJson(String jsonFormattedConfig) throws JsonProcessingException {
+        ObjectMapper objectMapper = getObjectMapper();
+
+        Config config = objectMapper.readValue(jsonFormattedConfig, Config.class);
+
+        return config;
     }
 }
