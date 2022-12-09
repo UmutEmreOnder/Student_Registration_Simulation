@@ -23,11 +23,11 @@ public class StudentServiceImpl implements StudentService {
 
         outerloop:
         for (Course course : school.getCourses()) {
-            if (!student.getTranscript().getPassedCourses().contains(course)) {
+            if (!student.getTranscript().getPassedCourses().containsKey(course)) {
                 // Check prerequisites
                 if (course.getPrerequisites() != null) {
                     for (Course prerequisiteCourse : course.getPrerequisites()) {
-                        if (! student.getTranscript().getPassedCourses().contains(prerequisiteCourse)) {
+                        if (! student.getTranscript().getPassedCourses().containsKey(prerequisiteCourse)) {
                             continue outerloop;
                         }
                     }
@@ -80,7 +80,7 @@ public class StudentServiceImpl implements StudentService {
                 if (getAvailableCourses(student).contains(course)){
                     Double rand = rng.nextDouble();
                     if (rand <= passProbability){
-                        student.getTranscript().getPassedCourses().add(course);
+                        student.getTranscript().getPassedCourses().put(course, 0.0);
                         //todo: Assign letter note to added courses
                     }
                     else{

@@ -201,7 +201,7 @@ public class View {
             System.out.println("Passed Credit = " + passedCredit);
             System.out.println("Failed Credit = " + failedCredit);
             System.out.println("\nPassed Courses");
-            for (Course course : student.getTranscript().getPassedCourses()) {
+            for (Course course : student.getTranscript().getPassedCourses().keySet()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
             System.out.println("\nFailed Courses");
