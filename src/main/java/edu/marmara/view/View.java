@@ -202,11 +202,11 @@ public class View {
             System.out.println("Failed Credit = " + failedCredit);
             System.out.println("\nPassed Courses");
             for (Course course : student.getTranscript().getPassedCourses().keySet()) {
-                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + student.getTranscript().getPassedCourses().get(course));
             }
             System.out.println("\nFailed Courses");
             for (Course course : student.getTranscript().getFailedCourses()) {
-                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + "0.0");
             }
             System.out.println("\nNot Taken Courses");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
