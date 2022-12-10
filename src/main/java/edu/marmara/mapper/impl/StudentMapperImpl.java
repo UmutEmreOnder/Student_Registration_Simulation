@@ -11,6 +11,7 @@ import edu.marmara.repository.InstructorRepository;
 import edu.marmara.repository.impl.InstructorRepositoryImpl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StudentMapperImpl implements StudentMapper {
     School school = School.getInstance();
@@ -30,7 +31,7 @@ public class StudentMapperImpl implements StudentMapper {
         student.setSemester(studentGetDTO.getSemester());
 
         student.setTranscript(new Transcript());
-        student.getTranscript().setPassedCourses(new ArrayList<>());
+        student.getTranscript().setPassedCourses(new HashMap<>());
         student.getTranscript().setFailedCourses(new ArrayList<>());
         student.getTranscript().setFailedCredit(0);
         student.getTranscript().setPassedCredit(0);

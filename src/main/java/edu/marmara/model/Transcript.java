@@ -1,5 +1,6 @@
 package edu.marmara.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -7,14 +8,14 @@ public class Transcript {
     private Double gpa;
     private Integer passedCredit;
     private Integer failedCredit;
-    private List<Course> passedCourses;
+    private HashMap<Course, Double> passedCourses;
     private List<Course> failedCourses;
     private List<Course> notTakenCourses;
 
     public Transcript() {
     }
 
-    public Transcript(Double gpa, Integer passedCredit, Integer failedCredit, List<Course> passedCourses, List<Course> failedCourses, List<Course> notTakenCourses) {
+    public Transcript(Double gpa, Integer passedCredit, Integer failedCredit, HashMap<Course, Double> passedCourses, List<Course> failedCourses, List<Course> notTakenCourses) {
         this.gpa = gpa;
         this.passedCredit = passedCredit;
         this.failedCredit = failedCredit;
@@ -59,11 +60,11 @@ public class Transcript {
         this.failedCredit = failedCredit;
     }
 
-    public List<Course> getPassedCourses() {
+    public HashMap<Course, Double> getPassedCourses() {
         return passedCourses;
     }
 
-    public void setPassedCourses(List<Course> passedCourses) {
+    public void setPassedCourses(HashMap<Course, Double> passedCourses) {
         this.passedCourses = passedCourses;
     }
 

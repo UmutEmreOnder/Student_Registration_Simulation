@@ -87,8 +87,6 @@ public class JsonServiceImpl implements JsonService {
     public Config readConfigFromJson(String jsonFormattedConfig) throws JsonProcessingException {
         ObjectMapper objectMapper = getObjectMapper();
 
-        Config config = objectMapper.readValue(jsonFormattedConfig, Config.class);
-
-        return config;
+        return objectMapper.readValue(jsonFormattedConfig, Config.class);
     }
 }
