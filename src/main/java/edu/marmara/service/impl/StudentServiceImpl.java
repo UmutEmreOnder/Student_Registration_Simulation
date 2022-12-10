@@ -63,13 +63,9 @@ public class StudentServiceImpl implements StudentService {
         List<Course> listOfCourses = school.getCourses();
 
         Double passProbability = school.getConfig().getPassProbability();
-        List<Double> gradeRange = school.getConfig().getGradeRange();
         Double gradeLuck = school.getConfig().getGradeLuck();
+        Double gradeVariance = school.getConfig().getGradeVariance();
 
-        if (gradeLuck < 0.5) {
-            gradeLuck = 1 - gradeLuck;
-            Collections.reverse(gradeRange);
-        }
 
         Random rng = new Random();
 
@@ -80,9 +76,9 @@ public class StudentServiceImpl implements StudentService {
                     continue;
                 }
                 if (getAvailableCourses(student).contains(course)) {
-                    Double rand = rng.nextDouble();
+                    double rand = rng.nextDouble();
                     if (rand <= passProbability) {
-                        Double grade = getGrade(gradeRange, gradeLuck);
+                        Double grade = getGrade(gradeLuck, gradeVariance);
                         student.getTranscript().getPassedCourses().put(course, grade);
                         student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                     } else {
@@ -110,33 +106,27 @@ public class StudentServiceImpl implements StudentService {
         return gpa;
     }
 
-    private static Double getGrade(List<Double> gradeRange, Double gradeLuck) {
-        int selectedIndex = -1;
+    private static Double getGrade(Double gradeLuck, Double gradeVariance) {
+        Random fRandom = new Random();
+        double grade = -1;
+        while (grade < 0 || grade > 4.00)
+            grade = gradeLuck * (4) + fRandom.nextGaussian() * gradeVariance;
 
-        double[] weights = new double[gradeRange.size()];
-
-        for (int i = 0; i < gradeRange.size(); i++) {
-            weights[i] = (gradeRange.get(i) / 4) * gradeLuck;
+        if (grade < 0.25){
+            return 0.5;
         }
-
-        Double randForGrade = Math.random();
-
-        double sum = 0;
-        for (double weight : weights) {
-            sum += weight;
+        else if(Math.round(grade) < grade){
+            if(grade - Math.round(grade) > 0.25) return Math.round(grade) + 0.5;
+            else return (double)Math.round(grade);
         }
-        double value = randForGrade * sum;
-
-
-        for (int i = 0; i < weights.length; i++) {
-            if (value < weights[i]) {
-                selectedIndex = i;
-                break;
-            }
-            value -= weights[i];
+        else{
+            if(Math.round(grade) - grade > 0.25) return Math.round(grade) - 0.5;
+            else return (double)Math.round(grade);
         }
-
-
-        return gradeRange.get(selectedIndex);
     }
+    /*
+    private static double getGaussian(double aMean, double aVariance){
+        return aMean + fRandom.nextGaussian() * aVariance;
+    }
+     */
 }

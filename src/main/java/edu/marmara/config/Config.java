@@ -7,12 +7,12 @@ public class Config {
 
     private Double gradeLuck;
 
-    private List<Double> gradeRange;
+    private Double gradeVariance;
 
-    public Config(Double passProbability, Double gradeLuck, List<Double> gradeRange) {
+
+    public Config(Double passProbability, Double gradeLuck) {
         this.passProbability = passProbability;
         this.gradeLuck = gradeLuck;
-        this.gradeRange = gradeRange;
     }
 
     public Config() {
@@ -34,11 +34,7 @@ public class Config {
         this.gradeLuck = gradeLuck;
     }
 
-    public List<Double> getGradeRange() {
-        return gradeRange;
-    }
+    public Double getGradeVariance() {return gradeVariance;}
 
-    public void setGradeRange(List<Double> gradeRange) {
-        this.gradeRange = gradeRange;
-    }
+    public void setGradeVariance(Double gradeVariance) {this.gradeVariance = gradeVariance;}
 }

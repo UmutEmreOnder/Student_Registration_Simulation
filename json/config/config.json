@@ -1,5 +1,5 @@
 {
   "passProbability": 0.99,
   "gradeLuck": 0.5,
-  "gradeRange": [4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5]
+  "gradeVariance": 0.3
 }
