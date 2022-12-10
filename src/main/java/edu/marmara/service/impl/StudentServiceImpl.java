@@ -1,6 +1,10 @@
 package edu.marmara.service.impl;
 
-import edu.marmara.model.*;
+import edu.marmara.model.Student;
+import edu.marmara.model.Course;
+import edu.marmara.model.School;
+import edu.marmara.model.WeeklyDate;
+import edu.marmara.model.Schedule;
 import edu.marmara.repository.CourseRepository;
 import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
