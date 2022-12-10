@@ -4,7 +4,13 @@ import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
-import edu.marmara.model.*;
+import edu.marmara.model.Grade;
+import edu.marmara.model.Instructor;
+import edu.marmara.model.Schedule;
+import edu.marmara.model.Advisor;
+import edu.marmara.model.Course;
+import edu.marmara.model.DayName;
+
 
 import static edu.marmara.model.DayName.FRI;
 import static edu.marmara.model.DayName.MON;
@@ -14,6 +20,8 @@ import static edu.marmara.model.DayName.THU;
 import static edu.marmara.model.DayName.TUE;
 import static edu.marmara.model.DayName.WED;
 
+import edu.marmara.model.Student;
+import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.InstructorRepository;
 import edu.marmara.repository.StudentRepository;
 import edu.marmara.repository.impl.InstructorRepositoryImpl;
