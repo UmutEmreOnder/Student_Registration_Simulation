@@ -4,14 +4,9 @@ import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
-import edu.marmara.model.Grade;
-import edu.marmara.model.Instructor;
-import edu.marmara.model.Schedule;
 import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
 import edu.marmara.model.DayName;
-
-
 import static edu.marmara.model.DayName.FRI;
 import static edu.marmara.model.DayName.MON;
 import static edu.marmara.model.DayName.SAT;
@@ -19,7 +14,9 @@ import static edu.marmara.model.DayName.SUN;
 import static edu.marmara.model.DayName.THU;
 import static edu.marmara.model.DayName.TUE;
 import static edu.marmara.model.DayName.WED;
-
+import edu.marmara.model.Grade;
+import edu.marmara.model.Instructor;
+import edu.marmara.model.Schedule;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.InstructorRepository;
@@ -35,11 +32,11 @@ import edu.marmara.service.impl.StudentServiceImpl;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.Map;
-import java.util.ArrayList;
 
 public class View {
     public static StudentService studentService = new StudentServiceImpl();
@@ -358,13 +355,17 @@ public class View {
                 }
                 break;
             } else {
-                if (studentService.addCourseToSchedule(student, courseCode, availableCourses)) {
-                    System.out.println(courseCode + " successfully added to your schedule!");
+                Boolean isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
+
+                if (isAdded == null) {
+                    System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");
                 } else {
-                    System.out.println("You cannot add " + courseCode + " to your schedule!");
+                    if (isAdded) {
+                        System.out.println(courseCode + " successfully added to your schedule!");
+                    } else {
+                        System.out.println("You cannot add " + courseCode + " to your schedule!");
+                    }
                 }
-
-
             }
         }
         System.out.println("\nPress enter to go back");

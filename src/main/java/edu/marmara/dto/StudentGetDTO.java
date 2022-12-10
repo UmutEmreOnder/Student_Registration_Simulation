@@ -2,7 +2,6 @@ package edu.marmara.dto;
 
 
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class StudentGetDTO {

@@ -1,7 +1,5 @@
 package edu.marmara.config;
 
-import java.util.List;
-
 public class Config {
     private Double passProbability;
 
@@ -19,6 +17,7 @@ public class Config {
     public Config() {
 
     }
+
     public Double getPassProbability() {
         return passProbability;
     }
@@ -35,7 +34,11 @@ public class Config {
         this.gradeLuck = gradeLuck;
     }
 
-    public Double getGradeVariance() {return gradeVariance;}
+    public Double getGradeVariance() {
+        return gradeVariance;
+    }
 
-    public void setGradeVariance(Double gradeVariance) {this.gradeVariance = gradeVariance;}
+    public void setGradeVariance(Double gradeVariance) {
+        this.gradeVariance = gradeVariance;
+    }
 }

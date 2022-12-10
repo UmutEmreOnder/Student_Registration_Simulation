@@ -8,9 +8,7 @@ Iteration 1 is in a different branch, to switch that branch locally type
 It may not work due to your git version, if you don't have the latest version than type
 `git checkout -b iteration1 origin/iteration1`
 
-
 # Group Members
-
 
 | Name      	| Surname 	| Student ID 	|
 |-----------	|---------	|------------	|
@@ -20,5 +18,5 @@ It may not work due to your git version, if you don't have the latest version th
 | Fırat     	| Bakıcı  	| 150120029  	|
 | Eren      	| Kıyan   	| 150119779  	|
 | Berkay    	| Ağar    	| 150119804     |
-| Faruk     	|  Akdemir       	|  150119012          	|
+| Faruk     	|  Akdemir	|  150119012   	|
 

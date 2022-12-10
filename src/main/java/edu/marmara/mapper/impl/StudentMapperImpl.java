@@ -3,7 +3,6 @@ package edu.marmara.mapper.impl;
 import edu.marmara.dto.StudentGetDTO;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.model.Advisor;
-import edu.marmara.model.Course;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.Transcript;

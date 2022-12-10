@@ -1,21 +1,20 @@
 package edu.marmara.service.impl;
 
 
-import edu.marmara.model.Student;
 import edu.marmara.model.Course;
-import edu.marmara.model.School;
-import edu.marmara.model.WeeklyDate;
 import edu.marmara.model.Schedule;
+import edu.marmara.model.School;
+import edu.marmara.model.Student;
+import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.CourseRepository;
 import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import java.util.List;
-import java.util.Random;
 import java.util.Map;
+import java.util.Random;
 
 
 public class StudentServiceImpl implements StudentService {
@@ -50,19 +49,6 @@ public class StudentServiceImpl implements StudentService {
 
         return courses;
     }
-    public boolean isSlotEmpty(List<Course> schedule, Course course) {
-
-        for (Course c: schedule) {
-            for (WeeklyDate dt : course.getDates()) {
-                for (WeeklyDate dt2 : c.getDates()) {
-                    if (dt.getDayName().equals(dt2.getDayName()) && dt.getHours() == dt2.getHours()) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
 
     @Override
     public Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
@@ -73,7 +59,11 @@ public class StudentServiceImpl implements StudentService {
             student.getWeeklySchedule().setCourses(new ArrayList<>());
         }
 
-        if (course != null && availableCourses.contains(course) && isSlotEmpty(student.getWeeklySchedule().getCourses(), course)){
+        if (!isSlotEmpty(student.getWeeklySchedule().getCourses(), course)) {
+            return null;
+        }
+
+        if (course != null && availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
             return Boolean.TRUE;
         }
@@ -130,22 +120,35 @@ public class StudentServiceImpl implements StudentService {
         return gpa;
     }
 
-    private static Double getGrade(Double gradeLuck, Double gradeVariance) {
+    private Double getGrade(Double gradeLuck, Double gradeVariance) {
         Random fRandom = new Random();
         double grade = -1;
         while (grade < 0 || grade > 4.00)
             grade = gradeLuck * (4) + fRandom.nextGaussian() * gradeVariance;
 
-        if (grade < 0.25){
+        if (grade < 0.25) {
             return 0.5;
-        }
-        else if(Math.round(grade) < grade){
-            if(grade - Math.round(grade) > 0.25) return Math.round(grade) + 0.5;
-            else return (double)Math.round(grade);
-        }
-        else{
-            if(Math.round(grade) - grade > 0.25) return Math.round(grade) - 0.5;
-            else return (double)Math.round(grade);
+        } else if (Math.round(grade) < grade) {
+            if (grade - Math.round(grade) > 0.25) return Math.round(grade) + 0.5;
+            else return (double) Math.round(grade);
+        } else {
+            if (Math.round(grade) - grade > 0.25) return Math.round(grade) - 0.5;
+            else return (double) Math.round(grade);
         }
     }
+
+    private boolean isSlotEmpty(List<Course> schedule, Course course) {
+
+        for (Course c : schedule) {
+            for (WeeklyDate dt : course.getDates()) {
+                for (WeeklyDate dt2 : c.getDates()) {
+                    if (dt.getDayName().equals(dt2.getDayName()) && dt.getHours() == dt2.getHours()) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 }
