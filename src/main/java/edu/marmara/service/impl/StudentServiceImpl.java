@@ -1,11 +1,19 @@
 package edu.marmara.service.impl;
 
-import edu.marmara.model.*;
+import edu.marmara.model.School;
+import edu.marmara.model.Course;
+import edu.marmara.model.Student;
+import edu.marmara.model.Schedule;
 import edu.marmara.repository.CourseRepository;
 import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+import java.util.Map;
+
 
 public class StudentServiceImpl implements StudentService {
     private final School school = School.getInstance();
@@ -124,9 +132,4 @@ public class StudentServiceImpl implements StudentService {
             else return (double)Math.round(grade);
         }
     }
-    /*
-    private static double getGaussian(double aMean, double aVariance){
-        return aMean + fRandom.nextGaussian() * aVariance;
-    }
-     */
 }

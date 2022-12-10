@@ -4,9 +4,8 @@ import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
-import edu.marmara.model.Advisor;
-import edu.marmara.model.Course;
-import edu.marmara.model.DayName;
+import edu.marmara.model.*;
+
 import static edu.marmara.model.DayName.FRI;
 import static edu.marmara.model.DayName.MON;
 import static edu.marmara.model.DayName.SAT;
@@ -14,10 +13,7 @@ import static edu.marmara.model.DayName.SUN;
 import static edu.marmara.model.DayName.THU;
 import static edu.marmara.model.DayName.TUE;
 import static edu.marmara.model.DayName.WED;
-import edu.marmara.model.Instructor;
-import edu.marmara.model.Schedule;
-import edu.marmara.model.Student;
-import edu.marmara.model.WeeklyDate;
+
 import edu.marmara.repository.InstructorRepository;
 import edu.marmara.repository.StudentRepository;
 import edu.marmara.repository.impl.InstructorRepositoryImpl;
@@ -31,7 +27,11 @@ import edu.marmara.service.impl.StudentServiceImpl;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.Map;
+import java.util.ArrayList;
 
 public class View {
     public static StudentService studentService = new StudentServiceImpl();
@@ -199,24 +199,7 @@ public class View {
             System.out.println("Failed Credit = " + failedCredit);
             System.out.println("\nPassed Courses");
             for (Map.Entry<Course, Double> passedCourse : student.getTranscript().getPassedCourses().entrySet()) {
-                String letterNote = "";
-                if (passedCourse.getValue() == 4.0)
-                    letterNote = "AA";
-                else if (passedCourse.getValue() == 3.5)
-                    letterNote = "BA";
-                else if (passedCourse.getValue() >= 3.0)
-                    letterNote = "BB";
-                else if (passedCourse.getValue() >= 2.5)
-                    letterNote = "CB";
-                else if (passedCourse.getValue() >= 2.0)
-                    letterNote = "CC";
-                else if (passedCourse.getValue() >= 1.5)
-                    letterNote = "DC";
-                else if (passedCourse.getValue() >= 1.0)
-                    letterNote = "DD";
-                else if (passedCourse.getValue() == 0.5)
-                    letterNote = "FD";
-                System.out.println("| " + passedCourse.getKey().getCourseCode() + " | " + passedCourse.getKey().getCourseTitle() + " | " + letterNote);
+                System.out.println("| " + passedCourse.getKey().getCourseCode() + " | " + passedCourse.getKey().getCourseTitle() + " | " + Grade.valueOfGrade(passedCourse.getValue()));
             }
             System.out.println("\nFailed Courses");
             for (Course course : student.getTranscript().getFailedCourses()) {

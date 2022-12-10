@@ -10,9 +10,10 @@ public class Config {
     private Double gradeVariance;
 
 
-    public Config(Double passProbability, Double gradeLuck) {
+    public Config(Double passProbability, Double gradeLuck, Double gradeVariance) {
         this.passProbability = passProbability;
         this.gradeLuck = gradeLuck;
+        this.gradeVariance = gradeVariance;
     }
 
     public Config() {
