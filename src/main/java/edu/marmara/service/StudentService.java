@@ -11,4 +11,6 @@ public interface StudentService {
     Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses);
 
     void assignRandomCourses();
+
+    Double calculateGPA(Student student);
 }

@@ -1,17 +1,11 @@
 package edu.marmara.service.impl;
 
-import edu.marmara.model.Course;
-import edu.marmara.model.Schedule;
-import edu.marmara.model.School;
-import edu.marmara.model.Student;
+import edu.marmara.model.*;
 import edu.marmara.repository.CourseRepository;
 import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class StudentServiceImpl implements StudentService {
     private final School school = School.getInstance();
@@ -88,10 +82,12 @@ public class StudentServiceImpl implements StudentService {
                 if (getAvailableCourses(student).contains(course)) {
                     Double rand = rng.nextDouble();
                     if (rand <= passProbability) {
-                        Double credit = getCredit(gradeRange, gradeLuck);
-                        student.getTranscript().getPassedCourses().put(course, credit);
+                        Double grade = getGrade(gradeRange, gradeLuck);
+                        student.getTranscript().getPassedCourses().put(course, grade);
+                        student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                     } else {
                         student.getTranscript().getFailedCourses().add(course);
+                        student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
                     }
                 } else {
                     student.getTranscript().getNotTakenCourses().add(course);
@@ -100,7 +96,21 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
-    private static Double getCredit(List<Double> gradeRange, Double gradeLuck) {
+    @Override
+    public Double calculateGPA(Student student) {
+        HashMap<Course, Double> passedCourses = student.getTranscript().getPassedCourses();
+        double gpa = 0;
+
+        for (Map.Entry<Course, Double> entry : passedCourses.entrySet())
+            gpa += entry.getValue() * entry.getKey().getCourseCredit();
+
+        gpa = gpa / (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit());
+        student.getTranscript().setGpa(gpa);
+
+        return gpa;
+    }
+
+    private static Double getGrade(List<Double> gradeRange, Double gradeLuck) {
         int selectedIndex = -1;
 
         double[] weights = new double[gradeRange.size()];
