@@ -10,7 +10,8 @@
       "SUN 12",
       "WED 9"
     ],
-    "availableSeats": 60
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE1142",
@@ -25,7 +26,8 @@
       "TUE 12",
       "WED 13"
     ],
-    "availableSeats": 100
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "MATH1001",
@@ -37,7 +39,8 @@
       "THU 8",
       "THU 9"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "MATH1002",
@@ -51,7 +54,8 @@
       "MON 11",
       "MON 12"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE2025",
@@ -65,7 +69,8 @@
       "WED 16",
       "WED 17"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "MATH2055",
@@ -78,7 +83,8 @@
     "weeklyDate": [
       "MON 14"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE2046",
@@ -90,7 +96,8 @@
       "TUE 14",
       "TUE 15"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "STAT2053",
@@ -104,7 +111,8 @@
       "WED 15",
       "WED 16"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE3063",
@@ -116,7 +124,8 @@
       "SUN 9",
       "SUN 10"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE3055",
@@ -130,7 +139,8 @@
       "MON 9",
       "MON 10"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE3038",
@@ -144,7 +154,8 @@
       "SUN 14",
       "SUN 15"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE3044",
@@ -157,7 +168,8 @@
     "weeklyDate": [
       "SUN 10"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE4197",
@@ -169,7 +181,8 @@
       "SUN 11",
       "SUN 12"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE4074",
@@ -184,7 +197,8 @@
       "TUE 9",
       "TUE 10"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE4198",
@@ -198,7 +212,8 @@
       "SUN 16",
       "SUN 17"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   },
   {
     "courseCode": "CSE4082",
@@ -210,6 +225,7 @@
       "THU 17",
       "THU 18"
     ],
-    "availableSeats": 120
+    "maxSeats": 60,
+    "takenSeats": 0
   }
 ]

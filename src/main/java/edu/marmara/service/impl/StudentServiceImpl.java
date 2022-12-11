@@ -56,7 +56,6 @@ public class StudentServiceImpl implements StudentService {
         return courses;
     }
 
-    // todo: Return enum instead of Boolean to determine why the course cannot be added, instead of returning null.
     @Override
     public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
@@ -74,7 +73,7 @@ public class StudentServiceImpl implements StudentService {
             return AddCourseReturnType.SlotNotEmpty;
         }
 
-        if (course != null && availableCourses.contains(course)) {
+        if (availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
             course.setTakenSeats(course.getTakenSeats() + 1);
             return AddCourseReturnType.Success;
