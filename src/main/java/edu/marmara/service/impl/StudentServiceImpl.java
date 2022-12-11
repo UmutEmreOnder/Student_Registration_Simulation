@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -28,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
         outerloop:
         for (Course course : school.getCourses()) {
             if (!student.getTranscript().getPassedCourses().containsKey(course)) {
-                // Check prerequisites
+
                 if (course.getPrerequisites() != null) {
                     for (Course prerequisiteCourse : course.getPrerequisites()) {
                         if (!student.getTranscript().getPassedCourses().containsKey(prerequisiteCourse)) {
@@ -50,6 +51,7 @@ public class StudentServiceImpl implements StudentService {
         return courses;
     }
 
+    // todo: Return enum instead of Boolean to determine why the course cannot be added, instead of returning null.
     @Override
     public Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
@@ -65,6 +67,7 @@ public class StudentServiceImpl implements StudentService {
 
         if (course != null && availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
+            course.setTakenSeats(course.getTakenSeats() + 1);
             return Boolean.TRUE;
         }
 
@@ -112,13 +115,13 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
-    @Override
-    public Double calculateGPA(Student student) {
+    private Double calculateGPA(Student student) {
         HashMap<Course, Double> passedCourses = student.getTranscript().getPassedCourses();
         double gpa = 0;
 
-        for (Map.Entry<Course, Double> entry : passedCourses.entrySet())
+        for (Map.Entry<Course, Double> entry : passedCourses.entrySet()) {
             gpa += entry.getValue() * entry.getKey().getCourseCredit();
+        }
 
         gpa = gpa / (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit());
         student.getTranscript().setGpa(gpa);
@@ -129,17 +132,24 @@ public class StudentServiceImpl implements StudentService {
     private Double getGrade(Double gradeLuck, Double gradeVariance) {
         Random fRandom = new Random();
         double grade = -1;
-        while (grade < 0 || grade > 4.00)
+        while (grade < 0 || grade > 4.00) {
             grade = gradeLuck * (4) + fRandom.nextGaussian() * gradeVariance;
+        }
 
         if (grade < 0.25) {
             return 0.5;
         } else if (Math.round(grade) < grade) {
-            if (grade - Math.round(grade) > 0.25) return Math.round(grade) + 0.5;
-            else return (double) Math.round(grade);
+            if (grade - Math.round(grade) > 0.25)  {
+                return Math.round(grade) + 0.5;
+            } else {
+                return (double) Math.round(grade);
+            }
         } else {
-            if (Math.round(grade) - grade > 0.25) return Math.round(grade) - 0.5;
-            else return (double) Math.round(grade);
+            if (Math.round(grade) - grade > 0.25) {
+                return Math.round(grade) - 0.5;
+            } else {
+                return (double) Math.round(grade);
+            }
         }
     }
 
@@ -148,7 +158,7 @@ public class StudentServiceImpl implements StudentService {
         for (Course c : schedule) {
             for (WeeklyDate dt : course.getDates()) {
                 for (WeeklyDate dt2 : c.getDates()) {
-                    if (dt.getDayName().equals(dt2.getDayName()) && dt.getHours() == dt2.getHours()) {
+                    if (dt.getDayName().equals(dt2.getDayName()) && Objects.equals(dt.getHours(), dt2.getHours())) {
                         return false;
                     }
                 }

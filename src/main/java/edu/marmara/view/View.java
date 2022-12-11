@@ -200,7 +200,7 @@ public class View {
             System.out.println("\n\n\n\n\n");
             int passedCredit = student.getTranscript().getPassedCredit();
             int failedCredit = student.getTranscript().getFailedCredit();
-            double gpa = studentService.calculateGPA(student);
+            double gpa = student.getTranscript().getGpa();
 
             System.out.printf("\nGPA = %.2f\n", gpa);
             System.out.println("Passed Credit = " + passedCredit);
@@ -326,7 +326,7 @@ public class View {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
         List<Course> availableCourses = studentService.getAvailableCourses(student);
         for (Course course : availableCourses) {
-            System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
+            System.out.print("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
             for (int i = 0; i < course.getDates().size(); i++) {
                 String dayName = "";
                 switch (course.getDates().get(i).getDayName()) {

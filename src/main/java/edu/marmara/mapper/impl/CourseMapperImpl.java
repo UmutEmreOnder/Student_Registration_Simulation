@@ -31,6 +31,9 @@ public class CourseMapperImpl implements CourseMapper {
             course.getDates().add(weeklyDate);
         }
 
+        course.setMaxSeats(courseGetDTO.getAvailableSeats());
+        course.setTakenSeats(0);
+
         return course;
     }
 }
