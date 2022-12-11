@@ -29,6 +29,10 @@ public class StudentServiceImpl implements StudentService {
 
         outerloop:
         for (Course course : school.getCourses()) {
+            if (course.getGivenSemester() % 2 != student.getSemester() % 2) {
+                continue;
+            }
+
             if (!student.getTranscript().getPassedCourses().containsKey(course)) {
 
                 if (course.getPrerequisites() != null) {
