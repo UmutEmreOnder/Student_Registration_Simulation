@@ -1,6 +1,7 @@
 package edu.marmara.service.impl;
 
 
+import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Course;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
@@ -53,7 +54,7 @@ public class StudentServiceImpl implements StudentService {
 
     // todo: Return enum instead of Boolean to determine why the course cannot be added, instead of returning null.
     @Override
-    public Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
+    public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
         if (student.getWeeklySchedule() == null) {
@@ -61,17 +62,21 @@ public class StudentServiceImpl implements StudentService {
             student.getWeeklySchedule().setCourses(new ArrayList<>());
         }
 
+        if (course.getMaxSeats() <= course.getTakenSeats()) {
+            return AddCourseReturnType.NoAvailableSeats;
+        }
+
         if (!isSlotEmpty(student.getWeeklySchedule().getCourses(), course)) {
-            return null;
+            return AddCourseReturnType.SlotNotEmpty;
         }
 
         if (course != null && availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
             course.setTakenSeats(course.getTakenSeats() + 1);
-            return Boolean.TRUE;
+            return AddCourseReturnType.Success;
         }
 
-        return Boolean.FALSE;
+        return AddCourseReturnType.NotExistOnAvailableCourses;
     }
 
     @Override

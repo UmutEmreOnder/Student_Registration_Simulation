@@ -32,7 +32,7 @@ public class CourseMapperImpl implements CourseMapper {
         }
 
         course.setMaxSeats(courseGetDTO.getAvailableSeats());
-        course.setTakenSeats(0);
+        course.setTakenSeats(60);
 
         return course;
     }

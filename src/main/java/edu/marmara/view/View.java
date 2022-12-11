@@ -4,6 +4,7 @@ import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
+import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
 import edu.marmara.model.DayName;
@@ -359,19 +360,26 @@ public class View {
                 }
                 break;
             } else {
-                Boolean isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
+                AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
-                if (isAdded == null) {
+                if (isAdded == AddCourseReturnType.SlotNotEmpty) {
                     System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");
-                } else {
-                    if (isAdded) {
-                        System.out.println(courseCode + " successfully added to your schedule!");
-                    } else {
-                        System.out.println("You cannot add " + courseCode + " to your schedule!");
-                    }
+                }
+
+                if (isAdded == AddCourseReturnType.Success) {
+                    System.out.println(courseCode + " successfully added to your schedule!");
+                }
+
+                if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
+                    System.out.println("You cannot add " + courseCode + " to your schedule!");
+                }
+
+                if (isAdded == AddCourseReturnType.NoAvailableSeats) {
+                    System.out.println("You cannot add " + courseCode + " because there isn't any available seats!");
                 }
             }
         }
+
         System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
