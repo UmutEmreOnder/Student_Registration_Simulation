@@ -11,17 +11,19 @@ public class Transcript {
     private HashMap<Course, Double> passedCourses;
     private List<Course> failedCourses;
     private List<Course> notTakenCourses;
+    private List<Course> currentlyTakenCourses;
 
     public Transcript() {
     }
 
-    public Transcript(Double gpa, Integer passedCredit, Integer failedCredit, HashMap<Course, Double> passedCourses, List<Course> failedCourses, List<Course> notTakenCourses) {
+    public Transcript(Double gpa, Integer passedCredit, Integer failedCredit, HashMap<Course, Double> passedCourses, List<Course> failedCourses, List<Course> notTakenCourses, List<Course> currentlyTakenCourses) {
         this.gpa = gpa;
         this.passedCredit = passedCredit;
         this.failedCredit = failedCredit;
         this.passedCourses = passedCourses;
         this.failedCourses = failedCourses;
         this.notTakenCourses = notTakenCourses;
+        this.currentlyTakenCourses = currentlyTakenCourses;
     }
 
     @Override
@@ -82,5 +84,13 @@ public class Transcript {
 
     public void setNotTakenCourses(List<Course> notTakenCourses) {
         this.notTakenCourses = notTakenCourses;
+    }
+
+    public List<Course> getCurrentlyTakenCourses() {
+        return currentlyTakenCourses;
+    }
+
+    public void setCurrentlyTakenCourses(List<Course> currentlyTakenCourses) {
+        this.currentlyTakenCourses = currentlyTakenCourses;
     }
 }

@@ -213,6 +213,10 @@ public class View {
             for (Course course : student.getTranscript().getFailedCourses()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + "FF");
             }
+            System.out.println("\nCurrently Taken Courses");
+            for (Course course : student.getTranscript().getCurrentlyTakenCourses()) {
+                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+            }
             System.out.println("\nNot Taken Courses");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");

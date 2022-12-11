@@ -84,6 +84,10 @@ public class StudentServiceImpl implements StudentService {
         Random rng = new Random();
 
         for (Student student : listOfStudents) {
+            if (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit() > 0) {
+                continue;
+            }
+
             for (Course course : listOfCourses) {
                 if (course.getGivenSemester() > student.getSemester()) {
                     student.getTranscript().getNotTakenCourses().add(course);
@@ -103,6 +107,8 @@ public class StudentServiceImpl implements StudentService {
                     student.getTranscript().getNotTakenCourses().add(course);
                 }
             }
+
+            student.getTranscript().setGpa(calculateGPA(student));
         }
     }
 
