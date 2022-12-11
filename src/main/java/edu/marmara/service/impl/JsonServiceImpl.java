@@ -2,27 +2,35 @@ package edu.marmara.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import edu.marmara.config.Config;
 import edu.marmara.dto.CourseGetDTO;
 import edu.marmara.dto.InstructorGetDTO;
 import edu.marmara.dto.ScheduleGetDTO;
 import edu.marmara.dto.StudentGetDTO;
+import edu.marmara.dto.TranscriptGetDTO;
 import edu.marmara.mapper.CourseMapper;
 import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.ScheduleMapper;
 import edu.marmara.mapper.StudentMapper;
+import edu.marmara.mapper.TranscriptMapper;
 import edu.marmara.mapper.impl.CourseMapperImpl;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.ScheduleMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
+import edu.marmara.mapper.impl.TranscriptMapperImpl;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
+import edu.marmara.model.Transcript;
 import edu.marmara.service.CourseService;
 import edu.marmara.service.JsonService;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +40,7 @@ public class JsonServiceImpl implements JsonService {
     CourseMapper courseMapper = new CourseMapperImpl();
     InstructorMapper instructorMapper = new InstructorMapperImpl();
     CourseService courseService = new CourseServiceImpl();
+    TranscriptMapper transcriptMapper = new TranscriptMapperImpl();
 
     @Override
     public Student readStudentFromJson(String jsonFormattedStudentList) throws JsonProcessingException {
@@ -67,13 +76,6 @@ public class JsonServiceImpl implements JsonService {
     }
 
 
-    private ObjectMapper getObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.findAndRegisterModules();
-
-        return objectMapper;
-    }
-
     @Override
     public Schedule readScheduleFromJson(String jsonFormattedSchedule) throws JsonProcessingException {
         ObjectMapper objectMapper = getObjectMapper();
@@ -88,5 +90,55 @@ public class JsonServiceImpl implements JsonService {
         ObjectMapper objectMapper = getObjectMapper();
 
         return objectMapper.readValue(jsonFormattedConfig, Config.class);
+    }
+
+    @Override
+    public Transcript readTranscriptFromJson(String jsonFormattedTranscript) throws JsonProcessingException {
+        ObjectMapper objectMapper = getObjectMapper();
+
+        TranscriptGetDTO scheduleGetDTO = objectMapper.readValue(jsonFormattedTranscript, TranscriptGetDTO.class);
+
+        return transcriptMapper.mapTo(scheduleGetDTO);
+    }
+
+    @Override
+    public void end() throws IOException {
+        saveSchedules();
+        saveTranscripts();
+    }
+
+    private void saveTranscripts() throws IOException {
+        School school = School.getInstance();
+        ObjectMapper objectMapper = getObjectMapper();
+        ObjectWriter writer = objectMapper.writer().withDefaultPrettyPrinter();
+
+        for (Student student : school.getStudents()) {
+            if (student.getTranscript() != null) {
+                String path = "json/transcript/" + student.getStudentId() + ".json";
+                String json = writer.writeValueAsString(transcriptMapper.mapTo(student.getTranscript()));
+                Files.write(Path.of(path), json.getBytes());
+            }
+        }
+    }
+
+    private void saveSchedules() throws IOException {
+        School school = School.getInstance();
+        ObjectMapper objectMapper = getObjectMapper();
+        ObjectWriter writer = objectMapper.writer().withDefaultPrettyPrinter();
+
+        for (Student student : school.getStudents()) {
+            if (student.getWeeklySchedule() != null) {
+                String path = "json/schedule/" + student.getStudentId() + ".json";
+                String json = writer.writeValueAsString(scheduleMapper.mapTo(student.getWeeklySchedule()));
+                Files.write(Path.of(path), json.getBytes());
+            }
+        }
+    }
+
+    private ObjectMapper getObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules();
+
+        return objectMapper;
     }
 }

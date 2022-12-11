@@ -6,6 +6,7 @@ import edu.marmara.model.Instructor;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
+import edu.marmara.model.Transcript;
 import edu.marmara.service.JsonService;
 import edu.marmara.service.SchoolService;
 import edu.marmara.service.StudentService;
@@ -53,10 +54,16 @@ public class SchoolServiceImpl implements SchoolService {
                 Student student = jsonService.readStudentFromJson(content);
 
                 File scheduleFile = new File("json/schedule/" + student.getStudentId() + ".json");
+                File transcriptFile = new File("json/transcript/" + student.getStudentId() + ".json");
 
                 if (scheduleFile.exists()) {
                     Schedule schedule = jsonService.readScheduleFromJson(Files.readString(Path.of(scheduleFile.getPath())));
                     student.setWeeklySchedule(schedule);
+                }
+
+                if (transcriptFile.exists()) {
+                    Transcript transcript = jsonService.readTranscriptFromJson(Files.readString(Path.of(transcriptFile.getPath())));
+                    student.setTranscript(transcript);
                 }
 
                 school.getStudents().add(student);

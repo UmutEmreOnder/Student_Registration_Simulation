@@ -3,6 +3,7 @@ package edu.marmara.mapper.impl;
 import edu.marmara.dto.StudentGetDTO;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.model.Advisor;
+import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.Transcript;
@@ -35,6 +36,10 @@ public class StudentMapperImpl implements StudentMapper {
         student.getTranscript().setFailedCredit(0);
         student.getTranscript().setPassedCredit(0);
         student.getTranscript().setNotTakenCourses(new ArrayList<>());
+        student.getTranscript().setCurrentlyTakenCourses(new ArrayList<>());
+
+        student.setWeeklySchedule(new Schedule());
+        student.getWeeklySchedule().setCourses(new ArrayList<>());
 
 
         Advisor advisor = instructorRepository.findAdvisorByEmail(studentGetDTO.getAdvisor());

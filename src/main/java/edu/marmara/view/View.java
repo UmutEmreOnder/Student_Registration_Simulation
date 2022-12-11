@@ -4,6 +4,7 @@ import edu.marmara.mapper.InstructorMapper;
 import edu.marmara.mapper.StudentMapper;
 import edu.marmara.mapper.impl.InstructorMapperImpl;
 import edu.marmara.mapper.impl.StudentMapperImpl;
+import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
 import edu.marmara.model.DayName;
@@ -200,7 +201,7 @@ public class View {
             System.out.println("\n\n\n\n\n");
             int passedCredit = student.getTranscript().getPassedCredit();
             int failedCredit = student.getTranscript().getFailedCredit();
-            double gpa = studentService.calculateGPA(student);
+            double gpa = student.getTranscript().getGpa();
 
             System.out.printf("\nGPA = %.2f\n", gpa);
             System.out.println("Passed Credit = " + passedCredit);
@@ -212,6 +213,10 @@ public class View {
             System.out.println("\nFailed Courses");
             for (Course course : student.getTranscript().getFailedCourses()) {
                 System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + "FF");
+            }
+            System.out.println("\nCurrently Taken Courses");
+            for (Course course : student.getTranscript().getCurrentlyTakenCourses()) {
+                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
             System.out.println("\nNot Taken Courses");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
@@ -322,7 +327,7 @@ public class View {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
         List<Course> availableCourses = studentService.getAvailableCourses(student);
         for (Course course : availableCourses) {
-            System.out.print("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "|");
+            System.out.print("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
             for (int i = 0; i < course.getDates().size(); i++) {
                 String dayName = "";
                 switch (course.getDates().get(i).getDayName()) {
@@ -355,19 +360,26 @@ public class View {
                 }
                 break;
             } else {
-                Boolean isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
+                AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
-                if (isAdded == null) {
+                if (isAdded == AddCourseReturnType.SlotNotEmpty) {
                     System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");
-                } else {
-                    if (isAdded) {
-                        System.out.println(courseCode + " successfully added to your schedule!");
-                    } else {
-                        System.out.println("You cannot add " + courseCode + " to your schedule!");
-                    }
+                }
+
+                if (isAdded == AddCourseReturnType.Success) {
+                    System.out.println(courseCode + " successfully added to your schedule!");
+                }
+
+                if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
+                    System.out.println("You cannot add " + courseCode + " to your schedule!");
+                }
+
+                if (isAdded == AddCourseReturnType.NoAvailableSeats) {
+                    System.out.println("You cannot add " + courseCode + " because there isn't any available seats!");
                 }
             }
         }
+
         System.out.println("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();

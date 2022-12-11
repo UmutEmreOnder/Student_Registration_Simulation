@@ -9,17 +9,21 @@ public class CourseGetDTO {
     private Integer courseCredit;
     private List<String> prerequisites;
     private List<String> weeklyDate;
+    private Integer maxSeats;
+    private Integer takenSeats;
 
     public CourseGetDTO() {
     }
 
-    public CourseGetDTO(String courseCode, String courseTitle, Integer givenSemester, Integer courseCredit, List<String> prerequisites, List<String> weeklyDate) {
+    public CourseGetDTO(String courseCode, String courseTitle, Integer givenSemester, Integer courseCredit, List<String> prerequisites, List<String> weeklyDate, Integer maxSeats, Integer takenSeats) {
         this.courseCode = courseCode;
         this.courseTitle = courseTitle;
         this.givenSemester = givenSemester;
         this.courseCredit = courseCredit;
         this.prerequisites = prerequisites;
         this.weeklyDate = weeklyDate;
+        this.maxSeats = maxSeats;
+        this.takenSeats = takenSeats;
     }
 
     @Override
@@ -81,5 +85,20 @@ public class CourseGetDTO {
     public void setWeeklyDate(List<String> weeklyDate) {
         this.weeklyDate = weeklyDate;
     }
-// todo: Give WeeklyDate somehow
+
+    public Integer getMaxSeats() {
+        return maxSeats;
+    }
+
+    public void setMaxSeats(Integer maxSeats) {
+        this.maxSeats = maxSeats;
+    }
+
+    public Integer getTakenSeats() {
+        return takenSeats;
+    }
+
+    public void setTakenSeats(Integer takenSeats) {
+        this.takenSeats = takenSeats;
+    }
 }

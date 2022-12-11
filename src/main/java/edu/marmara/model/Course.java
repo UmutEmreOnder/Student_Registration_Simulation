@@ -12,12 +12,14 @@ public class Course {
     private List<Course> prerequisites;
     private Instructor instructor;
     private List<WeeklyDate> dates;
+    private Integer maxSeats;
+    private Integer takenSeats;
 
 
     public Course() {
     }
 
-    public Course(String courseCode, String courseTitle, Integer givenSemester, List<Student> enrolledStudents, Integer courseCredit, List<Course> prerequisites, Instructor instructor, List<WeeklyDate> dates) {
+    public Course(String courseCode, String courseTitle, Integer givenSemester, List<Student> enrolledStudents, Integer courseCredit, List<Course> prerequisites, Instructor instructor, List<WeeklyDate> dates, Integer maxSeats) {
         this.courseCode = courseCode;
         this.courseTitle = courseTitle;
         this.givenSemester = givenSemester;
@@ -26,6 +28,8 @@ public class Course {
         this.prerequisites = prerequisites;
         this.instructor = instructor;
         this.dates = dates;
+        this.maxSeats = maxSeats;
+        this.takenSeats = maxSeats;
     }
 
     @Override
@@ -104,5 +108,21 @@ public class Course {
 
     public void setDates(List<WeeklyDate> dates) {
         this.dates = dates;
+    }
+
+    public Integer getTakenSeats() {
+        return takenSeats;
+    }
+
+    public void setTakenSeats(Integer availableSeats) {
+        this.takenSeats = availableSeats;
+    }
+
+    public Integer getMaxSeats() {
+        return maxSeats;
+    }
+
+    public void setMaxSeats(Integer maxSeats) {
+        this.maxSeats = maxSeats;
     }
 }

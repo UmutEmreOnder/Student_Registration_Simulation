@@ -6,7 +6,9 @@ import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.Student;
+import edu.marmara.model.Transcript;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -20,4 +22,8 @@ public interface JsonService {
     Schedule readScheduleFromJson(String jsonFormattedSchedule) throws JsonProcessingException;
 
     Config readConfigFromJson(String jsonFormattedConfig) throws JsonProcessingException;
+
+    void end() throws IOException;
+
+    Transcript readTranscriptFromJson(String jsonFormattedTranscript) throws JsonProcessingException;
 }

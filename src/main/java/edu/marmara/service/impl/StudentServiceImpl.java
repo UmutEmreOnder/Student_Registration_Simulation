@@ -1,6 +1,7 @@
 package edu.marmara.service.impl;
 
 
+import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Course;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -27,8 +29,12 @@ public class StudentServiceImpl implements StudentService {
 
         outerloop:
         for (Course course : school.getCourses()) {
+            if (course.getGivenSemester() % 2 != student.getSemester() % 2) {
+                continue;
+            }
+
             if (!student.getTranscript().getPassedCourses().containsKey(course)) {
-                // Check prerequisites
+
                 if (course.getPrerequisites() != null) {
                     for (Course prerequisiteCourse : course.getPrerequisites()) {
                         if (!student.getTranscript().getPassedCourses().containsKey(prerequisiteCourse)) {
@@ -51,7 +57,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Boolean addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
+    public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
         if (student.getWeeklySchedule() == null) {
@@ -59,16 +65,21 @@ public class StudentServiceImpl implements StudentService {
             student.getWeeklySchedule().setCourses(new ArrayList<>());
         }
 
+        if (course.getMaxSeats() <= course.getTakenSeats()) {
+            return AddCourseReturnType.NoAvailableSeats;
+        }
+
         if (!isSlotEmpty(student.getWeeklySchedule().getCourses(), course)) {
-            return null;
+            return AddCourseReturnType.SlotNotEmpty;
         }
 
-        if (course != null && availableCourses.contains(course)) {
+        if (availableCourses.contains(course)) {
             student.getWeeklySchedule().getCourses().add(course);
-            return Boolean.TRUE;
+            course.setTakenSeats(course.getTakenSeats() + 1);
+            return AddCourseReturnType.Success;
         }
 
-        return Boolean.FALSE;
+        return AddCourseReturnType.NotExistOnAvailableCourses;
     }
 
     @Override
@@ -84,6 +95,10 @@ public class StudentServiceImpl implements StudentService {
         Random rng = new Random();
 
         for (Student student : listOfStudents) {
+            if (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit() > 0) {
+                continue;
+            }
+
             for (Course course : listOfCourses) {
                 if (course.getGivenSemester() > student.getSemester()) {
                     student.getTranscript().getNotTakenCourses().add(course);
@@ -103,16 +118,18 @@ public class StudentServiceImpl implements StudentService {
                     student.getTranscript().getNotTakenCourses().add(course);
                 }
             }
+
+            student.getTranscript().setGpa(calculateGPA(student));
         }
     }
 
-    @Override
-    public Double calculateGPA(Student student) {
+    private Double calculateGPA(Student student) {
         HashMap<Course, Double> passedCourses = student.getTranscript().getPassedCourses();
         double gpa = 0;
 
-        for (Map.Entry<Course, Double> entry : passedCourses.entrySet())
+        for (Map.Entry<Course, Double> entry : passedCourses.entrySet()) {
             gpa += entry.getValue() * entry.getKey().getCourseCredit();
+        }
 
         gpa = gpa / (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit());
         student.getTranscript().setGpa(gpa);
@@ -123,17 +140,24 @@ public class StudentServiceImpl implements StudentService {
     private Double getGrade(Double gradeLuck, Double gradeVariance) {
         Random fRandom = new Random();
         double grade = -1;
-        while (grade < 0 || grade > 4.00)
+        while (grade < 0 || grade > 4.00) {
             grade = gradeLuck * (4) + fRandom.nextGaussian() * gradeVariance;
+        }
 
         if (grade < 0.25) {
             return 0.5;
         } else if (Math.round(grade) < grade) {
-            if (grade - Math.round(grade) > 0.25) return Math.round(grade) + 0.5;
-            else return (double) Math.round(grade);
+            if (grade - Math.round(grade) > 0.25)  {
+                return Math.round(grade) + 0.5;
+            } else {
+                return (double) Math.round(grade);
+            }
         } else {
-            if (Math.round(grade) - grade > 0.25) return Math.round(grade) - 0.5;
-            else return (double) Math.round(grade);
+            if (Math.round(grade) - grade > 0.25) {
+                return Math.round(grade) - 0.5;
+            } else {
+                return (double) Math.round(grade);
+            }
         }
     }
 
@@ -142,7 +166,7 @@ public class StudentServiceImpl implements StudentService {
         for (Course c : schedule) {
             for (WeeklyDate dt : course.getDates()) {
                 for (WeeklyDate dt2 : c.getDates()) {
-                    if (dt.getDayName().equals(dt2.getDayName()) && dt.getHours() == dt2.getHours()) {
+                    if (dt.getDayName().equals(dt2.getDayName()) && Objects.equals(dt.getHours(), dt2.getHours())) {
                         return false;
                     }
                 }
