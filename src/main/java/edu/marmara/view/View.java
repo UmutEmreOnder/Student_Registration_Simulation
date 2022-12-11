@@ -89,6 +89,8 @@ public class View {
                         printAvailableCoursesStudent(student);
                         break;
                     }
+                    // todo: Ask for sendToReview
+                    // todo: Ask for remove any course from schedule if he/she wants
                     case 3: {
                         printSchedule(student.getWeeklySchedule());
                         break;
@@ -136,12 +138,16 @@ public class View {
                             studentID = scanner.nextLong();
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) {
-                                printSchedule(student.getWeeklySchedule());
+                                if (student.getWeeklySchedule().getSendToReview() != Boolean.TRUE) {
+                                    System.out.println("The student hasn't send his schedule to review yet!");
+                                } else {
+                                    printSchedule(student.getWeeklySchedule());
 
-                                System.out.println("\n1- Approve\n2- Deny");
+                                    System.out.println("\n1- Approve\n2- Deny");
 
-                                if (scanner.nextInt() == 1) {
-                                    advisorService.approveSchedule(student);
+                                    if (scanner.nextInt() == 1) {
+                                        advisorService.approveSchedule(student);
+                                    }
                                 }
                             } else
                                 System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");

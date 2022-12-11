@@ -56,14 +56,11 @@ public class StudentServiceImpl implements StudentService {
         return courses;
     }
 
+
+    // todo: You need to check if the schedule is approved or sendToReview, if it is don't allow to add (Create a new enum on AddCourseReturnType and return that e.g.: Locked)
     @Override
     public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
-
-        if (student.getWeeklySchedule() == null) {
-            student.setWeeklySchedule(new Schedule());
-            student.getWeeklySchedule().setCourses(new ArrayList<>());
-        }
 
         if (course.getMaxSeats() <= course.getTakenSeats()) {
             return AddCourseReturnType.NoAvailableSeats;
@@ -80,6 +77,12 @@ public class StudentServiceImpl implements StudentService {
         }
 
         return AddCourseReturnType.NotExistOnAvailableCourses;
+    }
+
+    // todo: Find course from courseCode, remove it from Schedule (if the Course is not in schedule, return false). You need to check if the schedule is approved or sendToReview (if it is, then don't let student to change it)
+    @Override
+    public Boolean removeCourseFromSchedule(String courseCode, Schedule schedule) {
+        return Boolean.TRUE;
     }
 
     @Override

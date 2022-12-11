@@ -5,12 +5,16 @@ import java.util.List;
 
 public class Schedule {
     private List<Course> courses;
+    private Boolean approved;
+    private Boolean sendToReview;
 
     public Schedule() {
     }
 
-    public Schedule(List<Course> courses) {
+    public Schedule(List<Course> courses, Boolean approved, Boolean sendToReview) {
         this.courses = courses;
+        this.approved = approved;
+        this.sendToReview = sendToReview;
     }
 
     @Override
@@ -18,6 +22,22 @@ public class Schedule {
         return "Schedule{" +
                 "courses=" + courses +
                 '}';
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
+
+    public Boolean getSendToReview() {
+        return sendToReview;
+    }
+
+    public void setSendToReview(Boolean sendToReview) {
+        this.sendToReview = sendToReview;
     }
 
     public List<Course> getCourses() {
