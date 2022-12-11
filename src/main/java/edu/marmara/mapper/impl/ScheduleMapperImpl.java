@@ -40,6 +40,9 @@ public class ScheduleMapperImpl implements ScheduleMapper {
             scheduleGetDTO.getCourses().add(course.getCourseCode());
         }
 
+        scheduleGetDTO.setApproved(schedule.getApproved());
+        scheduleGetDTO.setSendToReview(schedule.getSendToReview());
+
         return scheduleGetDTO;
     }
 }

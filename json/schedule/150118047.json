@@ -1,5 +1,5 @@
 {
-  "courses" : [ ],
-  "approved": false,
-  "sendToReview": false
+  "courses" : [ "CSE2046", "CSE4082" ],
+  "approved" : true,
+  "sendToReview" : true
 }
