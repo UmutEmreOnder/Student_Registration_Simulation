@@ -1,0 +1,11 @@
+{
+  "uuid" : "4745675c-0275-4a54-a27f-8109c02c5069",
+  "name" : "Cornie",
+  "surname" : "Skamal",
+  "email" : "cskamalat@webnode.com",
+  "birthDate" : 970012800000,
+  "studentId" : 150919434,
+  "yearEnrolled" : 2006,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 3
+}

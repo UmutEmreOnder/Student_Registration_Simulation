@@ -1,0 +1,11 @@
+{
+  "uuid" : "56d44f40-d4a3-44cf-9a18-d7de8aec9da9",
+  "name" : "Silvano",
+  "surname" : "Fenkel",
+  "email" : "sfenkel43@ycombinator.com",
+  "birthDate" : 999475200000,
+  "studentId" : 150852255,
+  "yearEnrolled" : 2019,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 3
+}
