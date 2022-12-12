@@ -19,7 +19,7 @@ public class InstructorRepositoryImpl implements InstructorRepository {
             school.setInstructors(new ArrayList<>());
         }
 
-        school.getInstructors().add(instructor);
+        school.addInstructor(instructor);
     }
 
     @Override

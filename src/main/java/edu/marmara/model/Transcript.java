@@ -25,7 +25,23 @@ public class Transcript {
         this.notTakenCourses = notTakenCourses;
         this.currentlyTakenCourses = currentlyTakenCourses;
     }
+    public void addCurrentlyTakenCourse(Course course){
+        this.currentlyTakenCourses.add(course);
+    }
+    public void addFailedCourse(Course course){
+        this.failedCourses.add(course);
+    }
+    public void addNotTakenCourse(Course course){
+        this.notTakenCourses.add(course);
+    }
+    public void removeFailedCourse(Course course){
 
+        this.failedCourses.remove(course);
+    }
+    public void removeNotTakenCourse(Course course){
+
+        this.notTakenCourses.remove(course);
+    }
     @Override
     public String toString() {
         return "Transcript{" +

@@ -29,9 +29,9 @@ public class AdvisorServiceImpl implements AdvisorService {
     @Override
     public void approveSchedule(Student student) {
         for (Course course : student.getWeeklySchedule().getCourses()) {
-            student.getTranscript().getNotTakenCourses().remove(course);
-            student.getTranscript().getFailedCourses().remove(course);
-            student.getTranscript().getCurrentlyTakenCourses().add(course);
+            student.removeToTranscriptNotTakenCourse(course);
+            student.removeToTranscriptFailedCourse(course);
+            student.addCurrentlyTakenCourseToTranscript(course);
         }
     }
 }

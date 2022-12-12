@@ -1,5 +1,7 @@
 package edu.marmara.dto;
 
+import edu.marmara.model.Course;
+
 import java.util.List;
 
 public class TranscriptGetDTO {
@@ -22,6 +24,18 @@ public class TranscriptGetDTO {
         this.failedCourses = failedCourses;
         this.notTakenCourses = notTakenCourses;
         this.currentlyTakenCourses = currentlyTakenCourses;
+    }
+    public void addCurrentlyTakenCourse(String course){
+        this.currentlyTakenCourses.add(course);
+    }
+    public void addFailedCourse(String course){
+        this.failedCourses.add(course);
+    }
+    public void addNotTakenCourse(String course){
+        this.notTakenCourses.add(course);
+    }
+    public void addPassesCourse(String course){
+        this.passedCourses.add(course);
     }
 
     public Double getGpa() {

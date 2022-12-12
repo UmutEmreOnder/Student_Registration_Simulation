@@ -20,6 +20,10 @@ public class ScheduleGetDTO {
         this.courses = courses;
     }
 
+    public void addCourse(String course){
+        this.courses.add(course);
+    }
+
     @Override
     public String toString() {
         return "ScheduleGetDTO{" +

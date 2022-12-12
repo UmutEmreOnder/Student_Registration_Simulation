@@ -32,6 +32,14 @@ public class Course {
         this.takenSeats = maxSeats;
     }
 
+    public void addWeeklyDate(WeeklyDate weeklyDate){
+        this.dates.add(weeklyDate);
+    }
+    public void addPrerequisite(Course course){
+        this.prerequisites.add(course);
+    }
+
+
     @Override
     public String toString() {
         return "Course{" +

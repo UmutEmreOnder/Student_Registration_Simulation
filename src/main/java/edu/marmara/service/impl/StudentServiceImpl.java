@@ -74,7 +74,7 @@ public class StudentServiceImpl implements StudentService {
         }
 
         if (availableCourses.contains(course)) {
-            student.getWeeklySchedule().getCourses().add(course);
+            student.addCourseToSchedule(course);
             course.setTakenSeats(course.getTakenSeats() + 1);
             return AddCourseReturnType.Success;
         }
@@ -101,7 +101,7 @@ public class StudentServiceImpl implements StudentService {
 
             for (Course course : listOfCourses) {
                 if (course.getGivenSemester() > student.getSemester()) {
-                    student.getTranscript().getNotTakenCourses().add(course);
+                    student.addNotTakenCourseToTranscript(course);
                     continue;
                 }
                 if (getAvailableCourses(student).contains(course)) {
@@ -111,11 +111,11 @@ public class StudentServiceImpl implements StudentService {
                         student.getTranscript().getPassedCourses().put(course, grade);
                         student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                     } else {
-                        student.getTranscript().getFailedCourses().add(course);
+                        student.addFailedCoursesToTranscript(course);
                         student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
                     }
                 } else {
-                    student.getTranscript().getNotTakenCourses().add(course);
+                    student.addNotTakenCourseToTranscript(course);
                 }
             }
 

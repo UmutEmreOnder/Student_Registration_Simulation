@@ -66,7 +66,7 @@ public class SchoolServiceImpl implements SchoolService {
                     student.setTranscript(transcript);
                 }
 
-                school.getStudents().add(student);
+                school.addStudent(student);
             }
         }
 
