@@ -32,15 +32,18 @@ public class Student extends Person {
         this.transcript.addFailedCourse(course);
     }
 
-    public void removeToTranscriptNotTakenCourse(Course course){
+    public void removeFromTranscriptNotTakenCourse(Course course){
         this.transcript.removeNotTakenCourse(course);
     }
-    public void removeToTranscriptFailedCourse(Course course){
+    public void removeFromTranscriptFailedCourse(Course course){
         this.transcript.removeFailedCourse(course);
     }
 
     public void addCourseToSchedule(Course course){
         this.weeklySchedule.addCourse(course);
+    }
+    public Double calculateGPA() {
+        return this.transcript.calculateGPA();
     }
 
     @Override

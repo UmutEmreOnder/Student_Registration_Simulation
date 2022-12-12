@@ -119,22 +119,8 @@ public class StudentServiceImpl implements StudentService {
                 }
             }
 
-            student.getTranscript().setGpa(calculateGPA(student));
+            student.calculateGPA();
         }
-    }
-
-    private Double calculateGPA(Student student) {
-        HashMap<Course, Double> passedCourses = student.getTranscript().getPassedCourses();
-        double gpa = 0;
-
-        for (Map.Entry<Course, Double> entry : passedCourses.entrySet()) {
-            gpa += entry.getValue() * entry.getKey().getCourseCredit();
-        }
-
-        gpa = gpa / (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit());
-        student.getTranscript().setGpa(gpa);
-
-        return gpa;
     }
 
     private Double getGrade(Double gradeLuck, Double gradeVariance) {
