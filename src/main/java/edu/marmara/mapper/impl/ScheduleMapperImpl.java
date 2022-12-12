@@ -18,7 +18,7 @@ public class ScheduleMapperImpl implements ScheduleMapper {
         schedule.setCourses(new ArrayList<>());
 
         for (String courseCode : scheduleGetDTO.getCourses()) {
-            schedule.getCourses().add(courseRepository.findByCourseCode(courseCode));
+            schedule.addCourse(courseRepository.findByCourseCode(courseCode));
         }
 
         return schedule;
@@ -34,7 +34,7 @@ public class ScheduleMapperImpl implements ScheduleMapper {
         }
 
         for (Course course : schedule.getCourses()) {
-            scheduleGetDTO.getCourses().add(course.getCourseCode());
+            scheduleGetDTO.addCourse(course.getCourseCode());
         }
 
         return scheduleGetDTO;

@@ -14,6 +14,13 @@ public class Instructor extends Person {
         this.presentedCourses = presentedCourses;
         this.weeklySchedule = weeklySchedule;
     }
+    public void addPresentedCourse(Course course){
+        this.presentedCourses.add(course);
+
+    }
+    public void addCourseToSchedule(Course course) {
+        this.weeklySchedule.addCourse(course);
+    }
 
     @Override
     public String toString() {

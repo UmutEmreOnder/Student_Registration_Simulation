@@ -74,7 +74,7 @@ public class StudentServiceImpl implements StudentService {
         }
 
         if (availableCourses.contains(course)) {
-            student.getWeeklySchedule().getCourses().add(course);
+            student.addCourseToSchedule(course);
             course.setTakenSeats(course.getTakenSeats() + 1);
             return AddCourseReturnType.Success;
         }
@@ -101,7 +101,7 @@ public class StudentServiceImpl implements StudentService {
 
             for (Course course : listOfCourses) {
                 if (course.getGivenSemester() > student.getSemester()) {
-                    student.getTranscript().getNotTakenCourses().add(course);
+                    student.addNotTakenCourseToTranscript(course);
                     continue;
                 }
                 if (getAvailableCourses(student).contains(course)) {
@@ -111,30 +111,16 @@ public class StudentServiceImpl implements StudentService {
                         student.getTranscript().getPassedCourses().put(course, grade);
                         student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                     } else {
-                        student.getTranscript().getFailedCourses().add(course);
+                        student.addFailedCoursesToTranscript(course);
                         student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
                     }
                 } else {
-                    student.getTranscript().getNotTakenCourses().add(course);
+                    student.addNotTakenCourseToTranscript(course);
                 }
             }
 
-            student.getTranscript().setGpa(calculateGPA(student));
+            student.calculateGPA();
         }
-    }
-
-    private Double calculateGPA(Student student) {
-        HashMap<Course, Double> passedCourses = student.getTranscript().getPassedCourses();
-        double gpa = 0;
-
-        for (Map.Entry<Course, Double> entry : passedCourses.entrySet()) {
-            gpa += entry.getValue() * entry.getKey().getCourseCredit();
-        }
-
-        gpa = gpa / (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit());
-        student.getTranscript().setGpa(gpa);
-
-        return gpa;
     }
 
     private Double getGrade(Double gradeLuck, Double gradeVariance) {

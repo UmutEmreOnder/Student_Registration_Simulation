@@ -19,7 +19,7 @@ public class StudentRepositoryImpl implements StudentRepository {
             school.setStudents(new ArrayList<>());
         }
 
-        school.getStudents().add(student);
+        school.addStudent(student);
     }
 
     @Override
