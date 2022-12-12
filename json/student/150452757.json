@@ -1,0 +1,11 @@
+{
+  "uuid" : "f873996a-4df2-473b-af65-2d655d4f702c",
+  "name" : "Patrizio",
+  "surname" : "Gamil",
+  "email" : "pgamil1f@abc.net.au",
+  "birthDate" : 986428800000,
+  "studentId" : 150452757,
+  "yearEnrolled" : 2001,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 5
+}

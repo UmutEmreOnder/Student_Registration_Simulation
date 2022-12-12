@@ -1,0 +1,11 @@
+{
+  "uuid" : "b36d46fc-80a8-45c1-a0af-fdc684cbf151",
+  "name" : "Codi",
+  "surname" : "Jentle",
+  "email" : "cjentlen@dell.com",
+  "birthDate" : 1050364800000,
+  "studentId" : 150224725,
+  "yearEnrolled" : 2011,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 5
+}

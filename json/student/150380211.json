@@ -1,0 +1,11 @@
+{
+  "uuid" : "b6731d3a-70fa-4586-8dce-ba3b0e12c205",
+  "name" : "Valli",
+  "surname" : "Rocks",
+  "email" : "vrocks5g@mozilla.com",
+  "birthDate" : 1008633600000,
+  "studentId" : 150380211,
+  "yearEnrolled" : 2018,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 3
+}

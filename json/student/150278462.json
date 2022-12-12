@@ -1,0 +1,11 @@
+{
+  "uuid" : "72e56af9-8219-4a3c-aad0-168b3aa5bcdf",
+  "name" : "Fanni",
+  "surname" : "Domek",
+  "email" : "fdomek1c@java.com",
+  "birthDate" : 926553600000,
+  "studentId" : 150278462,
+  "yearEnrolled" : 2021,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 1
+}
