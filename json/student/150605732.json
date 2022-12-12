@@ -1,0 +1,11 @@
+{
+  "uuid" : "f0d67742-0c12-4162-845f-a3e6ca7a8093",
+  "name" : "Ciro",
+  "surname" : "Elcox",
+  "email" : "celcox2l@trellian.com",
+  "birthDate" : 1050624000000,
+  "studentId" : 150605732,
+  "yearEnrolled" : 2006,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 4
+}

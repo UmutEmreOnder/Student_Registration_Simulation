@@ -1,0 +1,11 @@
+{
+  "uuid" : "84c91f0f-1371-4fec-b0cf-93bb512ae237",
+  "name" : "Alexei",
+  "surname" : "Hubbart",
+  "email" : "ahubbart3k@oracle.com",
+  "birthDate" : 902188800000,
+  "studentId" : 150778643,
+  "yearEnrolled" : 2011,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 1
+}

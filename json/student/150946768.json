@@ -1,0 +1,11 @@
+{
+  "uuid" : "aee1f5d8-4256-492f-814f-12934810ea07",
+  "name" : "Morse",
+  "surname" : "Roe",
+  "email" : "mroe3j@virginia.edu",
+  "birthDate" : 1050883200000,
+  "studentId" : 150946768,
+  "yearEnrolled" : 2014,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 7
+}

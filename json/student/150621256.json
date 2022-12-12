@@ -1,0 +1,11 @@
+{
+  "uuid" : "bfcc3616-6d4d-43d6-8589-c7710b796fd4",
+  "name" : "Noach",
+  "surname" : "Tarbath",
+  "email" : "ntarbathc@bing.com",
+  "birthDate" : 1070064000000,
+  "studentId" : 150621256,
+  "yearEnrolled" : 2006,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 5
+}

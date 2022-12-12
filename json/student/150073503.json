@@ -1,0 +1,11 @@
+{
+  "uuid" : "9043b9c8-d95d-44a7-9057-8f94bce725e5",
+  "name" : "Daisy",
+  "surname" : "Low",
+  "email" : "dlow66@amazon.co.uk",
+  "birthDate" : 865728000000,
+  "studentId" : 150073503,
+  "yearEnrolled" : 2001,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 2
+}

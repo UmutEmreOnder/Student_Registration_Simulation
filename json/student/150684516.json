@@ -1,0 +1,11 @@
+{
+  "uuid" : "c0576aa8-a898-41c5-a18e-74864ad3f7a3",
+  "name" : "Jeffrey",
+  "surname" : "Loud",
+  "email" : "jloud9m@google.pl",
+  "birthDate" : 898041600000,
+  "studentId" : 150684516,
+  "yearEnrolled" : 2010,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 3
+}

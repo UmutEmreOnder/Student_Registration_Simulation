@@ -1,0 +1,11 @@
+{
+  "uuid" : "3ebacaf7-9920-44c6-a959-7ba48c085cff",
+  "name" : "Elena",
+  "surname" : "Prier",
+  "email" : "eprierf@sphinn.com",
+  "birthDate" : 1026864000000,
+  "studentId" : 150884439,
+  "yearEnrolled" : 2003,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 2
+}

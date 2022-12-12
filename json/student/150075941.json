@@ -1,0 +1,11 @@
+{
+  "uuid" : "65f0d204-ae64-45a7-8693-a5de68f33665",
+  "name" : "Costa",
+  "surname" : "Hailes",
+  "email" : "chailes54@phoca.cz",
+  "birthDate" : 1103846400000,
+  "studentId" : 150075941,
+  "yearEnrolled" : 2019,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 5
+}

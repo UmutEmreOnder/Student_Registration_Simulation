@@ -1,0 +1,11 @@
+{
+  "uuid" : "a4bad57e-0013-4c78-bc46-53a3ca9a5de1",
+  "name" : "Alfie",
+  "surname" : "Sharrem",
+  "email" : "asharremac@csmonitor.com",
+  "birthDate" : 928972800000,
+  "studentId" : 150701125,
+  "yearEnrolled" : 2022,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 2
+}
