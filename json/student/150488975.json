@@ -1,0 +1,11 @@
+{
+  "uuid" : "8d991198-040b-46e6-a424-3912ce35b08e",
+  "name" : "Nestor",
+  "surname" : "MacCathay",
+  "email" : "nmaccathay8v@chronoengine.com",
+  "birthDate" : 1004313600000,
+  "studentId" : 150488975,
+  "yearEnrolled" : 2010,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 5
+}

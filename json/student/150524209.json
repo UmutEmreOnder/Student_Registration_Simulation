@@ -1,0 +1,11 @@
+{
+  "uuid" : "988a72b4-79f8-4a54-aaa3-b64aac2dc69c",
+  "name" : "Elise",
+  "surname" : "Santarelli",
+  "email" : "esantarelli3e@chronoengine.com",
+  "birthDate" : 1059955200000,
+  "studentId" : 150524209,
+  "yearEnrolled" : 2006,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 3
+}

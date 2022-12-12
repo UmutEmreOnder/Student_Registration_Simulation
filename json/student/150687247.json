@@ -1,0 +1,11 @@
+{
+  "uuid" : "b3b2d805-191a-4244-9b9e-fa9044347fb8",
+  "name" : "Ana",
+  "surname" : "Desvignes",
+  "email" : "adesvignes7a@pen.io",
+  "birthDate" : 980985600000,
+  "studentId" : 150687247,
+  "yearEnrolled" : 2022,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 1
+}
