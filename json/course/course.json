@@ -1,9 +1,9 @@
 [
   {
     "courseCode": "CSE1100",
-    "courseTitle": "Computer Programming 1",
+    "courseTitle": "Introduction to Computer Engineering",
     "givenSemester": 1,
-    "courseCredit": 6,
+    "courseCredit": 2,
     "prerequisites": [],
     "weeklyDate": [
       "SUN 11",
@@ -13,23 +13,88 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-  {
-    "courseCode": "CSE1142",
-    "courseTitle": "Computer Programming 2",
-    "givenSemester": 2,
-    "courseCredit": 7,
-    "prerequisites": [
-      "CSE1100"
-    ],
+{
+    "courseCode": "CSE1141",
+    "courseTitle": "Computer Programming 1",
+    "givenSemester": 1,
+    "courseCredit": 6,
+    "prerequisites": [],
     "weeklyDate": [
-      "TUE 11",
-      "TUE 12",
-      "WED 13"
+      "SAT 11",
+      "SAT 12",
+      "WED 12"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "CHEM1007",
+    "courseTitle": "Basic Chemistry",
+    "givenSemester": 1,
+    "courseCredit": 6,
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 11",
+      "FRI 12",
+      "WED 14"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "PHYS1101",
+    "courseTitle": "Physics 1",
+    "givenSemester": 1,
+    "courseCredit": 4,
+    "prerequisites": [],
+    "weeklyDate": [
+      "MON 11",
+      "MON 12",
+      "THU 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
   {
+    "courseCode": "PHYS1103",
+    "courseTitle": "Physics Lab 1",
+    "givenSemester": 1,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "THU 11",
+      "THU 12"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "ATA121",
+    "courseTitle": "Ataturk’s Prin. & History 1",
+    "givenSemester": 1,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 17",
+      "SUN 18"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "TRD121",
+    "courseTitle": "Turkish Language 1",
+    "givenSemester": 1,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 19",
+      "SUN 20"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },  
+{
     "courseCode": "MATH1001",
     "courseTitle": "Calculus 1",
     "givenSemester": 1,
@@ -42,14 +107,76 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
+
+
+
+
+
+
+
+  {
+    "courseCode": "CSE1142",
+    "courseTitle": "Computer Programming 2",
+    "givenSemester": 2,
+    "courseCredit": 7,
+    "prerequisites": [
+      "CSE1141"
+    ],
+    "weeklyDate": [
+      "TUE 12",
+      "TUE 13",
+      "WED 13"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "MATH2056",
+    "courseTitle": "Linear Algebra",
+    "givenSemester": 2,
+    "courseCredit": 4,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 11",
+      "SUN 12",
+      "WED 9"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "PHYS1102",
+    "courseTitle": "Physics 2",
+    "givenSemester": 2,
+    "courseCredit": 4,
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 11",
+      "FRI 12",
+      "TUE 9"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "PHYS1104",
+    "courseTitle": "Physics Lab 2",
+    "givenSemester": 2,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "TUE 10",
+      "TUE 11"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
   {
     "courseCode": "MATH1002",
     "courseTitle": "Calculus 2",
     "givenSemester": 2,
     "courseCredit": 6,
-    "prerequisites": [
-      "MATH1001"
-    ],
+    "prerequisites": [],
     "weeklyDate": [
       "MON 11",
       "MON 12"
@@ -57,6 +184,57 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
+  {
+    "courseCode": "ATA122",
+    "courseTitle": "Ataturk’s Prin. & History 2",
+    "givenSemester": 2,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 20",
+      "SUN 21"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "TRD122",
+    "courseTitle": "Turkish Language 2",
+    "givenSemester": 2,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SAT 21",
+      "SAT 20"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  }, 
+{
+    "courseCode": "NTE1",
+    "courseTitle": "Nontechnical Elective",
+    "givenSemester": 2,
+    "courseCredit": 3,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 14",
+      "SUN 15"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  }, 
+
+
+
+
+
+
+
+
+
+
+
+  
   {
     "courseCode": "CSE2025",
     "courseTitle": "Data Structures",
@@ -78,20 +256,91 @@
     "givenSemester": 3,
     "courseCredit": 4,
     "prerequisites": [
-      "MATH1002"
+      "MATH1001"
     ],
     "weeklyDate": [
-      "MON 14"
+      "MON 15",
+	"MON 16"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "CSE2023",
+    "courseTitle": "Discrete Comp. Structures",
+    "givenSemester": 3,
+    "courseCredit": 6,
+    "prerequisites": [],
+    "weeklyDate": [
+      "THU 13",
+      "THU 14"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
   {
+    "courseCode": "EE2031",
+    "courseTitle": "Electric Circuits",
+    "givenSemester": 3,
+    "courseCredit": 5,
+    "prerequisites": [
+	"PHYS1102"
+],
+    "weeklyDate": [
+      "MON 13".
+	"MON 14"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "ECON2003",
+    "courseTitle": "Introduction To Economics",
+    "givenSemester": 3,
+    "courseCredit": 4,
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 16",
+      "FRI 17"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "NTE2",
+    "courseTitle": "Nontechnical Elective",
+    "givenSemester": 3,
+    "courseCredit": 3
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 13",
+	"FRI 14"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
     "courseCode": "CSE2046",
     "courseTitle": "Analysis of Algorithms",
     "givenSemester": 4,
     "courseCredit": 6,
-    "prerequisites": [],
+    "prerequisites": [
+	"CSE2025"
+],
     "weeklyDate": [
       "TUE 14",
       "TUE 15"
@@ -108,21 +357,93 @@
     "weeklyDate": [
       "TUE 13",
       "TUE 14",
-      "WED 15",
-      "WED 16"
+      "WED 15"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "MATH2059"
+    "courseTitle": "Numerical Method"
+    "givenSemester": 4,
+    "courseCredit": 4,
+    "prerequisites": [
+	"MATH1001"
+],
+    "weeklyDate": [
+      "THU 14",
+      "THU 15"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
   {
+    "courseCode": "ECON2004",
+    "courseTitle": "Engineering Economy",
+    "givenSemester": 4,
+    "courseCredit": 4,
+    "prerequisites": [],
+    "weeklyDate": [
+      "MON 13",
+      "MON 14"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "EE2032",
+    "courseTitle": "Electronics",
+    "givenSemester": 4,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "MON 10",
+      "MON 11"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "CSE2138",
+    "courseTitle": "System Programming",
+    "givenSemester": 4,
+    "courseCredit": 7,
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 13",
+      "FRI 14",
+      "SAT 15",
+      "SAT 16"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
     "courseCode": "CSE3063",
     "courseTitle": "Object-Oriented Software Design",
     "givenSemester": 5,
     "courseCredit": 5,
-    "prerequisites": [],
+    "prerequisites": [
+	"CSE1142"
+],
     "weeklyDate": [
       "SUN 9",
-      "SUN 10"
+      "SUN 10",
+	"FRI 15"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -142,17 +463,88 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
+{
+    "courseCode": "CSE3033",
+    "courseTitle": "Operating System",
+    "givenSemester": 5,
+    "courseCredit": 7,
+    "prerequisites": [
+	"CSE2025"
+],
+    "weeklyDate": [
+      "SAT 9",
+      "SAT 10",
+	"MON 12"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "CSE3015",
+    "courseTitle": "Digital Logic Design",
+    "givenSemester": 5,
+    "courseCredit": 7,
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 9",
+      "FRI 10",
+	"MON 11"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "IE3081",
+    "courseTitle": "Modeling and Disc. Simulation",
+    "givenSemester": 5,
+    "courseCredit": 4,
+    "prerequisites": [
+	"STAT2053"
+],
+    "weeklyDate": [
+      "THU 9",
+      "THU 10"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  
+
+
+
+
+
+
+
   {
     "courseCode": "CSE3038",
     "courseTitle": "Computer Organization",
     "givenSemester": 6,
     "courseCredit": 7,
     "prerequisites": [
-      "CSE3055"
+      "CSE2138",
+	"CSE3015"
     ],
     "weeklyDate": [
       "SUN 14",
-      "SUN 15"
+      "SUN 15",
+	"FRI 9"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "CSE3048",
+    "courseTitle": "Int. To Signals And Systems",
+    "givenSemester": 6,
+    "courseCredit": 5,
+    "prerequisites": [
+      "MATH2055"
+    ],
+    "weeklyDate": [
+      "SUN 12",
+      "SUN 13",
+	"FRI 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -163,14 +555,55 @@
     "givenSemester": 6,
     "courseCredit": 7,
     "prerequisites": [
-      "CSE3063"
+      "CSE3055"
     ],
     "weeklyDate": [
-      "SUN 10"
+      "MON 10",
+	"MON 11",
+	"THU 9",
+	"THU 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
+{
+    "courseCode": "CSE3064",
+    "courseTitle": "Formal Language & Auto. Theory",
+    "givenSemester": 6,
+    "courseCredit": 6,
+    "prerequisites": [
+      "CSE2023"
+    ],
+    "weeklyDate": [
+      "TUE 14",
+      "TUE 15"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "IE3035",
+    "courseTitle": "Operation Research",
+    "givenSemester": 6,
+    "courseCredit": 5,
+    "prerequisites": [
+      "MATH2056"
+    ],
+    "weeklyDate": [
+      "FRI 14",
+      "FRI 15"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+
+
+
+
+
+
+
+
   {
     "courseCode": "CSE4197",
     "courseTitle": "Engineering Project 1",
@@ -178,8 +611,9 @@
     "courseCredit": 4,
     "prerequisites": [],
     "weeklyDate": [
-      "SUN 11",
-      "SUN 12"
+      "MON 11",
+      "MON 12",
+	"WED 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -189,17 +623,94 @@
     "courseTitle": "Computer Networks",
     "givenSemester": 7,
     "courseCredit": 4,
-    "prerequisites": [
-      "CSE3038"
-    ],
+    "prerequisites": [],
     "weeklyDate": [
-      "MON 11",
+      "MON 10",
       "TUE 9",
       "TUE 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
+{
+    "courseCode": "TE1",
+    "courseTitle": "Technical Elective",
+    "givenSemester": 7,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "WED 11",
+      "WED 12"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "TE2",
+    "courseTitle": "Technical Elective",
+    "givenSemester": 7,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "TUE 11",
+      "TUE 12",
+      "FRI 10"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "CSE4117",
+    "courseTitle": "Microprocessors",
+    "givenSemester": 7,
+    "courseCredit": 6,
+    "prerequisites": [
+	"CSE3038"
+],
+    "weeklyDate": [
+      "FRI 11",
+      "FRI 12"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  {
+    "courseCode": "ISG121",
+    "courseTitle": "Work Safety 1",
+    "givenSemester": 7,
+    "courseCredit": 2,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SAT 11",
+      "SAT 12",
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "UE",
+    "courseTitle": "University Elective",
+    "givenSemester": 7,
+    "courseCredit": 3,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SUN 15",
+      "SUN 16"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  
+
+
+
+
+
+
+
+
+
+
   {
     "courseCode": "CSE4198",
     "courseTitle": "Engineering Project 2",
@@ -216,8 +727,21 @@
     "takenSeats": 0
   },
   {
-    "courseCode": "CSE4082",
-    "courseTitle": "Artificial Intelligence",
+    "courseCode": "TE3",
+    "courseTitle": "Technical Elective",
+    "givenSemester": 8,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "THU 15",
+      "THU 16"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "TE4",
+    "courseTitle": "Technical Elective",
     "givenSemester": 8,
     "courseCredit": 5,
     "prerequisites": [],
@@ -227,5 +751,57 @@
     ],
     "maxSeats": 60,
     "takenSeats": 0
-  }
-]
+  },
+{
+    "courseCode": "TE5",
+    "courseTitle": "Technical Elective",
+    "givenSemester": 8,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "MON 17",
+      "MON 18"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "FTE",
+    "courseTitle": "Faculty Technical Elective",
+    "givenSemester": 8,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "TUE 17",
+      "TUE 18"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "ISG122",
+    "courseTitle": "Work Safety 2",
+    "givenSemester": 8,
+    "courseCredit": 5,
+    "prerequisites": [],
+    "weeklyDate": [
+      "SAT 14",
+      "SAT 15"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+{
+    "courseCode": "NTE3",
+    "courseTitle": "Nontechnical Elective",
+    "givenSemester": 8,
+    "courseCredit": 3,
+    "prerequisites": [],
+    "weeklyDate": [
+      "FRI 9",
+      "FRI 10"
+    ],
+    "maxSeats": 60,
+    "takenSeats": 0
+  },
+  ]
