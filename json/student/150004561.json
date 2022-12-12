@@ -1,0 +1,11 @@
+{
+  "uuid" : "63ace592-d605-46a2-848a-9edf40f8df3a",
+  "name" : "Benoit",
+  "surname" : "Bahlmann",
+  "email" : "bbahlmann9y@printfriendly.com",
+  "birthDate" : 946771200000,
+  "studentId" : 150004561,
+  "yearEnrolled" : 2005,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 4
+}

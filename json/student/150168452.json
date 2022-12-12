@@ -1,0 +1,11 @@
+{
+  "uuid" : "0282a919-63e0-4f80-b096-17d15b06ed7c",
+  "name" : "Vladamir",
+  "surname" : "Priestner",
+  "email" : "vpriestner9l@harvard.edu",
+  "birthDate" : 1073347200000,
+  "studentId" : 150168452,
+  "yearEnrolled" : 2013,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 4
+}

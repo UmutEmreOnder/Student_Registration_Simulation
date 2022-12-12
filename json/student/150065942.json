@@ -1,0 +1,11 @@
+{
+  "uuid" : "5ba53fff-8dd3-4c37-82da-46462c981146",
+  "name" : "Merv",
+  "surname" : "Tidbald",
+  "email" : "mtidbald2j@theatlantic.com",
+  "birthDate" : 922924800000,
+  "studentId" : 150065942,
+  "yearEnrolled" : 2005,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 5
+}

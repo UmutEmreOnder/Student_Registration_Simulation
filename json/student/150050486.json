@@ -1,0 +1,11 @@
+{
+  "uuid" : "410d4e3f-4f19-410b-81b5-3b71ed3efde9",
+  "name" : "Sanders",
+  "surname" : "Rampling",
+  "email" : "srampling15@cmu.edu",
+  "birthDate" : 949795200000,
+  "studentId" : 150050486,
+  "yearEnrolled" : 2000,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 8
+}

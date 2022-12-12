@@ -1,0 +1,11 @@
+{
+  "uuid" : "ae90c637-c027-41c9-a7f0-cfe47c494e8a",
+  "name" : "Kerr",
+  "surname" : "Cornthwaite",
+  "email" : "kcornthwaite4j@php.net",
+  "birthDate" : 949622400000,
+  "studentId" : 150145412,
+  "yearEnrolled" : 2017,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 4
+}
