@@ -17,7 +17,9 @@ import static edu.marmara.model.DayName.TUE;
 import static edu.marmara.model.DayName.WED;
 import edu.marmara.model.Grade;
 import edu.marmara.model.Instructor;
+import edu.marmara.model.RemoveCourseReturnType;
 import edu.marmara.model.Schedule;
+import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.InstructorRepository;
@@ -48,6 +50,8 @@ public class View {
     public static SchoolService schoolService = new SchoolServiceImpl();
     public static AdvisorService advisorService = new AdvisorServiceImpl();
     public static Scanner scanner = new Scanner(System.in);
+
+    private static final School school = School.getInstance();
 
     private View() {
     }
@@ -352,9 +356,12 @@ public class View {
             System.out.println();
         }
         while (true) {
-            System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
+            System.out.print("\nEnter the course code to add it to your schedule" +
+                    "\nType 8 and then enter the course code to remove course from your schedule" +
+                    "\nType 9 to send this draft schedule to review" +
+                    "\nType 0 to exit and view your schedule: ");
             String courseCode = scanner.next();
-            if (Objects.equals(courseCode, "9")) {
+            if (Objects.equals(courseCode, "0")) {
                 System.out.print("\n\n\n\n\nYour schedule");
                 if (student.getWeeklySchedule() != null) {
                     System.out.println();
@@ -365,8 +372,53 @@ public class View {
                     System.out.print(" is empty.");
                 }
                 break;
-            } else {
+            }
+            else if (Objects.equals(courseCode, "8")){
+                 System.out.println("Enter the course code to remove from your schedule:");
+                 String courseCode2 = scanner.next();
+                 RemoveCourseReturnType isRemoved = studentService.removeCourseFromSchedule(student, courseCode2);
+
+                 if (isRemoved == RemoveCourseReturnType.Locked){
+                     System.out.println("You can't remove any course since your schedule is already been approved!");
+                 }
+
+                 if (isRemoved == RemoveCourseReturnType.WaitingScheduleReview) {
+                     System.out.println("Your schedule is under review by your advisor right now!");
+                 }
+
+                 if (isRemoved == RemoveCourseReturnType.NotExist) {
+                     System.out.println("You cannot remove " + courseCode + " from your schedule!");
+                 }
+            }
+            else if (Objects.equals(courseCode, "9")){
+                if (student.getWeeklySchedule().getApproved() == Boolean.FALSE)
+                {
+                    if (student.getWeeklySchedule().getSendToReview() == Boolean.TRUE){
+                        System.out.println("You've already sent your draft schedule to your advisor!");
+                    }else {
+                        int totalCredit = 0;
+                        for (Course course : student.getWeeklySchedule().getCourses()) totalCredit += course.getCourseCredit();
+                        if (totalCredit < school.getConfig().getMinimumCreditReq()){
+                            System.out.println("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq());
+                        } else {
+                            student.getWeeklySchedule().setSendToReview(Boolean.TRUE);
+                            System.out.println("You've successfully sent your schedule to your advisor " + student.getAdvisor().getName() + "to review!");
+                        }
+                    }
+                } else {
+                    System.out.println("You can't modify your schedule since it's already has been approved by your advisor.");
+                }
+            }
+            else {
                 AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
+
+                if (isAdded == AddCourseReturnType.Locked){
+                    System.out.println("You can't add any course right now since your schedule is approved!");
+                }
+
+                if (isAdded == AddCourseReturnType.WaitingScheduleReview) {
+                    System.out.println("Your schedule is under review by your advisor right now!");
+                }
 
                 if (isAdded == AddCourseReturnType.SlotNotEmpty) {
                     System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");

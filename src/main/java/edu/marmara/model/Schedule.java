@@ -27,6 +27,8 @@ public class Schedule {
         this.courses.add(course);
     }
 
+    public void removeCourse(Course course) {this.courses.remove(course);}
+
     public Boolean getApproved() {
         return approved;
     }

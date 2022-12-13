@@ -54,6 +54,9 @@ public class Course {
                 '}';
     }
 
+    public void increaseTakenSeat(){ this.takenSeats++; }
+    public void decreaseTakenSeat(){ this.takenSeats--; }
+
     public String getCourseCode() {
         return courseCode;
     }

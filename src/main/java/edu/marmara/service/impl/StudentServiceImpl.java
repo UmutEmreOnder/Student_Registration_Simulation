@@ -3,7 +3,7 @@ package edu.marmara.service.impl;
 
 import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Course;
-import edu.marmara.model.Schedule;
+import edu.marmara.model.RemoveCourseReturnType;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
@@ -12,9 +12,7 @@ import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
@@ -57,10 +55,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
-    // todo: You need to check if the schedule is approved or sendToReview, if it is don't allow to add (Create a new enum on AddCourseReturnType and return that e.g.: Locked)
     @Override
     public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
+
+        if(student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
+            return AddCourseReturnType.Locked;
+        }
+
+        if (student.getWeeklySchedule().getSendToReview() == Boolean.TRUE) {
+            return AddCourseReturnType.WaitingScheduleReview;
+        }
 
         if (course.getMaxSeats() <= course.getTakenSeats()) {
             return AddCourseReturnType.NoAvailableSeats;
@@ -72,7 +77,7 @@ public class StudentServiceImpl implements StudentService {
 
         if (availableCourses.contains(course)) {
             student.addCourseToSchedule(course);
-            course.setTakenSeats(course.getTakenSeats() + 1);
+            course.increaseTakenSeat();
             return AddCourseReturnType.Success;
         }
 
@@ -81,8 +86,24 @@ public class StudentServiceImpl implements StudentService {
 
     // todo: Find course from courseCode, remove it from Schedule (if the Course is not in schedule, return false). You need to check if the schedule is approved or sendToReview (if it is, then don't let student to change it)
     @Override
-    public Boolean removeCourseFromSchedule(String courseCode, Schedule schedule) {
-        return Boolean.TRUE;
+    public RemoveCourseReturnType removeCourseFromSchedule(Student student, String courseCode) {
+        Course course = courseRepository.findByCourseCode(courseCode);
+
+        if(student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
+            return RemoveCourseReturnType.Locked;
+        }
+
+        if (student.getWeeklySchedule().getSendToReview() == Boolean.TRUE) {
+            return RemoveCourseReturnType.WaitingScheduleReview;
+        }
+
+        if (student.getWeeklySchedule().getCourses().contains(course)){
+            student.removeFromSchedule(course);
+            course.decreaseTakenSeat();
+            return RemoveCourseReturnType.Success;
+        }
+
+        return RemoveCourseReturnType.NotExist;
     }
 
     @Override

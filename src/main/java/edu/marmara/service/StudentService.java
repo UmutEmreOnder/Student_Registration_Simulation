@@ -2,6 +2,7 @@ package edu.marmara.service;
 
 import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Course;
+import edu.marmara.model.RemoveCourseReturnType;
 import edu.marmara.model.Schedule;
 import edu.marmara.model.Student;
 
@@ -12,7 +13,7 @@ public interface StudentService {
 
     AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses);
 
-    Boolean removeCourseFromSchedule(String courseCode, Schedule schedule);
+    RemoveCourseReturnType removeCourseFromSchedule(Student student, String courseCode);
 
     void assignRandomCourses();
 }

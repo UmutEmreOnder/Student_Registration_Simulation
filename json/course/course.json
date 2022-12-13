@@ -287,8 +287,8 @@
 	"PHYS1102"
 ],
     "weeklyDate": [
-      "MON 13".
-	"MON 14"
+      "MON 13",
+	  "MON 14"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -310,7 +310,7 @@
     "courseCode": "NTE2",
     "courseTitle": "Nontechnical Elective",
     "givenSemester": 3,
-    "courseCredit": 3
+    "courseCredit": 3,
     "prerequisites": [],
     "weeklyDate": [
       "FRI 13",
@@ -363,8 +363,8 @@
     "takenSeats": 0
   },
 {
-    "courseCode": "MATH2059"
-    "courseTitle": "Numerical Method"
+    "courseCode": "MATH2059",
+    "courseTitle": "Numerical Method",
     "givenSemester": 4,
     "courseCredit": 4,
     "prerequisites": [
@@ -682,7 +682,7 @@
     "prerequisites": [],
     "weeklyDate": [
       "SAT 11",
-      "SAT 12",
+      "SAT 12"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -803,5 +803,5 @@
     ],
     "maxSeats": 60,
     "takenSeats": 0
-  },
-  ]
+  }
+]
