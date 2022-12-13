@@ -29,6 +29,15 @@ public class School {
 
         return schoolInstance;
     }
+    public void addCourse(Course course){
+        this.courses.add(course);
+    }
+    public void addInstructor(Instructor instructor){
+        this.instructors.add(instructor);
+    }
+    public void addStudent(Student student){
+        this.students.add(student);
+    }
 
     public List<Student> getStudents() {
         return students;

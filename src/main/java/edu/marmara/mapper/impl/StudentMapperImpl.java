@@ -45,7 +45,7 @@ public class StudentMapperImpl implements StudentMapper {
         Advisor advisor = instructorRepository.findAdvisorByEmail(studentGetDTO.getAdvisor());
         if (advisor != null) {
             student.setAdvisor(advisor);
-            advisor.getStudents().add(student);
+            advisor.addStudent(student);
         }
 
         return student;

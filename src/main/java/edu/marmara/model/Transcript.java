@@ -2,6 +2,7 @@ package edu.marmara.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Transcript {
@@ -25,7 +26,37 @@ public class Transcript {
         this.notTakenCourses = notTakenCourses;
         this.currentlyTakenCourses = currentlyTakenCourses;
     }
+    public void addCurrentlyTakenCourse(Course course){
+        this.currentlyTakenCourses.add(course);
+    }
+    public void addFailedCourse(Course course){
+        this.failedCourses.add(course);
+    }
+    public void addNotTakenCourse(Course course){
+        this.notTakenCourses.add(course);
+    }
+    public void removeFailedCourse(Course course){
 
+        this.failedCourses.remove(course);
+    }
+    public void removeNotTakenCourse(Course course){
+
+        this.notTakenCourses.remove(course);
+    }
+
+    public Double calculateGPA() {
+        HashMap<Course, Double> passedCourses = this.passedCourses;
+        double gpa = 0;
+
+        for (Map.Entry<Course, Double> entry : passedCourses.entrySet()) {
+            gpa += entry.getValue() * entry.getKey().getCourseCredit();
+        }
+
+        gpa = gpa / (this.passedCredit + this.failedCredit);
+        this.gpa = gpa;
+
+        return gpa;
+    }
     @Override
     public String toString() {
         return "Transcript{" +

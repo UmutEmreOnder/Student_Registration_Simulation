@@ -12,6 +12,10 @@ public class Advisor extends Instructor {
         this.students = students;
     }
 
+    public void addStudent(Student student){
+        this.students.add(student);
+    }
+
     @Override
     public String toString() {
         return "Advisor{" +

@@ -18,7 +18,7 @@ public class CourseRepositoryImpl implements CourseRepository {
             school.setCourses(new ArrayList<>());
         }
 
-        school.getCourses().add(course);
+        school.addCourse(course);
     }
 
     @Override

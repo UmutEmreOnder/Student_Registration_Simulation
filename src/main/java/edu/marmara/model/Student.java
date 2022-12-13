@@ -21,6 +21,31 @@ public class Student extends Person {
         this.semester = semester;
     }
 
+    public void addCurrentlyTakenCourseToTranscript(Course course){
+        this.transcript.addCurrentlyTakenCourse(course);
+
+    }
+    public void addNotTakenCourseToTranscript(Course course){
+        this.transcript.addNotTakenCourse(course);
+    }
+    public void addFailedCoursesToTranscript(Course course){
+        this.transcript.addFailedCourse(course);
+    }
+
+    public void removeFromTranscriptNotTakenCourse(Course course){
+        this.transcript.removeNotTakenCourse(course);
+    }
+    public void removeFromTranscriptFailedCourse(Course course){
+        this.transcript.removeFailedCourse(course);
+    }
+
+    public void addCourseToSchedule(Course course){
+        this.weeklySchedule.addCourse(course);
+    }
+    public Double calculateGPA() {
+        return this.transcript.calculateGPA();
+    }
+
     @Override
     public String toString() {
         return "Student{" +

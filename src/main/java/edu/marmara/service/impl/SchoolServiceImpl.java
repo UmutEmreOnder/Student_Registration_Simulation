@@ -63,10 +63,11 @@ public class SchoolServiceImpl implements SchoolService {
 
                 if (transcriptFile.exists()) {
                     Transcript transcript = jsonService.readTranscriptFromJson(Files.readString(Path.of(transcriptFile.getPath())));
+                    transcript.calculateGPA();
                     student.setTranscript(transcript);
                 }
 
-                school.getStudents().add(student);
+                school.addStudent(student);
             }
         }
 
