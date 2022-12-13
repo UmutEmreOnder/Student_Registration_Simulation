@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Schedule {
     private List<Course> courses;
-    private Boolean approved;
-    private Boolean sendToReview;
+    private Boolean approved = false;
+    private Boolean sendToReview = false;
 
     public Schedule() {
     }

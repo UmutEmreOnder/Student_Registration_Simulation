@@ -6,5 +6,6 @@
   "birthDate": "1999-02-20",
   "studentId": 150118069,
   "yearEnrolled": 2018,
-  "semester": 7
+  "semester": 7,
+  "advisor": "haluk@marmara.edu.tr"
 }

@@ -1,9 +1,9 @@
 {
-  "gpa" : 0.0,
-  "passedCredit" : 0,
-  "failedCredit" : 12,
-  "passedCourses" : [ ],
-  "failedCourses" : [ "CSE1100", "MATH1001" ],
-  "notTakenCourses" : [ "CSE1142", "MATH1002", "CSE2025", "MATH2055", "CSE2046", "STAT2053", "CSE3063", "CSE3055", "CSE3038", "CSE3044", "CSE4197", "CSE4074", "CSE4198", "CSE4082" ],
+  "gpa" : 0.6511627906976745,
+  "passedCredit" : 12,
+  "failedCredit" : 31,
+  "passedCourses" : [ "PHYS1103 1.5", "CHEM1007 2.5", "PHYS1101 2.5" ],
+  "failedCourses" : [ "CSE1100", "CSE1141", "ATA121", "TRD121", "MATH1001", "CSE2023", "ECON2003", "NTE2" ],
+  "notTakenCourses" : [ "CSE1142", "MATH2056", "PHYS1102", "PHYS1104", "MATH1002", "ATA122", "TRD122", "NTE1", "CSE2025", "MATH2055", "EE2031", "CSE2046", "STAT2053", "MATH2059", "ECON2004", "EE2032", "CSE2138", "CSE3063", "CSE3055", "CSE3033", "CSE3015", "IE3081", "CSE3038", "CSE3048", "CSE3044", "CSE3064", "IE3035", "CSE4197", "CSE4074", "TE1", "TE2", "CSE4117", "ISG121", "UE", "CSE4198", "TE3", "TE4", "TE5", "FTE", "ISG122", "NTE3" ],
   "currentlyTakenCourses" : [ ]
 }
