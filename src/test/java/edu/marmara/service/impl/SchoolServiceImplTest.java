@@ -13,8 +13,6 @@ class SchoolServiceImplTest {
      */
     @Test
     void testUploadJsons() throws IOException, ParseException {
-        // TODO: Complete this test.
-
         (new SchoolServiceImpl()).uploadJsons();
     }
 }

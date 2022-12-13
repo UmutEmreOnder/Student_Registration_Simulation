@@ -17,19 +17,5 @@ class CourseRepositoryImplTest {
         assertNull((new CourseRepositoryImpl()).findByCourseCode("foo"));
     }
 
-    /**
-     * Method under test:
-     *
-     * Class:CourseRepositoryImpl Method:save(Course)
-     */
-    @Test
-    void testSave() {
-        // TODO: Complete this test.
-
-        CourseRepositoryImpl courseRepositoryImpl = new CourseRepositoryImpl();
-        courseRepositoryImpl.save(new Course());
-    }
-
-
 }
 

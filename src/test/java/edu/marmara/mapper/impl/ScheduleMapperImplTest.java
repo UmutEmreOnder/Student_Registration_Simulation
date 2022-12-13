@@ -95,52 +95,5 @@ class ScheduleMapperImplTest {
         assertEquals(1, courses.size());
         assertNull(courses.get(0));
     }
-
-
-
-    /**
-     * Method under test:
-     *
-     * Class:ScheduleMapperImpl Method:mapTo(ScheduleGetDTO)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo3() {
-        // TODO: Complete this test.
-
-        (new ScheduleMapperImpl()).mapTo((ScheduleGetDTO) null);
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:ScheduleMapperImpl Method:mapTo(Schedule)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo9() {
-        // TODO: Complete this test.
-
-
-        ScheduleMapperImpl scheduleMapperImpl = new ScheduleMapperImpl();
-
-        ArrayList<Course> courseList = new ArrayList<>();
-        courseList.add(null);
-        scheduleMapperImpl.mapTo(new Schedule(courseList));
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:ScheduleMapperImpl Method:mapTo(ScheduleGetDTO)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo() {
-        // TODO: Complete this test.
-
-        ScheduleMapperImpl scheduleMapperImpl = new ScheduleMapperImpl();
-        scheduleMapperImpl.mapTo(new ScheduleGetDTO());
-    }
 }
 

@@ -17,19 +17,5 @@ class StudentRepositoryImplTest {
         assertNull((new StudentRepositoryImpl()).findByStudentId(123L));
         assertNull((new StudentRepositoryImpl()).findByStudentId(1L));
     }
-
-    /**
-     * Method under test:
-     *
-     * Class:StudentRepositoryImpl Method:save(Student)
-     */
-    @Test
-    void testSave() {
-        // TODO: Complete this test.
-
-        StudentRepositoryImpl studentRepositoryImpl = new StudentRepositoryImpl();
-        studentRepositoryImpl.save(new Student());
-    }
-
 }
 

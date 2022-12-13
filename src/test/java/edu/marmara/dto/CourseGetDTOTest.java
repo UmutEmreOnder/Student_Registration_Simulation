@@ -79,7 +79,7 @@ class CourseGetDTOTest {
     void testConstructor2() {
         ArrayList<String> stringList = new ArrayList<>();
         ArrayList<String> stringList1 = new ArrayList<>();
-        CourseGetDTO actualCourseGetDTO = new CourseGetDTO("Course Code", "Dr", 1, 1, stringList, stringList1);
+        CourseGetDTO actualCourseGetDTO = new CourseGetDTO("Course Code", "Dr", 1, 1, stringList, stringList1, 60, 0);
         actualCourseGetDTO.setCourseCode("Course Code");
         actualCourseGetDTO.setCourseCredit(1);
         actualCourseGetDTO.setCourseTitle("Dr");

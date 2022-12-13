@@ -120,55 +120,5 @@ class InstructorMapperImplTest {
         assertEquals("Doe", actualMapToResult.getSurname());
         assertEquals(presentedCourses, actualMapToResult.getWeeklySchedule().getCourses());
     }
-
-
-    /**
-     * Method under test:
-     *
-     * Class:InstructorMapperImpl Method:mapTo(InstructorGetDTO)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo() {
-        // TODO: Complete this test.
-
-        InstructorMapperImpl instructorMapperImpl = new InstructorMapperImpl();
-        instructorMapperImpl.mapTo(new InstructorGetDTO());
-    }
-
-
-
-
-    /**
-     * Method under test:
-     *
-     * Class:InstructorMapperImpl Method:mapTo(InstructorGetDTO)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo4() {
-        // TODO: Complete this test.
-
-        (new InstructorMapperImpl()).mapTo(null);
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:InstructorMapperImpl Method:mapTo(InstructorGetDTO)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo5() {
-        // TODO: Complete this test.
-
-        InstructorMapperImpl instructorMapperImpl = new InstructorMapperImpl();
-
-        InstructorGetDTO instructorGetDTO = new InstructorGetDTO();
-        instructorGetDTO.setAdvisor(true);
-        instructorMapperImpl.mapTo(instructorGetDTO);
-    }
-
-
 }
 

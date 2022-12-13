@@ -19,7 +19,7 @@ class CourseMapperImplTest {
      * Course:CourseMapperImpl Method:mapTo(CourseGetDTO)}
      */
     @Test
-    void testMapTo2() {
+    void testMapTo1() {
         CourseMapperImpl courseMapperImpl = new CourseMapperImpl();
 
         CourseGetDTO courseGetDTO = new CourseGetDTO();
@@ -31,92 +31,6 @@ class CourseMapperImplTest {
         assertEquals(stringList, actualMapToResult.getDates());
         assertNull(actualMapToResult.getCourseTitle());
         assertNull(actualMapToResult.getCourseCredit());
-    }
-
-    /**
-     * Method under test:
-     * Class:CourseMapperImpl Course:mapTo(CourseGetDTO)}
-     */
-    @Test
-    @Disabled
-    void testMapTo3() {
-        // TODO: Complete this test.
-
-        (new CourseMapperImpl()).mapTo(null);
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:CourseMapperImpl Method:mapTo(CourseGetDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo4() {
-        // TODO: Complete this test.
-
-        CourseMapperImpl courseMapperImpl = new CourseMapperImpl();
-
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.add("foo");
-
-        CourseGetDTO courseGetDTO = new CourseGetDTO();
-        courseGetDTO.setWeeklyDate(stringList);
-        courseMapperImpl.mapTo(courseGetDTO);
-    }
-
-    /**
-     * Method under test: {@link CourseMapperImpl#mapTo(CourseGetDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo5() {
-        // TODO: Complete this test.
-
-        CourseMapperImpl courseMapperImpl = new CourseMapperImpl();
-
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.add(" ");
-        stringList.add("foo");
-
-        CourseGetDTO courseGetDTO = new CourseGetDTO();
-        courseGetDTO.setWeeklyDate(stringList);
-        courseMapperImpl.mapTo(courseGetDTO);
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:CourseMapperImpl Method:mapTo(CourseGetDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo6() {
-        // TODO: Complete this test.
-
-
-        CourseMapperImpl courseMapperImpl = new CourseMapperImpl();
-
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.add("42");
-
-        CourseGetDTO courseGetDTO = new CourseGetDTO();
-        courseGetDTO.setWeeklyDate(stringList);
-        courseMapperImpl.mapTo(courseGetDTO);
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:CourseMapperImpl Method:mapTo(CourseGetDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo() {
-        // TODO: Complete this test.
-
-        CourseMapperImpl courseMapperImpl = new CourseMapperImpl();
-        courseMapperImpl.mapTo(new CourseGetDTO());
     }
 }
 

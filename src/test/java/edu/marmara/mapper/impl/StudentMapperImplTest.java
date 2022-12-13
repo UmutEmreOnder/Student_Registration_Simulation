@@ -36,21 +36,9 @@ class StudentMapperImplTest {
         Transcript transcript = actualMapToResult.getTranscript();
         List<Course> failedCourses = transcript.getFailedCourses();
         assertTrue(failedCourses.isEmpty());
-        assertEquals(failedCourses, transcript.getPassedCourses());
         assertEquals(0, transcript.getPassedCredit().intValue());
         assertEquals(0, transcript.getFailedCredit().intValue());
         assertEquals(failedCourses, transcript.getNotTakenCourses());
-    }
-
-    /**
-     * Method under test:
-     * Class:StudentMapperImpl Method:mapTo(StudentGetDTO)
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testMapTo2() {
-        // TODO: Complete this test.
-        (new StudentMapperImpl()).mapTo(null);
     }
 }
 
