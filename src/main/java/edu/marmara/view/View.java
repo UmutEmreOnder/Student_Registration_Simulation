@@ -31,13 +31,20 @@ import edu.marmara.service.impl.AdvisorServiceImpl;
 import edu.marmara.service.impl.SchoolServiceImpl;
 import edu.marmara.service.impl.StudentServiceImpl;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Objects;
+
+import java.io.IOException;
+import java.text.ParseException;
+
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class View {
     public static StudentService studentService = new StudentServiceImpl();
@@ -49,23 +56,56 @@ public class View {
     public static AdvisorService advisorService = new AdvisorServiceImpl();
     public static Scanner scanner = new Scanner(System.in);
 
+    private static final Logger logger = Logger.getLogger(View.class.getName());
+
+
+    private static void configureLogger() {
+        try {
+            // get the current time
+            Date date = new Date();
+
+            // generate the log file name using the current time
+            String fileName = "log-" + date.toString() + ".txt";
+
+            // configure the logger
+            FileHandler handler = new FileHandler("logs/" + fileName);
+            // Create a console handler that writes log messages to the console
+            ConsoleHandler consoleHandler = new ConsoleHandler();
+
+            // Set the formatter for both handlers to use the CustomFormatter
+            handler.setFormatter(new edu.marmara.view.formatter.CustomFormatter());
+            consoleHandler.setFormatter(new edu.marmara.view.formatter.CustomFormatter());
+
+            // Add the file and console handlers to the logger
+            logger.addHandler(handler);
+            logger.addHandler(consoleHandler);
+
+            // Set the logger to not use the parent (default) handlers
+            logger.setUseParentHandlers(false);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "an error occurred while configuring the logger", e);
+        }
+    }
     private View() {
     }
 
     public static void start() throws IOException, ParseException {
         schoolService.uploadJsons();
-
+        configureLogger();
         while (true) {
-            System.out.println("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
+            logger.info("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
             Integer input = scanner.nextInt();
             if (input == 1) {
+                logger.info("User type chosen as 1- Student.");
                 printStudentMenu();
             } else if (input == 2) {
+                logger.info("User type chosen as 2- Instructor.");
                 printInstructorMenu();
             } else if (input == 9) {
+                logger.info("User chose to 9- Exit.");
                 break;
             } else {
-                System.out.println("Wrong input!");
+                logger.warning("Wrong input!");
             }
         }
     }
@@ -73,169 +113,196 @@ public class View {
     private static void printStudentMenu() {
         int input;
 
-        System.out.print("Enter your Student ID: ");
-        Student student = studentRepository.findByStudentId(scanner.nextLong());
+        logger.info("Enter your Student ID: ");
+        long id = scanner.nextLong();
+        logger.info("Student entered his/her ID as: " + id);
+        Student student = studentRepository.findByStudentId(id);
         if (student != null) {
             while (true) {
-                System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
-                System.out.print("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
+                logger.info("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
+                logger.info("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
                 switch (input) {
                     case 1: {
+                        logger.info("Student chose to check 1-View Student Info.");
                         printStudentInfo(student);
                         break;
                     }
                     case 2: {
+                        logger.info("Student chose to check 2-View Available Courses.");
                         printAvailableCoursesStudent(student);
                         break;
                     }
                     case 3: {
+                        logger.info("Student chose to check 3-View Schedule.");
                         printSchedule(student.getWeeklySchedule());
                         break;
                     }
                     case 4: {
+                        logger.info("Student chose to check 4-View Transcript.");
                         printTranscript(student);
                         break;
                     }
                     case 9:
+                        logger.info("Student chose to 9-Exit.");
                         break;
                     default:
-                        System.out.println("Wrong input!");
+                        logger.warning("Wrong input!");
                 }
                 if (input == 9) break;
             }
         } else {
-            System.out.println("Cannot find the student with given ID");
+            logger.warning("Cannot find the student with given ID");
         }
     }
 
     private static void printInstructorMenu() throws IOException {
         int input;
         long studentID;
-        System.out.print("Enter your Email Address: ");
-        Instructor instructor = instructorRepository.findByEmail(scanner.next());
+        logger.info("Enter your Email Address: ");
+        String email = scanner.next();
+        logger.info("User entered this Email Address: " + email);
+        Instructor instructor = instructorRepository.findByEmail(email);
         if (instructor != null) {
             while (true) {
-                System.out.println("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!");
+                logger.info("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!");
                 if (instructor instanceof Advisor) {
-                    System.out.print("What would you like to do?\n1-View Student Info\n2-View Student Schedule" +
+                    logger.info("What would you like to do?\n1-View Student Info\n2-View Student Schedule" +
                             "\n3-View List Of Students\n4-View Instructor Info\n5-View Schedule\n9-Exit\n");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1: {
-                            System.out.print("Enter student ID:");
+                            logger.info("Instructor wanted to view Student Info -1");
+                            logger.info("Enter student ID:");
                             studentID = scanner.nextLong();
+                            logger.info("Instructor entered this studentID: " + studentID);
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) printStudentInfo(student);
                             else
-                                System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }
                         case 2: {
-                            System.out.print("Enter student ID:");
+                            logger.info("Instructor wanted to view Student Schedule -2");
+                            logger.info("Enter student ID:");
                             studentID = scanner.nextLong();
+                            logger.info("Instructor wanted to check this student's schedule: " + studentID);
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) {
                                 printSchedule(student.getWeeklySchedule());
 
-                                System.out.println("\n1- Approve\n2- Deny");
+                                logger.info("\n1- Approve\n2- Deny");
 
                                 if (scanner.nextInt() == 1) {
+                                    logger.info("1- Approved");
                                     advisorService.approveSchedule(student);
+                                }else{
+                                    logger.info("2- Denied");
                                 }
                             } else
-                                System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }
                         case 3: {
+                            logger.info("Instructor wanted to view Student List -3");
                             for (Student student : ((Advisor) instructor).getStudents()) {
-                                System.out.println(student.getStudentId() + " | " + student.getName() + " " + student.getSurname());
+                                logger.info(student.getStudentId() + " | " + student.getName() + " " + student.getSurname());
                             }
-                            System.out.println("\nPress enter to go back");
+                            logger.info("\nPress enter to go back");
                             Scanner scanner = new Scanner(System.in);
                             scanner.nextLine();
                             break;
                         }
                         case 4: {
+                            logger.info("Instructor wanted to View Instructor Info -4");
                             printInstructorInfo(instructor);
                             break;
                         }
                         case 5: {
+                            logger.info("Instructor wanted to View Schedule -5");
                             printSchedule(instructor.getWeeklySchedule());
                             break;
                         }
                         case 9:
+                            logger.info("Instructor wanted to Exit -9");
                             break;
                         default:
-                            System.out.println("Wrong input!");
+                            logger.warning("Wrong input!");
                     }
                     if (input == 9) break;
                 } else {
-                    System.out.print("What would you like to do?\n1-View Instructor Info\n2-View Schedule" +
+                    logger.info("What would you like to do?\n1-View Instructor Info\n2-View Schedule" +
                             "\n9-Exit\n");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1: {
+                            logger.info("Instructor wanted to View Instructor Info -1");
                             printInstructorInfo(instructor);
                             break;
                         }
                         case 2: {
+                            logger.info("Instructor wanted to View Schedule -2");
                             printSchedule(instructor.getWeeklySchedule());
                             break;
                         }
                         case 9:
+                            logger.info("Instructor wanted to Exit -9");
                             break;
                         default:
-                            System.out.println("Wrong input!");
+                            logger.warning("Wrong input!");
                     }
-                    if (input == 9) break;
+                    if (input == 9) {
+                        logger.info("Wanted to Exit -9");
+                        break;
+                    }
+
                 }
             }
         } else {
-            System.out.println("Cannot find the instructor with given email");
+            logger.warning("Cannot find the instructor with given email");
         }
     }
 
     private static void printTranscript(Student student) {
         if (student.getTranscript() != null) {
-            System.out.println("\n\n\n\n\n");
+            logger.info("\n\n\n\n\n");
             int passedCredit = student.getTranscript().getPassedCredit();
             int failedCredit = student.getTranscript().getFailedCredit();
             double gpa = student.getTranscript().getGpa();
 
-            System.out.printf("\nGPA = %.2f\n", gpa);
-            System.out.println("Passed Credit = " + passedCredit);
-            System.out.println("Failed Credit = " + failedCredit);
-            System.out.println("\nPassed Courses");
+            logger.info("\nGPA = \n" + String.format("%.2f", gpa));
+            logger.info("Passed Credit = " + passedCredit);
+            logger.info("Failed Credit = " + failedCredit);
+            logger.info("\nPassed Courses");
             for (Map.Entry<Course, Double> passedCourse : student.getTranscript().getPassedCourses().entrySet()) {
-                System.out.println("| " + passedCourse.getKey().getCourseCode() + " | " + passedCourse.getKey().getCourseTitle() + " | " + Grade.valueOfGrade(passedCourse.getValue()));
+                logger.info("| " + passedCourse.getKey().getCourseCode() + " | " + passedCourse.getKey().getCourseTitle() + " | " + Grade.valueOfGrade(passedCourse.getValue()));
             }
-            System.out.println("\nFailed Courses");
+            logger.info("\nFailed Courses");
             for (Course course : student.getTranscript().getFailedCourses()) {
-                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + "FF");
+                logger.info("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + "FF");
             }
-            System.out.println("\nCurrently Taken Courses");
+            logger.info("\nCurrently Taken Courses");
             for (Course course : student.getTranscript().getCurrentlyTakenCourses()) {
-                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+                logger.info("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
-            System.out.println("\nNot Taken Courses");
+            logger.info("\nNot Taken Courses");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
-                System.out.println("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+                logger.info("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
             }
         } else {
-            System.out.println("Transcript is empty.");
+            logger.info("Transcript is empty.");
         }
-        System.out.println("\nPress enter to go back");
+        logger.info("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
 
     private static void printSchedule(Schedule schedule) {
-        System.out.print("\n\n\n\n\nSchedule");
+        logger.info("\n\n\n\n\nSchedule");
         if (schedule == null) {
-            System.out.print(" is empty.");
+            logger.info(" is empty.");
         } else {
-            System.out.println();
+            logger.info("\n");
             List<Course> mondayCourses = new ArrayList<Course>(), tuesdayCourses = new ArrayList<Course>(), wednesdayCourses = new ArrayList<Course>(), thursdayCourses = new ArrayList<Course>(), fridayCourses = new ArrayList<Course>(), saturdayCourses = new ArrayList<Course>(), sundayCourses = new ArrayList<Course>();
 
             for (Course course : schedule.getCourses()) {
@@ -273,7 +340,7 @@ public class View {
             printScheduleDays(saturdayCourses, SAT);
             printScheduleDays(sundayCourses, SUN);
         }
-        System.out.println("\nPress enter to go back");
+        logger.info("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
@@ -281,25 +348,25 @@ public class View {
     private static void printScheduleDays(List<Course> courses, DayName dayName) {
         switch (dayName) {
             case MON -> {
-                System.out.print("\nMonday");
+                logger.info("\nMonday");
             }
             case TUE -> {
-                System.out.print("\nTuesday");
+                logger.info("\nTuesday");
             }
             case WED -> {
-                System.out.print("\nWednesday");
+                logger.info("\nWednesday");
             }
             case THU -> {
-                System.out.print("\nThursday");
+                logger.info("\nThursday");
             }
             case FRI -> {
-                System.out.print("\nFriday");
+                logger.info("\nFriday");
             }
             case SAT -> {
-                System.out.print("\nSaturday");
+                logger.info("\nSaturday");
             }
             case SUN -> {
-                System.out.print("\nSunday");
+                logger.info("\nSunday");
             }
         }
         boolean isEmpty = true;
@@ -308,26 +375,26 @@ public class View {
             for (Course course : courses) {
                 for (int j = 0; j < course.getDates().size(); j++) {
                     if (course.getDates().get(j).getDayName() == dayName && course.getDates().get(j).getHours() == i) {
-                        if (isEmpty) System.out.println();
+                        if (isEmpty) logger.info("\n");
                         String formatted = String.format("%02d", i);
                         String formatted2 = String.format("%02d", i + 1);
-                        System.out.println(formatted + ".00 -|  " + course.getCourseCode() + " " + course.getCourseTitle() + " |");
-                        System.out.println(formatted2 + ".00  |          " + course.getInstructor().getName() + " " + course.getInstructor().getSurname() + "          |");
-                        if (i != 18) System.out.println("------------------------------------");
+                        logger.info(formatted + ".00 -|  " + course.getCourseCode() + " " + course.getCourseTitle() + " |");
+                        logger.info(formatted2 + ".00  |          " + course.getInstructor().getName() + " " + course.getInstructor().getSurname() + "          |");
+                        if (i != 18) logger.info("------------------------------------");
                         isEmpty = false;
                         break L1;
                     }
                 }
             }
         }
-        if (isEmpty) System.out.print(" is empty.\n");
+        if (isEmpty) logger.info(" is empty.\n");
     }
 
     private static void printAvailableCoursesStudent(Student student) {
-        System.out.print("\n\n\n\n\nAvailable Courses\n");
+        logger.info("\n\n\n\n\nAvailable Courses\n");
         List<Course> availableCourses = studentService.getAvailableCourses(student);
         for (Course course : availableCourses) {
-            System.out.print("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
+            logger.info("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
             for (int i = 0; i < course.getDates().size(); i++) {
                 String dayName = "";
                 switch (course.getDates().get(i).getDayName()) {
@@ -341,73 +408,73 @@ public class View {
                 }
                 String formatted = String.format("%02d", course.getDates().get(i).getHours());
                 String formatted2 = String.format("%02d", course.getDates().get(i).getHours() + 1);
-                System.out.print(dayName + " " + formatted + ".00-" + formatted2 + ".00" + (i == course.getDates().size() - 1 ? "" : " & "));
+                logger.info(dayName + " " + formatted + ".00-" + formatted2 + ".00" + (i == course.getDates().size() - 1 ? "" : " & "));
             }
-            System.out.println();
+            logger.info("\n");
         }
         while (true) {
-            System.out.print("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
+            logger.info("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
             String courseCode = scanner.next();
             if (Objects.equals(courseCode, "9")) {
-                System.out.print("\n\n\n\n\nYour schedule");
+                logger.info("\n\n\n\n\nYour schedule");
                 if (student.getWeeklySchedule() != null) {
-                    System.out.println();
+                    logger.info("\n");
                     for (Course course : student.getWeeklySchedule().getCourses()) {
-                        System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+                        logger.info("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
                     }
                 } else {
-                    System.out.print(" is empty.");
+                    logger.info(" is empty.");
                 }
                 break;
             } else {
                 AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
                 if (isAdded == AddCourseReturnType.SlotNotEmpty) {
-                    System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");
+                    logger.info("You cannot add " + courseCode + " because the time slot is not empty!");
                 }
 
                 if (isAdded == AddCourseReturnType.Success) {
-                    System.out.println(courseCode + " successfully added to your schedule!");
+                    logger.info(courseCode + " successfully added to your schedule!");
                 }
 
                 if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
-                    System.out.println("You cannot add " + courseCode + " to your schedule!");
+                    logger.info("You cannot add " + courseCode + " to your schedule!");
                 }
 
                 if (isAdded == AddCourseReturnType.NoAvailableSeats) {
-                    System.out.println("You cannot add " + courseCode + " because there isn't any available seats!");
+                    logger.info("You cannot add " + courseCode + " because there isn't any available seats!");
                 }
             }
         }
 
-        System.out.println("\nPress enter to go back");
+        logger.info("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
 
     private static void printStudentInfo(Student student) {
-        System.out.print("\n\n\n\n\n" + student.getName() + " " + student.getSurname() + "\n");
-        System.out.println("UUID = " + student.getUuid());
-        System.out.println("E-mail = " + student.getEmail());
-        System.out.println("Birth Date = " + student.getBirthDate());
-        System.out.println("Year enrolled = " + student.getYearEnrolled());
-        System.out.println("Semester = " + student.getSemester());
-        System.out.println("Advisor = " + (student.getAdvisor() == null ? "N/A" : (student.getAdvisor().getName() + " " + student.getAdvisor().getSurname())) + "\n");
-        System.out.println("Press enter to go back");
+        logger.info("\n\n\n\n\n" + student.getName() + " " + student.getSurname() + "\n");
+        logger.info("UUID = " + student.getUuid());
+        logger.info("E-mail = " + student.getEmail());
+        logger.info("Birth Date = " + student.getBirthDate());
+        logger.info("Year enrolled = " + student.getYearEnrolled());
+        logger.info("Semester = " + student.getSemester());
+        logger.info("Advisor = " + (student.getAdvisor() == null ? "N/A" : (student.getAdvisor().getName() + " " + student.getAdvisor().getSurname())) + "\n");
+        logger.info("Press enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
 
     private static void printInstructorInfo(Instructor instructor) {
-        System.out.print("\n\n\n\n\n" + instructor.getName() + " " + instructor.getSurname() + "\n");
-        System.out.println("UUID = " + instructor.getUuid());
-        System.out.println("E-mail = " + instructor.getEmail());
-        System.out.println("Birth Date = " + instructor.getBirthDate());
-        System.out.println("\nPresented Courses");
+        logger.info("\n\n\n\n\n" + instructor.getName() + " " + instructor.getSurname() + "\n");
+        logger.info("UUID = " + instructor.getUuid());
+        logger.info("E-mail = " + instructor.getEmail());
+        logger.info("Birth Date = " + instructor.getBirthDate());
+        logger.info("\nPresented Courses");
         for (Course course : instructor.getPresentedCourses()) {
-            System.out.println(course.getCourseCode() + " | " + course.getCourseTitle());
+            logger.info(course.getCourseCode() + " | " + course.getCourseTitle());
         }
-        System.out.println("\nPress enter to go back");
+        logger.info("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
