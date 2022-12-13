@@ -13,7 +13,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CSE1141",
     "courseTitle": "Computer Programming 1",
     "givenSemester": 1,
@@ -27,7 +27,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CHEM1007",
     "courseTitle": "Basic Chemistry",
     "givenSemester": 1,
@@ -41,7 +41,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "PHYS1101",
     "courseTitle": "Physics 1",
     "givenSemester": 1,
@@ -81,7 +81,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "TRD121",
     "courseTitle": "Turkish Language 1",
     "givenSemester": 1,
@@ -93,8 +93,8 @@
     ],
     "maxSeats": 60,
     "takenSeats": 0
-  },  
-{
+  },
+  {
     "courseCode": "MATH1001",
     "courseTitle": "Calculus 1",
     "givenSemester": 1,
@@ -107,13 +107,6 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-
-
-
-
-
-
-
   {
     "courseCode": "CSE1142",
     "courseTitle": "Computer Programming 2",
@@ -209,8 +202,8 @@
     ],
     "maxSeats": 60,
     "takenSeats": 0
-  }, 
-{
+  },
+  {
     "courseCode": "NTE1",
     "courseTitle": "Nontechnical Elective",
     "givenSemester": 2,
@@ -222,19 +215,7 @@
     ],
     "maxSeats": 60,
     "takenSeats": 0
-  }, 
-
-
-
-
-
-
-
-
-
-
-
-  
+  },
   {
     "courseCode": "CSE2025",
     "courseTitle": "Data Structures",
@@ -260,12 +241,12 @@
     ],
     "weeklyDate": [
       "MON 15",
-	"MON 16"
+      "MON 16"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CSE2023",
     "courseTitle": "Discrete Comp. Structures",
     "givenSemester": 3,
@@ -284,16 +265,16 @@
     "givenSemester": 3,
     "courseCredit": 5,
     "prerequisites": [
-	"PHYS1102"
-],
+      "PHYS1102"
+    ],
     "weeklyDate": [
-      "MON 13".
-	"MON 14"
+      "MON 13",
+      "MON 14"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "ECON2003",
     "courseTitle": "Introduction To Economics",
     "givenSemester": 3,
@@ -310,37 +291,23 @@
     "courseCode": "NTE2",
     "courseTitle": "Nontechnical Elective",
     "givenSemester": 3,
-    "courseCredit": 3
+    "courseCredit": 3,
     "prerequisites": [],
     "weeklyDate": [
       "FRI 13",
-	"FRI 14"
+      "FRI 14"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   {
     "courseCode": "CSE2046",
     "courseTitle": "Analysis of Algorithms",
     "givenSemester": 4,
     "courseCredit": 6,
     "prerequisites": [
-	"CSE2025"
-],
+      "CSE2025"
+    ],
     "weeklyDate": [
       "TUE 14",
       "TUE 15"
@@ -362,14 +329,14 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
-    "courseCode": "MATH2059"
-    "courseTitle": "Numerical Method"
+  {
+    "courseCode": "MATH2059",
+    "courseTitle": "Numerical Method",
     "givenSemester": 4,
     "courseCredit": 4,
     "prerequisites": [
-	"MATH1001"
-],
+      "MATH1001"
+    ],
     "weeklyDate": [
       "THU 14",
       "THU 15"
@@ -390,7 +357,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "EE2032",
     "courseTitle": "Electronics",
     "givenSemester": 4,
@@ -418,32 +385,18 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   {
     "courseCode": "CSE3063",
     "courseTitle": "Object-Oriented Software Design",
     "givenSemester": 5,
     "courseCredit": 5,
     "prerequisites": [
-	"CSE1142"
-],
+      "CSE1142"
+    ],
     "weeklyDate": [
       "SUN 9",
       "SUN 10",
-	"FRI 15"
+      "FRI 15"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -463,18 +416,18 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CSE3033",
     "courseTitle": "Operating System",
     "givenSemester": 5,
     "courseCredit": 7,
     "prerequisites": [
-	"CSE2025"
-],
+      "CSE2025"
+    ],
     "weeklyDate": [
       "SAT 9",
       "SAT 10",
-	"MON 12"
+      "MON 12"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -488,19 +441,19 @@
     "weeklyDate": [
       "FRI 9",
       "FRI 10",
-	"MON 11"
+      "MON 11"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "IE3081",
     "courseTitle": "Modeling and Disc. Simulation",
     "givenSemester": 5,
     "courseCredit": 4,
     "prerequisites": [
-	"STAT2053"
-],
+      "STAT2053"
+    ],
     "weeklyDate": [
       "THU 9",
       "THU 10"
@@ -508,14 +461,6 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-  
-
-
-
-
-
-
-
   {
     "courseCode": "CSE3038",
     "courseTitle": "Computer Organization",
@@ -523,17 +468,17 @@
     "courseCredit": 7,
     "prerequisites": [
       "CSE2138",
-	"CSE3015"
+      "CSE3015"
     ],
     "weeklyDate": [
       "SUN 14",
       "SUN 15",
-	"FRI 9"
+      "FRI 9"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CSE3048",
     "courseTitle": "Int. To Signals And Systems",
     "givenSemester": 6,
@@ -544,7 +489,7 @@
     "weeklyDate": [
       "SUN 12",
       "SUN 13",
-	"FRI 10"
+      "FRI 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -559,14 +504,14 @@
     ],
     "weeklyDate": [
       "MON 10",
-	"MON 11",
-	"THU 9",
-	"THU 10"
+      "MON 11",
+      "THU 9",
+      "THU 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CSE3064",
     "courseTitle": "Formal Language & Auto. Theory",
     "givenSemester": 6,
@@ -581,7 +526,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "IE3035",
     "courseTitle": "Operation Research",
     "givenSemester": 6,
@@ -596,14 +541,6 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-
-
-
-
-
-
-
-
   {
     "courseCode": "CSE4197",
     "courseTitle": "Engineering Project 1",
@@ -613,7 +550,7 @@
     "weeklyDate": [
       "MON 11",
       "MON 12",
-	"WED 10"
+      "WED 10"
     ],
     "maxSeats": 60,
     "takenSeats": 0
@@ -632,7 +569,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "TE1",
     "courseTitle": "Technical Elective",
     "givenSemester": 7,
@@ -659,14 +596,14 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "CSE4117",
     "courseTitle": "Microprocessors",
     "givenSemester": 7,
     "courseCredit": 6,
     "prerequisites": [
-	"CSE3038"
-],
+      "CSE3038"
+    ],
     "weeklyDate": [
       "FRI 11",
       "FRI 12"
@@ -682,12 +619,12 @@
     "prerequisites": [],
     "weeklyDate": [
       "SAT 11",
-      "SAT 12",
+      "SAT 12"
     ],
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "UE",
     "courseTitle": "University Elective",
     "givenSemester": 7,
@@ -700,17 +637,6 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-  
-
-
-
-
-
-
-
-
-
-
   {
     "courseCode": "CSE4198",
     "courseTitle": "Engineering Project 2",
@@ -739,7 +665,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "TE4",
     "courseTitle": "Technical Elective",
     "givenSemester": 8,
@@ -752,7 +678,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "TE5",
     "courseTitle": "Technical Elective",
     "givenSemester": 8,
@@ -765,7 +691,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "FTE",
     "courseTitle": "Faculty Technical Elective",
     "givenSemester": 8,
@@ -778,7 +704,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "ISG122",
     "courseTitle": "Work Safety 2",
     "givenSemester": 8,
@@ -791,7 +717,7 @@
     "maxSeats": 60,
     "takenSeats": 0
   },
-{
+  {
     "courseCode": "NTE3",
     "courseTitle": "Nontechnical Elective",
     "givenSemester": 8,
@@ -803,5 +729,5 @@
     ],
     "maxSeats": 60,
     "takenSeats": 0
-  },
-  ]
+  }
+]

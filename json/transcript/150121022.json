@@ -1,9 +1,0 @@
-{
-  "gpa" : 0.0,
-  "passedCredit" : 0,
-  "failedCredit" : 12,
-  "passedCourses" : [ ],
-  "failedCourses" : [ "CSE1100", "MATH1001" ],
-  "notTakenCourses" : [ "CSE1142", "MATH1002", "CSE2025", "MATH2055", "CSE2046", "STAT2053", "CSE3063", "CSE3055", "CSE3038", "CSE3044", "CSE4197", "CSE4074", "CSE4198", "CSE4082" ],
-  "currentlyTakenCourses" : [ ]
-}
