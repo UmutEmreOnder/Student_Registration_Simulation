@@ -75,7 +75,9 @@
     "surname": "Ağaoğlu",
     "email": "agaoglu@marmara.edu.tr",
     "birthDate": "1990-01-25",
-    "presentedCourses": [],
+    "presentedCourses": [
+    	"CSE3055"
+    ],
     "advisor": false
   },
   {
@@ -97,7 +99,6 @@
     "email": "betul.demiroz@marmara.edu.tr",
     "birthDate": "1970-04-19",
     "presentedCourses": [
-	"CSE3055",
 	"CSE3015"
 ],
     "advisor": false
