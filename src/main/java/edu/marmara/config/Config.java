@@ -7,11 +7,14 @@ public class Config {
 
     private Double gradeVariance;
 
+    private Integer minimumCreditReq;
 
-    public Config(Double passProbability, Double gradeLuck, Double gradeVariance) {
+
+    public Config(Double passProbability, Double gradeLuck, Double gradeVariance, Integer minimumCreditReq) {
         this.passProbability = passProbability;
         this.gradeLuck = gradeLuck;
         this.gradeVariance = gradeVariance;
+        this.minimumCreditReq = minimumCreditReq;
     }
 
     public Config() {
@@ -41,4 +44,8 @@ public class Config {
     public void setGradeVariance(Double gradeVariance) {
         this.gradeVariance = gradeVariance;
     }
+
+    public Integer getMinimumCreditReq() {return minimumCreditReq;}
+
+    public void setMinimumCreditReq(Integer minimumCreditReq) {this.minimumCreditReq = minimumCreditReq;}
 }

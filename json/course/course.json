@@ -11,7 +11,8 @@
       "WED 9"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "CSE1141",
@@ -25,7 +26,8 @@
       "WED 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "CHEM1007",
@@ -39,7 +41,8 @@
       "WED 14"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "PHYS1101",
@@ -53,7 +56,8 @@
       "THU 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "PHYS1103",
@@ -66,7 +70,8 @@
       "THU 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "ATA121",
@@ -79,7 +84,8 @@
       "SUN 18"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "TRD121",
@@ -92,7 +98,8 @@
       "SUN 20"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "MATH1001",
@@ -105,7 +112,8 @@
       "THU 9"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 0
   },
   {
     "courseCode": "CSE1142",
@@ -121,7 +129,8 @@
       "WED 13"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "MATH2056",
@@ -135,7 +144,8 @@
       "WED 9"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "PHYS1102",
@@ -149,7 +159,8 @@
       "TUE 9"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "PHYS1104",
@@ -162,7 +173,8 @@
       "TUE 11"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "MATH1002",
@@ -175,7 +187,8 @@
       "MON 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "ATA122",
@@ -188,7 +201,8 @@
       "SUN 21"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "TRD122",
@@ -201,7 +215,8 @@
       "SAT 20"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "NTE1",
@@ -214,7 +229,8 @@
       "SUN 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 10
   },
   {
     "courseCode": "CSE2025",
@@ -229,7 +245,8 @@
       "WED 17"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 20
   },
   {
     "courseCode": "MATH2055",
@@ -244,7 +261,8 @@
       "MON 16"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 20
   },
   {
     "courseCode": "CSE2023",
@@ -257,7 +275,8 @@
       "THU 14"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 20
   },
   {
     "courseCode": "EE2031",
@@ -272,7 +291,8 @@
       "MON 14"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 20
   },
   {
     "courseCode": "ECON2003",
@@ -285,7 +305,8 @@
       "FRI 17"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 20
   },
   {
     "courseCode": "NTE2",
@@ -298,7 +319,8 @@
       "FRI 14"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 20
   },
   {
     "courseCode": "CSE2046",
@@ -313,7 +335,8 @@
       "TUE 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 30
   },
   {
     "courseCode": "STAT2053",
@@ -327,7 +350,8 @@
       "WED 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 30
   },
   {
     "courseCode": "MATH2059",
@@ -342,7 +366,8 @@
       "THU 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 30
   },
   {
     "courseCode": "ECON2004",
@@ -355,7 +380,8 @@
       "MON 14"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 30
   },
   {
     "courseCode": "EE2032",
@@ -368,7 +394,8 @@
       "MON 11"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 30
   },
   {
     "courseCode": "CSE2138",
@@ -383,7 +410,8 @@
       "SAT 16"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 30
   },
   {
     "courseCode": "CSE3063",
@@ -399,7 +427,8 @@
       "FRI 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 40
   },
   {
     "courseCode": "CSE3055",
@@ -414,7 +443,8 @@
       "MON 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 40
   },
   {
     "courseCode": "CSE3033",
@@ -430,7 +460,8 @@
       "MON 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 40
   },
   {
     "courseCode": "CSE3015",
@@ -444,7 +475,8 @@
       "MON 11"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 40
   },
   {
     "courseCode": "IE3081",
@@ -459,7 +491,8 @@
       "THU 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 40
   },
   {
     "courseCode": "CSE3038",
@@ -476,7 +509,8 @@
       "FRI 9"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 50
   },
   {
     "courseCode": "CSE3048",
@@ -492,7 +526,8 @@
       "FRI 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 50
   },
   {
     "courseCode": "CSE3044",
@@ -509,7 +544,8 @@
       "THU 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 50
   },
   {
     "courseCode": "CSE3064",
@@ -524,7 +560,8 @@
       "TUE 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 50
   },
   {
     "courseCode": "IE3035",
@@ -539,7 +576,8 @@
       "FRI 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 50
   },
   {
     "courseCode": "CSE4197",
@@ -553,7 +591,8 @@
       "WED 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "CSE4074",
@@ -567,7 +606,8 @@
       "TUE 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "TE1",
@@ -580,7 +620,8 @@
       "WED 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "TE2",
@@ -594,7 +635,8 @@
       "FRI 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "CSE4117",
@@ -609,7 +651,8 @@
       "FRI 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "ISG121",
@@ -622,7 +665,8 @@
       "SAT 12"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "UE",
@@ -635,7 +679,8 @@
       "SUN 16"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 60
   },
   {
     "courseCode": "CSE4198",
@@ -650,7 +695,8 @@
       "SUN 17"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   },
   {
     "courseCode": "TE3",
@@ -663,7 +709,8 @@
       "THU 16"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   },
   {
     "courseCode": "TE4",
@@ -676,7 +723,8 @@
       "THU 18"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   },
   {
     "courseCode": "TE5",
@@ -689,7 +737,8 @@
       "MON 18"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   },
   {
     "courseCode": "FTE",
@@ -702,7 +751,8 @@
       "TUE 18"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   },
   {
     "courseCode": "ISG122",
@@ -715,7 +765,8 @@
       "SAT 15"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   },
   {
     "courseCode": "NTE3",
@@ -728,6 +779,7 @@
       "FRI 10"
     ],
     "maxSeats": 60,
-    "takenSeats": 0
+    "takenSeats": 0,
+    "minCreditReq": 70
   }
 ]

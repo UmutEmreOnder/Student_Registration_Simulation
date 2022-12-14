@@ -21,6 +21,9 @@ public class ScheduleMapperImpl implements ScheduleMapper {
             schedule.addCourse(courseRepository.findByCourseCode(courseCode));
         }
 
+        schedule.setApproved(scheduleGetDTO.getApproved());
+        schedule.setSendToReview(scheduleGetDTO.getSendToReview());
+
         return schedule;
     }
 
@@ -36,6 +39,9 @@ public class ScheduleMapperImpl implements ScheduleMapper {
         for (Course course : schedule.getCourses()) {
             scheduleGetDTO.addCourse(course.getCourseCode());
         }
+
+        scheduleGetDTO.setApproved(schedule.getApproved());
+        scheduleGetDTO.setSendToReview(schedule.getSendToReview());
 
         return scheduleGetDTO;
     }

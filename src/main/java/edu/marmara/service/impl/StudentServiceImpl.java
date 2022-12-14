@@ -3,7 +3,7 @@ package edu.marmara.service.impl;
 
 import edu.marmara.model.AddCourseReturnType;
 import edu.marmara.model.Course;
-import edu.marmara.model.Schedule;
+import edu.marmara.model.RemoveCourseReturnType;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
@@ -12,9 +12,7 @@ import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
@@ -24,12 +22,16 @@ public class StudentServiceImpl implements StudentService {
     private final CourseRepository courseRepository = new CourseRepositoryImpl();
 
     @Override
-    public List<Course> getAvailableCourses(Student student) {
+    public List<Course> getAvailableCourses(Student student, Boolean isRandom) {
         List<Course> courses = new ArrayList<>();
 
         outerloop:
         for (Course course : school.getCourses()) {
-            if (course.getGivenSemester() % 2 != student.getSemester() % 2) {
+            if (Boolean.FALSE.equals(isRandom) && course.getGivenSemester() % 2 != student.getSemester() % 2) {
+                continue;
+            }
+
+            if (course.getMinCreditReq() > student.getTranscript().getPassedCredit()) {
                 continue;
             }
 
@@ -56,13 +58,17 @@ public class StudentServiceImpl implements StudentService {
         return courses;
     }
 
+
     @Override
     public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
-        if (student.getWeeklySchedule() == null) {
-            student.setWeeklySchedule(new Schedule());
-            student.getWeeklySchedule().setCourses(new ArrayList<>());
+        if (student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
+            return AddCourseReturnType.Locked;
+        }
+
+        if (student.getWeeklySchedule().getSendToReview() == Boolean.TRUE) {
+            return AddCourseReturnType.WaitingScheduleReview;
         }
 
         if (course.getMaxSeats() <= course.getTakenSeats()) {
@@ -75,15 +81,37 @@ public class StudentServiceImpl implements StudentService {
 
         if (availableCourses.contains(course)) {
             student.addCourseToSchedule(course);
-            course.setTakenSeats(course.getTakenSeats() + 1);
+            course.increaseTakenSeat();
             return AddCourseReturnType.Success;
         }
 
         return AddCourseReturnType.NotExistOnAvailableCourses;
     }
 
+    // todo: Find course from courseCode, remove it from Schedule (if the Course is not in schedule, return false). You need to check if the schedule is approved or sendToReview (if it is, then don't let student to change it)
     @Override
-    public void assignRandomCourses() {
+    public RemoveCourseReturnType removeCourseFromSchedule(Student student, String courseCode) {
+        Course course = courseRepository.findByCourseCode(courseCode);
+
+        if (student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
+            return RemoveCourseReturnType.Locked;
+        }
+
+        if (student.getWeeklySchedule().getSendToReview() == Boolean.TRUE) {
+            return RemoveCourseReturnType.WaitingScheduleReview;
+        }
+
+        if (student.getWeeklySchedule().getCourses().contains(course)) {
+            student.removeFromSchedule(course);
+            course.decreaseTakenSeat();
+            return RemoveCourseReturnType.Success;
+        }
+
+        return RemoveCourseReturnType.NotExist;
+    }
+
+    @Override
+    public void assignRandomCourses(Student student) {
         List<Student> listOfStudents = school.getStudents();
         List<Course> listOfCourses = school.getCourses();
 
@@ -94,33 +122,27 @@ public class StudentServiceImpl implements StudentService {
 
         Random rng = new Random();
 
-        for (Student student : listOfStudents) {
-            if (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit() > 0) {
+        for (Course course : listOfCourses) {
+            if (course.getGivenSemester() > student.getSemester()) {
+                student.addNotTakenCourseToTranscript(course);
                 continue;
             }
-
-            for (Course course : listOfCourses) {
-                if (course.getGivenSemester() > student.getSemester()) {
-                    student.addNotTakenCourseToTranscript(course);
-                    continue;
-                }
-                if (getAvailableCourses(student).contains(course)) {
-                    double rand = rng.nextDouble();
-                    if (rand <= passProbability) {
-                        Double grade = getGrade(gradeLuck, gradeVariance);
-                        student.getTranscript().getPassedCourses().put(course, grade);
-                        student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
-                    } else {
-                        student.addFailedCoursesToTranscript(course);
-                        student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
-                    }
+            if (getAvailableCourses(student, Boolean.TRUE).contains(course)) {
+                double rand = rng.nextDouble();
+                if (rand <= passProbability) {
+                    Double grade = getGrade(gradeLuck, gradeVariance);
+                    student.getTranscript().getPassedCourses().put(course, grade);
+                    student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                 } else {
-                    student.addNotTakenCourseToTranscript(course);
+                    student.addFailedCoursesToTranscript(course);
+                    student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
                 }
+            } else {
+                student.addNotTakenCourseToTranscript(course);
             }
-
-            student.calculateGPA();
         }
+
+        student.calculateGPA();
     }
 
     private Double getGrade(Double gradeLuck, Double gradeVariance) {
@@ -133,7 +155,7 @@ public class StudentServiceImpl implements StudentService {
         if (grade < 0.25) {
             return 0.5;
         } else if (Math.round(grade) < grade) {
-            if (grade - Math.round(grade) > 0.25)  {
+            if (grade - Math.round(grade) > 0.25) {
                 return Math.round(grade) + 0.5;
             } else {
                 return (double) Math.round(grade);

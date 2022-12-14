@@ -42,6 +42,9 @@ public class Student extends Person {
     public void addCourseToSchedule(Course course){
         this.weeklySchedule.addCourse(course);
     }
+
+    public void removeFromSchedule(Course course) {this.weeklySchedule.removeCourse(course);}
+
     public Double calculateGPA() {
         return this.transcript.calculateGPA();
     }

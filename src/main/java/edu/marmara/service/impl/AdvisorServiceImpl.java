@@ -3,6 +3,7 @@ package edu.marmara.service.impl;
 import edu.marmara.mapper.impl.ScheduleMapperImpl;
 import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
+import edu.marmara.model.Schedule;
 import edu.marmara.model.Student;
 import edu.marmara.repository.StudentRepository;
 import edu.marmara.repository.impl.StudentRepositoryImpl;
@@ -33,6 +34,13 @@ public class AdvisorServiceImpl implements AdvisorService {
             student.removeFromTranscriptFailedCourse(course);
             student.addCurrentlyTakenCourseToTranscript(course);
         }
+
+        student.getWeeklySchedule().setApproved(Boolean.TRUE);
+    }
+
+    @Override
+    public void denySchedule(Student student) {
+        student.getWeeklySchedule().setSendToReview(Boolean.FALSE);
     }
 }
 
