@@ -6,8 +6,8 @@
     "email": "haluk@marmara.edu.tr",
     "birthDate": "1967-04-24",
     "presentedCourses": [
-	"CSE3038"
-],
+      "CSE3038"
+    ],
     "advisor": true
   },
   {
@@ -17,9 +17,9 @@
     "email": "cigdem.eroglu@marmara.edu.tr",
     "birthDate": "1975-09-21",
     "presentedCourses": [
-	"EE2031",
-	"MATH2059"
-],
+      "EE2031",
+      "MATH2059"
+    ],
     "advisor": false
   },
   {
@@ -29,9 +29,9 @@
     "email": "falkaya@marmara.edu.tr",
     "birthDate": "1980-03-30",
     "presentedCourses": [
-	"MATH2056",
-	"CSE2023"
-],
+      "MATH2056",
+      "CSE2023"
+    ],
     "advisor": false
   },
   {
@@ -41,8 +41,8 @@
     "email": "murat.ganiz@marmara.edu.tr",
     "birthDate": "1982-01-01",
     "presentedCourses": [
-	"CSE3063"
-],
+      "CSE3063"
+    ],
     "advisor": true
   },
   {
@@ -52,9 +52,9 @@
     "email": "mujdat.soyturk@marmara.edu.tr",
     "birthDate": "1958-05-28",
     "presentedCourses": [
-	"STAT2053",
-	"IE3081"
-],
+      "STAT2053",
+      "IE3081"
+    ],
     "advisor": false
   },
   {
@@ -64,9 +64,9 @@
     "email": "borahan.tumer@marmara.edu.tr",
     "birthDate": "1977-09-18",
     "presentedCourses": [
-	"CSE2025",
-	"CSE3044"
-],
+      "CSE2025",
+      "CSE3044"
+    ],
     "advisor": true
   },
   {
@@ -76,7 +76,7 @@
     "email": "agaoglu@marmara.edu.tr",
     "birthDate": "1990-01-25",
     "presentedCourses": [
-    	"CSE3055"
+      "CSE3055"
     ],
     "advisor": false
   },
@@ -87,9 +87,9 @@
     "email": "mehmet.baran@marmara.edu.tr",
     "birthDate": "1992-12-19",
     "presentedCourses": [
-	"CSE3048",
-	"CSE4117"
-],
+      "CSE3048",
+      "CSE4117"
+    ],
     "advisor": false
   },
   {
@@ -99,8 +99,8 @@
     "email": "betul.demiroz@marmara.edu.tr",
     "birthDate": "1970-04-19",
     "presentedCourses": [
-	"CSE3015"
-],
+      "CSE3015"
+    ],
     "advisor": false
   },
   {
@@ -110,8 +110,8 @@
     "email": "fatma.ergin@marmara.edu.tr",
     "birthDate": "1981-09-10",
     "presentedCourses": [
-	"CSE1100",
-	"CSE2138"
+      "CSE1100",
+      "CSE2138"
     ],
     "advisor": true
   },
@@ -122,9 +122,9 @@
     "email": "omer.korcak@marmara.edu.tr",
     "birthDate": "1957-04-15",
     "presentedCourses": [
-	"CSE2046",
-	"CSE4074"
-],
+      "CSE2046",
+      "CSE4074"
+    ],
     "advisor": false
   },
   {
@@ -134,9 +134,9 @@
     "email": "haydar.ozer@marmara.edu.tr",
     "birthDate": "1978-06-18",
     "presentedCourses": [
-	"CSE3033",
-	"CSE3064"
-],
+      "CSE3033",
+      "CSE3064"
+    ],
     "advisor": true
   },
   {
@@ -146,12 +146,12 @@
     "email": "sanem.arslan@marmara.edu.tr",
     "birthDate": "1991-03-22",
     "presentedCourses": [
-	"CSE1141",
-	"CSE1142"
-],
+      "CSE1141",
+      "CSE1142"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "8abe947e-3011-4a7f-ac39-7eb20ec120f9",
     "name": "Hülya",
     "surname": "Özler",
@@ -162,7 +162,7 @@
     ],
     "advisor": false
   },
-{
+  {
     "uuid": "623c8241-0080-48b3-b745-536825437371",
     "name": "Malike Bileydi",
     "surname": "Koç",
@@ -173,7 +173,7 @@
     ],
     "advisor": false
   },
-{
+  {
     "uuid": "a1cc30af-de1b-4409-bc5e-a28ceebf5c08",
     "name": "Murat",
     "surname": "Tan",
@@ -181,11 +181,11 @@
     "birthDate": "1970-07-09",
     "presentedCourses": [
       "TRD121",
-	"TRD122"
+      "TRD122"
     ],
     "advisor": false
   },
-{
+  {
     "uuid": "0893074c-c428-442f-b10e-79e2be2f5156",
     "name": "Bülent",
     "surname": "Ekici",
@@ -196,92 +196,87 @@
     ],
     "advisor": false
   },
-{
+  {
     "uuid": "769eaf56-067f-4000-aa7a-cda98e930654",
     "name": "Taylan",
     "surname": "Şengül",
     "email": "taylansengul@gmail.com",
     "birthDate": "1981-08-04",
     "presentedCourses": [
-	"MATH1001",
-	"MATH1002"
-],
+      "MATH1001",
+      "MATH1002"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "92ef24fa-3eb3-4c96-8dc2-d5b008563c2c",
     "name": "Mustafa",
     "surname": "Alevli",
     "email": "mustafaalevli@marmara.edu.tr",
     "birthDate": "1955-03-03",
     "presentedCourses": [
-	"PHYS1101",
-	"PHYS1103",
-	"PHYS1102",
-	"PHYS1104"
-],
+      "PHYS1101",
+      "PHYS1103",
+      "PHYS1102",
+      "PHYS1104"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "f929e549-ceba-45c1-be7a-01db1862b3e7",
     "name": "Vail",
     "surname": "Karakale",
     "email": "vail.karakale@marmara.edu.tr",
     "birthDate": "1984-06-01",
     "presentedCourses": [
-	"MATH2055"
-],
+      "MATH2055"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "b5ad6ea2-63c6-4f04-bdea-449edc6532fc",
     "name": "Arif Orçun",
     "surname": "Söylemez",
     "email": "orcun.soylemez@marmara.edu.tr",
     "birthDate": "1987-03-07",
     "presentedCourses": [
-	"ECON2003",
-	"ECON2004"
-],
+      "ECON2003",
+      "ECON2004"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "e8fd1e36-c8a3-44e5-88c4-bfddb1b3c1c5",
     "name": "Emre",
     "surname": "Arslan",
     "email": "emre.arslan@marmara.edu.tr",
     "birthDate": "1990-05-08",
     "presentedCourses": [
-	"EE2032"
-],
+      "EE2032"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "df916af4-5b7c-44dc-9cc8-bb95605b81f6",
     "name": "Canan",
     "surname": "Ağlan",
     "email": "Canan.aglan@marmara.edu.tr",
     "birthDate": "1983-09-02",
     "presentedCourses": [
-	"IE3035"
-],
+      "IE3035"
+    ],
     "advisor": false
   },
-{
+  {
     "uuid": "e78c6964-82a0-437a-bd08-5bf8571ca0a1",
     "name": "Mustafa",
     "surname": "Yılmaz",
     "email": "mustafa.yilmaz@marmara.edu.tr",
     "birthDate": "1974-08-04",
     "presentedCourses": [
-	"ISG121",
-	"ISG122"
-],
+      "ISG121",
+      "ISG122"
+    ],
     "advisor": false
   }
-
-
-
-
-
 ]
