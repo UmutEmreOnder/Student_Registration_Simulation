@@ -6,3 +6,5 @@ out
 gen
 json/schedule
 json/transcript
+json/student
+logs
