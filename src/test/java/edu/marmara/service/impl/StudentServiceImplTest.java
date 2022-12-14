@@ -26,17 +26,7 @@ class StudentServiceImplTest {
     @Test
     void testGetAvailableCourses() {
         StudentServiceImpl studentServiceImpl = new StudentServiceImpl();
-        assertTrue(studentServiceImpl.getAvailableCourses(new Student()).isEmpty());
-    }
-
-    /**
-     * Method under test:
-     *
-     * Class:StudentServiceImpl Method:assignRandomCourses()
-     */
-    @Test
-    void testAssignRandomCourses() {
-        (new StudentServiceImpl()).assignRandomCourses();
+        assertTrue(studentServiceImpl.getAvailableCourses(new Student(), false).isEmpty());
     }
 }
 

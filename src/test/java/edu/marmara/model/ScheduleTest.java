@@ -38,7 +38,7 @@ class ScheduleTest {
     @Test
     void testConstructor2() {
         ArrayList<Course> courseList = new ArrayList<>();
-        Schedule actualSchedule = new Schedule(courseList);
+        Schedule actualSchedule = new Schedule(courseList, false, false);
         ArrayList<Course> courseList1 = new ArrayList<>();
         actualSchedule.setCourses(courseList1);
         String actualToStringResult = actualSchedule.toString();

@@ -98,7 +98,7 @@ class CourseTest {
         ArrayList<Course> courseList = new ArrayList<>();
         Instructor instructor = new Instructor();
         ArrayList<WeeklyDate> weeklyDateList = new ArrayList<>();
-        Course actualCourse = new Course("Course Code", "Dr", 1, studentList, 1, courseList, instructor, weeklyDateList, 60);
+        Course actualCourse = new Course("Course Code", "Dr", 1, studentList, 1, courseList, instructor, weeklyDateList, 60, 0);
         actualCourse.setCourseCode("Course Code");
         actualCourse.setCourseCredit(1);
         actualCourse.setCourseTitle("Dr");

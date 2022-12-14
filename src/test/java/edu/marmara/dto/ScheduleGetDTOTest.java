@@ -38,7 +38,7 @@ class ScheduleGetDTOTest {
     @Test
     void testConstructor2() {
         ArrayList<String> stringList = new ArrayList<>();
-        ScheduleGetDTO actualScheduleGetDTO = new ScheduleGetDTO(stringList);
+        ScheduleGetDTO actualScheduleGetDTO = new ScheduleGetDTO(stringList, false, false);
         ArrayList<String> stringList1 = new ArrayList<>();
         actualScheduleGetDTO.setCourses(stringList1);
         String actualToStringResult = actualScheduleGetDTO.toString();

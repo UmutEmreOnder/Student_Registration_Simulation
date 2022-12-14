@@ -77,7 +77,7 @@ class ScheduleMapperImplTest {
     void testMapTo7() {
         ScheduleMapperImpl scheduleMapperImpl = new ScheduleMapperImpl();
         ArrayList<Course> courseList = new ArrayList<>();
-        assertEquals(courseList, scheduleMapperImpl.mapTo(new Schedule(courseList)).getCourses());
+        assertEquals(courseList, scheduleMapperImpl.mapTo(new Schedule(courseList, false, false)).getCourses());
     }
 
     /**
@@ -91,7 +91,7 @@ class ScheduleMapperImplTest {
 
         ArrayList<Course> courseList = new ArrayList<>();
         courseList.add(new Course());
-        List<String> courses = scheduleMapperImpl.mapTo(new Schedule(courseList)).getCourses();
+        List<String> courses = scheduleMapperImpl.mapTo(new Schedule(courseList, false, false)).getCourses();
         assertEquals(1, courses.size());
         assertNull(courses.get(0));
     }
