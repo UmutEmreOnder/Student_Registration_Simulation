@@ -14,12 +14,13 @@ public class Course {
     private List<WeeklyDate> dates;
     private Integer maxSeats;
     private Integer takenSeats;
+    private Integer minCreditReq;
 
 
     public Course() {
     }
 
-    public Course(String courseCode, String courseTitle, Integer givenSemester, List<Student> enrolledStudents, Integer courseCredit, List<Course> prerequisites, Instructor instructor, List<WeeklyDate> dates, Integer maxSeats) {
+    public Course(String courseCode, String courseTitle, Integer givenSemester, List<Student> enrolledStudents, Integer courseCredit, List<Course> prerequisites, Instructor instructor, List<WeeklyDate> dates, Integer maxSeats, Integer minCreditReq) {
         this.courseCode = courseCode;
         this.courseTitle = courseTitle;
         this.givenSemester = givenSemester;
@@ -30,6 +31,7 @@ public class Course {
         this.dates = dates;
         this.maxSeats = maxSeats;
         this.takenSeats = maxSeats;
+        this.minCreditReq = minCreditReq;
     }
 
     public void addWeeklyDate(WeeklyDate weeklyDate){
@@ -135,5 +137,13 @@ public class Course {
 
     public void setMaxSeats(Integer maxSeats) {
         this.maxSeats = maxSeats;
+    }
+
+    public Integer getMinCreditReq() {
+        return minCreditReq;
+    }
+
+    public void setMinCreditReq(Integer minCreditReq) {
+        this.minCreditReq = minCreditReq;
     }
 }

@@ -420,7 +420,7 @@ public class View {
 
     private static void addCourseMenu(Student student) {
         System.out.print("\n\n\n\n\nAvailable Courses\n");
-        List<Course> availableCourses = studentService.getAvailableCourses(student);
+        List<Course> availableCourses = studentService.getAvailableCourses(student, Boolean.FALSE);
         for (Course course : availableCourses) {
             System.out.print("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
             for (int i = 0; i < course.getDates().size(); i++) {

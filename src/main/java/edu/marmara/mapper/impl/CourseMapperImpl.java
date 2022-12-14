@@ -33,6 +33,7 @@ public class CourseMapperImpl implements CourseMapper {
 
         course.setMaxSeats(courseGetDTO.getMaxSeats());
         course.setTakenSeats(courseGetDTO.getTakenSeats());
+        course.setMinCreditReq(courseGetDTO.getMinCreditReq());
 
         return course;
     }

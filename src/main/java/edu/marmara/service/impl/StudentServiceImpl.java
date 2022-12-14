@@ -22,12 +22,16 @@ public class StudentServiceImpl implements StudentService {
     private final CourseRepository courseRepository = new CourseRepositoryImpl();
 
     @Override
-    public List<Course> getAvailableCourses(Student student) {
+    public List<Course> getAvailableCourses(Student student, Boolean isRandom) {
         List<Course> courses = new ArrayList<>();
 
         outerloop:
         for (Course course : school.getCourses()) {
-            if (course.getGivenSemester() % 2 != student.getSemester() % 2) {
+            if (Boolean.FALSE.equals(isRandom) && course.getGivenSemester() % 2 != student.getSemester() % 2) {
+                continue;
+            }
+
+            if (course.getMinCreditReq() > student.getTranscript().getPassedCredit()) {
                 continue;
             }
 
@@ -59,7 +63,7 @@ public class StudentServiceImpl implements StudentService {
     public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
-        if(student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
+        if (student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
             return AddCourseReturnType.Locked;
         }
 
@@ -89,7 +93,7 @@ public class StudentServiceImpl implements StudentService {
     public RemoveCourseReturnType removeCourseFromSchedule(Student student, String courseCode) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
-        if(student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
+        if (student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
             return RemoveCourseReturnType.Locked;
         }
 
@@ -97,7 +101,7 @@ public class StudentServiceImpl implements StudentService {
             return RemoveCourseReturnType.WaitingScheduleReview;
         }
 
-        if (student.getWeeklySchedule().getCourses().contains(course)){
+        if (student.getWeeklySchedule().getCourses().contains(course)) {
             student.removeFromSchedule(course);
             course.decreaseTakenSeat();
             return RemoveCourseReturnType.Success;
@@ -107,7 +111,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void assignRandomCourses() {
+    public void assignRandomCourses(Student student) {
         List<Student> listOfStudents = school.getStudents();
         List<Course> listOfCourses = school.getCourses();
 
@@ -118,33 +122,27 @@ public class StudentServiceImpl implements StudentService {
 
         Random rng = new Random();
 
-        for (Student student : listOfStudents) {
-            if (student.getTranscript().getPassedCredit() + student.getTranscript().getFailedCredit() > 0) {
+        for (Course course : listOfCourses) {
+            if (course.getGivenSemester() > student.getSemester()) {
+                student.addNotTakenCourseToTranscript(course);
                 continue;
             }
-
-            for (Course course : listOfCourses) {
-                if (course.getGivenSemester() > student.getSemester()) {
-                    student.addNotTakenCourseToTranscript(course);
-                    continue;
-                }
-                if (getAvailableCourses(student).contains(course)) {
-                    double rand = rng.nextDouble();
-                    if (rand <= passProbability) {
-                        Double grade = getGrade(gradeLuck, gradeVariance);
-                        student.getTranscript().getPassedCourses().put(course, grade);
-                        student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
-                    } else {
-                        student.addFailedCoursesToTranscript(course);
-                        student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
-                    }
+            if (getAvailableCourses(student, Boolean.TRUE).contains(course)) {
+                double rand = rng.nextDouble();
+                if (rand <= passProbability) {
+                    Double grade = getGrade(gradeLuck, gradeVariance);
+                    student.getTranscript().getPassedCourses().put(course, grade);
+                    student.getTranscript().setPassedCredit(student.getTranscript().getPassedCredit() + course.getCourseCredit());
                 } else {
-                    student.addNotTakenCourseToTranscript(course);
+                    student.addFailedCoursesToTranscript(course);
+                    student.getTranscript().setFailedCredit(student.getTranscript().getFailedCredit() + course.getCourseCredit());
                 }
+            } else {
+                student.addNotTakenCourseToTranscript(course);
             }
-
-            student.calculateGPA();
         }
+
+        student.calculateGPA();
     }
 
     private Double getGrade(Double gradeLuck, Double gradeVariance) {
@@ -157,7 +155,7 @@ public class StudentServiceImpl implements StudentService {
         if (grade < 0.25) {
             return 0.5;
         } else if (Math.round(grade) < grade) {
-            if (grade - Math.round(grade) > 0.25)  {
+            if (grade - Math.round(grade) > 0.25) {
                 return Math.round(grade) + 0.5;
             } else {
                 return (double) Math.round(grade);
