@@ -1,0 +1,11 @@
+{
+  "uuid" : "aaf92a43-2512-44a4-a122-240887f3b5e3",
+  "name" : "Quentin",
+  "surname" : "Chasson",
+  "email" : "qchasson4v@dagondesign.com",
+  "birthDate" : 1005782400000,
+  "studentId" : 150913690,
+  "yearEnrolled" : 2009,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 6
+}

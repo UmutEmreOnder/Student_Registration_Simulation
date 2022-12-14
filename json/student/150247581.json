@@ -1,0 +1,11 @@
+{
+  "uuid" : "1ee4b15e-586f-4fd9-b4c1-5161b48d93e9",
+  "name" : "Court",
+  "surname" : "Buncher",
+  "email" : "cbuncher83@desdev.cn",
+  "birthDate" : 977702400000,
+  "studentId" : 150247581,
+  "yearEnrolled" : 2016,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 4
+}

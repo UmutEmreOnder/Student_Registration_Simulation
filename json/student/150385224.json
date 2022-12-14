@@ -1,0 +1,11 @@
+{
+  "uuid" : "b1b60095-05f2-454e-9248-45a0683ca0b0",
+  "name" : "Patricia",
+  "surname" : "Cosgry",
+  "email" : "pcosgry3z@mit.edu",
+  "birthDate" : 1050278400000,
+  "studentId" : 150385224,
+  "yearEnrolled" : 2019,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 6
+}

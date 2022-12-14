@@ -1,0 +1,11 @@
+{
+  "uuid" : "9aa230ed-9d78-4cb8-86a3-8b4c2e095810",
+  "name" : "Bealle",
+  "surname" : "Kryzhov",
+  "email" : "bkryzhovd@scribd.com",
+  "birthDate" : 920073600000,
+  "studentId" : 150008989,
+  "yearEnrolled" : 2022,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 5
+}

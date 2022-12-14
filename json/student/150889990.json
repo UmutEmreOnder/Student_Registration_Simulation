@@ -1,0 +1,11 @@
+{
+  "uuid" : "3dcced00-2aed-4f64-aba2-c1f63c51c0e1",
+  "name" : "Leia",
+  "surname" : "Aveling",
+  "email" : "laveling2k@blog.com",
+  "birthDate" : 899769600000,
+  "studentId" : 150889990,
+  "yearEnrolled" : 2018,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 1
+}

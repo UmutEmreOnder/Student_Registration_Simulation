@@ -1,0 +1,11 @@
+{
+  "uuid" : "c7d0478e-29b4-43d1-8225-108fcd1ef29d",
+  "name" : "Mitch",
+  "surname" : "Albisser",
+  "email" : "malbisser8o@howstuffworks.com",
+  "birthDate" : 1000080000000,
+  "studentId" : 150511650,
+  "yearEnrolled" : 2001,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 4
+}

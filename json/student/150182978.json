@@ -1,0 +1,11 @@
+{
+  "uuid" : "df39f71c-6f59-4f68-8c02-1a9ec3dc98e1",
+  "name" : "Leonhard",
+  "surname" : "Bechley",
+  "email" : "lbechley26@sohu.com",
+  "birthDate" : 1013644800000,
+  "studentId" : 150182978,
+  "yearEnrolled" : 2014,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 1
+}

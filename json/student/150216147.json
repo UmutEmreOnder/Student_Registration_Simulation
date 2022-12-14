@@ -1,0 +1,11 @@
+{
+  "uuid" : "fdb9c15e-54ac-449f-87e5-d775f5826406",
+  "name" : "Laurie",
+  "surname" : "Drivers",
+  "email" : "ldriversa2@illinois.edu",
+  "birthDate" : 876441600000,
+  "studentId" : 150216147,
+  "yearEnrolled" : 2016,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 4
+}
