@@ -1,5 +1,5 @@
 {
-  "courses" : [ "PHYS1102", "PHYS1104", "MATH1002" ],
+  "courses" : [ "PHYS1102", "PHYS1104", "MATH1002", "STAT2053", "ECON2004" ],
   "approved" : true,
   "sendToReview" : true
 }

@@ -39,8 +39,8 @@ public class AdvisorServiceImpl implements AdvisorService {
     }
 
     @Override
-    public void denySchedule(Schedule schedule) {
-        schedule.setSendToReview(Boolean.FALSE);
+    public void denySchedule(Student student) {
+        student.getWeeklySchedule().setSendToReview(Boolean.FALSE);
     }
 }
 

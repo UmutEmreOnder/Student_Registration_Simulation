@@ -11,5 +11,5 @@ public interface AdvisorService {
 
     void approveSchedule(Student student) throws IOException;
 
-    void denySchedule(Schedule schedule);
+    void denySchedule(Student student);
 }
