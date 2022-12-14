@@ -23,17 +23,17 @@ public class TranscriptMapperImpl implements TranscriptMapper {
 
         transcript.setCurrentlyTakenCourses(new ArrayList<>());
         for (String courseCode : transcriptGetDTO.getCurrentlyTakenCourses()) {
-            transcript.getCurrentlyTakenCourses().add(courseRepository.findByCourseCode(courseCode));
+            transcript.addCurrentlyTakenCourse(courseRepository.findByCourseCode(courseCode));
         }
 
         transcript.setFailedCourses(new ArrayList<>());
         for (String courseCode : transcriptGetDTO.getFailedCourses()) {
-            transcript.getFailedCourses().add(courseRepository.findByCourseCode(courseCode));
+            transcript.addFailedCourse(courseRepository.findByCourseCode(courseCode));
         }
 
         transcript.setNotTakenCourses(new ArrayList<>());
         for (String courseCode : transcriptGetDTO.getNotTakenCourses()) {
-            transcript.getNotTakenCourses().add(courseRepository.findByCourseCode(courseCode));
+            transcript.addNotTakenCourse(courseRepository.findByCourseCode(courseCode));
         }
 
         transcript.setPassedCourses(new HashMap<>());
@@ -56,22 +56,22 @@ public class TranscriptMapperImpl implements TranscriptMapper {
 
         transcriptGetDTO.setFailedCourses(new ArrayList<>());
         for (Course course : transcript.getFailedCourses()) {
-            transcriptGetDTO.getFailedCourses().add(course.getCourseCode());
+            transcriptGetDTO.addFailedCourse(course.getCourseCode());
         }
 
         transcriptGetDTO.setNotTakenCourses(new ArrayList<>());
         for (Course course : transcript.getNotTakenCourses()) {
-            transcriptGetDTO.getNotTakenCourses().add(course.getCourseCode());
+            transcriptGetDTO.addNotTakenCourse(course.getCourseCode());
         }
 
         transcriptGetDTO.setCurrentlyTakenCourses(new ArrayList<>());
         for (Course course : transcript.getCurrentlyTakenCourses()) {
-            transcriptGetDTO.getCurrentlyTakenCourses().add(course.getCourseCode());
+            transcriptGetDTO.addCurrentlyTakenCourse(course.getCourseCode());
         }
 
         transcriptGetDTO.setPassedCourses(new ArrayList<>());
         for (Course course : transcript.getPassedCourses().keySet()) {
-            transcriptGetDTO.getPassedCourses().add(course.getCourseCode() + " " + transcript.getPassedCourses().get(course));
+            transcriptGetDTO.addPassesCourse(course.getCourseCode() + " " + transcript.getPassedCourses().get(course));
         }
 
         return transcriptGetDTO;

@@ -28,11 +28,12 @@ public class CourseMapperImpl implements CourseMapper {
             weeklyDate.setDayName(dayName);
             weeklyDate.setHours(Integer.valueOf(dayAndHour[1]));
 
-            course.getDates().add(weeklyDate);
+            course.addWeeklyDate(weeklyDate);
         }
 
         course.setMaxSeats(courseGetDTO.getMaxSeats());
         course.setTakenSeats(courseGetDTO.getTakenSeats());
+        course.setMinCreditReq(courseGetDTO.getMinCreditReq());
 
         return course;
     }

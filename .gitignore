@@ -4,3 +4,5 @@
 target
 out
 gen
+json/schedule
+json/transcript

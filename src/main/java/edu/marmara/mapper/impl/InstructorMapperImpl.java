@@ -36,9 +36,9 @@ public class InstructorMapperImpl implements InstructorMapper {
             Course course = courseRepository.findByCourseCode(courseCode);
 
             if (course != null) {
-                instructor.getPresentedCourses().add(course);
+                instructor.addPresentedCourse(course);
                 course.setInstructor(instructor);
-                instructor.getWeeklySchedule().getCourses().add(course);
+                instructor.addCourseToSchedule(course);
             }
         }
 
@@ -63,9 +63,9 @@ public class InstructorMapperImpl implements InstructorMapper {
             Course course = courseRepository.findByCourseCode(courseCode);
 
             if (course != null) {
-                advisor.getPresentedCourses().add(course);
+                advisor.addPresentedCourse(course);
                 course.setInstructor(advisor);
-                advisor.getWeeklySchedule().getCourses().add(course);
+                advisor.addCourseToSchedule(course);
             }
         }
 

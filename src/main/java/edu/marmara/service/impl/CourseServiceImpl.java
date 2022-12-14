@@ -28,7 +28,7 @@ public class CourseServiceImpl implements CourseService {
                             mainCourse.setPrerequisites(new ArrayList<>());
                         }
 
-                        mainCourse.getPrerequisites().add(prerequisiteCourse);
+                        mainCourse.addPrerequisite(prerequisiteCourse);
                     }
                 }
             }

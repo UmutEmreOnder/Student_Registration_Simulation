@@ -17,7 +17,9 @@ import static edu.marmara.model.DayName.TUE;
 import static edu.marmara.model.DayName.WED;
 import edu.marmara.model.Grade;
 import edu.marmara.model.Instructor;
+import edu.marmara.model.RemoveCourseReturnType;
 import edu.marmara.model.Schedule;
+import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.InstructorRepository;
@@ -55,6 +57,8 @@ public class View {
     public static SchoolService schoolService = new SchoolServiceImpl();
     public static AdvisorService advisorService = new AdvisorServiceImpl();
     public static Scanner scanner = new Scanner(System.in);
+
+    private static final School school = School.getInstance();
 
     private static final Logger logger = Logger.getLogger(View.class.getName());
 
@@ -96,10 +100,8 @@ public class View {
             logger.info("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
             Integer input = scanner.nextInt();
             if (input == 1) {
-                logger.info("User type chosen as 1- Student.");
                 printStudentMenu();
             } else if (input == 2) {
-                logger.info("User type chosen as 2- Instructor.");
                 printInstructorMenu();
             } else if (input == 9) {
                 logger.info("User chose to 9- Exit.");
@@ -119,8 +121,8 @@ public class View {
         Student student = studentRepository.findByStudentId(id);
         if (student != null) {
             while (true) {
-                logger.info("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
-                logger.info("What would you like to do?\n1-View Student Info\n2-View Available Courses\n3-View Schedule\n4-View Transcript\n9-Exit\n");
+                System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
+                System.out.print("What would you like to do?\n1-View Student Info\n2-Add/Drop Course\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
                 switch (input) {
                     case 1: {
@@ -129,13 +131,13 @@ public class View {
                         break;
                     }
                     case 2: {
-                        logger.info("Student chose to check 2-View Available Courses.");
-                        printAvailableCoursesStudent(student);
+                        logger.info("Student chose to check 2-Add/Drop Courses.");
+                        printAddDropMenu(student);
                         break;
                     }
                     case 3: {
                         logger.info("Student chose to check 3-View Schedule.");
-                        printSchedule(student.getWeeklySchedule());
+                        printSchedule(student.getWeeklySchedule(), true);
                         break;
                     }
                     case 4: {
@@ -189,18 +191,25 @@ public class View {
                             logger.info("Instructor wanted to check this student's schedule: " + studentID);
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) {
-                                printSchedule(student.getWeeklySchedule());
+                                if (student.getWeeklySchedule().getSendToReview() != Boolean.TRUE) {
+                                    System.out.println("The student hasn't send his schedule to review yet!");
+                                } else {
+                                    printSchedule(student.getWeeklySchedule(), false);
 
-                                logger.info("\n1- Approve\n2- Deny");
+                                    if (student.getWeeklySchedule().getApproved() != Boolean.TRUE) {
+                                        System.out.println("\n1- Approve\n2- Deny");
 
-                                if (scanner.nextInt() == 1) {
-                                    logger.info("1- Approved");
-                                    advisorService.approveSchedule(student);
-                                }else{
-                                    logger.info("2- Denied");
+                                        if (scanner.nextInt() == 1) {
+                                            advisorService.approveSchedule(student);
+                                            System.out.println("You've successfully approved the schedule");
+                                        } else {
+                                            advisorService.denySchedule(student);
+                                            System.out.println("You've successfully denied the schedule");
+                                        }
+                                    }
                                 }
                             } else
-                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                                System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }
                         case 3: {
@@ -220,7 +229,7 @@ public class View {
                         }
                         case 5: {
                             logger.info("Instructor wanted to View Schedule -5");
-                            printSchedule(instructor.getWeeklySchedule());
+                            printSchedule(instructor.getWeeklySchedule(), false);
                             break;
                         }
                         case 9:
@@ -242,7 +251,7 @@ public class View {
                         }
                         case 2: {
                             logger.info("Instructor wanted to View Schedule -2");
-                            printSchedule(instructor.getWeeklySchedule());
+                            printSchedule(instructor.getWeeklySchedule(), false);
                             break;
                         }
                         case 9:
@@ -297,7 +306,7 @@ public class View {
         scanner.nextLine();
     }
 
-    private static void printSchedule(Schedule schedule) {
+    private static void printSchedule(Schedule schedule, Boolean isStudent) {
         logger.info("\n\n\n\n\nSchedule");
         if (schedule == null) {
             logger.info(" is empty.");
@@ -340,9 +349,37 @@ public class View {
             printScheduleDays(saturdayCourses, SAT);
             printScheduleDays(sundayCourses, SUN);
         }
-        logger.info("\nPress enter to go back");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+
+
+        if (Boolean.TRUE.equals(isStudent)) {
+            System.out.println("\n\n1-Send to Review\n9-Exit");
+            Integer choice = scanner.nextInt();
+
+            if (choice == 1) {
+                if (schedule.getApproved() == Boolean.FALSE)
+                {
+                    if (schedule.getSendToReview() == Boolean.TRUE){
+                        System.out.println("You've already sent your draft schedule to your advisor!");
+                    }else {
+                        int totalCredit = 0;
+
+                        for (Course course : schedule.getCourses()) {
+                            totalCredit += course.getCourseCredit();
+                        }
+
+                        if (totalCredit < school.getConfig().getMinimumCreditReq()){
+                            System.out.println("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq());
+                        } else {
+                            schedule.setSendToReview(Boolean.TRUE);
+                            System.out.println("You've successfully sent your schedule to your advisor to review!");
+                        }
+                    }
+                } else {
+                    System.out.println("You can't modify your schedule since it's already has been approved by your advisor.");
+                }
+            }
+        }
+
     }
 
     private static void printScheduleDays(List<Course> courses, DayName dayName) {
@@ -390,9 +427,60 @@ public class View {
         if (isEmpty) logger.info(" is empty.\n");
     }
 
-    private static void printAvailableCoursesStudent(Student student) {
-        logger.info("\n\n\n\n\nAvailable Courses\n");
-        List<Course> availableCourses = studentService.getAvailableCourses(student);
+    private static void printAddDropMenu(Student student) {
+        while (true) {
+            System.out.println("\nSelect the Operation:\n1- Add Course\n2- Remove Course\n9- Exit");
+            Integer choice = scanner.nextInt();
+
+            if (choice == 1) {
+                addCourseMenu(student);
+            } else if (choice == 2) {
+                removeCourseMenu(student);
+            } else if (choice == 9) {
+                break;
+            } else {
+                System.out.println("\nWrong Input!\n");
+            }
+        }
+        scanner.nextLine();
+    }
+
+    private static void removeCourseMenu(Student student) {
+        for (Course course : student.getWeeklySchedule().getCourses()) {
+            System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+        }
+
+        while (true) {
+            System.out.print("\nEnter the course code to remove from your schedule (Type 9 to exit): ");
+            String courseCode = scanner.next();
+
+            if (courseCode.equals("9")) {
+                break;
+            }
+
+            RemoveCourseReturnType isRemoved = studentService.removeCourseFromSchedule(student, courseCode);
+
+            if (isRemoved == RemoveCourseReturnType.Locked){
+                System.out.println("You can't remove any course since your schedule is already been approved!");
+            }
+
+            if (isRemoved == RemoveCourseReturnType.WaitingScheduleReview) {
+                System.out.println("Your schedule is under review by your advisor right now!");
+            }
+
+            if (isRemoved == RemoveCourseReturnType.NotExist) {
+                System.out.println("You cannot remove " + courseCode + " from your schedule!");
+            }
+
+            if (isRemoved == RemoveCourseReturnType.Success) {
+                System.out.println("You successfully removed " + courseCode + " from your schedule");
+            }
+        }
+    }
+
+    private static void addCourseMenu(Student student) {
+        System.out.print("\n\n\n\n\nAvailable Courses\n");
+        List<Course> availableCourses = studentService.getAvailableCourses(student, Boolean.FALSE);
         for (Course course : availableCourses) {
             logger.info("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
             for (int i = 0; i < course.getDates().size(); i++) {
@@ -412,44 +500,41 @@ public class View {
             }
             logger.info("\n");
         }
+
         while (true) {
-            logger.info("\nEnter the course code to add it to your schedule or type 9 to exit and view your schedule: ");
+            System.out.print("\nEnter the course code to add it to your schedule (Type 9 to exit): ");
             String courseCode = scanner.next();
-            if (Objects.equals(courseCode, "9")) {
-                logger.info("\n\n\n\n\nYour schedule");
-                if (student.getWeeklySchedule() != null) {
-                    logger.info("\n");
-                    for (Course course : student.getWeeklySchedule().getCourses()) {
-                        logger.info("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
-                    }
-                } else {
-                    logger.info(" is empty.");
-                }
+
+            if (courseCode.equals("9")) {
                 break;
-            } else {
-                AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
+            }
 
-                if (isAdded == AddCourseReturnType.SlotNotEmpty) {
-                    logger.info("You cannot add " + courseCode + " because the time slot is not empty!");
-                }
+            AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
-                if (isAdded == AddCourseReturnType.Success) {
-                    logger.info(courseCode + " successfully added to your schedule!");
-                }
+            if (isAdded == AddCourseReturnType.Locked){
+                System.out.println("You can't add any course right now since your schedule is approved!");
+            }
 
-                if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
-                    logger.info("You cannot add " + courseCode + " to your schedule!");
-                }
+            if (isAdded == AddCourseReturnType.WaitingScheduleReview) {
+                System.out.println("Your schedule is under review by your advisor right now!");
+            }
 
-                if (isAdded == AddCourseReturnType.NoAvailableSeats) {
-                    logger.info("You cannot add " + courseCode + " because there isn't any available seats!");
-                }
+            if (isAdded == AddCourseReturnType.SlotNotEmpty) {
+                System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");
+            }
+
+            if (isAdded == AddCourseReturnType.Success) {
+                System.out.println(courseCode + " successfully added to your schedule!");
+            }
+
+            if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
+                System.out.println("You cannot add " + courseCode + " to your schedule!");
+            }
+
+            if (isAdded == AddCourseReturnType.NoAvailableSeats) {
+                System.out.println("You cannot add " + courseCode + " because there isn't any available seats!");
             }
         }
-
-        logger.info("\nPress enter to go back");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
     }
 
     private static void printStudentInfo(Student student) {
