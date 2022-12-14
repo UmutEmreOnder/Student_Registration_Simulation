@@ -121,8 +121,8 @@ public class View {
         Student student = studentRepository.findByStudentId(id);
         if (student != null) {
             while (true) {
-                System.out.println("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
-                System.out.print("What would you like to do?\n1-View Student Info\n2-Add/Drop Course\n3-View Schedule\n4-View Transcript\n9-Exit\n");
+                logger.info("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
+                logger.info("What would you like to do?\n1-View Student Info\n2-Add/Drop Course\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
                 switch (input) {
                     case 1: {
@@ -192,24 +192,24 @@ public class View {
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) {
                                 if (student.getWeeklySchedule().getSendToReview() != Boolean.TRUE) {
-                                    System.out.println("The student hasn't send his schedule to review yet!");
+                                    logger.info("The student hasn't send his schedule to review yet!");
                                 } else {
                                     printSchedule(student.getWeeklySchedule(), false);
 
                                     if (student.getWeeklySchedule().getApproved() != Boolean.TRUE) {
-                                        System.out.println("\n1- Approve\n2- Deny");
+                                        logger.info("\n1- Approve\n2- Deny");
 
                                         if (scanner.nextInt() == 1) {
                                             advisorService.approveSchedule(student);
-                                            System.out.println("You've successfully approved the schedule");
+                                            logger.info("You've successfully approved the schedule");
                                         } else {
                                             advisorService.denySchedule(student);
-                                            System.out.println("You've successfully denied the schedule");
+                                            logger.info("You've successfully denied the schedule");
                                         }
                                     }
                                 }
                             } else
-                                System.out.println("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
                             break;
                         }
                         case 3: {
@@ -352,14 +352,14 @@ public class View {
 
 
         if (Boolean.TRUE.equals(isStudent)) {
-            System.out.println("\n\n1-Send to Review\n9-Exit");
+            logger.info("\n\n1-Send to Review\n9-Exit");
             Integer choice = scanner.nextInt();
 
             if (choice == 1) {
                 if (schedule.getApproved() == Boolean.FALSE)
                 {
                     if (schedule.getSendToReview() == Boolean.TRUE){
-                        System.out.println("You've already sent your draft schedule to your advisor!");
+                        logger.info("You've already sent your draft schedule to your advisor!");
                     }else {
                         int totalCredit = 0;
 
@@ -368,14 +368,14 @@ public class View {
                         }
 
                         if (totalCredit < school.getConfig().getMinimumCreditReq()){
-                            System.out.println("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq());
+                            logger.info("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq());
                         } else {
                             schedule.setSendToReview(Boolean.TRUE);
-                            System.out.println("You've successfully sent your schedule to your advisor to review!");
+                            logger.info("You've successfully sent your schedule to your advisor to review!");
                         }
                     }
                 } else {
-                    System.out.println("You can't modify your schedule since it's already has been approved by your advisor.");
+                    logger.info("You can't modify your schedule since it's already has been approved by your advisor.");
                 }
             }
         }
@@ -429,7 +429,7 @@ public class View {
 
     private static void printAddDropMenu(Student student) {
         while (true) {
-            System.out.println("\nSelect the Operation:\n1- Add Course\n2- Remove Course\n9- Exit");
+            logger.info("\nSelect the Operation:\n1- Add Course\n2- Remove Course\n9- Exit");
             Integer choice = scanner.nextInt();
 
             if (choice == 1) {
@@ -439,7 +439,7 @@ public class View {
             } else if (choice == 9) {
                 break;
             } else {
-                System.out.println("\nWrong Input!\n");
+                logger.info("\nWrong Input!\n");
             }
         }
         scanner.nextLine();
@@ -447,11 +447,11 @@ public class View {
 
     private static void removeCourseMenu(Student student) {
         for (Course course : student.getWeeklySchedule().getCourses()) {
-            System.out.println("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+            logger.info("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
         }
 
         while (true) {
-            System.out.print("\nEnter the course code to remove from your schedule (Type 9 to exit): ");
+            logger.info("\nEnter the course code to remove from your schedule (Type 9 to exit): ");
             String courseCode = scanner.next();
 
             if (courseCode.equals("9")) {
@@ -461,25 +461,25 @@ public class View {
             RemoveCourseReturnType isRemoved = studentService.removeCourseFromSchedule(student, courseCode);
 
             if (isRemoved == RemoveCourseReturnType.Locked){
-                System.out.println("You can't remove any course since your schedule is already been approved!");
+                logger.info("You can't remove any course since your schedule is already been approved!");
             }
 
             if (isRemoved == RemoveCourseReturnType.WaitingScheduleReview) {
-                System.out.println("Your schedule is under review by your advisor right now!");
+                logger.info("Your schedule is under review by your advisor right now!");
             }
 
             if (isRemoved == RemoveCourseReturnType.NotExist) {
-                System.out.println("You cannot remove " + courseCode + " from your schedule!");
+                logger.info("You cannot remove " + courseCode + " from your schedule!");
             }
 
             if (isRemoved == RemoveCourseReturnType.Success) {
-                System.out.println("You successfully removed " + courseCode + " from your schedule");
+                logger.info("You successfully removed " + courseCode + " from your schedule");
             }
         }
     }
 
     private static void addCourseMenu(Student student) {
-        System.out.print("\n\n\n\n\nAvailable Courses\n");
+        logger.info("\n\n\n\n\nAvailable Courses\n");
         List<Course> availableCourses = studentService.getAvailableCourses(student, Boolean.FALSE);
         for (Course course : availableCourses) {
             logger.info("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
@@ -502,7 +502,7 @@ public class View {
         }
 
         while (true) {
-            System.out.print("\nEnter the course code to add it to your schedule (Type 9 to exit): ");
+            logger.info("\nEnter the course code to add it to your schedule (Type 9 to exit): ");
             String courseCode = scanner.next();
 
             if (courseCode.equals("9")) {
@@ -512,27 +512,27 @@ public class View {
             AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
             if (isAdded == AddCourseReturnType.Locked){
-                System.out.println("You can't add any course right now since your schedule is approved!");
+                logger.info("You can't add any course right now since your schedule is approved!");
             }
 
             if (isAdded == AddCourseReturnType.WaitingScheduleReview) {
-                System.out.println("Your schedule is under review by your advisor right now!");
+                logger.info("Your schedule is under review by your advisor right now!");
             }
 
             if (isAdded == AddCourseReturnType.SlotNotEmpty) {
-                System.out.println("You cannot add " + courseCode + " because the time slot is not empty!");
+                logger.info("You cannot add " + courseCode + " because the time slot is not empty!");
             }
 
             if (isAdded == AddCourseReturnType.Success) {
-                System.out.println(courseCode + " successfully added to your schedule!");
+                logger.info(courseCode + " successfully added to your schedule!");
             }
 
             if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
-                System.out.println("You cannot add " + courseCode + " to your schedule!");
+                logger.info("You cannot add " + courseCode + " to your schedule!");
             }
 
             if (isAdded == AddCourseReturnType.NoAvailableSeats) {
-                System.out.println("You cannot add " + courseCode + " because there isn't any available seats!");
+                logger.info("You cannot add " + courseCode + " because there isn't any available seats!");
             }
         }
     }
