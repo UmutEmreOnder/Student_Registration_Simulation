@@ -1,0 +1,11 @@
+{
+  "uuid" : "00ed3999-f879-4ee7-8e3f-b96c0bda423d",
+  "name" : "Lorry",
+  "surname" : "Cartmer",
+  "email" : "lcartmerk@163.com",
+  "birthDate" : 988329600000,
+  "studentId" : 150526310,
+  "yearEnrolled" : 2013,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 2
+}

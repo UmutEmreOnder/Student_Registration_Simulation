@@ -1,0 +1,11 @@
+{
+  "uuid" : "b290b07e-967f-4bba-a7aa-d0a66b229014",
+  "name" : "Sella",
+  "surname" : "Barreau",
+  "email" : "sbarreauo@wikimedia.org",
+  "birthDate" : 906249600000,
+  "studentId" : 150187922,
+  "yearEnrolled" : 2002,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 6
+}

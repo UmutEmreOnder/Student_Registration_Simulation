@@ -1,0 +1,11 @@
+{
+  "uuid" : "198b92db-77f2-4ce3-9124-745072267cca",
+  "name" : "Addy",
+  "surname" : "Murdoch",
+  "email" : "amurdoch31@census.gov",
+  "birthDate" : 920246400000,
+  "studentId" : 150516183,
+  "yearEnrolled" : 2021,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 5
+}

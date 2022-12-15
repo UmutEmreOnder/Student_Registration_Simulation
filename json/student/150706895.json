@@ -1,0 +1,11 @@
+{
+  "uuid" : "61f187cf-4f84-4ebc-ac51-b1f11b4f8db9",
+  "name" : "Avigdor",
+  "surname" : "Arlt",
+  "email" : "aarlt9f@un.org",
+  "birthDate" : 955670400000,
+  "studentId" : 150706895,
+  "yearEnrolled" : 2004,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 2
+}

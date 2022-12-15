@@ -1,0 +1,11 @@
+{
+  "uuid" : "0925bc97-99b0-459b-8bcb-3c7375ed4b0e",
+  "name" : "Ken",
+  "surname" : "Moncur",
+  "email" : "kmoncur1m@cornell.edu",
+  "birthDate" : 1004140800000,
+  "studentId" : 150744923,
+  "yearEnrolled" : 2000,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 5
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "de9756ce-69fa-4b15-b7bf-1e877435c09a",
+  "name" : "Brigid",
+  "surname" : "Emblen",
+  "email" : "bemblen6v@phpbb.com",
+  "birthDate" : 886464000000,
+  "studentId" : 150755601,
+  "yearEnrolled" : 2005,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 4
+}

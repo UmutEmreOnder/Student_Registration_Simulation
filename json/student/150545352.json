@@ -1,0 +1,11 @@
+{
+  "uuid" : "f4b95c0c-dab6-45fb-b6e5-2e99b6cedc8d",
+  "name" : "Archie",
+  "surname" : "Boom",
+  "email" : "abooma5@craigslist.org",
+  "birthDate" : 1069632000000,
+  "studentId" : 150545352,
+  "yearEnrolled" : 2012,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 7
+}

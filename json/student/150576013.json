@@ -1,0 +1,11 @@
+{
+  "uuid" : "d0fbebf3-5ef4-45e4-ae1d-871309e79e49",
+  "name" : "Katey",
+  "surname" : "Van der Veldt",
+  "email" : "kvanderveldt3f@harvard.edu",
+  "birthDate" : 998179200000,
+  "studentId" : 150576013,
+  "yearEnrolled" : 2010,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 3
+}

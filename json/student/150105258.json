@@ -1,0 +1,11 @@
+{
+  "uuid" : "e8eafba9-9ab2-4c10-86f9-4809f81941d3",
+  "name" : "Chickie",
+  "surname" : "Manske",
+  "email" : "cmanske2s@boston.com",
+  "birthDate" : 1022889600000,
+  "studentId" : 150105258,
+  "yearEnrolled" : 2011,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 2
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "1b2415eb-80db-4d0e-85e6-cedaeec69500",
+  "name" : "Silva",
+  "surname" : "May",
+  "email" : "smay6e@tamu.edu",
+  "birthDate" : 1012003200000,
+  "studentId" : 150485721,
+  "yearEnrolled" : 2007,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 5
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "cb131f26-02f8-4e6d-995d-bdedb7f2f817",
+  "name" : "Brad",
+  "surname" : "Titcumb",
+  "email" : "btitcumb34@yale.edu",
+  "birthDate" : 1092268800000,
+  "studentId" : 150229147,
+  "yearEnrolled" : 2003,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 3
+}

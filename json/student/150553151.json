@@ -1,0 +1,11 @@
+{
+  "uuid" : "660cf281-2eb3-4717-80ec-834c099c873e",
+  "name" : "Cosimo",
+  "surname" : "Dieton",
+  "email" : "cdieton4@springer.com",
+  "birthDate" : 1019433600000,
+  "studentId" : 150553151,
+  "yearEnrolled" : 2004,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 1
+}

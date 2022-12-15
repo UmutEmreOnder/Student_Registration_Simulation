@@ -1,0 +1,11 @@
+{
+  "uuid" : "2e8cce54-53ff-4f4b-883e-52385741e30d",
+  "name" : "Monte",
+  "surname" : "Lordon",
+  "email" : "mlordon18@homestead.com",
+  "birthDate" : 979171200000,
+  "studentId" : 150605749,
+  "yearEnrolled" : 2008,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 7
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "c7d1c987-61c7-4e61-a0ea-3deb1fe780a1",
+  "name" : "Desdemona",
+  "surname" : "Pottes",
+  "email" : "dpottes1w@amazonaws.com",
+  "birthDate" : 857433600000,
+  "studentId" : 150015341,
+  "yearEnrolled" : 2001,
+  "advisor" : "fatme.ergin@marmara.edu.tr",
+  "semester" : 8
+}

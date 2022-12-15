@@ -1,0 +1,11 @@
+{
+  "uuid" : "970c5524-7f0d-421f-b113-3211a229e039",
+  "name" : "Hendrick",
+  "surname" : "Boor",
+  "email" : "hboor74@unc.edu",
+  "birthDate" : 1088208000000,
+  "studentId" : 150934882,
+  "yearEnrolled" : 2007,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 5
+}
