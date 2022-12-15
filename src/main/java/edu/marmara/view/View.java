@@ -60,7 +60,7 @@ public class View {
 
     private static final School school = School.getInstance();
 
-    private static final Logger logger = Logger.getLogger(View.class.getName());
+    public static final Logger logger = Logger.getLogger(View.class.getName());
 
 
     private static void configureLogger() {
@@ -79,10 +79,11 @@ public class View {
             // Set the formatter for both handlers to use the CustomFormatter
             handler.setFormatter(new edu.marmara.view.formatter.CustomFormatter());
             consoleHandler.setFormatter(new edu.marmara.view.formatter.CustomFormatter());
-
             // Add the file and console handlers to the logger
             logger.addHandler(handler);
             logger.addHandler(consoleHandler);
+
+
 
             // Set the logger to not use the parent (default) handlers
             logger.setUseParentHandlers(false);
@@ -97,17 +98,16 @@ public class View {
         schoolService.uploadJsons();
         configureLogger();
         while (true) {
-            logger.info("Select User Type: \n1- Student\n2- Instructor\n9- Exit");
+            logger.info("Select User Type: \n1- Student\n2- Instructor\n9- Exit\n");
             Integer input = scanner.nextInt();
             if (input == 1) {
                 printStudentMenu();
             } else if (input == 2) {
                 printInstructorMenu();
             } else if (input == 9) {
-                logger.info("User chose to 9- Exit.");
                 break;
             } else {
-                logger.warning("Wrong input!");
+                logger.warning("Wrong input!\n");
             }
         }
     }
@@ -116,37 +116,30 @@ public class View {
         int input;
 
         logger.info("Enter your Student ID: ");
-        long id = scanner.nextLong();
-        logger.info("Student entered his/her ID as: " + id);
-        Student student = studentRepository.findByStudentId(id);
+        Student student = studentRepository.findByStudentId(scanner.nextLong());
         if (student != null) {
             while (true) {
-                logger.info("\nWelcome " + student.getName() + " " + student.getSurname() + "!");
+                logger.info("\nWelcome " + student.getName() + " " + student.getSurname() + "!\n");
                 logger.info("What would you like to do?\n1-View Student Info\n2-Add/Drop Course\n3-View Schedule\n4-View Transcript\n9-Exit\n");
                 input = scanner.nextInt();
                 switch (input) {
                     case 1: {
-                        logger.info("Student chose to check 1-View Student Info.");
                         printStudentInfo(student);
                         break;
                     }
                     case 2: {
-                        logger.info("Student chose to check 2-Add/Drop Courses.");
                         printAddDropMenu(student);
                         break;
                     }
                     case 3: {
-                        logger.info("Student chose to check 3-View Schedule.");
                         printSchedule(student.getWeeklySchedule(), true);
                         break;
                     }
                     case 4: {
-                        logger.info("Student chose to check 4-View Transcript.");
                         printTranscript(student);
                         break;
                     }
                     case 9:
-                        logger.info("Student chose to 9-Exit.");
                         break;
                     default:
                         logger.warning("Wrong input!");
@@ -154,7 +147,7 @@ public class View {
                 if (input == 9) break;
             }
         } else {
-            logger.warning("Cannot find the student with given ID");
+            logger.warning("Cannot find the student with given ID\n");
         }
     }
 
@@ -162,78 +155,68 @@ public class View {
         int input;
         long studentID;
         logger.info("Enter your Email Address: ");
-        String email = scanner.next();
-        logger.info("User entered this Email Address: " + email);
-        Instructor instructor = instructorRepository.findByEmail(email);
+        Instructor instructor = instructorRepository.findByEmail(scanner.next());
         if (instructor != null) {
             while (true) {
-                logger.info("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!");
+                logger.info("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!\n");
                 if (instructor instanceof Advisor) {
                     logger.info("What would you like to do?\n1-View Student Info\n2-View Student Schedule" +
                             "\n3-View List Of Students\n4-View Instructor Info\n5-View Schedule\n9-Exit\n");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1: {
-                            logger.info("Instructor wanted to view Student Info -1");
                             logger.info("Enter student ID:");
                             studentID = scanner.nextLong();
-                            logger.info("Instructor entered this studentID: " + studentID);
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) printStudentInfo(student);
                             else
-                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her\n");
                             break;
                         }
                         case 2: {
-                            logger.info("Instructor wanted to view Student Schedule -2");
                             logger.info("Enter student ID:");
                             studentID = scanner.nextLong();
-                            logger.info("Instructor wanted to check this student's schedule: " + studentID);
                             Student student = advisorService.getStudent(studentID, (Advisor) instructor);
                             if (student != null) {
                                 if (student.getWeeklySchedule().getSendToReview() != Boolean.TRUE) {
-                                    logger.info("The student hasn't send his schedule to review yet!");
+                                    logger.info("The student hasn't send his schedule to review yet!\n");
                                 } else {
                                     printSchedule(student.getWeeklySchedule(), false);
 
                                     if (student.getWeeklySchedule().getApproved() != Boolean.TRUE) {
-                                        logger.info("\n1- Approve\n2- Deny");
+                                        logger.info("\n1- Approve\n2- Deny\n");
 
                                         if (scanner.nextInt() == 1) {
                                             advisorService.approveSchedule(student);
-                                            logger.info("You've successfully approved the schedule");
+                                            logger.info("You've successfully approved the schedule\n");
                                         } else {
                                             advisorService.denySchedule(student);
-                                            logger.info("You've successfully denied the schedule");
+                                            logger.info("You've successfully denied the schedule\n");
                                         }
                                     }
                                 }
                             } else
-                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her");
+                                logger.info("The student you're trying to reach doesn't exist or you're not the advisor of him/her\n");
                             break;
                         }
                         case 3: {
-                            logger.info("Instructor wanted to view Student List -3");
                             for (Student student : ((Advisor) instructor).getStudents()) {
-                                logger.info(student.getStudentId() + " | " + student.getName() + " " + student.getSurname());
+                                logger.info(student.getStudentId() + " | " + student.getName() + " " + student.getSurname() + "\n");
                             }
-                            logger.info("\nPress enter to go back");
+                            logger.info("\nPress enter to go back\n");
                             Scanner scanner = new Scanner(System.in);
                             scanner.nextLine();
                             break;
                         }
                         case 4: {
-                            logger.info("Instructor wanted to View Instructor Info -4");
                             printInstructorInfo(instructor);
                             break;
                         }
                         case 5: {
-                            logger.info("Instructor wanted to View Schedule -5");
                             printSchedule(instructor.getWeeklySchedule(), false);
                             break;
                         }
                         case 9:
-                            logger.info("Instructor wanted to Exit -9");
                             break;
                         default:
                             logger.warning("Wrong input!");
@@ -245,30 +228,26 @@ public class View {
                     input = scanner.nextInt();
                     switch (input) {
                         case 1: {
-                            logger.info("Instructor wanted to View Instructor Info -1");
                             printInstructorInfo(instructor);
                             break;
                         }
                         case 2: {
-                            logger.info("Instructor wanted to View Schedule -2");
                             printSchedule(instructor.getWeeklySchedule(), false);
                             break;
                         }
                         case 9:
-                            logger.info("Instructor wanted to Exit -9");
                             break;
                         default:
-                            logger.warning("Wrong input!");
+                            logger.warning("Wrong input!\n");
                     }
                     if (input == 9) {
-                        logger.info("Wanted to Exit -9");
                         break;
                     }
 
                 }
             }
         } else {
-            logger.warning("Cannot find the instructor with given email");
+            logger.warning("\nCannot find the instructor with given email\n");
         }
     }
 
@@ -279,24 +258,24 @@ public class View {
             int failedCredit = student.getTranscript().getFailedCredit();
             double gpa = student.getTranscript().getGpa();
 
-            logger.info("\nGPA = \n" + String.format("%.2f", gpa));
-            logger.info("Passed Credit = " + passedCredit);
-            logger.info("Failed Credit = " + failedCredit);
-            logger.info("\nPassed Courses");
+            logger.info("\nGPA = " + String.format("%.2f\n", gpa));
+            logger.info("Passed Credit = " + passedCredit +"\n");
+            logger.info("Failed Credit = " + failedCredit +"\n");
+            logger.info("\nPassed Courses\n");
             for (Map.Entry<Course, Double> passedCourse : student.getTranscript().getPassedCourses().entrySet()) {
-                logger.info("| " + passedCourse.getKey().getCourseCode() + " | " + passedCourse.getKey().getCourseTitle() + " | " + Grade.valueOfGrade(passedCourse.getValue()));
+                logger.info("| " + String.format("%-8s", passedCourse.getKey().getCourseCode()) + " | " + String.format("%-40s", passedCourse.getKey().getCourseTitle()) + " | " + Grade.valueOfGrade(passedCourse.getValue()) +"\n");
             }
-            logger.info("\nFailed Courses");
+            logger.info("\nFailed Courses\n");
             for (Course course : student.getTranscript().getFailedCourses()) {
-                logger.info("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " | " + "FF");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " | " + "FF" +"\n");
             }
-            logger.info("\nCurrently Taken Courses");
+            logger.info("\nCurrently Taken Courses\n");
             for (Course course : student.getTranscript().getCurrentlyTakenCourses()) {
-                logger.info("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" +"\n");
             }
-            logger.info("\nNot Taken Courses");
+            logger.info("\nNot Taken Courses\n");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
-                logger.info("| " + course.getCourseCode() + " | " + course.getCourseTitle() + " |");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" +"\n");
             }
         } else {
             logger.info("Transcript is empty.");
@@ -307,7 +286,7 @@ public class View {
     }
 
     private static void printSchedule(Schedule schedule, Boolean isStudent) {
-        logger.info("\n\n\n\n\nSchedule");
+        logger.info("\n\n\nSchedule");
         if (schedule == null) {
             logger.info(" is empty.");
         } else {
@@ -352,14 +331,14 @@ public class View {
 
 
         if (Boolean.TRUE.equals(isStudent)) {
-            logger.info("\n\n1-Send to Review\n9-Exit");
+            logger.info("\n\n1-Send to Review\n9-Exit\n");
             Integer choice = scanner.nextInt();
 
             if (choice == 1) {
                 if (schedule.getApproved() == Boolean.FALSE)
                 {
                     if (schedule.getSendToReview() == Boolean.TRUE){
-                        logger.info("You've already sent your draft schedule to your advisor!");
+                        logger.info("You've already sent your draft schedule to your advisor!\n");
                     }else {
                         int totalCredit = 0;
 
@@ -368,14 +347,14 @@ public class View {
                         }
 
                         if (totalCredit < school.getConfig().getMinimumCreditReq()){
-                            logger.info("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq());
+                            logger.info("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq() + "\n");
                         } else {
                             schedule.setSendToReview(Boolean.TRUE);
-                            logger.info("You've successfully sent your schedule to your advisor to review!");
+                            logger.info("You've successfully sent your schedule to your advisor to review!\n");
                         }
                     }
                 } else {
-                    logger.info("You can't modify your schedule since it's already has been approved by your advisor.");
+                    logger.info("You can't modify your schedule since it's already has been approved by your advisor.\n");
                 }
             }
         }
@@ -413,11 +392,11 @@ public class View {
                 for (int j = 0; j < course.getDates().size(); j++) {
                     if (course.getDates().get(j).getDayName() == dayName && course.getDates().get(j).getHours() == i) {
                         if (isEmpty) logger.info("\n");
-                        String formatted = String.format("%02d", i);
-                        String formatted2 = String.format("%02d", i + 1);
-                        logger.info(formatted + ".00 -|  " + course.getCourseCode() + " " + course.getCourseTitle() + " |");
-                        logger.info(formatted2 + ".00  |          " + course.getInstructor().getName() + " " + course.getInstructor().getSurname() + "          |");
-                        if (i != 18) logger.info("------------------------------------");
+                        String formatted = String.format("\n%02d", i);
+                        String formatted2 = String.format("\n%02d", i + 1);
+                        logger.info(formatted + ".00 -|  " + String.format("%-30s", course.getCourseCode() + " " + course.getCourseTitle()) + " |");
+                        logger.info(formatted2 + ".00 -|  " + String.format("%-30s", course.getInstructor().getName() + " " + course.getInstructor().getSurname()) + " |\n");
+                        if (i != 18) logger.info("-----------------------------------------\n");
                         isEmpty = false;
                         break L1;
                     }
@@ -429,7 +408,7 @@ public class View {
 
     private static void printAddDropMenu(Student student) {
         while (true) {
-            logger.info("\nSelect the Operation:\n1- Add Course\n2- Remove Course\n9- Exit");
+            logger.info("\nSelect the Operation:\n1- Add Course\n2- Remove Course\n9- Exit\n");
             Integer choice = scanner.nextInt();
 
             if (choice == 1) {
@@ -447,7 +426,7 @@ public class View {
 
     private static void removeCourseMenu(Student student) {
         for (Course course : student.getWeeklySchedule().getCourses()) {
-            logger.info("|  " + course.getCourseCode() + "  |" + course.getCourseTitle());
+            logger.info("|  " + course.getCourseCode() + "  |" + course.getCourseTitle() + "\n");
         }
 
         while (true) {
@@ -461,19 +440,19 @@ public class View {
             RemoveCourseReturnType isRemoved = studentService.removeCourseFromSchedule(student, courseCode);
 
             if (isRemoved == RemoveCourseReturnType.Locked){
-                logger.info("You can't remove any course since your schedule is already been approved!");
+                logger.info("You can't remove any course since your schedule is already been approved!\n");
             }
 
             if (isRemoved == RemoveCourseReturnType.WaitingScheduleReview) {
-                logger.info("Your schedule is under review by your advisor right now!");
+                logger.info("Your schedule is under review by your advisor right now!\n");
             }
 
             if (isRemoved == RemoveCourseReturnType.NotExist) {
-                logger.info("You cannot remove " + courseCode + " from your schedule!");
+                logger.info("You cannot remove " + courseCode + " from your schedule!\n");
             }
 
             if (isRemoved == RemoveCourseReturnType.Success) {
-                logger.info("You successfully removed " + courseCode + " from your schedule");
+                logger.info("You successfully removed " + courseCode + " from your schedule\n");
             }
         }
     }
@@ -512,38 +491,38 @@ public class View {
             AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
             if (isAdded == AddCourseReturnType.Locked){
-                logger.info("You can't add any course right now since your schedule is approved!");
+                logger.info("You can't add any course right now since your schedule is approved!\n");
             }
 
             if (isAdded == AddCourseReturnType.WaitingScheduleReview) {
-                logger.info("Your schedule is under review by your advisor right now!");
+                logger.info("Your schedule is under review by your advisor right now!\n");
             }
 
             if (isAdded == AddCourseReturnType.SlotNotEmpty) {
-                logger.info("You cannot add " + courseCode + " because the time slot is not empty!");
+                logger.info("You cannot add " + courseCode + " because the time slot is not empty!\n");
             }
 
             if (isAdded == AddCourseReturnType.Success) {
-                logger.info(courseCode + " successfully added to your schedule!");
+                logger.info(courseCode + " successfully added to your schedule!\n");
             }
 
             if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
-                logger.info("You cannot add " + courseCode + " to your schedule!");
+                logger.info("You cannot add " + courseCode + " to your schedule!\n");
             }
 
             if (isAdded == AddCourseReturnType.NoAvailableSeats) {
-                logger.info("You cannot add " + courseCode + " because there isn't any available seats!");
+                logger.info("You cannot add " + courseCode + " because there isn't any available seats!\n");
             }
         }
     }
 
     private static void printStudentInfo(Student student) {
         logger.info("\n\n\n\n\n" + student.getName() + " " + student.getSurname() + "\n");
-        logger.info("UUID = " + student.getUuid());
-        logger.info("E-mail = " + student.getEmail());
-        logger.info("Birth Date = " + student.getBirthDate());
-        logger.info("Year enrolled = " + student.getYearEnrolled());
-        logger.info("Semester = " + student.getSemester());
+        logger.info("UUID = " + student.getUuid() + "\n");
+        logger.info("E-mail = " + student.getEmail() + "\n");
+        logger.info("Birth Date = " + student.getBirthDate() + "\n");
+        logger.info("Year enrolled = " + student.getYearEnrolled() + "\n");
+        logger.info("Semester = " + student.getSemester() + "\n");
         logger.info("Advisor = " + (student.getAdvisor() == null ? "N/A" : (student.getAdvisor().getName() + " " + student.getAdvisor().getSurname())) + "\n");
         logger.info("Press enter to go back");
         Scanner scanner = new Scanner(System.in);
@@ -552,12 +531,12 @@ public class View {
 
     private static void printInstructorInfo(Instructor instructor) {
         logger.info("\n\n\n\n\n" + instructor.getName() + " " + instructor.getSurname() + "\n");
-        logger.info("UUID = " + instructor.getUuid());
-        logger.info("E-mail = " + instructor.getEmail());
-        logger.info("Birth Date = " + instructor.getBirthDate());
-        logger.info("\nPresented Courses");
+        logger.info("UUID = " + instructor.getUuid() + "\n");
+        logger.info("E-mail = " + instructor.getEmail() + "\n");
+        logger.info("Birth Date = " + instructor.getBirthDate() + "\n");
+        logger.info("\nPresented Courses\n");
         for (Course course : instructor.getPresentedCourses()) {
-            logger.info(course.getCourseCode() + " | " + course.getCourseTitle());
+            logger.info(course.getCourseCode() + " | " + course.getCourseTitle() + "\n");
         }
         logger.info("\nPress enter to go back");
         Scanner scanner = new Scanner(System.in);

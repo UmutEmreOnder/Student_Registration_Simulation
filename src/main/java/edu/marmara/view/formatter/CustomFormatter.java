@@ -7,6 +7,6 @@ public class CustomFormatter extends SimpleFormatter {
     @Override
     public String format(LogRecord record) {
         // Customize the log message format
-        return record.getLevel() + ": " + record.getMessage() + "\n";
+        return record.getMessage();
     }
 }

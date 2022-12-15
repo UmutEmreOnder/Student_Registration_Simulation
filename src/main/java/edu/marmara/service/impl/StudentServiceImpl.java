@@ -63,6 +63,10 @@ public class StudentServiceImpl implements StudentService {
     public AddCourseReturnType addCourseToSchedule(Student student, String courseCode, List<Course> availableCourses) {
         Course course = courseRepository.findByCourseCode(courseCode);
 
+        if (course == null) {
+            return AddCourseReturnType.NotExistOnAvailableCourses;
+        }
+
         if (student.getWeeklySchedule().getApproved() == Boolean.TRUE) {
             return AddCourseReturnType.Locked;
         }
