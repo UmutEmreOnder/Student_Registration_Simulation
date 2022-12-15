@@ -6,7 +6,19 @@
     "email": "haluk@marmara.edu.tr",
     "birthDate": "1967-04-24",
     "presentedCourses": [
-      "CSE3038"
+      "CSE3038",
+      "NTE1",
+      "NTE2",
+      "UE",
+      "CSE4197",
+      "CSE4198",
+      "TE1",
+      "TE2",
+      "TE3",
+      "TE4",
+      "TE5",
+      "FTE",
+      "NTE3"
     ],
     "advisor": true
   },

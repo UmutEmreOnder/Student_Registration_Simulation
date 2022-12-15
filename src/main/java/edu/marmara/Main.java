@@ -10,8 +10,13 @@ import java.text.ParseException;
 public class Main {
     private static final JsonService jsonService = new JsonServiceImpl();
 
-    public static void main(String[] args) throws IOException, ParseException {
-        View.start();
-        jsonService.end();
+    public static void main(String[] args) {
+        try {
+            View.start();
+            jsonService.end();
+        } catch (Exception e) {
+            View.logger.warning(e.getMessage());
+        }
+
     }
 }
