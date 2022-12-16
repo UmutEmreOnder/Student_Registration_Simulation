@@ -1,0 +1,11 @@
+{
+  "uuid" : "116f7e35-8f21-48fc-83b7-4bc15620eacc",
+  "name" : "Nessa",
+  "surname" : "Scholte",
+  "email" : "nscholte9f@devhub.com",
+  "birthDate" : 846115200000,
+  "studentId" : 150109063,
+  "yearEnrolled" : 2021,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 6
+}

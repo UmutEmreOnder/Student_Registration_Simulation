@@ -1,0 +1,11 @@
+{
+  "uuid" : "c46b0a54-9d80-47ac-84e4-9bad45877efa",
+  "name" : "Gage",
+  "surname" : "Tudor",
+  "email" : "gtudor70@gizmodo.com",
+  "birthDate" : 824256000000,
+  "studentId" : 150100776,
+  "yearEnrolled" : 2014,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 4
+}

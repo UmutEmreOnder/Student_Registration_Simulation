@@ -1,0 +1,11 @@
+{
+  "uuid" : "522687f8-f95d-444e-8aa9-34305a804a51",
+  "name" : "Lincoln",
+  "surname" : "Tures",
+  "email" : "lturesw@google.pl",
+  "birthDate" : 955324800000,
+  "studentId" : 150107343,
+  "yearEnrolled" : 2000,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 4
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "09c74b11-9e84-4374-908a-f4b000451d03",
+  "name" : "Malvin",
+  "surname" : "Adamovich",
+  "email" : "madamovich5@latimes.com",
+  "birthDate" : 604540800000,
+  "studentId" : 150104927,
+  "yearEnrolled" : 2010,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 7
+}

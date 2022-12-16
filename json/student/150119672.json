@@ -1,0 +1,11 @@
+{
+  "uuid" : "b07b3d9d-e30c-4d57-a2da-f04b84939db4",
+  "name" : "Reginald",
+  "surname" : "Lyngsted",
+  "email" : "rlyngsted76@unc.edu",
+  "birthDate" : 824688000000,
+  "studentId" : 150119672,
+  "yearEnrolled" : 2020,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 4
+}

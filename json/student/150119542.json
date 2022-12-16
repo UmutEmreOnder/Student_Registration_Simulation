@@ -1,0 +1,11 @@
+{
+  "uuid" : "b4b9f660-7b2d-4fc1-8b07-3163dd3a21a6",
+  "name" : "Steven",
+  "surname" : "Verrall",
+  "email" : "sverrall3i@state.tx.us",
+  "birthDate" : 924307200000,
+  "studentId" : 150119542,
+  "yearEnrolled" : 2010,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 8
+}

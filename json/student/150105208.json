@@ -1,0 +1,11 @@
+{
+  "uuid" : "d1d0271b-9933-4c64-a6e4-504822c3db31",
+  "name" : "Fulton",
+  "surname" : "Zappel",
+  "email" : "fzappelae@thetimes.co.uk",
+  "birthDate" : 745977600000,
+  "studentId" : 150105208,
+  "yearEnrolled" : 2004,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 7
+}

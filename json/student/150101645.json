@@ -1,0 +1,11 @@
+{
+  "uuid" : "4a601a82-426c-4fe0-9160-fb9171c1a53a",
+  "name" : "Grenville",
+  "surname" : "Janssen",
+  "email" : "gjanssen10@google.es",
+  "birthDate" : 733363200000,
+  "studentId" : 150101645,
+  "yearEnrolled" : 2011,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 2
+}

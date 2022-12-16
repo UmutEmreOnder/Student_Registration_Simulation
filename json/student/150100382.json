@@ -1,0 +1,11 @@
+{
+  "uuid" : "b0101e67-a7d7-4700-9802-f4abc3a59a51",
+  "name" : "Philippe",
+  "surname" : "Biggans",
+  "email" : "pbiggans44@pagesperso-orange.fr",
+  "birthDate" : 1088985600000,
+  "studentId" : 150100382,
+  "yearEnrolled" : 2019,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 8
+}

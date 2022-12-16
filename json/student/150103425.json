@@ -1,0 +1,11 @@
+{
+  "uuid" : "ddec8fac-5cd9-4a00-8d4a-492ce1f70b00",
+  "name" : "Terrance",
+  "surname" : "Roft",
+  "email" : "troft7j@github.com",
+  "birthDate" : 610156800000,
+  "studentId" : 150103425,
+  "yearEnrolled" : 2018,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 2
+}
