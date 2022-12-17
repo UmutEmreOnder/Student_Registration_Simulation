@@ -11,6 +11,8 @@ public abstract class Person {
     private String email;
     private Date birthDate;
 
+    abstract void addCourseToSchedule(Course course);
+
     public Person() {
     }
 
