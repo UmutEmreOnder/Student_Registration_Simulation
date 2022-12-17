@@ -1,5 +1,6 @@
 package edu.marmara.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import edu.marmara.config.Config;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
@@ -25,54 +26,64 @@ public class SchoolServiceImpl implements SchoolService {
     private static StudentService studentService = new StudentServiceImpl();
 
     @Override
-    public void uploadJsons() throws IOException, ParseException {
-        String configInfo = Files.readString(Path.of("json/config/config.json"));
-        Config config = jsonService.readConfigFromJson(configInfo);
-
-        school.setConfig(config);
-
-        String courseInfo = Files.readString(Path.of("json/course/course.json"));
-        List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
-
-        school.setCourses(courses);
-
-        String instructorInfo = Files.readString(Path.of("json/instructor/instructor.json"));
-        List<Instructor> instructors = jsonService.readInstructorsFromJson(instructorInfo);
-
-        school.setInstructors(instructors);
-
-        File folder = new File("json/student/");
-        File[] listOfFiles = folder.listFiles();
-
-        if (listOfFiles == null) {
-            return;
+    public void uploadJsons() {
+        try {
+            String configInfo = Files.readString(Path.of("json/config/config.json"));
+            Config config = jsonService.readConfigFromJson(configInfo);
+            school.setConfig(config);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
-        for (File file : listOfFiles) {
-            if (file.isFile() && file.getName().endsWith(".json")) {
-                String content = Files.readString(Path.of(file.getPath()));
-                Student student = jsonService.readStudentFromJson(content);
 
-                File scheduleFile = new File("json/schedule/" + student.getStudentId() + ".json");
-                File transcriptFile = new File("json/transcript/" + student.getStudentId() + ".json");
+        try {
+            String courseInfo = Files.readString(Path.of("json/course/course.json"));
+            List<Course> courses = jsonService.readCoursesFromJson(courseInfo);
 
-                if (scheduleFile.exists()) {
-                    Schedule schedule = jsonService.readScheduleFromJson(Files.readString(Path.of(scheduleFile.getPath())));
-                    student.setWeeklySchedule(schedule);
-                }
+            school.setCourses(courses);
+        } catch (IOException | ParseException e) {
+            throw new RuntimeException(e);
+        }
 
-                if (transcriptFile.exists()) {
-                    Transcript transcript = jsonService.readTranscriptFromJson(Files.readString(Path.of(transcriptFile.getPath())));
-                    transcript.calculateGPA();
-                    student.setTranscript(transcript);
-                } else {
-                    studentService.assignRandomCourses(student);
-                }
+        try {
+            String instructorInfo = Files.readString(Path.of("json/instructor/instructor.json"));
+            List<Instructor> instructors = jsonService.readInstructorsFromJson(instructorInfo);
 
-                school.addStudent(student);
+            school.setInstructors(instructors);
+
+            File folder = new File("json/student/");
+            File[] listOfFiles = folder.listFiles();
+
+            if (listOfFiles == null) {
+                return;
             }
+
+            for (File file : listOfFiles) {
+                if (file.isFile() && file.getName().endsWith(".json")) {
+                    String content = Files.readString(Path.of(file.getPath()));
+                    Student student = jsonService.readStudentFromJson(content);
+
+                    File scheduleFile = new File("json/schedule/" + student.getStudentId() + ".json");
+                    File transcriptFile = new File("json/transcript/" + student.getStudentId() + ".json");
+
+                    if (scheduleFile.exists()) {
+                        Schedule schedule = jsonService.readScheduleFromJson(Files.readString(Path.of(scheduleFile.getPath())));
+                        student.setWeeklySchedule(schedule);
+                    }
+
+                    if (transcriptFile.exists()) {
+                        Transcript transcript = jsonService.readTranscriptFromJson(Files.readString(Path.of(transcriptFile.getPath())));
+                        transcript.calculateGPA();
+                        student.setTranscript(transcript);
+                    } else {
+                        studentService.assignRandomCourses(student);
+                    }
+
+                    school.addStudent(student);
+                }
+            }
+        } catch (RuntimeException | IOException | ParseException e) {
+            throw new RuntimeException(e);
         }
-
-
     }
 }

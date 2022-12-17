@@ -103,12 +103,12 @@ public class JsonServiceImpl implements JsonService {
     }
 
     @Override
-    public void end() throws IOException {
+    public void end() {
         saveSchedules();
         saveTranscripts();
     }
 
-    private void saveTranscripts() throws IOException {
+    private void saveTranscripts() {
         School school = School.getInstance();
         ObjectMapper objectMapper = getObjectMapper();
         ObjectWriter writer = objectMapper.writer().withDefaultPrettyPrinter();
@@ -117,13 +117,22 @@ public class JsonServiceImpl implements JsonService {
             if (student.getTranscript() != null) {
                 new File("json/transcript").mkdirs();
                 String path = "json/transcript/" + student.getStudentId() + ".json";
-                String json = writer.writeValueAsString(transcriptMapper.mapTo(student.getTranscript()));
-                Files.write(Path.of(path), json.getBytes());
+                String json;
+                try {
+                    json = writer.writeValueAsString(transcriptMapper.mapTo(student.getTranscript()));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    Files.write(Path.of(path), json.getBytes());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
 
-    private void saveSchedules() throws IOException {
+    private void saveSchedules() {
         School school = School.getInstance();
         ObjectMapper objectMapper = getObjectMapper();
         ObjectWriter writer = objectMapper.writer().withDefaultPrettyPrinter();
@@ -132,8 +141,19 @@ public class JsonServiceImpl implements JsonService {
             if (student.getWeeklySchedule() != null) {
                 new File("json/schedule").mkdirs();
                 String path = "json/schedule/" + student.getStudentId() + ".json";
-                String json = writer.writeValueAsString(scheduleMapper.mapTo(student.getWeeklySchedule()));
-                Files.write(Path.of(path), json.getBytes());
+
+                String json;
+                try {
+                    json = writer.writeValueAsString(scheduleMapper.mapTo(student.getWeeklySchedule()));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+
+                try {
+                    Files.write(Path.of(path), json.getBytes());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
