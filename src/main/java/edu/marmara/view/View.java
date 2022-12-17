@@ -32,23 +32,25 @@ import edu.marmara.service.StudentService;
 import edu.marmara.service.impl.AdvisorServiceImpl;
 import edu.marmara.service.impl.SchoolServiceImpl;
 import edu.marmara.service.impl.StudentServiceImpl;
+import edu.marmara.view.formatter.CustomFileFormatter;
+import edu.marmara.view.formatter.CustomFormatter;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Objects;
-
-import java.io.IOException;
-import java.text.ParseException;
-
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class View {
+    public static final Logger logger = Logger.getLogger(View.class.getName());
+    private static final School school = School.getInstance();
     public static StudentService studentService = new StudentServiceImpl();
     public static StudentRepository studentRepository = new StudentRepositoryImpl();
     public static InstructorRepository instructorRepository = new InstructorRepositoryImpl();
@@ -58,10 +60,9 @@ public class View {
     public static AdvisorService advisorService = new AdvisorServiceImpl();
     public static Scanner scanner = new Scanner(System.in);
 
-    private static final School school = School.getInstance();
 
-    public static final Logger logger = Logger.getLogger(View.class.getName());
-
+    private View() {
+    }
 
     private static void configureLogger() {
         try {
@@ -69,20 +70,19 @@ public class View {
             Date date = new Date();
 
             // generate the log file name using the current time
-            String fileName = "log-" + date.toString() + ".txt";
-
+            String fileName = "log-" + date + ".txt";
+            new File("logs").mkdir();
             // configure the logger
             FileHandler handler = new FileHandler("logs/" + fileName);
             // Create a console handler that writes log messages to the console
             ConsoleHandler consoleHandler = new ConsoleHandler();
 
             // Set the formatter for both handlers to use the CustomFormatter
-            handler.setFormatter(new edu.marmara.view.formatter.CustomFormatter());
-            consoleHandler.setFormatter(new edu.marmara.view.formatter.CustomFormatter());
+            handler.setFormatter(new CustomFileFormatter());
+            consoleHandler.setFormatter(new CustomFormatter());
             // Add the file and console handlers to the logger
             logger.addHandler(handler);
             logger.addHandler(consoleHandler);
-
 
 
             // Set the logger to not use the parent (default) handlers
@@ -90,8 +90,6 @@ public class View {
         } catch (Exception e) {
             logger.log(Level.SEVERE, "an error occurred while configuring the logger", e);
         }
-    }
-    private View() {
     }
 
     public static void start() throws IOException, ParseException {
@@ -147,7 +145,7 @@ public class View {
                 if (input == 9) break;
             }
         } else {
-            logger.warning("Cannot find the student with given ID\n");
+            logger.warning("\nCannot find the student with given ID\n");
         }
     }
 
@@ -160,8 +158,7 @@ public class View {
             while (true) {
                 logger.info("\nWelcome " + instructor.getName() + " " + instructor.getSurname() + "!\n");
                 if (instructor instanceof Advisor) {
-                    logger.info("What would you like to do?\n1-View Student Info\n2-View Student Schedule" +
-                            "\n3-View List Of Students\n4-View Instructor Info\n5-View Schedule\n9-Exit\n");
+                    logger.info("What would you like to do?\n1-View Student Info\n2-View Student Schedule" + "\n3-View List Of Students\n4-View Instructor Info\n5-View Schedule\n9-Exit\n");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1: {
@@ -223,8 +220,7 @@ public class View {
                     }
                     if (input == 9) break;
                 } else {
-                    logger.info("What would you like to do?\n1-View Instructor Info\n2-View Schedule" +
-                            "\n9-Exit\n");
+                    logger.info("What would you like to do?\n1-View Instructor Info\n2-View Schedule" + "\n9-Exit\n");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1: {
@@ -259,23 +255,23 @@ public class View {
             double gpa = student.getTranscript().getGpa();
 
             logger.info("\nGPA = " + String.format("%.2f\n", gpa));
-            logger.info("Passed Credit = " + passedCredit +"\n");
-            logger.info("Failed Credit = " + failedCredit +"\n");
+            logger.info("Passed Credit = " + passedCredit + "\n");
+            logger.info("Failed Credit = " + failedCredit + "\n");
             logger.info("\nPassed Courses\n");
             for (Map.Entry<Course, Double> passedCourse : student.getTranscript().getPassedCourses().entrySet()) {
-                logger.info("| " + String.format("%-8s", passedCourse.getKey().getCourseCode()) + " | " + String.format("%-40s", passedCourse.getKey().getCourseTitle()) + " | " + Grade.valueOfGrade(passedCourse.getValue()) +"\n");
+                logger.info("| " + String.format("%-8s", passedCourse.getKey().getCourseCode()) + " | " + String.format("%-40s", passedCourse.getKey().getCourseTitle()) + " | " + Grade.valueOfGrade(passedCourse.getValue()) + "\n");
             }
             logger.info("\nFailed Courses\n");
             for (Course course : student.getTranscript().getFailedCourses()) {
-                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " | " + "FF" +"\n");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " | " + "FF" + "\n");
             }
             logger.info("\nCurrently Taken Courses\n");
             for (Course course : student.getTranscript().getCurrentlyTakenCourses()) {
-                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" +"\n");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" + "\n");
             }
             logger.info("\nNot Taken Courses\n");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
-                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" +"\n");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" + "\n");
             }
         } else {
             logger.info("Transcript is empty.");
@@ -335,26 +331,25 @@ public class View {
             Integer choice = scanner.nextInt();
 
             if (choice == 1) {
-                if (schedule.getApproved() == Boolean.FALSE)
-                {
-                    if (schedule.getSendToReview() == Boolean.TRUE){
-                        logger.info("You've already sent your draft schedule to your advisor!\n");
-                    }else {
+                if (schedule.getApproved() == Boolean.FALSE) {
+                    if (schedule.getSendToReview() == Boolean.TRUE) {
+                        logger.warning("You've already sent your draft schedule to your advisor!\n");
+                    } else {
                         int totalCredit = 0;
 
                         for (Course course : schedule.getCourses()) {
                             totalCredit += course.getCourseCredit();
                         }
 
-                        if (totalCredit < school.getConfig().getMinimumCreditReq()){
-                            logger.info("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq() + "\n");
+                        if (totalCredit < school.getConfig().getMinimumCreditReq()) {
+                            logger.warning("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq() + "\n");
                         } else {
                             schedule.setSendToReview(Boolean.TRUE);
                             logger.info("You've successfully sent your schedule to your advisor to review!\n");
                         }
                     }
                 } else {
-                    logger.info("You can't modify your schedule since it's already has been approved by your advisor.\n");
+                    logger.warning("You can't modify your schedule since it's already has been approved by your advisor.\n");
                 }
             }
         }
@@ -418,7 +413,7 @@ public class View {
             } else if (choice == 9) {
                 break;
             } else {
-                logger.info("\nWrong Input!\n");
+                logger.warning("\nWrong Input!\n");
             }
         }
         scanner.nextLine();
@@ -439,16 +434,16 @@ public class View {
 
             RemoveCourseReturnType isRemoved = studentService.removeCourseFromSchedule(student, courseCode);
 
-            if (isRemoved == RemoveCourseReturnType.Locked){
-                logger.info("You can't remove any course since your schedule is already been approved!\n");
+            if (isRemoved == RemoveCourseReturnType.Locked) {
+                logger.warning("You can't remove any course since your schedule is already been approved!\n");
             }
 
             if (isRemoved == RemoveCourseReturnType.WaitingScheduleReview) {
-                logger.info("Your schedule is under review by your advisor right now!\n");
+                logger.warning("Your schedule is under review by your advisor right now!\n");
             }
 
             if (isRemoved == RemoveCourseReturnType.NotExist) {
-                logger.info("You cannot remove " + courseCode + " from your schedule!\n");
+                logger.warning("You cannot remove " + courseCode + " from your schedule!\n");
             }
 
             if (isRemoved == RemoveCourseReturnType.Success) {
@@ -490,16 +485,16 @@ public class View {
 
             AddCourseReturnType isAdded = studentService.addCourseToSchedule(student, courseCode, availableCourses);
 
-            if (isAdded == AddCourseReturnType.Locked){
-                logger.info("You can't add any course right now since your schedule is approved!\n");
+            if (isAdded == AddCourseReturnType.Locked) {
+                logger.warning("You can't add any course right now since your schedule is approved!\n");
             }
 
             if (isAdded == AddCourseReturnType.WaitingScheduleReview) {
-                logger.info("Your schedule is under review by your advisor right now!\n");
+                logger.warning("Your schedule is under review by your advisor right now!\n");
             }
 
             if (isAdded == AddCourseReturnType.SlotNotEmpty) {
-                logger.info("You cannot add " + courseCode + " because the time slot is not empty!\n");
+                logger.warning("You cannot add " + courseCode + " because the time slot is not empty!\n");
             }
 
             if (isAdded == AddCourseReturnType.Success) {
@@ -507,11 +502,11 @@ public class View {
             }
 
             if (isAdded == AddCourseReturnType.NotExistOnAvailableCourses) {
-                logger.info("You cannot add " + courseCode + " to your schedule!\n");
+                logger.warning("You cannot add " + courseCode + " to your schedule!\n");
             }
 
             if (isAdded == AddCourseReturnType.NoAvailableSeats) {
-                logger.info("You cannot add " + courseCode + " because there isn't any available seats!\n");
+                logger.warning("You cannot add " + courseCode + " because there isn't any available seats!\n");
             }
         }
     }
