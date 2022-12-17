@@ -259,19 +259,19 @@ public class View {
             logger.info("Failed Credit = " + failedCredit + "\n");
             logger.info("\nPassed Courses\n");
             for (Map.Entry<Course, Double> passedCourse : student.getTranscript().getPassedCourses().entrySet()) {
-                logger.info("| " + String.format("%-8s", passedCourse.getKey().getCourseCode()) + " | " + String.format("%-40s", passedCourse.getKey().getCourseTitle()) + " | " + Grade.valueOfGrade(passedCourse.getValue()) + "\n");
+                logger.info("| " + String.format("%-8s", passedCourse.getKey().getCourseCode()) + " | " + String.format("%-60s", passedCourse.getKey().getCourseTitle()) + " | " + Grade.valueOfGrade(passedCourse.getValue()) + "\n");
             }
             logger.info("\nFailed Courses\n");
             for (Course course : student.getTranscript().getFailedCourses()) {
-                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " | " + "FF" + "\n");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-60s", course.getCourseTitle()) + " | " + "FF" + "\n");
             }
             logger.info("\nCurrently Taken Courses\n");
             for (Course course : student.getTranscript().getCurrentlyTakenCourses()) {
-                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" + "\n");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-60s", course.getCourseTitle()) + " |" + "\n");
             }
             logger.info("\nNot Taken Courses\n");
             for (Course course : student.getTranscript().getNotTakenCourses()) {
-                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-40s", course.getCourseTitle()) + " |" + "\n");
+                logger.info("| " + String.format("%-8s", course.getCourseCode()) + " | " + String.format("%-60s", course.getCourseTitle()) + " |" + "\n");
             }
         } else {
             logger.info("Transcript is empty.");
@@ -389,9 +389,9 @@ public class View {
                         if (isEmpty) logger.info("\n");
                         String formatted = String.format("\n%02d", i);
                         String formatted2 = String.format("\n%02d", i + 1);
-                        logger.info(formatted + ".00 -|  " + String.format("%-30s", course.getCourseCode() + " " + course.getCourseTitle()) + " |");
-                        logger.info(formatted2 + ".00 -|  " + String.format("%-30s", course.getInstructor().getName() + " " + course.getInstructor().getSurname()) + " |\n");
-                        if (i != 18) logger.info("-----------------------------------------\n");
+                        logger.info(formatted + ".00 -|  " + String.format("%-60s", course.getCourseCode() + " " + course.getCourseTitle()) + " |");
+                        logger.info(formatted2 + ".00 -|  " + String.format("%-60s", course.getInstructor().getName() + " " + course.getInstructor().getSurname()) + " |\n");
+                        if (i != 18) logger.info("------------------------------------------------------------------------\n");
                         isEmpty = false;
                         break L1;
                     }
@@ -456,7 +456,7 @@ public class View {
         logger.info("\n\n\n\n\nAvailable Courses\n");
         List<Course> availableCourses = studentService.getAvailableCourses(student, Boolean.FALSE);
         for (Course course : availableCourses) {
-            logger.info("|  " + course.getCourseCode() + "  |  " + course.getCourseTitle() + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " |");
+            logger.info("|  " + String.format("%-8s", course.getCourseCode()) + "  |  " + String.format("%-40s", course.getCourseTitle()) + "  |  " + course.getTakenSeats() + "/" + course.getMaxSeats() + " | ");
             for (int i = 0; i < course.getDates().size(); i++) {
                 String dayName = "";
                 switch (course.getDates().get(i).getDayName()) {

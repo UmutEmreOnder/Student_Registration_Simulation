@@ -116,7 +116,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void assignRandomCourses(Student student) {
-        List<Student> listOfStudents = school.getStudents();
         List<Course> listOfCourses = school.getCourses();
 
         Double passProbability = school.getConfig().getPassProbability();
