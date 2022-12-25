@@ -2,7 +2,9 @@ package edu.marmara.service.impl;
 
 
 import edu.marmara.model.AddCourseReturnType;
+import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
+import edu.marmara.model.Instructor;
 import edu.marmara.model.RemoveCourseReturnType;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
@@ -10,6 +12,7 @@ import edu.marmara.model.WeeklyDate;
 import edu.marmara.repository.CourseRepository;
 import edu.marmara.repository.impl.CourseRepositoryImpl;
 import edu.marmara.service.StudentService;
+import static edu.marmara.view.View.logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,6 +149,135 @@ public class StudentServiceImpl implements StudentService {
         }
 
         student.calculateGPA();
+    }
+
+    @Override
+    public void enrollRandomCourses() {
+        Random random = new Random();
+        List<Student> students = School.getInstance().getStudents();
+        List<Instructor> instructors = School.getInstance().getInstructors();
+
+        while (true) {
+            Integer num = random.nextInt(10000);
+
+            if (num == 1) {
+                logger.info("Simulation ended");
+                break;
+            }
+
+            if (students.isEmpty()) {
+                logger.info("There is no students");
+                break;
+            }
+
+            if (num <= 8000) {
+                Integer studentIndex = random.nextInt(students.size());
+                Student student = students.get(studentIndex);
+                List<Course> availableCourses = getAvailableCourses(student, false);
+
+                if (availableCourses.isEmpty()) {
+                    continue;
+                }
+
+                Integer courseIndex = random.nextInt(availableCourses.size());
+                Course course = availableCourses.get(courseIndex);
+                AddCourseReturnType isAdded = addCourseToSchedule(student, course.getCourseCode(), availableCourses);
+
+                if (isAdded == AddCourseReturnType.Locked) {
+                    logger.warning(String.format("%d you can't add any course right now since your schedule is approved!\n", student.getStudentId()));
+                }
+
+                if (isAdded == AddCourseReturnType.WaitingScheduleReview) {
+                    logger.warning(String.format("%d your schedule is under review by your advisor right now!\n", student.getStudentId()));
+                }
+
+                if (isAdded == AddCourseReturnType.SlotNotEmpty) {
+                    logger.warning(String.format("%d you cannot add %s because the time slot is not empty!\n", student.getStudentId(), course.getCourseTitle()));
+                }
+
+                if (isAdded == AddCourseReturnType.Success) {
+                    logger.info(String.format("%d successfully added %s to his/her schedule!\n",  student.getStudentId(), course.getCourseTitle()));
+                }
+
+                if (isAdded == AddCourseReturnType.NoAvailableSeats) {
+                    logger.warning(String.format("%d you cannot add %s because there isn't any available seats!\n", student.getStudentId(), course.getCourseTitle()));
+                }
+
+                Boolean send = random.nextInt(100) <= 20;
+                if (send) {
+                    if (student.getWeeklySchedule().getSendToReview() == Boolean.TRUE) {
+                        logger.warning(String.format("%d you've already sent your draft schedule to your advisor!\n", student.getStudentId()));
+                    } else {
+                        int totalCredit = 0;
+
+                        for (Course ignored : student.getWeeklySchedule().getCourses()) {
+                            totalCredit += course.getCourseCredit();
+                        }
+
+                        if (totalCredit < school.getConfig().getMinimumCreditReq()) {
+                            logger.warning(String.format("%d you cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq() + "\n", student.getStudentId()));
+                        } else {
+                            student.getWeeklySchedule().setSendToReview(Boolean.TRUE);
+                            logger.info(String.format("%d successfully sent his/her schedule to your advisor to review!\n", student.getStudentId()));
+                        }
+                    }
+                }
+            } else {
+                Integer studentIndex = random.nextInt(students.size());
+                Student student = students.get(studentIndex);
+                List<Course> enrolledCourses = student.getWeeklySchedule().getCourses();
+
+                if (enrolledCourses.isEmpty()) {
+                    continue;
+                }
+
+                Integer courseIndex = random.nextInt(enrolledCourses.size());
+                Course course = enrolledCourses.get(courseIndex);
+                RemoveCourseReturnType isRemoved = removeCourseFromSchedule(student, course.getCourseCode());
+
+                if (isRemoved == RemoveCourseReturnType.Locked) {
+                    logger.warning(String.format("%d you can't remove any course since your schedule is already been approved!\n", student.getStudentId()));
+                }
+
+                if (isRemoved == RemoveCourseReturnType.WaitingScheduleReview) {
+                    logger.warning(String.format("%d your schedule is under review by your advisor right now!\n", student.getStudentId()));
+                }
+
+                if (isRemoved == RemoveCourseReturnType.NotExist) {
+                    logger.warning(String.format("%d you cannot remove %s from your schedule!\n", student.getStudentId(), course.getCourseTitle()));
+                }
+
+                if (isRemoved == RemoveCourseReturnType.Success) {
+                    logger.info(String.format("%d successfully removed %s from his/her schedule\n", student.getStudentId(), course.getCourseTitle()));
+                }
+            }
+
+
+            if (instructors.isEmpty()) {
+                continue;
+            }
+
+            Integer instructorIndex = random.nextInt(instructors.size());
+            Instructor instructor = instructors.get(instructorIndex);
+
+            if (!(instructor instanceof Advisor)) {
+                continue;
+            }
+
+            for (Student studentOfAdvisor : ((Advisor) instructor).getStudents()) {
+                if (Boolean.TRUE.equals(studentOfAdvisor.getWeeklySchedule().getSendToReview()) && Boolean.FALSE.equals(studentOfAdvisor.getWeeklySchedule().getApproved())) {
+                    Boolean approve = random.nextBoolean();
+
+                    if (approve) {
+                        studentOfAdvisor.getWeeklySchedule().setApproved(Boolean.TRUE);
+                        logger.info(String.format("%s successfully approved %d's schedule\n", instructor.getName(), studentOfAdvisor.getStudentId()));
+                    } else {
+                        studentOfAdvisor.getWeeklySchedule().setSendToReview(Boolean.FALSE);
+                        logger.info(String.format("%s successfully denied %d's schedule\n", instructor.getName(), studentOfAdvisor.getStudentId()));
+                    }
+                }
+            }
+        }
     }
 
     private Double getGrade(Double gradeLuck, Double gradeVariance) {

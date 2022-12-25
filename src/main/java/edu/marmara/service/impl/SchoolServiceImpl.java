@@ -85,5 +85,7 @@ public class SchoolServiceImpl implements SchoolService {
         } catch (RuntimeException | IOException | ParseException e) {
             throw new RuntimeException(e);
         }
+
+        studentService.enrollRandomCourses();
     }
 }

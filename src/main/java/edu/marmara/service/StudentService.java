@@ -16,4 +16,6 @@ public interface StudentService {
     RemoveCourseReturnType removeCourseFromSchedule(Student student, String courseCode);
 
     void assignRandomCourses(Student student);
+
+    void enrollRandomCourses();
 }

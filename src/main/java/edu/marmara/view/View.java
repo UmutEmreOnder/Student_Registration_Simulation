@@ -93,10 +93,10 @@ public class View {
     }
 
     public static void start() throws IOException, ParseException {
-        schoolService.uploadJsons();
         configureLogger();
+        schoolService.uploadJsons();
         while (true) {
-            logger.info("Select User Type: \n1- Student\n2- Instructor\n9- Exit\n");
+            logger.info("\n\n\nSelect User Type: \n1- Student\n2- Instructor\n9- Exit\n");
             Integer input = scanner.nextInt();
             if (input == 1) {
                 printStudentMenu();

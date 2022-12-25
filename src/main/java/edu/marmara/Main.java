@@ -5,7 +5,6 @@ import edu.marmara.service.impl.JsonServiceImpl;
 import edu.marmara.view.View;
 
 import java.io.IOException;
-import java.text.ParseException;
 
 public class Main {
     private static final JsonService jsonService = new JsonServiceImpl();
