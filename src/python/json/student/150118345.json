@@ -1,0 +1,11 @@
+{
+  "uuid" : "a6e3a560-4137-41dc-8c5c-f86ccbc10784",
+  "name" : "Meir",
+  "surname" : "Archer",
+  "email" : "marcher27@chron.com",
+  "birthDate" : 498182400000,
+  "studentId" : 150118345,
+  "yearEnrolled" : 2012,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 8
+}

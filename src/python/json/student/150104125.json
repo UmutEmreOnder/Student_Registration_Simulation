@@ -1,0 +1,11 @@
+{
+  "uuid" : "088293d9-59e8-4c7d-8ed3-b790649cbf23",
+  "name" : "Bartholomeus",
+  "surname" : "Orridge",
+  "email" : "borridge5h@rediff.com",
+  "birthDate" : 678067200000,
+  "studentId" : 150104125,
+  "yearEnrolled" : 2000,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 5
+}

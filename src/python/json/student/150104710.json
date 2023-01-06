@@ -1,0 +1,11 @@
+{
+  "uuid" : "18d2b9df-3d23-45a1-97e3-d846cf5e5624",
+  "name" : "Rowland",
+  "surname" : "Cuer",
+  "email" : "rcuer24@bloomberg.com",
+  "birthDate" : 942969600000,
+  "studentId" : 150104710,
+  "yearEnrolled" : 2005,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 1
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "a90dd41c-179f-4756-99be-517e8930f476",
+  "name" : "Sanford",
+  "surname" : "Norsworthy",
+  "email" : "snorsworthy81@stanford.edu",
+  "birthDate" : 504403200000,
+  "studentId" : 150100380,
+  "yearEnrolled" : 2004,
+  "advisor" : "fatma.ergin@marmara.edu.tr",
+  "semester" : 4
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "269214b3-d53c-4861-ab7a-00143c5d3c55",
+  "name" : "Sally",
+  "surname" : "Telling",
+  "email" : "stelling5b@fastcompany.com",
+  "birthDate" : 1085788800000,
+  "studentId" : 150101875,
+  "yearEnrolled" : 2015,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 6
+}
