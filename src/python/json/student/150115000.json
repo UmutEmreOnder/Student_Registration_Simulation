@@ -1,0 +1,11 @@
+{
+  "uuid" : "17b35b49-5265-4999-afbb-12997c305159",
+  "name" : "Ari",
+  "surname" : "Brundell",
+  "email" : "abrundell84@google.com.hk",
+  "birthDate" : 935452800000,
+  "studentId" : 150115000,
+  "yearEnrolled" : 2021,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 2
+}

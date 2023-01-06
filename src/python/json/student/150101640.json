@@ -1,0 +1,11 @@
+{
+  "uuid" : "8957a0d8-67d8-4a43-832c-8acf7e81b97a",
+  "name" : "Roderic",
+  "surname" : "Anders",
+  "email" : "randers50@bing.com",
+  "birthDate" : 348796800000,
+  "studentId" : 150101640,
+  "yearEnrolled" : 2006,
+  "advisor" : "fatma.ergin@marmara.edu.tr",
+  "semester" : 1
+}

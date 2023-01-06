@@ -1,0 +1,11 @@
+{
+  "uuid" : "ecd12bd9-66cd-41c9-bd8e-3f5bb230e6a3",
+  "name" : "Buffy",
+  "surname" : "Innot",
+  "email" : "binnot1j@php.net",
+  "birthDate" : 786758400000,
+  "studentId" : 150118453,
+  "yearEnrolled" : 2019,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 2
+}

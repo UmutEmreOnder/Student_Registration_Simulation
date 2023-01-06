@@ -1,0 +1,11 @@
+{
+  "uuid" : "ac88cb93-a26f-4c5f-9a55-71f666055cea",
+  "name" : "Mill",
+  "surname" : "Hartegan",
+  "email" : "mhartegant@engadget.com",
+  "birthDate" : 400464000000,
+  "studentId" : 150113598,
+  "yearEnrolled" : 2015,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 6
+}

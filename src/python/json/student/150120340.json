@@ -1,0 +1,11 @@
+{
+  "uuid" : "35d3e297-9a4d-458b-8df7-da485ab23d29",
+  "name" : "Forester",
+  "surname" : "Torres",
+  "email" : "ftorres1q@phpbb.com",
+  "birthDate" : 986342400000,
+  "studentId" : 150120340,
+  "yearEnrolled" : 2007,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 4
+}

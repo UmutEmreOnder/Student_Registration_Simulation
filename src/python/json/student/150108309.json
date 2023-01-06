@@ -1,0 +1,11 @@
+{
+  "uuid" : "cf57ec05-1005-4cf0-8ac7-2efc719d8fdf",
+  "name" : "Coriss",
+  "surname" : "Bishop",
+  "email" : "cbishop15@arstechnica.com",
+  "birthDate" : 793843200000,
+  "studentId" : 150108309,
+  "yearEnrolled" : 2014,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 4
+}

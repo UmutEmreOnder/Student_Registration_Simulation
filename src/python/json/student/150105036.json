@@ -1,0 +1,11 @@
+{
+  "uuid" : "9678141c-b545-4996-b211-7b2c70bc17bf",
+  "name" : "Dionysus",
+  "surname" : "Jenicke",
+  "email" : "djenickeav@php.net",
+  "birthDate" : 683683200000,
+  "studentId" : 150105036,
+  "yearEnrolled" : 2002,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 5
+}

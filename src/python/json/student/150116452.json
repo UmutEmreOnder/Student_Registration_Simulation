@@ -1,0 +1,11 @@
+{
+  "uuid" : "0e9e88b3-92ca-4d99-83f7-0b5c4ce298d8",
+  "name" : "Alfy",
+  "surname" : "Khomin",
+  "email" : "akhomin3d@pen.io",
+  "birthDate" : 607392000000,
+  "studentId" : 150116452,
+  "yearEnrolled" : 2021,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 5
+}
