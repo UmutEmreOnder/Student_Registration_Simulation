@@ -6,6 +6,7 @@ import edu.marmara.model.Advisor;
 import edu.marmara.model.Course;
 import edu.marmara.model.Instructor;
 import edu.marmara.model.RemoveCourseReturnType;
+import edu.marmara.model.Schedule;
 import edu.marmara.model.School;
 import edu.marmara.model.Student;
 import edu.marmara.model.WeeklyDate;
@@ -278,6 +279,33 @@ public class StudentServiceImpl implements StudentService {
                 }
             }
         }
+    }
+
+    @Override
+    public Boolean sendToReview(Schedule schedule) {
+        if (schedule.getApproved() == Boolean.FALSE) {
+            if (schedule.getSendToReview() == Boolean.TRUE) {
+                logger.warning("You've already sent your draft schedule to your advisor!\n");
+            } else {
+                int totalCredit = 0;
+
+                for (Course course : schedule.getCourses()) {
+                    totalCredit += course.getCourseCredit();
+                }
+
+                if (totalCredit < school.getConfig().getMinimumCreditReq()) {
+                    logger.warning("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq() + "\n");
+                } else {
+                    schedule.setSendToReview(Boolean.TRUE);
+                    logger.info("You've successfully sent your schedule to your advisor to review!\n");
+                    return Boolean.TRUE;
+                }
+            }
+        } else {
+            logger.warning("You can't modify your schedule since it's already has been approved by your advisor.\n");
+        }
+
+        return Boolean.FALSE;
     }
 
     private Double getGrade(Double gradeLuck, Double gradeVariance) {

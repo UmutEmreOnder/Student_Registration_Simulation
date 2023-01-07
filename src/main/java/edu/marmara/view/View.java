@@ -331,26 +331,7 @@ public class View {
             Integer choice = scanner.nextInt();
 
             if (choice == 1) {
-                if (schedule.getApproved() == Boolean.FALSE) {
-                    if (schedule.getSendToReview() == Boolean.TRUE) {
-                        logger.warning("You've already sent your draft schedule to your advisor!\n");
-                    } else {
-                        int totalCredit = 0;
-
-                        for (Course course : schedule.getCourses()) {
-                            totalCredit += course.getCourseCredit();
-                        }
-
-                        if (totalCredit < school.getConfig().getMinimumCreditReq()) {
-                            logger.warning("You cannot send your schedule to review since your total credit(" + totalCredit + ") is lower than minimum credit requirement " + school.getConfig().getMinimumCreditReq() + "\n");
-                        } else {
-                            schedule.setSendToReview(Boolean.TRUE);
-                            logger.info("You've successfully sent your schedule to your advisor to review!\n");
-                        }
-                    }
-                } else {
-                    logger.warning("You can't modify your schedule since it's already has been approved by your advisor.\n");
-                }
+                studentService.sendToReview(schedule);
             }
         }
 

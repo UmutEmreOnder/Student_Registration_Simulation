@@ -18,4 +18,6 @@ public interface StudentService {
     void assignRandomCourses(Student student);
 
     void enrollRandomCourses();
+
+    Boolean sendToReview(Schedule schedule);
 }
