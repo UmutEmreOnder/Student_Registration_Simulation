@@ -1,7 +1,5 @@
 package edu.marmara.dto;
 
-import edu.marmara.model.Course;
-
 import java.util.List;
 
 public class TranscriptGetDTO {

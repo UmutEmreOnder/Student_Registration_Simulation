@@ -9,16 +9,27 @@ public class Config {
 
     private Integer minimumCreditReq;
 
+    private Integer numberOfStudents;
 
-    public Config(Double passProbability, Double gradeLuck, Double gradeVariance, Integer minimumCreditReq) {
+
+    public Config(Double passProbability, Double gradeLuck, Double gradeVariance, Integer minimumCreditReq, Integer numberOfStudents) {
         this.passProbability = passProbability;
         this.gradeLuck = gradeLuck;
         this.gradeVariance = gradeVariance;
         this.minimumCreditReq = minimumCreditReq;
+        this.numberOfStudents = numberOfStudents;
     }
 
     public Config() {
 
+    }
+
+    public Integer getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+    public void setNumberOfStudents(Integer numberOfStudents) {
+        this.numberOfStudents = numberOfStudents;
     }
 
     public Double getPassProbability() {

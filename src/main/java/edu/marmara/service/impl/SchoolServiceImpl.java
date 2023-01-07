@@ -58,7 +58,12 @@ public class SchoolServiceImpl implements SchoolService {
                 return;
             }
 
+            Integer count = 0;
             for (File file : listOfFiles) {
+                if (count.equals(school.getConfig().getNumberOfStudents())) {
+                    break;
+                }
+
                 if (file.isFile() && file.getName().endsWith(".json")) {
                     String content = Files.readString(Path.of(file.getPath()));
                     Student student = jsonService.readStudentFromJson(content);
@@ -80,6 +85,7 @@ public class SchoolServiceImpl implements SchoolService {
                     }
 
                     school.addStudent(student);
+                    count++;
                 }
             }
         } catch (RuntimeException | IOException | ParseException e) {

@@ -13,7 +13,7 @@ class ConfigTest {
      */
     @Test
     void testConstructor() {
-        assertEquals(0.25d, (new Config(0.25, 0.25, 0.25, 0)).getPassProbability().doubleValue());
+        assertEquals(0.25d, (new Config(0.25, 0.25, 0.25, 0, 120)).getPassProbability().doubleValue());
         assertNull((new Config()).getPassProbability());
     }
 
