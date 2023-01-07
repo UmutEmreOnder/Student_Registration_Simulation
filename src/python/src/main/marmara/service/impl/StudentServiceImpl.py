@@ -130,3 +130,21 @@ class StudentServiceImpl(StudentService):
                     if dt.get_day_name() == dt2.get_day_name() and dt.get_hours() == dt2.get_hours():
                         return False
         return True
+
+    def sendToReview(schedule):
+        if schedule.approved == False:
+            if schedule.sendToReview == True:
+                logger.warning("You've already sent your draft schedule to your advisor!\n")
+            else:
+                total_credit = 0
+                for course in schedule.courses:
+                    total_credit += course.course_credit
+                if total_credit < school.config.minimum_credit_req:
+                    logger.warning(f"You cannot send your schedule to review since your total credit({total_credit}) is lower than minimum credit requirement {school.config.minimum_credit_req}\n")
+                else:
+                    schedule.sendToReview = True
+                    logger.info("You've successfully sent your schedule to your advisor to review!\n")
+                    return True
+        else:
+            logger.warning("You can't modify your schedule since it's already has been approved by your advisor.\n")
+        return False

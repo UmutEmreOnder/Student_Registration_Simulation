@@ -1,11 +1,12 @@
 
 
 class Config:
-    def __init__(self, pass_probability=None, grade_luck=None, grade_variance=None, minimum_credit_req=None):
+    def __init__(self, pass_probability=None, grade_luck=None, grade_variance=None, minimum_credit_req=None, number_of_students=None):
         self.pass_probability = pass_probability
         self.grade_luck = grade_luck
         self.grade_variance = grade_variance
         self.minimum_credit_req = minimum_credit_req
+        self.number_of_students = number_of_students
 
     @property
     def pass_probability(self):
@@ -38,3 +39,12 @@ class Config:
     @minimum_credit_req.setter
     def minimum_credit_req(self, minimum_credit_req):
         self.minimum_credit_req = minimum_credit_req
+
+
+    @property
+    def number_of_students(self):
+        return self.number_of_students
+
+    @number_of_students.setter
+    def number_of_students(self, number_of_students):
+        self.number_of_students = number_of_students

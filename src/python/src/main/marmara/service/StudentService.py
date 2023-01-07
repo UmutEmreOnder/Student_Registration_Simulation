@@ -18,3 +18,6 @@ class StudentService:
 
     def assign_random_courses(self, student: Student):
         pass
+
+    def send_to_review(self, schedule: Schedule):
+        pass

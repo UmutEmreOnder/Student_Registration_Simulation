@@ -243,22 +243,7 @@ def print_schedule(schedule, is_student):
         choice = int(input())
 
         if choice == 1:
-            if schedule.get_approved() is False:
-                if schedule.get_send_to_review() is True:
-                    logger.warning("You've already sent your draft schedule to your advisor!\n")
-                else:
-                    total_credit = 0
-
-                    for course in schedule.get_courses():
-                        total_credit += course.get_course_credit()
-
-                    if total_credit < School.get_config().get_minimum_credit_req():
-                        logger.warning(f"You cannot send your schedule to review since your total credit({total_credit}) is lower than minimum credit requirement {School.get_config().get_minimum_credit_req()}\n")
-                    else:
-                        schedule.set_send_to_review(True)
-                        logger.info("You've successfully sent your schedule to your advisor to review!\n")
-            else:
-                logger.warning("You can't modify your schedule since it's already has been")
+            school_service.send_to_review(schedule)
 
 def print_schedule_days(courses, day_name):
     if day_name == 'MON':

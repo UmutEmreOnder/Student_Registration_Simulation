@@ -37,8 +37,13 @@ class SchoolServiceImpl:
             instructors = json_service.read_instructors_from_json(instructor_info)
             school.set_instructors(instructors)
 
+            count = 0
             student_files = [f for f in os.listdir("json/student/") if f.endswith(".json")]
             for student_file in student_files:
+                if count >= school.config.number_of_students() {
+                    break;
+                }
+
                 with open(f"json/student/{student_file}", "r") as file:
                     content = file.read()
                 student = json_service.read_student_from_json(content)
