@@ -9,3 +9,7 @@ def main(args):
         json_service.end()
     except Exception as e:
         View.logger.warning(e.message)
+        
+if __name__ == '__main__':
+    unittest.main()
+    main()
