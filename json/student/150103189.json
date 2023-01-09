@@ -1,0 +1,11 @@
+{
+  "uuid" : "62e82799-6e46-4402-a720-d512c3017136",
+  "name" : "Lock",
+  "surname" : "Noakes",
+  "email" : "lnoakesz@jigsy.com",
+  "birthDate" : 716860800000,
+  "studentId" : 150103189,
+  "yearEnrolled" : 2005,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 6
+}

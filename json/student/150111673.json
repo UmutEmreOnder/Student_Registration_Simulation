@@ -1,0 +1,11 @@
+{
+  "uuid" : "18b0ccd9-d9cf-4ccc-8b70-31551d2a397c",
+  "name" : "Jammal",
+  "surname" : "Marnes",
+  "email" : "jmarnes79@si.edu",
+  "birthDate" : 993945600000,
+  "studentId" : 150111673,
+  "yearEnrolled" : 2009,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 4
+}

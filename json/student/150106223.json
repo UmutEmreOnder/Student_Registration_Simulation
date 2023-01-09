@@ -1,0 +1,11 @@
+{
+  "uuid" : "6023cb0b-73e3-46a9-a52c-ee81d031eaef",
+  "name" : "Sandy",
+  "surname" : "Wilcockes",
+  "email" : "swilcockes6g@google.de",
+  "birthDate" : 446083200000,
+  "studentId" : 150106223,
+  "yearEnrolled" : 2002,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 4
+}

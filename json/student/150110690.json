@@ -1,0 +1,11 @@
+{
+  "uuid" : "17a65256-ccd7-4165-bcde-b7555c8b46bb",
+  "name" : "Pat",
+  "surname" : "Donati",
+  "email" : "pdonati1p@virginia.edu",
+  "birthDate" : 712886400000,
+  "studentId" : 150110690,
+  "yearEnrolled" : 2008,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 7
+}

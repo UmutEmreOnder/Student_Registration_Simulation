@@ -1,0 +1,11 @@
+{
+  "uuid" : "3211e52a-a5fc-4c8a-b19a-a315ef2cbbbe",
+  "name" : "Valida",
+  "surname" : "Baudasso",
+  "email" : "vbaudassom@ucoz.com",
+  "birthDate" : 421545600000,
+  "studentId" : 150116948,
+  "yearEnrolled" : 2006,
+  "advisor" : "haydar.ozer@marmara.edu.tr",
+  "semester" : 5
+}

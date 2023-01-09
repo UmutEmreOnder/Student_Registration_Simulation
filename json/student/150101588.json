@@ -1,0 +1,11 @@
+{
+  "uuid" : "9a53acb8-e4e9-44c0-adb9-2257a07ceddc",
+  "name" : "Thain",
+  "surname" : "Croad",
+  "email" : "tcroad2g@nasa.gov",
+  "birthDate" : 341971200000,
+  "studentId" : 150101588,
+  "yearEnrolled" : 2018,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 7
+}

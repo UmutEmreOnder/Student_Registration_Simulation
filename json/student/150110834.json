@@ -1,0 +1,11 @@
+{
+  "uuid" : "873ea578-cc7b-48f3-85ee-72c7a1e5cd5b",
+  "name" : "Ardelia",
+  "surname" : "Shoesmith",
+  "email" : "ashoesmith1g@drupal.org",
+  "birthDate" : 370742400000,
+  "studentId" : 150110834,
+  "yearEnrolled" : 2005,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 6
+}

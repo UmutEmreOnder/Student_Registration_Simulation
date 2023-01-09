@@ -1,0 +1,11 @@
+{
+  "uuid" : "685152b3-20e2-4cd1-b35d-1c8e29ebb9de",
+  "name" : "Sheppard",
+  "surname" : "Tissiman",
+  "email" : "stissiman92@nasa.gov",
+  "birthDate" : 842659200000,
+  "studentId" : 150109817,
+  "yearEnrolled" : 2007,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 7
+}

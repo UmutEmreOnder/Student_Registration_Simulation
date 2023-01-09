@@ -1,0 +1,11 @@
+{
+  "uuid" : "ce9c4e21-c5a7-4e47-b6cc-cb63209e504c",
+  "name" : "Patrick",
+  "surname" : "Stoyles",
+  "email" : "pstoyles16@earthlink.net",
+  "birthDate" : 1043798400000,
+  "studentId" : 150112584,
+  "yearEnrolled" : 2004,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 8
+}

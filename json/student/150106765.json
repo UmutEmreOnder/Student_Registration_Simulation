@@ -1,0 +1,11 @@
+{
+  "uuid" : "5eb66c78-f3d8-4ff0-89c2-f0efe1d8f2cf",
+  "name" : "Kyle",
+  "surname" : "Eames",
+  "email" : "keames1o@microsoft.com",
+  "birthDate" : 649123200000,
+  "studentId" : 150106765,
+  "yearEnrolled" : 2009,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 5
+}

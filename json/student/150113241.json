@@ -1,0 +1,11 @@
+{
+  "uuid" : "dd5d4f4e-18be-4c05-9673-978a2e9099fc",
+  "name" : "Tobias",
+  "surname" : "De Lasci",
+  "email" : "tdelascib@lycos.com",
+  "birthDate" : 752284800000,
+  "studentId" : 150113241,
+  "yearEnrolled" : 2008,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 1
+}

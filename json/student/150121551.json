@@ -1,0 +1,11 @@
+{
+  "uuid" : "c5949381-afa7-4568-bf0f-cdf2e51f96fe",
+  "name" : "Alethea",
+  "surname" : "Bompass",
+  "email" : "abompassau@apple.com",
+  "birthDate" : 679622400000,
+  "studentId" : 150121551,
+  "yearEnrolled" : 2001,
+  "advisor" : "fatma.ergin@marmara.edu.tr",
+  "semester" : 4
+}

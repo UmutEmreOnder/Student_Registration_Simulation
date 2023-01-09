@@ -1,0 +1,11 @@
+{
+  "uuid" : "e4bb4129-9908-4bd1-8f6a-6a5346b7e6ba",
+  "name" : "Willow",
+  "surname" : "Skeemor",
+  "email" : "wskeemor72@google.cn",
+  "birthDate" : 378777600000,
+  "studentId" : 150105802,
+  "yearEnrolled" : 2008,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 4
+}
