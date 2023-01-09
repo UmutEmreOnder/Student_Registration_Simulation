@@ -4,4 +4,9 @@
 target
 out
 gen
+json/schedule
+json/transcript
+json/student
+json/course
+json/instructor
 logs
