@@ -1,0 +1,7 @@
+{
+  "passProbability": 0.7,
+  "gradeLuck": 0.5,
+  "gradeVariance": 0.3,
+  "minimumCreditReq": 30,
+  "numberOfStudents": 400
+}
