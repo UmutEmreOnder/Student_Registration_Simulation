@@ -1,0 +1,11 @@
+{
+  "uuid" : "2a8a40ae-ae64-4163-be5c-1b5fccdff7e3",
+  "name" : "Van",
+  "surname" : "Birk",
+  "email" : "vbirk5u@com.com",
+  "birthDate" : 769910400000,
+  "studentId" : 150110438,
+  "yearEnrolled" : 2004,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 7
+}

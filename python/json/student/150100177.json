@@ -1,0 +1,11 @@
+{
+  "uuid" : "7efde15f-76e1-4ceb-bdb4-56c2f5c437ff",
+  "name" : "Romona",
+  "surname" : "Patridge",
+  "email" : "rpatridge9s@samsung.com",
+  "birthDate" : 1021248000000,
+  "studentId" : 150100177,
+  "yearEnrolled" : 2011,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 5
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "62200771-260b-461e-a7d2-1f5c4f65fa80",
+  "name" : "Dame",
+  "surname" : "McPhilip",
+  "email" : "dmcphilip1r@t-online.de",
+  "birthDate" : 463017600000,
+  "studentId" : 150100773,
+  "yearEnrolled" : 2022,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 7
+}

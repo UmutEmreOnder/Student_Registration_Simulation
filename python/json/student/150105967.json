@@ -1,0 +1,11 @@
+{
+  "uuid" : "f83d5c2c-f818-4543-a048-9edfa1259be9",
+  "name" : "Dave",
+  "surname" : "Rathmell",
+  "email" : "drathmell1i@soup.io",
+  "birthDate" : 662515200000,
+  "studentId" : 150105967,
+  "yearEnrolled" : 2004,
+  "advisor" : "borahan.tumer@marmara.edu.tr",
+  "semester" : 4
+}

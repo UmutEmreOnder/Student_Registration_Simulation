@@ -1,0 +1,11 @@
+{
+  "uuid" : "02a43db8-2f98-4ffa-9043-62fe29cce72e",
+  "name" : "Lola",
+  "surname" : "Carnachen",
+  "email" : "lcarnachen1t@earthlink.net",
+  "birthDate" : 414979200000,
+  "studentId" : 150119539,
+  "yearEnrolled" : 2005,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 4
+}

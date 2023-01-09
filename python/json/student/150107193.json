@@ -1,0 +1,11 @@
+{
+  "uuid" : "af53774f-57ea-4d14-8d5b-0c568f335c44",
+  "name" : "Alf",
+  "surname" : "Westley",
+  "email" : "awestley8b@clickbank.net",
+  "birthDate" : 1020988800000,
+  "studentId" : 150107193,
+  "yearEnrolled" : 2002,
+  "advisor" : "murat.ganiz@marmara.edu.tr",
+  "semester" : 6
+}

@@ -1,0 +1,11 @@
+{
+  "uuid" : "a42a4484-2923-474a-bfdf-04ca81f0c50a",
+  "name" : "Thaddeus",
+  "surname" : "Osler",
+  "email" : "tosleraq@mapquest.com",
+  "birthDate" : 450403200000,
+  "studentId" : 150115325,
+  "yearEnrolled" : 2005,
+  "advisor" : "haluk@marmara.edu.tr",
+  "semester" : 5
+}
